@@ -177,11 +177,34 @@
             <button type="button" class="control subtle is-active" data-camera="above" aria-pressed="true">Above</button>
           </div>
           <label class="boundary-control"><input type="checkbox" id="boundary-toggle" checked> Boundary</label>
+          <label class="boundary-control" id="label-control" hidden><input type="checkbox" id="label-toggle" checked> Room labels</label>
         </div>
-        <div class="canvas-wrap">
-          <canvas id="villa-canvas" tabindex="0" aria-label="Interactive approximate 3D model of RajSee Villa. Drag to rotate, or use arrow keys. Choose a view and floor above."></canvas>
-          <div class="canvas-tag" aria-hidden="true"><span class="tag-dot"></span> <span id="canvas-tag-text">SITE & ROOFTOP</span></div>
-          <span class="canvas-hint">Drag to rotate</span>
+        <div class="photo-match-toolbar">
+          <span>Compare with a photo</span>
+          <div class="photo-match-buttons" role="group" aria-label="Choose a reference photograph">
+            <button type="button" data-photo-match="front" aria-pressed="false">Front</button>
+            <button type="button" data-photo-match="frontside" aria-pressed="false">Front side</button>
+            <button type="button" data-photo-match="side" aria-pressed="false">Side</button>
+            <button type="button" data-photo-match="courtyard" aria-pressed="false">Courtyard</button>
+            <button type="button" data-photo-match="terrace" aria-pressed="false">First terrace</button>
+            <button type="button" data-photo-match="rear" aria-pressed="false">Rear</button>
+            <button type="button" data-photo-match="spiral" aria-pressed="false">Spiral stair</button>
+            <button type="button" data-photo-match="terracefloor" aria-pressed="false">Terrace surface</button>
+            <button type="button" data-photo-match="aerial" aria-pressed="false">Aerial</button>
+            <label class="photo-upload">Choose another<input id="photo-upload" type="file" accept="image/*"></label>
+          </div>
+        </div>
+        <div class="studio-stage" id="studio-stage">
+          <div class="canvas-wrap">
+            <canvas id="villa-canvas" tabindex="0" aria-label="Interactive approximate 3D model of RajSee Villa. Drag to rotate, or use arrow keys. Choose a view and floor above."></canvas>
+            <div class="canvas-tag" aria-hidden="true"><span class="tag-dot"></span> <span id="canvas-tag-text">SITE & ROOFTOP</span></div>
+            <span class="canvas-hint">Drag to rotate</span>
+          </div>
+          <aside class="comparison-photo" id="comparison-photo" aria-label="Reference photograph" hidden>
+            <div class="comparison-photo-header"><strong id="comparison-photo-title">Reference photo</strong><button type="button" id="comparison-close" aria-label="Close reference photo">×</button></div>
+            <img id="comparison-photo-image" alt="">
+            <p>The angle is approximate. Drag and zoom the model to compare; your selected photos stay on this device.</p>
+          </aside>
         </div>
         <div class="studio-footer">
           <p id="model-detail">A working view of the villa, garden and rooftop.</p>

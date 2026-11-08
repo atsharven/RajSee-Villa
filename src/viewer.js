@@ -15,11 +15,20 @@
   const cameraButtons = [...document.querySelectorAll('[data-camera]')];
   const boundary = document.querySelector('#boundary-toggle');
   const boundaryLabel = document.querySelector('.boundary-control');
+  const labelControl = document.querySelector('#label-control');
+  const labelToggle = document.querySelector('#label-toggle');
   const floorControls = document.querySelector('.floor-controls');
   const zoomInput = document.querySelector('#zoom-range');
   const zoomValue = document.querySelector('#zoom-value');
   const title = document.querySelector('#model-title');
   const tag = document.querySelector('#canvas-tag-text');
+  const photoButtons = [...document.querySelectorAll('[data-photo-match]')];
+  const stage = document.querySelector('#studio-stage');
+  const photoPane = document.querySelector('#comparison-photo');
+  const photoImage = document.querySelector('#comparison-photo-image');
+  const photoTitle = document.querySelector('#comparison-photo-title');
+  const photoUpload = document.querySelector('#photo-upload');
+  let selectedPhotoUrl = null;
   const assumptions = document.querySelector('#assumptions');
   if (assumptions) {
     if (window.location.hash === '#assumptions') assumptions.open = true;
@@ -28,7 +37,19 @@
     }
   }
   const cameras = {front: [.36, .37], side: [1.33, .40], rear: [3.42, .36], above: [.55, 1.10]};
-  const state = {mode: 'base', floor: 'ground', camera: 'above', yaw: .55, pitch: 1.10, zoom: 1, drag: null};
+  // Approximate views for visual comparison; these are not calibrated camera poses.
+  const photoMatches = {
+    front: {title:'Front and garden', src:'assets/front.jpg', camera:'front', yaw:.20, pitch:.06, zoom:1.05, focus:[5.8,3.5,.7], boundary:false},
+    frontside: {title:'Front and courtyard side', src:'assets/Photos Ansal A 60/Iphone Front left.jpeg', camera:'front', yaw:.78, pitch:.07, zoom:1.10, focus:[4.6,3.5,4.8], boundary:true},
+    side: {title:'Courtyard-side elevation', src:'assets/Photos Ansal A 60/Iphone Side.jpeg', camera:'side', yaw:1.50, pitch:.08, zoom:1.20, focus:[2.0,3.1,10.2], boundary:true},
+    courtyard: {title:'Courtyard and glazing', src:'assets/courtyard.jpg', camera:'side', yaw:1.52, pitch:.05, zoom:1.65, focus:[4.5,3.3,8.1], boundary:false},
+    terrace: {title:'First-floor terrace, seen from side', src:'assets/Photos Ansal A 60/Iphone Side.jpeg', camera:'side', yaw:1.45, pitch:.10, zoom:1.75, focus:[2.4,4.6,12.8], boundary:false},
+    rear: {title:'Rear and service yard', src:'assets/Photos Ansal A 60/Iphone Wide Back.jpeg', camera:'rear', yaw:3.13, pitch:.08, zoom:.95, focus:[6.3,3.5,18.5], boundary:true},
+    spiral: {title:'Rear spiral stair', src:'assets/rear-stair.jpg', camera:'rear', yaw:3.32, pitch:.10, zoom:1.65, focus:[10.5,2.5,17.8], boundary:false},
+    terracefloor: {title:'Terrace surface — level to verify', src:'assets/Photos Ansal A 60/IMG-20260226-WA0034.jpg', mode:'interior', floor:'roof', camera:'above', yaw:.55, pitch:1.10, zoom:1.10, focus:[5.7,6.2,10], boundary:false},
+    aerial: {title:'Aerial reference — upper light roof', src:'assets/aerial-reference.png', camera:'above', yaw:.55, pitch:1.25, zoom:1.10, focus:[5.7,6.1,9.5], boundary:false}
+  };
+  const state = {mode: 'base', floor: 'ground', camera: 'above', yaw: .55, pitch: 1.10, zoom: 1, drag: null, focus: null, photoMatch: null};
   const faces = [
     {i: [0, 1, 2, 3], shade: .82}, {i: [4, 5, 6, 7], shade: 1.02},
     {i: [0, 1, 5, 4], shade: .73}, {i: [3, 2, 6, 7], shade: 1.08},
@@ -58,8 +79,10 @@
     setPressed(modeButtons, 'mode', state.mode);
     setPressed(floorButtons, 'floor', state.floor);
     setPressed(cameraButtons, 'camera', state.camera);
+    setPressed(photoButtons, 'photoMatch', state.photoMatch);
     floorControls.hidden = state.mode !== 'interior';
     boundaryLabel.hidden = state.mode === 'interior';
+    labelControl.hidden = state.mode !== 'interior';
     zoomInput.value = String(Math.round(state.zoom * 100));
     zoomValue.textContent = `${Math.round(state.zoom * 100)}%`;
     if (state.mode === 'base') {
@@ -86,6 +109,7 @@
     if (!['base', 'exterior', 'interior'].includes(mode)) return;
     state.mode = mode;
     state.floor = 'ground';
+    state.focus = null;
     state.camera = mode === 'exterior' ? 'front' : 'above';
     [state.yaw, state.pitch] = cameras[state.camera];
     if (mode === 'interior') state.pitch = .90;
@@ -97,6 +121,61 @@
       canvas.focus({preventScroll: true});
     }
   }
+
+  function showPhoto(src, label) {
+    photoTitle.textContent = label;
+    photoImage.src = src;
+    photoImage.alt = label;
+    photoPane.hidden = false;
+    stage.classList.add('is-comparing');
+  }
+
+  function clearSelectedPhoto() {
+    if (selectedPhotoUrl) URL.revokeObjectURL(selectedPhotoUrl);
+    selectedPhotoUrl = null;
+  }
+
+  for (const button of photoButtons) button.addEventListener('click', () => {
+    const preset = photoMatches[button.dataset.photoMatch];
+    if (!preset) return;
+    clearSelectedPhoto();
+    state.mode = preset.mode || 'exterior';
+    state.floor = preset.floor || 'ground';
+    state.camera = preset.camera;
+    state.yaw = preset.yaw;
+    state.pitch = preset.pitch;
+    state.zoom = preset.zoom;
+    state.focus = preset.focus;
+    state.photoMatch = button.dataset.photoMatch;
+    boundary.checked = preset.boundary;
+    showPhoto(preset.src, preset.title);
+    updateControls();
+    draw();
+  });
+
+  photoUpload.addEventListener('change', () => {
+    const file = photoUpload.files && photoUpload.files[0];
+    if (!file) return;
+    clearSelectedPhoto();
+    selectedPhotoUrl = URL.createObjectURL(file);
+    state.photoMatch = null;
+    showPhoto(selectedPhotoUrl, file.name);
+    updateControls();
+    draw();
+  });
+
+  document.querySelector('#comparison-close').addEventListener('click', () => {
+    clearSelectedPhoto();
+    photoPane.hidden = true;
+    photoImage.removeAttribute('src');
+    photoUpload.value = '';
+    stage.classList.remove('is-comparing');
+    state.photoMatch = null;
+    state.focus = null;
+    state.zoom = 1;
+    updateControls();
+    draw();
+  });
 
   function visible(part) {
     if (state.mode !== 'interior') return !part.interiorOnly && (boundary.checked || part.level !== 'boundary');
@@ -170,7 +249,11 @@
     const xs = corners.map(c => c[0]), ys = corners.map(c => c[1]);
     const minX = Math.min(...xs), maxX = Math.max(...xs), minY = Math.min(...ys), maxY = Math.max(...ys);
     const scale = Math.min((box.width - 45) / (maxX - minX), (box.height - 45) / (maxY - minY)) * state.zoom;
-    const midX = (minX + maxX) / 2, midY = (minY + maxY) / 2;
+    let midX = (minX + maxX) / 2, midY = (minY + maxY) / 2;
+    if (state.focus) {
+      const target = raw(...state.focus);
+      midX = target[0]; midY = target[1];
+    }
     function project(x, y, z) {
       const point = raw(x, y, z);
       return [box.width / 2 + (point[0] - midX) * scale, box.height / 2 + (point[1] - midY) * scale, point[2]];
@@ -209,7 +292,8 @@
         if (part.seamlessSegments &&
             ((width > depth && (faceIndex === 4 || faceIndex === 5)) ||
              (depth > width && (faceIndex === 0 || faceIndex === 1)))) continue;
-        polygon(face.i.map(i => points[i]), part, face.shade);
+        polygon(face.i.map(i => points[i]), part, face.shade,
+          !part.topTextureOnly || faceIndex === 3);
       }
     }
 
@@ -230,7 +314,7 @@
       }
     }
 
-    if (!isExterior) {
+    if (!isExterior && labelToggle.checked) {
       const labelHeight = {ground: .12, first: 3.42, roof: roofTop + .12}[state.floor];
       ctx.font = '12px system-ui, sans-serif';
       ctx.textAlign = 'center';
@@ -250,18 +334,19 @@
   for (const button of document.querySelectorAll('[data-entry]')) button.addEventListener('click', () => chooseMode(button.dataset.entry, true));
   for (const button of modeButtons) button.addEventListener('click', () => chooseMode(button.dataset.mode, false));
   for (const button of floorButtons) button.addEventListener('click', () => {
-    state.floor = button.dataset.floor; state.camera = 'above'; [state.yaw, state.pitch] = cameras.above; state.pitch = .95; state.zoom = 1; updateControls(); draw();
+    state.floor = button.dataset.floor; state.camera = 'above'; state.focus = null; [state.yaw, state.pitch] = cameras.above; state.pitch = .95; state.zoom = 1; updateControls(); draw();
   });
   for (const button of cameraButtons) button.addEventListener('click', () => {
-    state.camera = button.dataset.camera; [state.yaw, state.pitch] = cameras[state.camera]; updateControls(); draw();
+    state.camera = button.dataset.camera; state.focus = null; [state.yaw, state.pitch] = cameras[state.camera]; updateControls(); draw();
   });
   boundary.addEventListener('change', draw);
+  labelToggle.addEventListener('change', draw);
   zoomInput.addEventListener('input', () => { state.zoom = Number(zoomInput.value) / 100; updateControls(); draw(); });
   canvas.addEventListener('pointerdown', event => { state.drag = {x: event.clientX, y: event.clientY}; canvas.setPointerCapture(event.pointerId); });
   canvas.addEventListener('pointermove', event => {
     if (!state.drag) return;
     state.yaw += (event.clientX - state.drag.x) * .008;
-    state.pitch = Math.max(.12, Math.min(1.35, state.pitch + (event.clientY - state.drag.y) * .006));
+    state.pitch = Math.max(-.15, Math.min(1.35, state.pitch + (event.clientY - state.drag.y) * .006));
     state.drag = {x: event.clientX, y: event.clientY}; draw();
   });
   canvas.addEventListener('pointerup', () => { state.drag = null; });
@@ -275,7 +360,7 @@
     if (event.key === 'ArrowLeft') state.yaw -= .1;
     if (event.key === 'ArrowRight') state.yaw += .1;
     if (event.key === 'ArrowUp') state.pitch = Math.min(1.35, state.pitch + .1);
-    if (event.key === 'ArrowDown') state.pitch = Math.max(.12, state.pitch - .1);
+    if (event.key === 'ArrowDown') state.pitch = Math.max(-.15, state.pitch - .1);
     draw();
   });
   new ResizeObserver(draw).observe(canvas.parentElement);

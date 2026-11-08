@@ -149,6 +149,22 @@ h2 { font-size: clamp(34px, 3.5vw, 51px); line-height: 1.1; margin: 11px 0 0; }
 .floor-controls .control.is-active, .camera-controls .control.is-active { background: #e7ede6; color: #244c3e; border-color: #d1ddd1; }
 .boundary-control { margin-left: auto; display: flex; gap: 6px; align-items: center; color: #718077; font-size: 11px; white-space: nowrap; }
 .boundary-control input { accent-color: var(--deep); }
+.photo-match-toolbar { padding: 13px 26px 16px; border-top: 1px solid #edf0eb; }
+.photo-match-toolbar > span { display: block; margin-bottom: 8px; color: #708077; font-size: 10px; font-weight: 700; letter-spacing: .06em; }
+.photo-match-buttons { display: flex; flex-wrap: wrap; gap: 6px; }
+.photo-match-buttons button, .photo-upload { border: 1px solid #dbe3d9; border-radius: 3px; background: #fff; color: #536b5e; padding: 7px 9px; font-size: 10px; line-height: 1.2; }
+.photo-match-buttons button:hover, .photo-upload:hover { background: #eef3ed; }
+.photo-match-buttons button[aria-pressed="true"] { background: #e0eae0; border-color: #93ab98; color: #254b3c; }
+.photo-upload { cursor: pointer; position: relative; overflow: hidden; }
+.photo-upload:focus-within { outline: 3px solid #a77a51; outline-offset: 3px; }
+.photo-upload input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.studio-stage { display: grid; grid-template-columns: minmax(0,1fr); }
+.studio-stage.is-comparing { grid-template-columns: minmax(0,1.25fr) minmax(245px,.75fr); }
+.comparison-photo { min-width: 0; height: clamp(435px,57vw,640px); display: flex; flex-direction: column; background: #e5e9e2; border-left: 1px solid #d6ded5; }
+.comparison-photo-header { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 16px; color: #41594a; font-size: 12px; }
+.comparison-photo-header button { border: 1px solid #c7d2c6; border-radius: 50%; width: 28px; height: 28px; padding: 0; background: transparent; color: #425d4d; font-size: 20px; line-height: 1; }
+.comparison-photo img { display: block; width: 100%; height: 0; min-height: 0; object-fit: contain; flex: 1 1 0; }
+.comparison-photo p { margin: 0; padding: 14px 16px; color: #6d7f71; font-size: 10px; line-height: 1.55; }
 .canvas-wrap { height: clamp(435px, 57vw, 640px); position: relative; overflow: hidden; background: linear-gradient(#f3f6f1,#f8f7f0); }
 canvas { width: 100%; height: 100%; display: block; touch-action: none; cursor: grab; }
 canvas:active { cursor: grabbing; }
@@ -207,6 +223,10 @@ canvas:active { cursor: grabbing; }
   .card-image { height: 220px; }
   .studio-header { padding: 21px 18px; }
   .model-toolbar, .view-toolbar { padding-left: 13px; padding-right: 13px; }
+  .photo-match-toolbar { padding-left: 16px; padding-right: 16px; }
+  .studio-stage.is-comparing { grid-template-columns: minmax(0,1fr); }
+  .comparison-photo { order: -1; height: auto; border-left: 0; border-bottom: 1px solid #d6ded5; }
+  .comparison-photo img { height: 225px; flex: none; }
   .floor-controls { margin-left: 0; }
   .control { padding: 9px 10px; }
   .boundary-control { margin-left: 0; padding: 4px; }
