@@ -1,6 +1,7 @@
 from pathlib import Path
 from html.parser import HTMLParser
 import json
+import math
 import struct
 import unittest
 
@@ -118,9 +119,15 @@ class ProjectTests(unittest.TestCase):
         self.assertEqual(len(mesh_nodes), len(self.parts))
         for part, node in zip(self.parts, mesh_nodes):
             self.assertEqual(node['name'], part['name'])
+            mesh = document['meshes'][node['mesh']]
+            self.assertEqual(mesh['name'], f"{part.get('shape', 'box')} / {part['color']}")
+            self.assertEqual(document['materials'][mesh['primitives'][0]['material']]['name'], part['color'])
             for axis in range(3):
                 self.assertAlmostEqual(node['scale'][axis], part['s'][axis])
                 self.assertAlmostEqual(node['translation'][axis], part['p'][axis] + part['s'][axis] / 2)
+            if 'yaw' in part:
+                self.assertAlmostEqual(node['rotation'][1], math.sin(part['yaw'] / 2))
+                self.assertAlmostEqual(node['rotation'][3], math.cos(part['yaw'] / 2))
         self.assertFalse([node['name'] for node in document['nodes'] if 'lift' in node['name'].lower()])
         self.assertTrue(any(mesh['name'].startswith('cylinder /') for mesh in document['meshes']))
         for image in document['images']:
