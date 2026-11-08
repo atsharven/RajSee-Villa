@@ -40,7 +40,10 @@ class ProjectTests(unittest.TestCase):
     def test_courtyard_terrace_and_service_connections(self):
         terrace = self.named('First floor terrace over ground bedroom')[0]
         self.assertGreater(terrace['s'][2], 0)
+        self.assertFalse(terrace.get('interiorOnly', False))
+        self.assertFalse(self.named('First floor service terrace')[0].get('interiorOnly', False))
         self.assertTrue(self.named('Terrace grille upright'))
+        self.assertTrue(self.named('Terrace pergola slat'))
         self.assertTrue(self.named('Study door to service terrace'))
         self.assertTrue(self.named('Servant room door to terrace'))
         self.assertTrue(self.named('Courtyard back wall'))
@@ -51,9 +54,22 @@ class ProjectTests(unittest.TestCase):
         self.assertFalse([label['text'] for labels in self.model['labels'].values()
                           for label in labels if 'lift' in label['text'].lower()])
         stairs = self.named('Main stair first flight')
-        self.assertEqual(sum(p['level']=='ground' for p in stairs), 8)
-        self.assertEqual(sum(p['level']=='first' for p in stairs), 8)
+        self.assertEqual(sum(p['level']=='ground' for p in stairs), 9)
+        self.assertEqual(sum(p['level']=='first' for p in stairs), 9)
+        second = self.named('Main stair second flight')
+        for level, floor_top in [('ground', 3.3), ('first', 6.46)]:
+            self.assertAlmostEqual(max(p['p'][1] + p['s'][1] for p in second if p['level'] == level), floor_top)
         self.assertEqual(len([p for p in self.parts if p['name'].startswith('Rear spiral tread')]), 18)
+
+    def test_first_floor_has_separate_lounge_opening(self):
+        x, z = 5.63, 8.8
+        slabs = [p for p in self.parts if p['level'] == 'first' and p['name'].startswith('First floor slab')]
+        self.assertTrue(slabs)
+        self.assertFalse(any(p['p'][0] < x < p['p'][0] + p['s'][0] and
+                             p['p'][2] < z < p['p'][2] + p['s'][2] for p in slabs))
+        labels = {label['text'] for label in self.model['labels']['first']}
+        self.assertIn('Lounge below', labels)
+        self.assertIn('Puja (approx.)', labels)
 
     def test_rooftop_room_and_tank(self):
         tank = self.named('Water tank')[0]
@@ -64,12 +80,27 @@ class ProjectTests(unittest.TestCase):
         self.assertAlmostEqual(room['s'][0], 3.2)
         self.assertAlmostEqual(room['s'][2], 1.6)
         self.assertGreater(room['p'][1], 6.46)
+        self.assertAlmostEqual(platform['p'][1], room['p'][1] + room['s'][1])
+        for axis in (0, 2):
+            self.assertGreaterEqual(platform['p'][axis], room['p'][axis])
+            self.assertLessEqual(platform['p'][axis] + platform['s'][axis], room['p'][axis] + room['s'][axis])
+        self.assertTrue(self.named('Roof terrace parapet (approximate)'))
+
+    def test_roof_open_above_service_terrace_and_stair(self):
+        slabs = [p for p in self.parts if p['level'] == 'roof' and p['name'].startswith('Roof slab')]
+        for x, z in ((10, 14.5), (11, 8.2)):
+            self.assertFalse(any(p['p'][0] < x < p['p'][0] + p['s'][0] and
+                                 p['p'][2] < z < p['p'][2] + p['s'][2] for p in slabs), (x, z))
 
     def test_plot_and_materials(self):
         soil = self.named('Ground inside boundary - soil')
         self.assertEqual(len(soil), 32)
         self.assertAlmostEqual(max(p['p'][0]+p['s'][0] for p in soil)-min(p['p'][0] for p in soil), 14.5)
         self.assertAlmostEqual(max(p['p'][2]+p['s'][2] for p in soil)-min(p['p'][2] for p in soil), 29)
+        neighbour = self.named('Neighbour boundary wall')
+        self.assertGreater(len(neighbour), 1)
+        self.assertAlmostEqual(max(p['p'][1] + p['s'][1] for p in neighbour), .95)
+        self.assertAlmostEqual(sum(p['s'][2] for p in neighbour), 28.82)
         for part in self.parts:
             self.assertIn(part['color'], self.model['colors'], part['name'])
             self.assertTrue(all(value > 0 for value in part['s']), part['name'])
@@ -83,7 +114,14 @@ class ProjectTests(unittest.TestCase):
         binary = data[28+size:]
         self.assertEqual((magic,version,total,kind,binary_kind,binary_size),
                          (b'glTF',2,len(data),b'JSON',b'BIN\0',len(binary)))
-        self.assertEqual(sum('mesh' in node for node in document['nodes']), len(self.parts))
+        mesh_nodes = [node for node in document['nodes'] if 'mesh' in node]
+        self.assertEqual(len(mesh_nodes), len(self.parts))
+        for part, node in zip(self.parts, mesh_nodes):
+            self.assertEqual(node['name'], part['name'])
+            for axis in range(3):
+                self.assertAlmostEqual(node['scale'][axis], part['s'][axis])
+                self.assertAlmostEqual(node['translation'][axis], part['p'][axis] + part['s'][axis] / 2)
+        self.assertFalse([node['name'] for node in document['nodes'] if 'lift' in node['name'].lower()])
         self.assertTrue(any(mesh['name'].startswith('cylinder /') for mesh in document['meshes']))
         for image in document['images']:
             view = document['bufferViews'][image['bufferView']]

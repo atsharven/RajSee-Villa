@@ -28,6 +28,10 @@
     {i: [0, 3, 7, 4], shade: .88}, {i: [1, 2, 6, 5], shade: .94}
   ];
   const textures = {};
+  // The camera fits the same shared geometry used by every view and by the GLB export.
+  const roofTop = Math.max(8.7, ...model.parts
+    .filter(part => part.level === 'roof' || part.level === 'roof-detail')
+    .map(part => part.p[1] + part.s[1]));
   for (const [name, url] of Object.entries(model.images)) {
     const image = new Image();
     textures[name] = image;
@@ -64,8 +68,10 @@
       title.textContent = names[state.floor];
       tag.textContent = names[state.floor].toUpperCase();
       detail.textContent = state.floor === 'roof'
-        ? 'The tank, rooftop room and their positions are illustrative.'
-        : 'The main stair and the surrounding space need further checking.';
+        ? 'The tank is above the stair-head room; its dimensions are estimated.'
+        : state.floor === 'first'
+          ? 'The lounge opening, puja marker, terrace and stair area need further checking.'
+          : 'The main stair and the surrounding space need further checking.';
     }
   }
 
@@ -87,7 +93,9 @@
 
   function visible(part) {
     if (state.mode !== 'interior') return !part.interiorOnly && (boundary.checked || part.level !== 'boundary');
-    if (state.floor === 'roof') return part.level === 'roof' || part.level === 'roof-detail' || part.name.startsWith('Court pergola');
+    if (state.floor === 'roof') return part.level === 'roof' || part.level === 'roof-detail' ||
+      part.name.startsWith('Court pergola') ||
+      (part.name.startsWith('Terrace pergola') && part.name !== 'Terrace pergola outside post');
     if (part.level === state.floor) return true;
     if (part.level === 'spiral') return state.floor === 'ground' || (state.floor === 'first' && part.p[1] >= 2.55);
     return false;
@@ -134,10 +142,10 @@
     const isExterior = state.mode !== 'interior';
     const co = Math.cos(state.yaw), si = Math.sin(state.yaw), cp = Math.cos(state.pitch), sp = Math.sin(state.pitch);
     let bounds;
-    if (isExterior) bounds = {x: [-2.25, 12.25], y: [-.3, 8.70], z: [-8, 21]};
+    if (isExterior) bounds = {x: [-2.25, 12.25], y: [-.3, roofTop + .2], z: [-8, 21]};
     else if (state.floor === 'ground') bounds = {x: [0, 11.9], y: [-.2, 4], z: [0, 19.5]};
     else if (state.floor === 'first') bounds = {x: [0, 11.9], y: [2.55, 6.7], z: [0, 19.5]};
-    else bounds = {x: [0, 11.9], y: [6.25, 8.7], z: [0, 19.5]};
+    else bounds = {x: [0, 11.9], y: [6.15, roofTop + .3], z: [0, 19.5]};
 
     function raw(x, y, z) {
       const side = co * x - si * z, depth = si * x + co * z;
@@ -160,7 +168,8 @@
       const area = Math.abs((b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0]));
       if (area < .25) return;
       polygons.push({vertices, area, depth: vertices.reduce((sum, v) => sum + v[2], 0) / vertices.length,
-        color: part.color, shade, layer: partLayer(part), name: part.name, textured});
+        color: part.color, shade, layer: partLayer(part), name: part.name, textured,
+        seamlessSegments: part.seamlessSegments});
     }
 
     for (const part of model.parts) {
@@ -181,7 +190,13 @@
       const points = [[x, y, z], [x + width, y, z], [x + width, y + height, z], [x, y + height, z],
         [x, y, z + depth], [x + width, y, z + depth], [x + width, y + height, z + depth], [x, y + height, z + depth]]
         .map(q => { const dx = q[0] - mx, dz = q[2] - mz; return project(mx + rc * dx + rs * dz, q[1], mz - rs * dx + rc * dz); });
-      for (const face of faces) polygon(face.i.map(i => points[i]), part, face.shade);
+      for (const [faceIndex, face] of faces.entries()) {
+        // Segment long walls for correct depth ordering without drawing joint caps.
+        if (part.seamlessSegments &&
+            ((width > depth && (faceIndex === 4 || faceIndex === 5)) ||
+             (depth > width && (faceIndex === 0 || faceIndex === 1)))) continue;
+        polygon(face.i.map(i => points[i]), part, face.shade);
+      }
     }
 
     polygons.sort((a, b) => a.layer - b.layer || b.depth - a.depth);
@@ -194,7 +209,7 @@
       ctx.fill();
       const texture = textures[poly.color];
       if (poly.textured && texture && texture.complete && poly.area > 80) textureFace(texture, poly.vertices);
-      if (poly.name !== 'Ground inside boundary - soil') {
+      if (poly.name !== 'Ground inside boundary - soil' && !poly.seamlessSegments) {
         ctx.strokeStyle = 'rgba(50,55,53,.22)';
         ctx.lineWidth = .55;
         ctx.stroke();
@@ -202,7 +217,7 @@
     }
 
     if (!isExterior) {
-      const labelHeight = {ground: .12, first: 3.42, roof: 8.8}[state.floor];
+      const labelHeight = {ground: .12, first: 3.42, roof: roofTop + .12}[state.floor];
       ctx.font = '12px system-ui, sans-serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';

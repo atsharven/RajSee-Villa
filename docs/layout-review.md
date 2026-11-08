@@ -5,7 +5,7 @@ Reviewed 8 November 2026; updated 9 November after owner feedback. This is the w
 ## Sources and how to read them
 
 - [Floor-plan PDF](floor-plan.pdf): a one-page drawing headed “existing villa”, with ground, first and roof plans. The same sheet also says “proposed site shown in red”. Its red outline should therefore not be treated as a measured record of the present fence without checking.
-- Photo set in the shared `Photos Ansal A 60` folder, especially `Iphone Wide Front Close.jpeg`, `Iphone Wide Side Porch.jpeg`, `Iphone Wide Back left.jpeg`, `Hall Red.jpg`, `Hall Right.jpg`, and the newer `IMG20261108120539.jpg`. Selected views are included here: [front](../assets/front.jpg), [courtyard](../assets/courtyard.jpg), [inside opening](../assets/lounge-opening.jpg) and [rear stair](../assets/rear-stair.jpg).
+- Photo set in the shared `Photos Ansal A 60` folder, especially `Iphone Wide Front Close.jpeg`, `Iphone Wide Side Porch.jpeg`, `Iphone Wide Back left.jpeg`, `Hall Red.jpg`, `Hall Right.jpg`, and the newer `IMG20261108120539.jpg`. Selected views are included here: [front](../assets/front.jpg), [courtyard](../assets/courtyard.jpg), [inside opening](../assets/lounge-opening.jpg), [main stair](../assets/main-stair.jpg) and [rear stair](../assets/rear-stair.jpg).
 - [Aerial image](../assets/aerial-reference.png): the owner identified the **upper light-coloured roof** as this villa. The lower roof belongs to the adjacent property.
 - The owner's explanations from this project, recorded below. The labelled spaces in the drawing are retained even where the present-day use or construction may differ.
 
@@ -40,7 +40,7 @@ Read from the front / 24 m road toward the back / 12 m road:
 | Bedroom 02 and toilet | Further back in the middle. The bedroom is marked 3,500 × 4,680; `TOILET 02` is marked 2,550 × 1,840. |
 | Kitchen and rear service | The kitchen is on the neighbour side, marked 3,115 × 5,000. A circular staircase is drawn at the far rear, next to the service area. |
 
-The owner's confirmed clear hall heights are **9½ ft at the red-wall side** and **10 ft at the opposite side**. These are ceiling heights, not the vertical distance between floors. The family also measured a front opening at 13 ft 6 in wide × 8 ft 6 in high including its door frame; proposals for changing it are recorded separately in [project notes](project-reference.md).
+The owner's confirmed clear hall heights are **9½ ft at the red-wall side** and **10 ft at the opposite side**. These are ceiling heights, not the vertical distance between floors. The draft's generic wall and floor levels do not yet reproduce both confirmed heights. The family also measured a front opening at 13 ft 6 in wide × 8 ft 6 in high including its door frame; proposals for changing it are recorded separately in [project notes](project-reference.md).
 
 ## First floor — drawing
 
@@ -48,7 +48,7 @@ The owner's confirmed clear hall heights are **9½ ft at the red-wall side** and
 | --- | --- |
 | Master bedroom, dress and toilet | The master bedroom occupies much of the front and is marked 6,930 × 4,050. The dressing area at the neighbour side is marked 3,115 × 2,020. Toilet 05 has 3,115 marked in one direction and 9 ft 10 in in the other. There is a front balcony. The previously discussed 4,060 mm bedroom depth should be checked against the 4,050 mm printed here. |
 | Court below | The large area marked `COURT BELOW` is over the ground court and has a slatted/open treatment in the drawing. It is not the same as the adjacent first-floor terrace. |
-| Lounge below and puja | `LOUNGE BELOW 01` is a distinct opening beside the court; `PUJA 01` is immediately toward the front of it, with 1,510 × 1,865 marked. The current model omits the puja label and its first-floor slab appears to occupy the lounge opening. Both need correction. |
+| Lounge below and puja | `LOUNGE BELOW 01` is a distinct opening beside the court; `PUJA 01` is immediately toward the front of it, with 1,510 × 1,865 marked. The draft model now has an approximate lounge opening and puja marker, but the opening edges, railing and actual puja layout still need checking. |
 | Terrace 02 | `TERRACE 02` is behind the court, on the side-road side. A separately labelled `OPENING 1335 × 1700` and planter appear between it and the court. The numbers describe the labelled opening; do not apply them to the whole courtyard or terrace. |
 | Bedroom 03 and toilet | Beside Terrace 02, marked 3,500 × 4,430; `TOILET 03` behind it is marked 2,550 × 2,180. |
 | Study and service terrace | `STUDY 01` is on the neighbour side, marked 3,115 × 3,115. The adjacent rear service terrace is marked 2,400 × 3,250. The drawing marks a `W` between study and terrace; the owner confirms that the actual study has a **door opening onto this terrace**. Treat that as an as-built difference to check in the next model, not a reason to alter the PDF. |
@@ -69,6 +69,7 @@ The owner asked for the terrace beside the courtyard and grills to be represente
 - **Court:** `Iphone Wide Side Porch.jpeg` shows a slatted opening above the court, a sunken/paved central area, glazing and doors on surrounding walls, plus an upper grille. The owner confirmed the large ground-floor gap shown in an earlier model should instead have an enclosed wall with openings. The court itself and the separate lounge opening must not be confused with a new enclosed room.
 - **Inside and first-floor terrace:** `IMG20261103114710.jpg` shows the ground-level interior and a double-height area next to the court glazing; `IMG20261103115125.jpg` shows an upper railing overlooking an opening beside that glazing. These views are consistent with the separately marked `LOUNGE BELOW`, though the exact edges still need confirmation. `IMG20261103115012.jpg` and `IMG20261103115018.jpg` show a terrace and overhead slats through a screen; their perspective alone does not establish terrace dimensions.
 - **Back:** `Iphone Wide Back left.jpeg` shows the spiral stair and the surrounding rear openings. Its precise connections and dimensions still need checking.
+- **Main staircase:** `IMG-20260226-WA0092.jpg` shows an enclosed flight beside the kitchen. A change of direction is visible at the far end in the stair photographs, but they do not establish exact floor-to-floor height, step dimensions or the layout around the landing. The draft staircase is still schematic.
 - **Study:** the owner's description of the terrace door takes priority when representing the present villa, while the difference from the marked window on the plan is retained here.
 - **Lift:** the owner confirmed on 9 November that neither a lift nor a lift shaft is present. The drawing is retained as a record of what was planned or drawn, not proof of what was built.
 - **Aerial:** the upper light-coloured roof is the villa; avoid including the neighbour's lower roof. The image is not clear enough to locate every tank, roof edge or structure with certainty.
@@ -76,7 +77,7 @@ The owner asked for the terrace beside the courtyard and grills to be represente
 ## Corrections and checks before remodelling
 
 1. Register the floor plans by the actual main staircase and corresponding walls, not independently by the red rectangles or by the lift shown only on the drawing. Check the footprint against the front, side, court and rear photographs.
-2. Make a true opening for `COURT BELOW` and a **separate** one for `LOUNGE BELOW`; restore the puja space. Check the extent of Terrace 02 and its grille against the actual building.
+2. The draft now shows separate openings for `COURT BELOW` and `LOUNGE BELOW`, with an indicative railing and puja marker. Verify the lounge opening's extent and rail position, the puja walls, and the extent of Terrace 02 and its grille against the actual building.
 3. Keep the study's confirmed terrace door, the rear spiral stair and the enclosed courtyard-facing wall. Check their real positions and sizes in photographs or measurements.
 4. The assumed lift doors and shaft walls have been removed from the draft 3D model. Reconstruct the actual main stair and the space around it from photographs or measurements; the remaining stair-side partition and flights are still schematic and should not be treated as a survey.
 5. Distinguish the machine room labelled on the roof plan from the separately requested water tank. Establish the actual roof access, room use, tank and supports rather than inventing them.

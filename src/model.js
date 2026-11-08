@@ -781,7 +781,7 @@ window.RAJSEE_MODEL = {
       "level": "first"
     },
     {
-      "name": "First floor slab 3",
+      "name": "First floor slab beside lounge - front",
       "p": [
         4.875,
         3.1399999999999997,
@@ -790,7 +790,37 @@ window.RAJSEE_MODEL = {
       "s": [
         6.875,
         0.16000000000000014,
-        10.5
+        1.8650000000000002
+      ],
+      "color": "floor",
+      "level": "first"
+    },
+    {
+      "name": "First floor slab beside lounge - side",
+      "p": [
+        6.385,
+        3.1399999999999997,
+        7.24
+      ],
+      "s": [
+        5.365,
+        0.16000000000000014,
+        3.135
+      ],
+      "color": "floor",
+      "level": "first"
+    },
+    {
+      "name": "First floor slab beside lounge - rear",
+      "p": [
+        4.875,
+        3.1399999999999997,
+        10.375
+      ],
+      "s": [
+        6.875,
+        0.16000000000000014,
+        5.5
       ],
       "color": "floor",
       "level": "first"
@@ -1841,21 +1871,6 @@ window.RAJSEE_MODEL = {
         3.25,
         0.16000000000000014,
         5.375
-      ],
-      "color": "roof",
-      "level": "roof"
-    },
-    {
-      "name": "Roof slab 3",
-      "p": [
-        4.875,
-        6.3,
-        5.375
-      ],
-      "s": [
-        6.875,
-        0.16000000000000014,
-        10.5
       ],
       "color": "roof",
       "level": "roof"
@@ -4460,55 +4475,7 @@ window.RAJSEE_MODEL = {
       "interiorOnly": true
     },
     {
-      "name": "Kitchen stairs wall",
-      "p": [
-        8.375,
-        0,
-        10.32
-      ],
-      "s": [
-        0.375,
-        3.0,
-        0.10999999999999943
-      ],
-      "color": "interior",
-      "level": "ground",
-      "interiorOnly": true
-    },
-    {
-      "name": "Kitchen stairs wall",
-      "p": [
-        8.75,
-        2.15,
-        10.32
-      ],
-      "s": [
-        0.875,
-        0.8500000000000001,
-        0.10999999999999943
-      ],
-      "color": "interior",
-      "level": "ground",
-      "interiorOnly": true
-    },
-    {
-      "name": "Kitchen stairs wall",
-      "p": [
-        9.625,
-        0,
-        10.32
-      ],
-      "s": [
-        2.125,
-        3.0,
-        0.10999999999999943
-      ],
-      "color": "interior",
-      "level": "ground",
-      "interiorOnly": true
-    },
-    {
-      "name": "Ground lift lobby wall",
+      "name": "Ground stair-side partition (unverified)",
       "p": [
         8.32,
         0,
@@ -4524,7 +4491,7 @@ window.RAJSEE_MODEL = {
       "interiorOnly": true
     },
     {
-      "name": "Ground lift lobby wall",
+      "name": "Ground stair-side partition (unverified)",
       "p": [
         8.32,
         2.15,
@@ -4540,7 +4507,7 @@ window.RAJSEE_MODEL = {
       "interiorOnly": true
     },
     {
-      "name": "Ground lift lobby wall",
+      "name": "Ground stair-side partition (unverified)",
       "p": [
         8.32,
         0,
@@ -4556,7 +4523,7 @@ window.RAJSEE_MODEL = {
       "interiorOnly": true
     },
     {
-      "name": "Ground lift lobby wall",
+      "name": "Ground stair-side partition (unverified)",
       "p": [
         8.32,
         2.15,
@@ -4566,22 +4533,6 @@ window.RAJSEE_MODEL = {
         0.10999999999999943,
         0.8500000000000001,
         1.0
-      ],
-      "color": "interior",
-      "level": "ground",
-      "interiorOnly": true
-    },
-    {
-      "name": "Ground lift lobby wall",
-      "p": [
-        8.32,
-        0,
-        8.625
-      ],
-      "s": [
-        0.10999999999999943,
-        3.0,
-        1.75
       ],
       "color": "interior",
       "level": "ground",
@@ -8011,21 +7962,6 @@ window.RAJSEE_MODEL = {
       "level": "boundary"
     },
     {
-      "name": "Neighbour boundary wall",
-      "p": [
-        12.07,
-        -0.13,
-        -7.82
-      ],
-      "s": [
-        0.17999999999999972,
-        1.48,
-        28.82
-      ],
-      "color": "boundary",
-      "level": "boundary"
-    },
-    {
       "name": "Side boundary pier",
       "p": [
         -2.25,
@@ -8641,775 +8577,7 @@ window.RAJSEE_MODEL = {
       "level": "first"
     },
     {
-      "name": "Lift shaft rear wall",
-      "p": [
-        8.55,
-        0,
-        8.950000000000001
-      ],
-      "s": [
-        1.7699999999999996,
-        3.0,
-        0.09999999999999964
-      ],
-      "color": "interior",
-      "level": "ground",
-      "interiorOnly": true
-    },
-    {
-      "name": "Lift shaft side wall",
-      "p": [
-        10.22,
-        0,
-        7.45
-      ],
-      "s": [
-        0.09999999999999964,
-        3.0,
-        1.6000000000000005
-      ],
-      "color": "interior",
-      "level": "ground",
-      "interiorOnly": true
-    },
-    {
-      "name": "Lift shaft front wall",
-      "p": [
-        8.55,
-        0,
-        7.45
-      ],
-      "s": [
-        1.7699999999999996,
-        3.0,
-        0.09999999999999964
-      ],
-      "color": "interior",
-      "level": "ground",
-      "interiorOnly": true
-    },
-    {
-      "name": "Lift lobby jamb",
-      "p": [
-        8.55,
-        0,
-        7.45
-      ],
-      "s": [
-        0.09999999999999964,
-        3.0,
-        0.2699999999999996
-      ],
-      "color": "interior",
-      "level": "ground",
-      "interiorOnly": true
-    },
-    {
-      "name": "Lift lobby jamb",
-      "p": [
-        8.55,
-        0,
-        8.72
-      ],
-      "s": [
-        0.09999999999999964,
-        3.0,
-        0.33000000000000007
-      ],
-      "color": "interior",
-      "level": "ground",
-      "interiorOnly": true
-    },
-    {
-      "name": "Lift door lintel",
-      "p": [
-        8.55,
-        2.15,
-        7.72
-      ],
-      "s": [
-        0.09999999999999964,
-        0.8500000000000001,
-        1.0000000000000009
-      ],
-      "color": "interior",
-      "level": "ground",
-      "interiorOnly": true
-    },
-    {
-      "name": "Lift door",
-      "p": [
-        8.535,
-        0,
-        7.72
-      ],
-      "s": [
-        0.04499999999999993,
-        2.15,
-        1.0000000000000009
-      ],
-      "color": "lift-door",
-      "level": "ground",
-      "interiorOnly": true
-    },
-    {
-      "name": "Main stair first flight",
-      "p": [
-        8.48,
-        0.14625,
-        9.26
-      ],
-      "s": [
-        0.2550000000000008,
-        0.06,
-        0.9199999999999999
-      ],
-      "color": "stair",
-      "level": "ground",
-      "interiorOnly": true
-    },
-    {
-      "name": "Main stair first flight",
-      "p": [
-        8.745000000000001,
-        0.3525,
-        9.26
-      ],
-      "s": [
-        0.2550000000000008,
-        0.06,
-        0.9199999999999999
-      ],
-      "color": "stair",
-      "level": "ground",
-      "interiorOnly": true
-    },
-    {
-      "name": "Main stair first flight",
-      "p": [
-        9.01,
-        0.5587499999999999,
-        9.26
-      ],
-      "s": [
-        0.2550000000000008,
-        0.06000000000000005,
-        0.9199999999999999
-      ],
-      "color": "stair",
-      "level": "ground",
-      "interiorOnly": true
-    },
-    {
-      "name": "Main stair first flight",
-      "p": [
-        9.275,
-        0.7649999999999999,
-        9.26
-      ],
-      "s": [
-        0.2550000000000008,
-        0.06000000000000005,
-        0.9199999999999999
-      ],
-      "color": "stair",
-      "level": "ground",
-      "interiorOnly": true
-    },
-    {
-      "name": "Main stair first flight",
-      "p": [
-        9.540000000000001,
-        0.97125,
-        9.26
-      ],
-      "s": [
-        0.2550000000000008,
-        0.06000000000000005,
-        0.9199999999999999
-      ],
-      "color": "stair",
-      "level": "ground",
-      "interiorOnly": true
-    },
-    {
-      "name": "Main stair first flight",
-      "p": [
-        9.805,
-        1.1774999999999998,
-        9.26
-      ],
-      "s": [
-        0.2550000000000008,
-        0.06000000000000005,
-        0.9199999999999999
-      ],
-      "color": "stair",
-      "level": "ground",
-      "interiorOnly": true
-    },
-    {
-      "name": "Main stair first flight",
-      "p": [
-        10.07,
-        1.3837499999999998,
-        9.26
-      ],
-      "s": [
-        0.2550000000000008,
-        0.06000000000000005,
-        0.9199999999999999
-      ],
-      "color": "stair",
-      "level": "ground",
-      "interiorOnly": true
-    },
-    {
-      "name": "Main stair first flight",
-      "p": [
-        10.335,
-        1.5899999999999999,
-        9.26
-      ],
-      "s": [
-        0.2550000000000008,
-        0.06000000000000005,
-        0.9199999999999999
-      ],
-      "color": "stair",
-      "level": "ground",
-      "interiorOnly": true
-    },
-    {
-      "name": "Main stair landing",
-      "p": [
-        10.55,
-        1.59,
-        9.26
-      ],
-      "s": [
-        1.0,
-        0.05999999999999983,
-        0.9199999999999999
-      ],
-      "color": "stair",
-      "level": "ground",
-      "interiorOnly": true
-    },
-    {
-      "name": "Main stair second flight",
-      "p": [
-        10.57,
-        1.79625,
-        9.02
-      ],
-      "s": [
-        0.9299999999999997,
-        0.06000000000000005,
-        0.22000000000000064
-      ],
-      "color": "stair",
-      "level": "ground",
-      "interiorOnly": true
-    },
-    {
-      "name": "Main stair second flight",
-      "p": [
-        10.57,
-        2.0025,
-        8.79
-      ],
-      "s": [
-        0.9299999999999997,
-        0.06000000000000005,
-        0.22000000000000064
-      ],
-      "color": "stair",
-      "level": "ground",
-      "interiorOnly": true
-    },
-    {
-      "name": "Main stair second flight",
-      "p": [
-        10.57,
-        2.2087499999999998,
-        8.559999999999999
-      ],
-      "s": [
-        0.9299999999999997,
-        0.06000000000000005,
-        0.22000000000000064
-      ],
-      "color": "stair",
-      "level": "ground",
-      "interiorOnly": true
-    },
-    {
-      "name": "Main stair second flight",
-      "p": [
-        10.57,
-        2.4149999999999996,
-        8.33
-      ],
-      "s": [
-        0.9299999999999997,
-        0.06000000000000005,
-        0.22000000000000064
-      ],
-      "color": "stair",
-      "level": "ground",
-      "interiorOnly": true
-    },
-    {
-      "name": "Main stair second flight",
-      "p": [
-        10.57,
-        2.62125,
-        8.1
-      ],
-      "s": [
-        0.9299999999999997,
-        0.06000000000000005,
-        0.22000000000000064
-      ],
-      "color": "stair",
-      "level": "ground",
-      "interiorOnly": true
-    },
-    {
-      "name": "Main stair second flight",
-      "p": [
-        10.57,
-        2.8274999999999997,
-        7.87
-      ],
-      "s": [
-        0.9299999999999997,
-        0.06000000000000005,
-        0.21999999999999975
-      ],
-      "color": "stair",
-      "level": "ground",
-      "interiorOnly": true
-    },
-    {
-      "name": "Main stair second flight",
-      "p": [
-        10.57,
-        3.03375,
-        7.640000000000001
-      ],
-      "s": [
-        0.9299999999999997,
-        0.06000000000000005,
-        0.21999999999999975
-      ],
-      "color": "stair",
-      "level": "ground",
-      "interiorOnly": true
-    },
-    {
-      "name": "Main stair second flight",
-      "p": [
-        10.57,
-        3.2399999999999998,
-        7.41
-      ],
-      "s": [
-        0.9299999999999997,
-        0.06000000000000005,
-        0.21999999999999975
-      ],
-      "color": "stair",
-      "level": "ground",
-      "interiorOnly": true
-    },
-    {
-      "name": "Lift shaft rear wall",
-      "p": [
-        8.55,
-        3.3,
-        8.950000000000001
-      ],
-      "s": [
-        1.7699999999999996,
-        3.0,
-        0.09999999999999964
-      ],
-      "color": "interior",
-      "level": "first",
-      "interiorOnly": true
-    },
-    {
-      "name": "Lift shaft side wall",
-      "p": [
-        10.22,
-        3.3,
-        7.45
-      ],
-      "s": [
-        0.09999999999999964,
-        3.0,
-        1.6000000000000005
-      ],
-      "color": "interior",
-      "level": "first",
-      "interiorOnly": true
-    },
-    {
-      "name": "Lift shaft front wall",
-      "p": [
-        8.55,
-        3.3,
-        7.45
-      ],
-      "s": [
-        1.7699999999999996,
-        3.0,
-        0.09999999999999964
-      ],
-      "color": "interior",
-      "level": "first",
-      "interiorOnly": true
-    },
-    {
-      "name": "Lift lobby jamb",
-      "p": [
-        8.55,
-        3.3,
-        7.45
-      ],
-      "s": [
-        0.09999999999999964,
-        3.0,
-        0.2699999999999996
-      ],
-      "color": "interior",
-      "level": "first",
-      "interiorOnly": true
-    },
-    {
-      "name": "Lift lobby jamb",
-      "p": [
-        8.55,
-        3.3,
-        8.72
-      ],
-      "s": [
-        0.09999999999999964,
-        3.0,
-        0.33000000000000007
-      ],
-      "color": "interior",
-      "level": "first",
-      "interiorOnly": true
-    },
-    {
-      "name": "Lift door lintel",
-      "p": [
-        8.55,
-        5.449999999999999,
-        7.72
-      ],
-      "s": [
-        0.09999999999999964,
-        0.8500000000000005,
-        1.0000000000000009
-      ],
-      "color": "interior",
-      "level": "first",
-      "interiorOnly": true
-    },
-    {
-      "name": "Lift door",
-      "p": [
-        8.535,
-        3.3,
-        7.72
-      ],
-      "s": [
-        0.04499999999999993,
-        2.1499999999999995,
-        1.0000000000000009
-      ],
-      "color": "lift-door",
-      "level": "first",
-      "interiorOnly": true
-    },
-    {
-      "name": "Main stair first flight",
-      "p": [
-        8.48,
-        3.4462499999999996,
-        9.26
-      ],
-      "s": [
-        0.2550000000000008,
-        0.06000000000000005,
-        0.9199999999999999
-      ],
-      "color": "stair",
-      "level": "first",
-      "interiorOnly": true
-    },
-    {
-      "name": "Main stair first flight",
-      "p": [
-        8.745000000000001,
-        3.6525,
-        9.26
-      ],
-      "s": [
-        0.2550000000000008,
-        0.06000000000000005,
-        0.9199999999999999
-      ],
-      "color": "stair",
-      "level": "first",
-      "interiorOnly": true
-    },
-    {
-      "name": "Main stair first flight",
-      "p": [
-        9.01,
-        3.8587499999999997,
-        9.26
-      ],
-      "s": [
-        0.2550000000000008,
-        0.06000000000000005,
-        0.9199999999999999
-      ],
-      "color": "stair",
-      "level": "first",
-      "interiorOnly": true
-    },
-    {
-      "name": "Main stair first flight",
-      "p": [
-        9.275,
-        4.065,
-        9.26
-      ],
-      "s": [
-        0.2550000000000008,
-        0.05999999999999961,
-        0.9199999999999999
-      ],
-      "color": "stair",
-      "level": "first",
-      "interiorOnly": true
-    },
-    {
-      "name": "Main stair first flight",
-      "p": [
-        9.540000000000001,
-        4.27125,
-        9.26
-      ],
-      "s": [
-        0.2550000000000008,
-        0.05999999999999961,
-        0.9199999999999999
-      ],
-      "color": "stair",
-      "level": "first",
-      "interiorOnly": true
-    },
-    {
-      "name": "Main stair first flight",
-      "p": [
-        9.805,
-        4.4775,
-        9.26
-      ],
-      "s": [
-        0.2550000000000008,
-        0.05999999999999961,
-        0.9199999999999999
-      ],
-      "color": "stair",
-      "level": "first",
-      "interiorOnly": true
-    },
-    {
-      "name": "Main stair first flight",
-      "p": [
-        10.07,
-        4.68375,
-        9.26
-      ],
-      "s": [
-        0.2550000000000008,
-        0.05999999999999961,
-        0.9199999999999999
-      ],
-      "color": "stair",
-      "level": "first",
-      "interiorOnly": true
-    },
-    {
-      "name": "Main stair first flight",
-      "p": [
-        10.335,
-        4.89,
-        9.26
-      ],
-      "s": [
-        0.2550000000000008,
-        0.05999999999999961,
-        0.9199999999999999
-      ],
-      "color": "stair",
-      "level": "first",
-      "interiorOnly": true
-    },
-    {
-      "name": "Main stair landing",
-      "p": [
-        10.55,
-        4.89,
-        9.26
-      ],
-      "s": [
-        1.0,
-        0.05999999999999961,
-        0.9199999999999999
-      ],
-      "color": "stair",
-      "level": "first",
-      "interiorOnly": true
-    },
-    {
-      "name": "Main stair second flight",
-      "p": [
-        10.57,
-        5.0962499999999995,
-        9.02
-      ],
-      "s": [
-        0.9299999999999997,
-        0.05999999999999961,
-        0.22000000000000064
-      ],
-      "color": "stair",
-      "level": "first",
-      "interiorOnly": true
-    },
-    {
-      "name": "Main stair second flight",
-      "p": [
-        10.57,
-        5.302499999999999,
-        8.79
-      ],
-      "s": [
-        0.9299999999999997,
-        0.05999999999999961,
-        0.22000000000000064
-      ],
-      "color": "stair",
-      "level": "first",
-      "interiorOnly": true
-    },
-    {
-      "name": "Main stair second flight",
-      "p": [
-        10.57,
-        5.50875,
-        8.559999999999999
-      ],
-      "s": [
-        0.9299999999999997,
-        0.05999999999999961,
-        0.22000000000000064
-      ],
-      "color": "stair",
-      "level": "first",
-      "interiorOnly": true
-    },
-    {
-      "name": "Main stair second flight",
-      "p": [
-        10.57,
-        5.715,
-        8.33
-      ],
-      "s": [
-        0.9299999999999997,
-        0.05999999999999961,
-        0.22000000000000064
-      ],
-      "color": "stair",
-      "level": "first",
-      "interiorOnly": true
-    },
-    {
-      "name": "Main stair second flight",
-      "p": [
-        10.57,
-        5.92125,
-        8.1
-      ],
-      "s": [
-        0.9299999999999997,
-        0.05999999999999961,
-        0.22000000000000064
-      ],
-      "color": "stair",
-      "level": "first",
-      "interiorOnly": true
-    },
-    {
-      "name": "Main stair second flight",
-      "p": [
-        10.57,
-        6.1274999999999995,
-        7.87
-      ],
-      "s": [
-        0.9299999999999997,
-        0.05999999999999961,
-        0.21999999999999975
-      ],
-      "color": "stair",
-      "level": "first",
-      "interiorOnly": true
-    },
-    {
-      "name": "Main stair second flight",
-      "p": [
-        10.57,
-        6.333749999999999,
-        7.640000000000001
-      ],
-      "s": [
-        0.9299999999999997,
-        0.05999999999999961,
-        0.21999999999999975
-      ],
-      "color": "stair",
-      "level": "first",
-      "interiorOnly": true
-    },
-    {
-      "name": "Main stair second flight",
-      "p": [
-        10.57,
-        6.54,
-        7.41
-      ],
-      "s": [
-        0.9299999999999997,
-        0.05999999999999961,
-        0.21999999999999975
-      ],
-      "color": "stair",
-      "level": "first",
-      "interiorOnly": true
-    },
-    {
-      "name": "Rooftop lift room back wall",
+      "name": "Rooftop room back wall",
       "p": [
         8.45,
         6.46,
@@ -9424,7 +8592,7 @@ window.RAJSEE_MODEL = {
       "level": "roof-detail"
     },
     {
-      "name": "Rooftop lift room side wall",
+      "name": "Rooftop room side wall",
       "p": [
         8.45,
         6.46,
@@ -9439,7 +8607,7 @@ window.RAJSEE_MODEL = {
       "level": "roof-detail"
     },
     {
-      "name": "Rooftop lift room side wall",
+      "name": "Rooftop room side wall",
       "p": [
         11.530000000000001,
         6.46,
@@ -9454,7 +8622,7 @@ window.RAJSEE_MODEL = {
       "level": "roof-detail"
     },
     {
-      "name": "Rooftop lift room front jamb",
+      "name": "Rooftop room front jamb",
       "p": [
         8.45,
         6.46,
@@ -9469,7 +8637,7 @@ window.RAJSEE_MODEL = {
       "level": "roof-detail"
     },
     {
-      "name": "Rooftop lift room front jamb",
+      "name": "Rooftop room front jamb",
       "p": [
         10.05,
         6.46,
@@ -9484,7 +8652,7 @@ window.RAJSEE_MODEL = {
       "level": "roof-detail"
     },
     {
-      "name": "Rooftop lift room lintel",
+      "name": "Rooftop room lintel",
       "p": [
         9.15,
         8.41,
@@ -9499,7 +8667,7 @@ window.RAJSEE_MODEL = {
       "level": "roof-detail"
     },
     {
-      "name": "Rooftop lift room door",
+      "name": "Rooftop room door",
       "p": [
         9.15,
         6.46,
@@ -9514,7 +8682,7 @@ window.RAJSEE_MODEL = {
       "level": "roof-detail"
     },
     {
-      "name": "Rooftop lift room roof",
+      "name": "Rooftop room roof",
       "p": [
         8.45,
         8.5,
@@ -9531,14 +8699,14 @@ window.RAJSEE_MODEL = {
     {
       "name": "Water tank platform",
       "p": [
-        6.65,
-        6.46,
-        7.55
+        9.3,
+        8.64,
+        7.525
       ],
       "s": [
-        1.4499999999999993,
-        0.17999999999999972,
-        1.4500000000000002
+        1.45,
+        0.18,
+        1.45
       ],
       "color": "terrace",
       "level": "roof-detail"
@@ -9546,14 +8714,14 @@ window.RAJSEE_MODEL = {
     {
       "name": "Water tank",
       "p": [
-        6.78,
-        6.64,
-        7.68
+        9.425,
+        8.82,
+        7.65
       ],
       "s": [
-        1.2000000000000002,
-        1.2700000000000005,
-        1.200000000000001
+        1.2,
+        1.27,
+        1.2
       ],
       "color": "tank",
       "level": "roof-detail",
@@ -9562,18 +8730,2147 @@ window.RAJSEE_MODEL = {
     {
       "name": "Water tank lid",
       "p": [
-        7.16,
-        7.91,
-        8.06
+        9.805,
+        10.09,
+        8.03
       ],
       "s": [
-        0.4399999999999995,
-        0.07000000000000028,
-        0.4399999999999995
+        0.44,
+        0.07,
+        0.44
       ],
       "color": "tank",
       "level": "roof-detail",
       "shape": "cylinder"
+    },
+    {
+      "name": "Lounge railing along opening (approximate)",
+      "p": [
+        6.359999999999999,
+        3.61,
+        7.24
+      ],
+      "s": [
+        0.05,
+        0.04,
+        3.135
+      ],
+      "color": "red",
+      "level": "first",
+      "interiorOnly": true
+    },
+    {
+      "name": "Lounge railing return (approximate)",
+      "p": [
+        4.875,
+        3.61,
+        10.35
+      ],
+      "s": [
+        1.5099999999999998,
+        0.04,
+        0.05
+      ],
+      "color": "red",
+      "level": "first",
+      "interiorOnly": true
+    },
+    {
+      "name": "Lounge railing along opening (approximate)",
+      "p": [
+        6.359999999999999,
+        3.91,
+        7.24
+      ],
+      "s": [
+        0.05,
+        0.04,
+        3.135
+      ],
+      "color": "red",
+      "level": "first",
+      "interiorOnly": true
+    },
+    {
+      "name": "Lounge railing return (approximate)",
+      "p": [
+        4.875,
+        3.91,
+        10.35
+      ],
+      "s": [
+        1.5099999999999998,
+        0.04,
+        0.05
+      ],
+      "color": "red",
+      "level": "first",
+      "interiorOnly": true
+    },
+    {
+      "name": "Lounge railing along opening (approximate)",
+      "p": [
+        6.359999999999999,
+        4.2,
+        7.24
+      ],
+      "s": [
+        0.05,
+        0.04,
+        3.135
+      ],
+      "color": "red",
+      "level": "first",
+      "interiorOnly": true
+    },
+    {
+      "name": "Lounge railing return (approximate)",
+      "p": [
+        4.875,
+        4.2,
+        10.35
+      ],
+      "s": [
+        1.5099999999999998,
+        0.04,
+        0.05
+      ],
+      "color": "red",
+      "level": "first",
+      "interiorOnly": true
+    },
+    {
+      "name": "Lounge railing post (approximate)",
+      "p": [
+        6.35,
+        3.3,
+        7.24
+      ],
+      "s": [
+        0.07,
+        0.94,
+        0.07
+      ],
+      "color": "red",
+      "level": "first",
+      "interiorOnly": true
+    },
+    {
+      "name": "Lounge railing post (approximate)",
+      "p": [
+        6.35,
+        3.3,
+        8.02
+      ],
+      "s": [
+        0.07,
+        0.94,
+        0.07
+      ],
+      "color": "red",
+      "level": "first",
+      "interiorOnly": true
+    },
+    {
+      "name": "Lounge railing post (approximate)",
+      "p": [
+        6.35,
+        3.3,
+        8.8
+      ],
+      "s": [
+        0.07,
+        0.94,
+        0.07
+      ],
+      "color": "red",
+      "level": "first",
+      "interiorOnly": true
+    },
+    {
+      "name": "Lounge railing post (approximate)",
+      "p": [
+        6.35,
+        3.3,
+        9.58
+      ],
+      "s": [
+        0.07,
+        0.94,
+        0.07
+      ],
+      "color": "red",
+      "level": "first",
+      "interiorOnly": true
+    },
+    {
+      "name": "Lounge railing post (approximate)",
+      "p": [
+        6.35,
+        3.3,
+        10.335
+      ],
+      "s": [
+        0.07,
+        0.94,
+        0.07
+      ],
+      "color": "red",
+      "level": "first",
+      "interiorOnly": true
+    },
+    {
+      "name": "Lounge railing return post (approximate)",
+      "p": [
+        4.875,
+        3.3,
+        10.34
+      ],
+      "s": [
+        0.07,
+        0.94,
+        0.07
+      ],
+      "color": "red",
+      "level": "first",
+      "interiorOnly": true
+    },
+    {
+      "name": "Lounge railing return post (approximate)",
+      "p": [
+        5.625,
+        3.3,
+        10.34
+      ],
+      "s": [
+        0.07,
+        0.94,
+        0.07
+      ],
+      "color": "red",
+      "level": "first",
+      "interiorOnly": true
+    },
+    {
+      "name": "Neighbour boundary wall",
+      "p": [
+        12.07,
+        -0.13,
+        -7.82
+      ],
+      "s": [
+        0.18,
+        1.08,
+        1.516842105263158
+      ],
+      "color": "boundary",
+      "level": "boundary",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Neighbour boundary wall",
+      "p": [
+        12.07,
+        -0.13,
+        -6.3031578947368425
+      ],
+      "s": [
+        0.18,
+        1.08,
+        1.516842105263158
+      ],
+      "color": "boundary",
+      "level": "boundary",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Neighbour boundary wall",
+      "p": [
+        12.07,
+        -0.13,
+        -4.786315789473685
+      ],
+      "s": [
+        0.18,
+        1.08,
+        1.516842105263158
+      ],
+      "color": "boundary",
+      "level": "boundary",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Neighbour boundary wall",
+      "p": [
+        12.07,
+        -0.13,
+        -3.269473684210527
+      ],
+      "s": [
+        0.18,
+        1.08,
+        1.516842105263158
+      ],
+      "color": "boundary",
+      "level": "boundary",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Neighbour boundary wall",
+      "p": [
+        12.07,
+        -0.13,
+        -1.7526315789473692
+      ],
+      "s": [
+        0.18,
+        1.08,
+        1.516842105263158
+      ],
+      "color": "boundary",
+      "level": "boundary",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Neighbour boundary wall",
+      "p": [
+        12.07,
+        -0.13,
+        -0.23578947368421144
+      ],
+      "s": [
+        0.18,
+        1.08,
+        1.516842105263158
+      ],
+      "color": "boundary",
+      "level": "boundary",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Neighbour boundary wall",
+      "p": [
+        12.07,
+        -0.13,
+        1.2810526315789463
+      ],
+      "s": [
+        0.18,
+        1.08,
+        1.516842105263158
+      ],
+      "color": "boundary",
+      "level": "boundary",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Neighbour boundary wall",
+      "p": [
+        12.07,
+        -0.13,
+        2.797894736842105
+      ],
+      "s": [
+        0.18,
+        1.08,
+        1.516842105263158
+      ],
+      "color": "boundary",
+      "level": "boundary",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Neighbour boundary wall",
+      "p": [
+        12.07,
+        -0.13,
+        4.314736842105262
+      ],
+      "s": [
+        0.18,
+        1.08,
+        1.516842105263158
+      ],
+      "color": "boundary",
+      "level": "boundary",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Neighbour boundary wall",
+      "p": [
+        12.07,
+        -0.13,
+        5.8315789473684205
+      ],
+      "s": [
+        0.18,
+        1.08,
+        1.516842105263158
+      ],
+      "color": "boundary",
+      "level": "boundary",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Neighbour boundary wall",
+      "p": [
+        12.07,
+        -0.13,
+        7.348421052631577
+      ],
+      "s": [
+        0.18,
+        1.08,
+        1.516842105263158
+      ],
+      "color": "boundary",
+      "level": "boundary",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Neighbour boundary wall",
+      "p": [
+        12.07,
+        -0.13,
+        8.865263157894738
+      ],
+      "s": [
+        0.18,
+        1.08,
+        1.516842105263158
+      ],
+      "color": "boundary",
+      "level": "boundary",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Neighbour boundary wall",
+      "p": [
+        12.07,
+        -0.13,
+        10.382105263157893
+      ],
+      "s": [
+        0.18,
+        1.08,
+        1.516842105263158
+      ],
+      "color": "boundary",
+      "level": "boundary",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Neighbour boundary wall",
+      "p": [
+        12.07,
+        -0.13,
+        11.898947368421052
+      ],
+      "s": [
+        0.18,
+        1.08,
+        1.516842105263158
+      ],
+      "color": "boundary",
+      "level": "boundary",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Neighbour boundary wall",
+      "p": [
+        12.07,
+        -0.13,
+        13.41578947368421
+      ],
+      "s": [
+        0.18,
+        1.08,
+        1.516842105263158
+      ],
+      "color": "boundary",
+      "level": "boundary",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Neighbour boundary wall",
+      "p": [
+        12.07,
+        -0.13,
+        14.932631578947369
+      ],
+      "s": [
+        0.18,
+        1.08,
+        1.516842105263158
+      ],
+      "color": "boundary",
+      "level": "boundary",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Neighbour boundary wall",
+      "p": [
+        12.07,
+        -0.13,
+        16.449473684210524
+      ],
+      "s": [
+        0.18,
+        1.08,
+        1.516842105263158
+      ],
+      "color": "boundary",
+      "level": "boundary",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Neighbour boundary wall",
+      "p": [
+        12.07,
+        -0.13,
+        17.966315789473683
+      ],
+      "s": [
+        0.18,
+        1.08,
+        1.516842105263158
+      ],
+      "color": "boundary",
+      "level": "boundary",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Neighbour boundary wall",
+      "p": [
+        12.07,
+        -0.13,
+        19.48315789473684
+      ],
+      "s": [
+        0.18,
+        1.08,
+        1.516842105263158
+      ],
+      "color": "boundary",
+      "level": "boundary",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof slab around openings - front",
+      "p": [
+        4.875,
+        6.3,
+        5.375
+      ],
+      "s": [
+        6.875,
+        0.16,
+        2.075
+      ],
+      "color": "roof",
+      "level": "roof"
+    },
+    {
+      "name": "Roof slab around openings - stair west",
+      "p": [
+        4.875,
+        6.3,
+        7.45
+      ],
+      "s": [
+        5.675,
+        0.16,
+        1.8
+      ],
+      "color": "roof",
+      "level": "roof"
+    },
+    {
+      "name": "Roof slab around openings - stair east",
+      "p": [
+        11.6,
+        6.3,
+        7.45
+      ],
+      "s": [
+        0.15,
+        0.16,
+        1.8
+      ],
+      "color": "roof",
+      "level": "roof"
+    },
+    {
+      "name": "Roof slab around openings - middle",
+      "p": [
+        4.875,
+        6.3,
+        9.25
+      ],
+      "s": [
+        6.875,
+        0.16,
+        4.325
+      ],
+      "color": "roof",
+      "level": "roof"
+    },
+    {
+      "name": "Roof slab around openings - rear",
+      "p": [
+        4.875,
+        6.3,
+        13.575
+      ],
+      "s": [
+        3.625,
+        0.16,
+        2.3
+      ],
+      "color": "roof",
+      "level": "roof"
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        1.25,
+        6.46,
+        1.055
+      ],
+      "s": [
+        1.45,
+        0.34,
+        0.14
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        2.7,
+        6.46,
+        1.055
+      ],
+      "s": [
+        1.45,
+        0.34,
+        0.14
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        4.15,
+        6.46,
+        1.055
+      ],
+      "s": [
+        1.45,
+        0.34,
+        0.14
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        5.6,
+        6.46,
+        1.055
+      ],
+      "s": [
+        1.45,
+        0.34,
+        0.14
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        7.050000000000001,
+        6.46,
+        1.055
+      ],
+      "s": [
+        1.45,
+        0.34,
+        0.14
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        8.43,
+        6.46,
+        0.0
+      ],
+      "s": [
+        0.14,
+        0.75,
+        1.125
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        8.5,
+        6.46,
+        -0.07
+      ],
+      "s": [
+        1.25,
+        0.75,
+        0.14
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        11.125,
+        6.46,
+        -0.07
+      ],
+      "s": [
+        0.625,
+        0.75,
+        0.14
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        11.68,
+        6.46,
+        0.0
+      ],
+      "s": [
+        0.14,
+        0.86,
+        1.5083333333333333
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        11.68,
+        6.46,
+        1.508333333333333
+      ],
+      "s": [
+        0.14,
+        0.86,
+        1.5083333333333333
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        11.68,
+        6.46,
+        3.016666666666666
+      ],
+      "s": [
+        0.14,
+        0.86,
+        1.5083333333333333
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        11.68,
+        6.46,
+        4.5249999999999995
+      ],
+      "s": [
+        0.14,
+        0.86,
+        1.5083333333333333
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        11.68,
+        6.46,
+        6.033333333333332
+      ],
+      "s": [
+        0.14,
+        0.86,
+        1.5083333333333333
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        11.68,
+        6.46,
+        7.541666666666667
+      ],
+      "s": [
+        0.14,
+        0.86,
+        1.5083333333333333
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        11.68,
+        6.46,
+        9.049999999999999
+      ],
+      "s": [
+        0.14,
+        0.86,
+        1.5083333333333333
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        11.68,
+        6.46,
+        10.558333333333334
+      ],
+      "s": [
+        0.14,
+        0.86,
+        1.5083333333333333
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        11.68,
+        6.46,
+        12.066666666666665
+      ],
+      "s": [
+        0.14,
+        0.86,
+        1.5083333333333333
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        8.5,
+        6.46,
+        13.504999999999999
+      ],
+      "s": [
+        1.0833333333333333,
+        0.86,
+        0.14
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        9.583333333333334,
+        6.46,
+        13.504999999999999
+      ],
+      "s": [
+        1.0833333333333333,
+        0.86,
+        0.14
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        10.666666666666666,
+        6.46,
+        13.504999999999999
+      ],
+      "s": [
+        1.0833333333333333,
+        0.86,
+        0.14
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        8.43,
+        6.46,
+        13.575
+      ],
+      "s": [
+        0.14,
+        0.86,
+        1.3562500000000002
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        8.43,
+        6.46,
+        14.931249999999999
+      ],
+      "s": [
+        0.14,
+        0.86,
+        1.3562500000000002
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        8.43,
+        6.46,
+        16.2875
+      ],
+      "s": [
+        0.14,
+        0.86,
+        1.3562500000000002
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        8.43,
+        6.46,
+        17.64375
+      ],
+      "s": [
+        0.14,
+        0.86,
+        1.3562500000000002
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        2.025,
+        6.46,
+        18.93
+      ],
+      "s": [
+        1.295,
+        0.86,
+        0.14
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        3.32,
+        6.46,
+        18.93
+      ],
+      "s": [
+        1.295,
+        0.86,
+        0.14
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        4.615,
+        6.46,
+        18.93
+      ],
+      "s": [
+        1.295,
+        0.86,
+        0.14
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        5.91,
+        6.46,
+        18.93
+      ],
+      "s": [
+        1.295,
+        0.86,
+        0.14
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        7.205,
+        6.46,
+        18.93
+      ],
+      "s": [
+        1.295,
+        0.86,
+        0.14
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        1.9549999999999998,
+        6.46,
+        14.875
+      ],
+      "s": [
+        0.14,
+        0.86,
+        1.375
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        1.9549999999999998,
+        6.46,
+        16.25
+      ],
+      "s": [
+        0.14,
+        0.86,
+        1.375
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        1.9549999999999998,
+        6.46,
+        17.625
+      ],
+      "s": [
+        0.14,
+        0.86,
+        1.375
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        2.025,
+        6.46,
+        14.805
+      ],
+      "s": [
+        1.425,
+        0.86,
+        0.14
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        3.45,
+        6.46,
+        14.805
+      ],
+      "s": [
+        1.425,
+        0.86,
+        0.14
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        4.805,
+        6.46,
+        5.375
+      ],
+      "s": [
+        0.14,
+        0.86,
+        1.5833333333333333
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        4.805,
+        6.46,
+        6.958333333333333
+      ],
+      "s": [
+        0.14,
+        0.86,
+        1.5833333333333333
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        4.805,
+        6.46,
+        8.541666666666666
+      ],
+      "s": [
+        0.14,
+        0.86,
+        1.5833333333333333
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        4.805,
+        6.46,
+        10.125
+      ],
+      "s": [
+        0.14,
+        0.86,
+        1.5833333333333333
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        4.805,
+        6.46,
+        11.708333333333332
+      ],
+      "s": [
+        0.14,
+        0.86,
+        1.5833333333333333
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        4.805,
+        6.46,
+        13.291666666666668
+      ],
+      "s": [
+        0.14,
+        0.86,
+        1.5833333333333333
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        1.25,
+        6.46,
+        5.305
+      ],
+      "s": [
+        1.2083333333333333,
+        0.86,
+        0.14
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        2.458333333333333,
+        6.46,
+        5.305
+      ],
+      "s": [
+        1.2083333333333333,
+        0.86,
+        0.14
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        3.6666666666666665,
+        6.46,
+        5.305
+      ],
+      "s": [
+        1.2083333333333333,
+        0.86,
+        0.14
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        1.18,
+        6.46,
+        1.125
+      ],
+      "s": [
+        0.14,
+        0.86,
+        1.4166666666666667
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        1.18,
+        6.46,
+        2.5416666666666665
+      ],
+      "s": [
+        0.14,
+        0.86,
+        1.4166666666666667
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Roof terrace parapet (approximate)",
+      "p": [
+        1.18,
+        6.46,
+        3.958333333333333
+      ],
+      "s": [
+        0.14,
+        0.86,
+        1.4166666666666667
+      ],
+      "color": "parapet",
+      "level": "roof-detail",
+      "seamlessSegments": true
+    },
+    {
+      "name": "Terrace pergola outside post",
+      "p": [
+        0.05,
+        3.3,
+        11.2
+      ],
+      "s": [
+        0.18,
+        3.08,
+        0.18
+      ],
+      "color": "wall",
+      "level": "decoration"
+    },
+    {
+      "name": "Terrace pergola front beam",
+      "p": [
+        0.05,
+        6.18,
+        11.2
+      ],
+      "s": [
+        4.78,
+        0.2,
+        0.18
+      ],
+      "color": "wall",
+      "level": "decoration"
+    },
+    {
+      "name": "Terrace pergola side beam",
+      "p": [
+        0.05,
+        6.18,
+        11.2
+      ],
+      "s": [
+        0.18,
+        0.2,
+        3.58
+      ],
+      "color": "wall",
+      "level": "decoration"
+    },
+    {
+      "name": "Terrace pergola slat",
+      "p": [
+        0.23,
+        6.22,
+        11.68
+      ],
+      "s": [
+        4.55,
+        0.12,
+        0.08
+      ],
+      "color": "wall",
+      "level": "decoration"
+    },
+    {
+      "name": "Terrace pergola slat",
+      "p": [
+        0.23,
+        6.22,
+        12.18
+      ],
+      "s": [
+        4.55,
+        0.12,
+        0.08
+      ],
+      "color": "wall",
+      "level": "decoration"
+    },
+    {
+      "name": "Terrace pergola slat",
+      "p": [
+        0.23,
+        6.22,
+        12.68
+      ],
+      "s": [
+        4.55,
+        0.12,
+        0.08
+      ],
+      "color": "wall",
+      "level": "decoration"
+    },
+    {
+      "name": "Terrace pergola slat",
+      "p": [
+        0.23,
+        6.22,
+        13.18
+      ],
+      "s": [
+        4.55,
+        0.12,
+        0.08
+      ],
+      "color": "wall",
+      "level": "decoration"
+    },
+    {
+      "name": "Terrace pergola slat",
+      "p": [
+        0.23,
+        6.22,
+        13.68
+      ],
+      "s": [
+        4.55,
+        0.12,
+        0.08
+      ],
+      "color": "wall",
+      "level": "decoration"
+    },
+    {
+      "name": "Terrace pergola slat",
+      "p": [
+        0.23,
+        6.22,
+        14.18
+      ],
+      "s": [
+        4.55,
+        0.12,
+        0.08
+      ],
+      "color": "wall",
+      "level": "decoration"
+    },
+    {
+      "name": "Terrace pergola slat",
+      "p": [
+        0.23,
+        6.22,
+        14.68
+      ],
+      "s": [
+        4.55,
+        0.12,
+        0.08
+      ],
+      "color": "wall",
+      "level": "decoration"
+    },
+    {
+      "name": "Main stair first flight",
+      "p": [
+        8.48,
+        0.1341176470588235,
+        9.26
+      ],
+      "s": [
+        0.21999999999999997,
+        0.06,
+        0.92
+      ],
+      "color": "stair",
+      "level": "ground",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair first flight",
+      "p": [
+        8.71,
+        0.328235294117647,
+        9.26
+      ],
+      "s": [
+        0.21999999999999997,
+        0.06,
+        0.92
+      ],
+      "color": "stair",
+      "level": "ground",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair first flight",
+      "p": [
+        8.940000000000001,
+        0.5223529411764705,
+        9.26
+      ],
+      "s": [
+        0.21999999999999997,
+        0.06,
+        0.92
+      ],
+      "color": "stair",
+      "level": "ground",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair first flight",
+      "p": [
+        9.17,
+        0.716470588235294,
+        9.26
+      ],
+      "s": [
+        0.21999999999999997,
+        0.06,
+        0.92
+      ],
+      "color": "stair",
+      "level": "ground",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair first flight",
+      "p": [
+        9.4,
+        0.9105882352941175,
+        9.26
+      ],
+      "s": [
+        0.21999999999999997,
+        0.06,
+        0.92
+      ],
+      "color": "stair",
+      "level": "ground",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair first flight",
+      "p": [
+        9.63,
+        1.104705882352941,
+        9.26
+      ],
+      "s": [
+        0.21999999999999997,
+        0.06,
+        0.92
+      ],
+      "color": "stair",
+      "level": "ground",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair first flight",
+      "p": [
+        9.86,
+        1.2988235294117645,
+        9.26
+      ],
+      "s": [
+        0.21999999999999997,
+        0.06,
+        0.92
+      ],
+      "color": "stair",
+      "level": "ground",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair first flight",
+      "p": [
+        10.09,
+        1.492941176470588,
+        9.26
+      ],
+      "s": [
+        0.21999999999999997,
+        0.06,
+        0.92
+      ],
+      "color": "stair",
+      "level": "ground",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair first flight",
+      "p": [
+        10.32,
+        1.6870588235294115,
+        9.26
+      ],
+      "s": [
+        0.21999999999999997,
+        0.06,
+        0.92
+      ],
+      "color": "stair",
+      "level": "ground",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair landing",
+      "p": [
+        10.55,
+        1.6870588235294115,
+        9.26
+      ],
+      "s": [
+        1.0,
+        0.06,
+        0.92
+      ],
+      "color": "stair",
+      "level": "ground",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair second flight",
+      "p": [
+        10.57,
+        1.881176470588235,
+        9.02
+      ],
+      "s": [
+        0.93,
+        0.06,
+        0.22
+      ],
+      "color": "stair",
+      "level": "ground",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair second flight",
+      "p": [
+        10.57,
+        2.0752941176470583,
+        8.79
+      ],
+      "s": [
+        0.93,
+        0.06,
+        0.22
+      ],
+      "color": "stair",
+      "level": "ground",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair second flight",
+      "p": [
+        10.57,
+        2.269411764705882,
+        8.559999999999999
+      ],
+      "s": [
+        0.93,
+        0.06,
+        0.22
+      ],
+      "color": "stair",
+      "level": "ground",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair second flight",
+      "p": [
+        10.57,
+        2.4635294117647057,
+        8.33
+      ],
+      "s": [
+        0.93,
+        0.06,
+        0.22
+      ],
+      "color": "stair",
+      "level": "ground",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair second flight",
+      "p": [
+        10.57,
+        2.657647058823529,
+        8.1
+      ],
+      "s": [
+        0.93,
+        0.06,
+        0.22
+      ],
+      "color": "stair",
+      "level": "ground",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair second flight",
+      "p": [
+        10.57,
+        2.8517647058823523,
+        7.87
+      ],
+      "s": [
+        0.93,
+        0.06,
+        0.22
+      ],
+      "color": "stair",
+      "level": "ground",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair second flight",
+      "p": [
+        10.57,
+        3.045882352941176,
+        7.640000000000001
+      ],
+      "s": [
+        0.93,
+        0.06,
+        0.22
+      ],
+      "color": "stair",
+      "level": "ground",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair second flight",
+      "p": [
+        10.57,
+        3.2399999999999998,
+        7.41
+      ],
+      "s": [
+        0.93,
+        0.06,
+        0.22
+      ],
+      "color": "stair",
+      "level": "ground",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair first flight",
+      "p": [
+        8.48,
+        3.4258823529411764,
+        9.26
+      ],
+      "s": [
+        0.21999999999999997,
+        0.06,
+        0.92
+      ],
+      "color": "stair",
+      "level": "first",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair first flight",
+      "p": [
+        8.71,
+        3.6117647058823525,
+        9.26
+      ],
+      "s": [
+        0.21999999999999997,
+        0.06,
+        0.92
+      ],
+      "color": "stair",
+      "level": "first",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair first flight",
+      "p": [
+        8.940000000000001,
+        3.797647058823529,
+        9.26
+      ],
+      "s": [
+        0.21999999999999997,
+        0.06,
+        0.92
+      ],
+      "color": "stair",
+      "level": "first",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair first flight",
+      "p": [
+        9.17,
+        3.9835294117647053,
+        9.26
+      ],
+      "s": [
+        0.21999999999999997,
+        0.06,
+        0.92
+      ],
+      "color": "stair",
+      "level": "first",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair first flight",
+      "p": [
+        9.4,
+        4.169411764705883,
+        9.26
+      ],
+      "s": [
+        0.21999999999999997,
+        0.06,
+        0.92
+      ],
+      "color": "stair",
+      "level": "first",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair first flight",
+      "p": [
+        9.63,
+        4.355294117647059,
+        9.26
+      ],
+      "s": [
+        0.21999999999999997,
+        0.06,
+        0.92
+      ],
+      "color": "stair",
+      "level": "first",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair first flight",
+      "p": [
+        9.86,
+        4.541176470588236,
+        9.26
+      ],
+      "s": [
+        0.21999999999999997,
+        0.06,
+        0.92
+      ],
+      "color": "stair",
+      "level": "first",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair first flight",
+      "p": [
+        10.09,
+        4.727058823529412,
+        9.26
+      ],
+      "s": [
+        0.21999999999999997,
+        0.06,
+        0.92
+      ],
+      "color": "stair",
+      "level": "first",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair first flight",
+      "p": [
+        10.32,
+        4.912941176470588,
+        9.26
+      ],
+      "s": [
+        0.21999999999999997,
+        0.06,
+        0.92
+      ],
+      "color": "stair",
+      "level": "first",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair landing",
+      "p": [
+        10.55,
+        4.912941176470588,
+        9.26
+      ],
+      "s": [
+        1.0,
+        0.06,
+        0.92
+      ],
+      "color": "stair",
+      "level": "first",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair second flight",
+      "p": [
+        10.57,
+        5.0988235294117645,
+        9.02
+      ],
+      "s": [
+        0.93,
+        0.06,
+        0.22
+      ],
+      "color": "stair",
+      "level": "first",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair second flight",
+      "p": [
+        10.57,
+        5.284705882352942,
+        8.79
+      ],
+      "s": [
+        0.93,
+        0.06,
+        0.22
+      ],
+      "color": "stair",
+      "level": "first",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair second flight",
+      "p": [
+        10.57,
+        5.470588235294118,
+        8.559999999999999
+      ],
+      "s": [
+        0.93,
+        0.06,
+        0.22
+      ],
+      "color": "stair",
+      "level": "first",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair second flight",
+      "p": [
+        10.57,
+        5.656470588235295,
+        8.33
+      ],
+      "s": [
+        0.93,
+        0.06,
+        0.22
+      ],
+      "color": "stair",
+      "level": "first",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair second flight",
+      "p": [
+        10.57,
+        5.842352941176471,
+        8.1
+      ],
+      "s": [
+        0.93,
+        0.06,
+        0.22
+      ],
+      "color": "stair",
+      "level": "first",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair second flight",
+      "p": [
+        10.57,
+        6.028235294117647,
+        7.87
+      ],
+      "s": [
+        0.93,
+        0.06,
+        0.22
+      ],
+      "color": "stair",
+      "level": "first",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair second flight",
+      "p": [
+        10.57,
+        6.214117647058823,
+        7.640000000000001
+      ],
+      "s": [
+        0.93,
+        0.06,
+        0.22
+      ],
+      "color": "stair",
+      "level": "first",
+      "interiorOnly": true
+    },
+    {
+      "name": "Main stair second flight",
+      "p": [
+        10.57,
+        6.4,
+        7.41
+      ],
+      "s": [
+        0.93,
+        0.06,
+        0.22
+      ],
+      "color": "stair",
+      "level": "first",
+      "interiorOnly": true
+    },
+    {
+      "name": "Ground stair entry partition (approximate)",
+      "p": [
+        8.32,
+        0,
+        8.625
+      ],
+      "s": [
+        0.11,
+        3.0,
+        0.635
+      ],
+      "color": "interior",
+      "level": "ground",
+      "interiorOnly": true
+    },
+    {
+      "name": "Ground stair entry lintel (approximate)",
+      "p": [
+        8.32,
+        2.15,
+        9.26
+      ],
+      "s": [
+        0.11,
+        0.85,
+        0.92
+      ],
+      "color": "interior",
+      "level": "ground",
+      "interiorOnly": true
+    },
+    {
+      "name": "Ground stair entry partition (approximate)",
+      "p": [
+        8.32,
+        0,
+        10.18
+      ],
+      "s": [
+        0.11,
+        3.0,
+        0.195
+      ],
+      "color": "interior",
+      "level": "ground",
+      "interiorOnly": true
+    },
+    {
+      "name": "Kitchen stair enclosure (approximate)",
+      "p": [
+        8.375,
+        0,
+        10.32
+      ],
+      "s": [
+        3.375,
+        3,
+        0.11
+      ],
+      "color": "interior",
+      "level": "ground",
+      "interiorOnly": true
+    },
+    {
+      "name": "Ground stair inner enclosure (approximate)",
+      "p": [
+        8.43,
+        0,
+        9.14
+      ],
+      "s": [
+        2.12,
+        3,
+        0.1
+      ],
+      "color": "interior",
+      "level": "ground",
+      "interiorOnly": true
     }
   ],
   "colors": {
@@ -9600,7 +10897,7 @@ window.RAJSEE_MODEL = {
     "boundary": "#9e9a90",
     "brick": "#945f4b",
     "tank": "#313939",
-    "lift-door": "#b2b5b3"
+    "parapet": "#8fa5ad"
   },
   "images": {
     "wall": "data:image/jpeg;base64,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",
@@ -9647,11 +10944,6 @@ window.RAJSEE_MODEL = {
         "text": "Entry / stairs",
         "x": 9.125,
         "z": 8.125
-      },
-      {
-        "text": "Lift",
-        "x": 9.43,
-        "z": 8.25
       }
     ],
     "first": [
@@ -9696,27 +10988,27 @@ window.RAJSEE_MODEL = {
         "z": 17.875
       },
       {
-        "text": "Lift",
-        "x": 9.43,
-        "z": 8.25
+        "text": "Puja (approx.)",
+        "x": 5.625,
+        "z": 6.3
+      },
+      {
+        "text": "Lounge below",
+        "x": 5.63,
+        "z": 8.8
       }
     ],
     "roof": [
       {
-        "text": "Lift / machine room",
-        "x": 10.05,
+        "text": "Tank above stair head",
+        "x": 10.025,
         "z": 8.25
-      },
-      {
-        "text": "Water tank",
-        "x": 7.38,
-        "z": 8.28
       }
     ]
   },
   "metadata": {
     "title": "RajSee Villa · Ansal A-60",
-    "model_status": "Photo-informed planning model; dimensions need survey",
+    "model_status": "Shared draft model: confirmed tank above stair head; no lift or lift shaft; dimensions require verification",
     "plot_m": [
       14.5,
       29
@@ -9726,6 +11018,9 @@ window.RAJSEE_MODEL = {
       3.2,
       1.6
     ],
-    "aerial_property": "upper light-coloured roof"
+    "aerial_property": "upper light-coloured roof",
+    "lounge_opening_status": "Approximate location traced from plan; confirm extent, railing and puja layout on site",
+    "roof_tank_position": "On top of stair-head room (owner confirmed); dimensions and support estimated",
+    "neighbour_boundary_height_m_above_ground_estimate": 0.95
   }
 };

@@ -27,12 +27,12 @@ The hall opening faces west according to the family. The approximate ₹3 lakh p
 
 ## Model assumptions to check
 
-- **Floor-to-floor height:** 3.3 m is assumed; the confirmed hall ceiling heights are clear ceiling heights and do not establish the floor-to-floor height.
+- **Floor-to-floor and ceiling heights:** 3.3 m floor-to-floor is assumed; the confirmed hall ceiling heights are clear ceiling heights and do not establish that distance. The current model uses generic levels and does not yet reproduce both confirmed hall heights.
 - **Main stairs and former lift assumption:** the plan marks a lift area of **1,770 × 1,600 mm**, but the owner confirms neither lift nor shaft is present. The draft model's assumed lift doors and shaft walls have been removed. Remaining stair-side partitions, flights, headroom and the use of that space must be checked. The roof drawing separately labels a machine room **3,200 × 1,600 mm**, but does not establish its equipment or whether the room exists as drawn.
 - **Water tank:** a small rooftop tank and platform were requested by the owner but are not labelled on this plan. Existing or proposed status, location, size and supports have not been confirmed.
 - **First-floor courtyard terrace:** extended toward the court to reflect the owner's request; its exact depth, edge and grille dimensions are not yet known.
 - **Site and garden:** the overall plot uses the plan's written dimensions, but the red site outline is not proportionate to those written dimensions and its relationship to the existing fence is unverified. House position, boundary heights, front-garden depth, curved edging, gate and individual setbacks in the model are estimates.
-- **Openings and puja:** the first-floor `COURT BELOW` and adjacent `LOUNGE BELOW` are distinct on the plan, with a puja area beside the lounge. The present model appears to put a slab across the lounge opening and omits the puja; its floor geometry needs correction.
+- **Openings and puja:** the first-floor `COURT BELOW` and adjacent `LOUNGE BELOW` are distinct on the plan, with a puja area beside the lounge. The draft now shows an approximate lounge cut-out, railing and puja marker. Their exact extent, railing arrangement and the puja walls still require checking.
 - **Rear and roof:** photographs do not resolve every surface or opening. The shapes and alignment should be refined with additional measurements or clearer views.
 
 ## Other renovation directions
