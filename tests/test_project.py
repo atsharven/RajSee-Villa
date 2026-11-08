@@ -117,8 +117,8 @@ class ProjectTests(unittest.TestCase):
         self.assertAlmostEqual(max(p['p'][2]+p['s'][2] for p in soil)-min(p['p'][2] for p in soil), 29)
         neighbour = self.named('Neighbour boundary wall')
         self.assertGreater(len(neighbour), 1)
-        self.assertGreaterEqual(min(p['p'][1] + p['s'][1] for p in neighbour), 1.8)
-        self.assertGreaterEqual(max(p['p'][1] + p['s'][1] for p in neighbour), 3.5)
+        self.assertAlmostEqual(min(p['p'][1] + p['s'][1] for p in neighbour), 1.8)
+        self.assertAlmostEqual(max(p['p'][1] + p['s'][1] for p in neighbour), 3.5)
         wall = sorted(neighbour, key=lambda p: p['p'][2])
         for a, b in zip(wall, wall[1:]):
             self.assertAlmostEqual(a['p'][2] + a['s'][2], b['p'][2])
