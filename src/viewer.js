@@ -1,0 +1,255 @@
+(() => {
+  'use strict';
+
+  const model = window.RAJSEE_MODEL;
+  const canvas = document.querySelector('#villa-canvas');
+  const ctx = canvas && canvas.getContext('2d');
+  const detail = document.querySelector('#model-detail');
+  if (!model || !ctx) {
+    if (detail) detail.textContent = 'The model could not be loaded. Check that the project files are together.';
+    return;
+  }
+
+  const modeButtons = [...document.querySelectorAll('[data-mode]')];
+  const floorButtons = [...document.querySelectorAll('[data-floor]')];
+  const cameraButtons = [...document.querySelectorAll('[data-camera]')];
+  const boundary = document.querySelector('#boundary-toggle');
+  const boundaryLabel = document.querySelector('.boundary-control');
+  const floorControls = document.querySelector('.floor-controls');
+  const zoomInput = document.querySelector('#zoom-range');
+  const zoomValue = document.querySelector('#zoom-value');
+  const title = document.querySelector('#model-title');
+  const tag = document.querySelector('#canvas-tag-text');
+  const cameras = {front: [.36, .37], side: [1.33, .40], rear: [3.42, .36], above: [.55, 1.10]};
+  const state = {mode: 'base', floor: 'ground', camera: 'above', yaw: .55, pitch: 1.10, zoom: 1, drag: null};
+  const faces = [
+    {i: [0, 1, 2, 3], shade: .82}, {i: [4, 5, 6, 7], shade: 1.02},
+    {i: [0, 1, 5, 4], shade: .73}, {i: [3, 2, 6, 7], shade: 1.08},
+    {i: [0, 3, 7, 4], shade: .88}, {i: [1, 2, 6, 5], shade: .94}
+  ];
+  const textures = {};
+  for (const [name, url] of Object.entries(model.images)) {
+    const image = new Image();
+    textures[name] = image;
+    image.onload = draw;
+    image.src = url;
+  }
+
+  function setPressed(buttons, key, value) {
+    for (const button of buttons) {
+      const active = button.dataset[key] === value;
+      button.classList.toggle('is-active', active);
+      button.setAttribute('aria-pressed', String(active));
+    }
+  }
+
+  function updateControls() {
+    setPressed(modeButtons, 'mode', state.mode);
+    setPressed(floorButtons, 'floor', state.floor);
+    setPressed(cameraButtons, 'camera', state.camera);
+    floorControls.hidden = state.mode !== 'interior';
+    boundaryLabel.hidden = state.mode === 'interior';
+    zoomInput.value = String(Math.round(state.zoom * 100));
+    zoomValue.textContent = `${Math.round(state.zoom * 100)}%`;
+    if (state.mode === 'base') {
+      title.textContent = 'The whole villa';
+      tag.textContent = 'SITE & ROOFTOP';
+      detail.textContent = 'A working view of the villa, garden and rooftop.';
+    } else if (state.mode === 'exterior') {
+      title.textContent = 'Outside & garden';
+      tag.textContent = 'EXTERIOR REFERENCE';
+      detail.textContent = 'Explore the front, sides, rear, garden and boundary.';
+    } else {
+      const names = {ground: 'Ground floor', first: 'First floor', roof: 'Roof & tank'};
+      title.textContent = names[state.floor];
+      tag.textContent = names[state.floor].toUpperCase();
+      detail.textContent = state.floor === 'roof'
+        ? 'The tank platform and lift room are provisional.'
+        : 'The floor view includes the lift and the main stair core.';
+    }
+  }
+
+  function chooseMode(mode, scroll) {
+    if (!['base', 'exterior', 'interior'].includes(mode)) return;
+    state.mode = mode;
+    state.floor = 'ground';
+    state.camera = mode === 'exterior' ? 'front' : 'above';
+    [state.yaw, state.pitch] = cameras[state.camera];
+    if (mode === 'interior') state.pitch = .90;
+    state.zoom = 1;
+    updateControls();
+    draw();
+    if (scroll) {
+      document.querySelector('.studio-shell').scrollIntoView({behavior: 'smooth', block: 'start'});
+      canvas.focus({preventScroll: true});
+    }
+  }
+
+  function visible(part) {
+    if (state.mode !== 'interior') return !part.interiorOnly && (boundary.checked || part.level !== 'boundary');
+    if (state.floor === 'roof') return part.level === 'roof' || part.level === 'roof-detail' || part.name.startsWith('Court pergola');
+    if (part.level === state.floor) return true;
+    if (part.level === 'spiral') return state.floor === 'ground' || (state.floor === 'first' && part.p[1] >= 2.55);
+    return false;
+  }
+
+  function colorShade(hex, factor) {
+    const value = parseInt(hex.slice(1), 16);
+    return `rgb(${Math.min(255, Math.round((value >> 16) * factor))},${Math.min(255, Math.round(((value >> 8) & 255) * factor))},${Math.min(255, Math.round((value & 255) * factor))})`;
+  }
+
+  function textureFace(image, vertices) {
+    const width = image.naturalWidth, height = image.naturalHeight;
+    if (!width || !height) return;
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(vertices[0][0], vertices[0][1]);
+    for (let i = 1; i < vertices.length; i++) ctx.lineTo(vertices[i][0], vertices[i][1]);
+    ctx.closePath();
+    ctx.clip();
+    ctx.transform((vertices[1][0] - vertices[0][0]) / width, (vertices[1][1] - vertices[0][1]) / width,
+      (vertices[3][0] - vertices[0][0]) / height, (vertices[3][1] - vertices[0][1]) / height,
+      vertices[0][0], vertices[0][1]);
+    ctx.globalAlpha = .84;
+    ctx.drawImage(image, 0, 0);
+    ctx.restore();
+  }
+
+  function partLayer(part) {
+    if (part.name === 'Ground inside boundary - soil') return 0;
+    if (part.level === 'site') return part.name === 'Curved garden edging' || part.name === 'Front entrance steps' ? 2 : 1;
+    if (part.name === 'Courtyard paving' || part.name === 'Courtyard sunken bed') return 1;
+    return 3;
+  }
+
+  function draw() {
+    const box = canvas.getBoundingClientRect();
+    if (!box.width || !box.height) return;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.round(box.width * dpr);
+    canvas.height = Math.round(box.height * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, box.width, box.height);
+
+    const isExterior = state.mode !== 'interior';
+    const co = Math.cos(state.yaw), si = Math.sin(state.yaw), cp = Math.cos(state.pitch), sp = Math.sin(state.pitch);
+    let bounds;
+    if (isExterior) bounds = {x: [-2.25, 12.25], y: [-.3, 8.70], z: [-8, 21]};
+    else if (state.floor === 'ground') bounds = {x: [0, 11.9], y: [-.2, 4], z: [0, 19.5]};
+    else if (state.floor === 'first') bounds = {x: [0, 11.9], y: [2.55, 6.7], z: [0, 19.5]};
+    else bounds = {x: [0, 11.9], y: [6.25, 8.7], z: [0, 19.5]};
+
+    function raw(x, y, z) {
+      const side = co * x - si * z, depth = si * x + co * z;
+      return [side, -y * cp - depth * sp, depth * cp - y * sp];
+    }
+    const corners = [];
+    for (const x of bounds.x) for (const y of bounds.y) for (const z of bounds.z) corners.push(raw(x, y, z));
+    const xs = corners.map(c => c[0]), ys = corners.map(c => c[1]);
+    const minX = Math.min(...xs), maxX = Math.max(...xs), minY = Math.min(...ys), maxY = Math.max(...ys);
+    const scale = Math.min((box.width - 45) / (maxX - minX), (box.height - 45) / (maxY - minY)) * state.zoom;
+    const midX = (minX + maxX) / 2, midY = (minY + maxY) / 2;
+    function project(x, y, z) {
+      const point = raw(x, y, z);
+      return [box.width / 2 + (point[0] - midX) * scale, box.height / 2 + (point[1] - midY) * scale, point[2]];
+    }
+    const polygons = [];
+    function polygon(vertices, part, shade, textured = true) {
+      if (vertices.length < 3) return;
+      const a = vertices[0], b = vertices[1], c = vertices[vertices.length - 1];
+      const area = Math.abs((b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0]));
+      if (area < .25) return;
+      polygons.push({vertices, area, depth: vertices.reduce((sum, v) => sum + v[2], 0) / vertices.length,
+        color: part.color, shade, layer: partLayer(part), name: part.name, textured});
+    }
+
+    for (const part of model.parts) {
+      if (!visible(part)) continue;
+      const [x, y, z] = part.p, [width, height, depth] = part.s;
+      if (part.shape === 'cylinder') {
+        const bottom = [], top = [], count = 20;
+        for (let i = 0; i < count; i++) {
+          const a = i * Math.PI * 2 / count, px = x + width / 2 + Math.cos(a) * width / 2, pz = z + depth / 2 + Math.sin(a) * depth / 2;
+          bottom.push(project(px, y, pz));
+          top.push(project(px, y + height, pz));
+        }
+        for (let i = 0; i < count; i++) polygon([bottom[i], bottom[(i + 1) % count], top[(i + 1) % count], top[i]], part, .82 + .15 * Math.cos(i * Math.PI * 2 / count), false);
+        polygon(top, part, 1.13, false);
+        continue;
+      }
+      const mx = x + width / 2, mz = z + depth / 2, rc = Math.cos(part.yaw || 0), rs = Math.sin(part.yaw || 0);
+      const points = [[x, y, z], [x + width, y, z], [x + width, y + height, z], [x, y + height, z],
+        [x, y, z + depth], [x + width, y, z + depth], [x + width, y + height, z + depth], [x, y + height, z + depth]]
+        .map(q => { const dx = q[0] - mx, dz = q[2] - mz; return project(mx + rc * dx + rs * dz, q[1], mz - rs * dx + rc * dz); });
+      for (const face of faces) polygon(face.i.map(i => points[i]), part, face.shade);
+    }
+
+    polygons.sort((a, b) => a.layer - b.layer || b.depth - a.depth);
+    for (const poly of polygons) {
+      ctx.beginPath();
+      ctx.moveTo(poly.vertices[0][0], poly.vertices[0][1]);
+      for (let i = 1; i < poly.vertices.length; i++) ctx.lineTo(poly.vertices[i][0], poly.vertices[i][1]);
+      ctx.closePath();
+      ctx.fillStyle = colorShade(model.colors[poly.color] || '#b9b9b0', poly.shade);
+      ctx.fill();
+      const texture = textures[poly.color];
+      if (poly.textured && texture && texture.complete && poly.area > 80) textureFace(texture, poly.vertices);
+      if (poly.name !== 'Ground inside boundary - soil') {
+        ctx.strokeStyle = 'rgba(50,55,53,.22)';
+        ctx.lineWidth = .55;
+        ctx.stroke();
+      }
+    }
+
+    if (!isExterior) {
+      const labelHeight = {ground: .12, first: 3.42, roof: 8.8}[state.floor];
+      ctx.font = '12px system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      for (const label of model.labels[state.floor] || []) {
+        const point = project(label.x, labelHeight, label.z), width = ctx.measureText(label.text).width;
+        ctx.globalAlpha = .92;
+        ctx.fillStyle = '#fff';
+        ctx.fillRect(point[0] - width / 2 - 5, point[1] - 10, width + 10, 20);
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = '#2d423a';
+        ctx.fillText(label.text, point[0], point[1]);
+      }
+    }
+  }
+
+  for (const button of document.querySelectorAll('[data-entry]')) button.addEventListener('click', () => chooseMode(button.dataset.entry, true));
+  for (const button of modeButtons) button.addEventListener('click', () => chooseMode(button.dataset.mode, false));
+  for (const button of floorButtons) button.addEventListener('click', () => {
+    state.floor = button.dataset.floor; state.camera = 'above'; [state.yaw, state.pitch] = cameras.above; state.pitch = .95; state.zoom = 1; updateControls(); draw();
+  });
+  for (const button of cameraButtons) button.addEventListener('click', () => {
+    state.camera = button.dataset.camera; [state.yaw, state.pitch] = cameras[state.camera]; updateControls(); draw();
+  });
+  boundary.addEventListener('change', draw);
+  zoomInput.addEventListener('input', () => { state.zoom = Number(zoomInput.value) / 100; updateControls(); draw(); });
+  canvas.addEventListener('pointerdown', event => { state.drag = {x: event.clientX, y: event.clientY}; canvas.setPointerCapture(event.pointerId); });
+  canvas.addEventListener('pointermove', event => {
+    if (!state.drag) return;
+    state.yaw += (event.clientX - state.drag.x) * .008;
+    state.pitch = Math.max(.12, Math.min(1.35, state.pitch + (event.clientY - state.drag.y) * .006));
+    state.drag = {x: event.clientX, y: event.clientY}; draw();
+  });
+  canvas.addEventListener('pointerup', () => { state.drag = null; });
+  canvas.addEventListener('pointercancel', () => { state.drag = null; });
+  canvas.addEventListener('wheel', event => {
+    event.preventDefault(); state.zoom = Math.max(.6, Math.min(2.2, state.zoom * Math.exp(-event.deltaY * .001))); updateControls(); draw();
+  }, {passive: false});
+  canvas.addEventListener('keydown', event => {
+    if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key)) return;
+    event.preventDefault();
+    if (event.key === 'ArrowLeft') state.yaw -= .1;
+    if (event.key === 'ArrowRight') state.yaw += .1;
+    if (event.key === 'ArrowUp') state.pitch = Math.min(1.35, state.pitch + .1);
+    if (event.key === 'ArrowDown') state.pitch = Math.max(.12, state.pitch - .1);
+    draw();
+  });
+  new ResizeObserver(draw).observe(canvas.parentElement);
+  updateControls();
+  draw();
+})();
