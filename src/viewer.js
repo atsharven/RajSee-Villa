@@ -39,15 +39,15 @@
   const cameras = {front: [.36, .37], side: [1.33, .40], rear: [3.42, .36], above: [.55, 1.10]};
   // Approximate views for visual comparison; these are not calibrated camera poses.
   const photoMatches = {
-    front: {title:'Front and garden', src:'assets/front.jpg', camera:'front', yaw:.20, pitch:.06, zoom:1.05, focus:[5.8,3.5,.7], boundary:false},
-    frontside: {title:'Front and courtyard side', src:'assets/Photos Ansal A 60/Iphone Front left.jpeg', camera:'front', yaw:.78, pitch:.07, zoom:1.10, focus:[4.6,3.5,4.8], boundary:true},
-    side: {title:'Courtyard-side elevation', src:'assets/Photos Ansal A 60/Iphone Side.jpeg', camera:'side', yaw:1.50, pitch:.08, zoom:1.20, focus:[2.0,3.1,10.2], boundary:true},
-    courtyard: {title:'Courtyard and glazing', src:'assets/courtyard.jpg', camera:'side', yaw:1.52, pitch:.05, zoom:1.65, focus:[4.5,3.3,8.1], boundary:false},
-    terrace: {title:'First-floor terrace, seen from side', src:'assets/Photos Ansal A 60/Iphone Side.jpeg', camera:'side', yaw:1.45, pitch:.10, zoom:1.75, focus:[2.4,4.6,12.8], boundary:false},
-    rear: {title:'Rear and service yard', src:'assets/Photos Ansal A 60/Iphone Wide Back.jpeg', camera:'rear', yaw:3.13, pitch:.08, zoom:.95, focus:[6.3,3.5,18.5], boundary:true},
-    spiral: {title:'Rear spiral stair', src:'assets/rear-stair.jpg', camera:'rear', yaw:3.32, pitch:.10, zoom:1.65, focus:[10.5,2.5,17.8], boundary:false},
+    front: {title:'Front and garden', src:'assets/front.jpg', camera:'front', yaw:.20, pitch:.03, zoom:1.05, focus:[5.8,3.5,.7], boundary:false},
+    frontside: {title:'Front and courtyard side', src:'assets/Photos Ansal A 60/Iphone Front left.jpeg', camera:'front', yaw:.78, pitch:.03, zoom:1.10, focus:[4.6,3.5,4.8], boundary:true},
+    side: {title:'Courtyard-side elevation', src:'assets/Photos Ansal A 60/Iphone Side.jpeg', camera:'side', yaw:1.50, pitch:.03, zoom:1.20, focus:[2.0,3.1,10.2], boundary:true},
+    courtyard: {title:'Courtyard and glazing', src:'assets/courtyard.jpg', camera:'side', yaw:1.52, pitch:.03, zoom:1.65, focus:[4.5,3.3,8.1], boundary:false},
+    terrace: {title:'First-floor terrace, seen from side', src:'assets/Photos Ansal A 60/Iphone Side.jpeg', camera:'side', yaw:1.45, pitch:.03, zoom:1.35, focus:[2.4,4.1,10.2], boundary:false},
+    rear: {title:'Rear and service yard', src:'assets/Photos Ansal A 60/Iphone Wide Back.jpeg', camera:'rear', yaw:3.13, pitch:.03, zoom:.80, focus:[6.3,4.0,18.5], boundary:true},
+    spiral: {title:'Rear spiral stair', src:'assets/rear-stair.jpg', camera:'rear', yaw:3.32, pitch:.03, zoom:1.65, focus:[10.5,2.5,17.8], boundary:false},
     terracefloor: {title:'Terrace surface — level to verify', src:'assets/Photos Ansal A 60/IMG-20260226-WA0034.jpg', mode:'interior', floor:'roof', camera:'above', yaw:.55, pitch:1.10, zoom:1.10, focus:[5.7,6.2,10], boundary:false},
-    aerial: {title:'Aerial reference — upper light roof', src:'assets/aerial-reference.png', camera:'above', yaw:.55, pitch:1.25, zoom:1.10, focus:[5.7,6.1,9.5], boundary:false}
+    aerial: {title:'Aerial reference — upper light roof', src:'assets/aerial-reference.png', camera:'above', yaw:-1.37, pitch:1.35, zoom:1.10, focus:[5.7,6.1,9.5], boundary:false}
   };
   const state = {mode: 'base', floor: 'ground', camera: 'above', yaw: .55, pitch: 1.10, zoom: 1, drag: null, focus: null, photoMatch: null};
   const faces = [
@@ -139,6 +139,7 @@
     const preset = photoMatches[button.dataset.photoMatch];
     if (!preset) return;
     clearSelectedPhoto();
+    photoUpload.value = '';
     state.mode = preset.mode || 'exterior';
     state.floor = preset.floor || 'ground';
     state.camera = preset.camera;
@@ -192,7 +193,7 @@
     return `rgb(${Math.min(255, Math.round((value >> 16) * factor))},${Math.min(255, Math.round(((value >> 8) & 255) * factor))},${Math.min(255, Math.round((value & 255) * factor))})`;
   }
 
-  function textureFace(image, vertices) {
+  function textureFace(image, vertices, poly) {
     const width = image.naturalWidth, height = image.naturalHeight;
     if (!width || !height) return;
     ctx.save();
@@ -201,6 +202,21 @@
     for (let i = 1; i < vertices.length; i++) ctx.lineTo(vertices[i][0], vertices[i][1]);
     ctx.closePath();
     ctx.clip();
+    if (poly.textureRepeatMeters && poly.faceIndex === 3) {
+      const [sizeX, sizeZ] = poly.textureSize;
+      const repeat = poly.textureRepeatMeters;
+      ctx.transform((vertices[1][0] - vertices[0][0]) / sizeX, (vertices[1][1] - vertices[0][1]) / sizeX,
+        (vertices[3][0] - vertices[0][0]) / sizeZ, (vertices[3][1] - vertices[0][1]) / sizeZ,
+        vertices[0][0], vertices[0][1]);
+      const pattern = ctx.createPattern(image, 'repeat');
+      pattern.setTransform(new DOMMatrix([repeat / width, 0, 0, repeat / height,
+        -(poly.textureOrigin[0] % repeat), -(poly.textureOrigin[1] % repeat)]));
+      ctx.globalAlpha = .84;
+      ctx.fillStyle = pattern;
+      ctx.fillRect(0, 0, sizeX, sizeZ);
+      ctx.restore();
+      return;
+    }
     ctx.transform((vertices[1][0] - vertices[0][0]) / width, (vertices[1][1] - vertices[0][1]) / width,
       (vertices[3][0] - vertices[0][0]) / height, (vertices[3][1] - vertices[0][1]) / height,
       vertices[0][0], vertices[0][1]);
@@ -259,14 +275,16 @@
       return [box.width / 2 + (point[0] - midX) * scale, box.height / 2 + (point[1] - midY) * scale, point[2]];
     }
     const polygons = [];
-    function polygon(vertices, part, shade, textured = true) {
+    function polygon(vertices, part, shade, textured = true, faceIndex = -1) {
       if (vertices.length < 3) return;
       const a = vertices[0], b = vertices[1], c = vertices[vertices.length - 1];
       const area = Math.abs((b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0]));
       if (area < .25) return;
       polygons.push({vertices, area, depth: vertices.reduce((sum, v) => sum + v[2], 0) / vertices.length,
         color: part.color, shade, layer: partLayer(part), name: part.name, textured,
-        seamlessSegments: part.seamlessSegments});
+        seamlessSegments: part.seamlessSegments, faceIndex,
+        textureRepeatMeters: part.textureRepeatMeters,
+        textureOrigin: [part.p[0], part.p[2]], textureSize: [part.s[0], part.s[2]]});
     }
 
     for (const part of model.parts) {
@@ -293,7 +311,7 @@
             ((width > depth && (faceIndex === 4 || faceIndex === 5)) ||
              (depth > width && (faceIndex === 0 || faceIndex === 1)))) continue;
         polygon(face.i.map(i => points[i]), part, face.shade,
-          !part.topTextureOnly || faceIndex === 3);
+          !part.topTextureOnly || faceIndex === 3, faceIndex);
       }
     }
 
@@ -306,7 +324,7 @@
       ctx.fillStyle = colorShade(model.colors[poly.color] || '#b9b9b0', poly.shade);
       ctx.fill();
       const texture = textures[poly.color];
-      if (poly.textured && texture && texture.complete && poly.area > 80) textureFace(texture, poly.vertices);
+      if (poly.textured && texture && texture.complete && poly.area > 80) textureFace(texture, poly.vertices, poly);
       if (poly.name !== 'Ground inside boundary - soil' && !poly.seamlessSegments) {
         ctx.strokeStyle = 'rgba(50,55,53,.22)';
         ctx.lineWidth = .55;

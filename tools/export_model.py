@@ -46,7 +46,7 @@ def geometry(positions, normals, texcoords, indices):
             'TEXCOORD_0': accessor(uv, 5126, len(texcoords), 'VEC2'),
             'indices': accessor(index, 5123, len(indices), 'SCALAR')}
 
-def cube_geometry():
+def cube_geometry(repeat=None):
     positions, normals, uv, indices = [], [], [], []
     faces = [([(-.5,-.5,-.5),(.5,-.5,-.5),(.5,.5,-.5),(-.5,.5,-.5)],(0,0,-1)),
              ([(.5,-.5,.5),(-.5,-.5,.5),(-.5,.5,.5),(.5,.5,.5)],(0,0,1)),
@@ -54,10 +54,15 @@ def cube_geometry():
              ([(.5,-.5,-.5),(.5,-.5,.5),(.5,.5,.5),(.5,.5,-.5)],(1,0,0)),
              ([(-.5,.5,-.5),(.5,.5,-.5),(.5,.5,.5),(-.5,.5,.5)],(0,1,0)),
              ([(-.5,-.5,.5),(.5,-.5,.5),(.5,-.5,-.5),(-.5,-.5,-.5)],(0,-1,0))]
-    for vertices, normal in faces:
+    for face_index, (vertices, normal) in enumerate(faces):
         start = len(positions)
         positions.extend(vertices); normals.extend([normal] * 4)
-        uv.extend([(0,1),(1,1),(1,0),(0,0)])
+        if repeat and face_index == 4:
+            x, z, width, depth, tile = repeat
+            u0, v0, u1, v1 = x/tile, z/tile, (x+width)/tile, (z+depth)/tile
+            uv.extend([(u0,v0),(u1,v0),(u1,v1),(u0,v1)])
+        else:
+            uv.extend([(0,1),(1,1),(1,0),(0,0)])
         indices.extend([start,start+2,start+1,start,start+3,start+2])
     return geometry(positions, normals, uv, indices)
 
@@ -114,7 +119,26 @@ for part in parts:
     shape = part.get('shape','box')
     if (shape, part['color']) not in mesh_lookup:
         raise ValueError(f"Unknown shape/material: {part['name']}")
-    node = {'name': part['name'], 'mesh': mesh_lookup[(shape,part['color'])],
+    mesh_index = mesh_lookup[(shape,part['color'])]
+    if part.get('textureRepeatMeters') and shape == 'box':
+        repeated = cube_geometry((part['p'][0], part['p'][2], part['s'][0], part['s'][2],
+                                  part['textureRepeatMeters']))
+        mesh_index = len(meshes)
+        attributes = {k:v for k,v in repeated.items() if k!='indices'}
+        if part.get('topTextureOnly'):
+            def face_indices(face_numbers):
+                values = []
+                for face in face_numbers:
+                    start = face * 4
+                    values.extend([start,start+2,start+1,start,start+3,start+2])
+                view = segment(struct.pack('<' + 'H' * len(values), *values), 34963)
+                return accessor(view, 5123, len(values), 'SCALAR')
+            primitives = [{'attributes': attributes, 'indices': face_indices([4]), 'material': names.index(part['color'])},
+                          {'attributes': attributes, 'indices': face_indices([0,1,2,3,5]), 'material': names.index('roof')}]
+        else:
+            primitives = [{'attributes': attributes, 'indices': repeated['indices'], 'material': names.index(part['color'])}]
+        meshes.append({'name': f"{shape} / {part['color']}", 'primitives': primitives})
+    node = {'name': part['name'], 'mesh': mesh_index,
             'translation': [part['p'][i]+part['s'][i]/2 for i in range(3)], 'scale': part['s'],
             'extras': {'level': part['level'], 'status': 'Photo-informed estimate; verify on site'}}
     if 'yaw' in part:

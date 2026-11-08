@@ -74,6 +74,19 @@ The owner asked for the terrace beside the courtyard and grills to be represente
 - **Lift:** the owner confirmed on 9 November that neither a lift nor a lift shaft is present. The drawing is retained as a record of what was planned or drawn, not proof of what was built.
 - **Aerial:** the upper light-coloured roof is the villa; avoid including the neighbour's lower roof. The image is not clear enough to locate every tank, roof edge or structure with certainty.
 
+## Photo-to-model comparison
+
+The project page's **Compare with a photo** controls select approximate views of the same model alongside reference photographs. Any other photo can be selected locally. Camera perspective is not calibrated, and repeated photos of the same feature do not provide independent measurements.
+
+| Reference views | What was checked or revised |
+| --- | --- |
+| `Iphone Front.jpeg`, `Iphone Wide Front Close.jpeg`, `IMG20261108120539.jpg` | Front stone surround, balcony, lower glazing and door, and the smaller right-hand opening. The surround proportions were adjusted visually. |
+| `Iphone Front left.jpeg`, `Iphone Side.jpeg`, `Iphone Wide Back Right.jpeg` | Side window's red surround, the two levels of small rear-side windows, terrace planter, courtyard fascia and the open slatted frame. Exact sizes remain approximate. |
+| `Iphone Wide Side Porch.jpeg`, `IMG20260926121327.jpg`, `IMG20261103114710.jpg`, `IMG20261103115125.jpg` | Courtyard glazing and doors, open canopy, adjacent lounge opening and upper railing. The lounge and puja remain approximate. |
+| `Iphone Wide Back.jpeg`, `Iphone Back far.jpeg`, `Iphone Wide Back left.jpeg` | The broad rear face appears largely blank in the photos, unlike the earlier model's two rear windows. The model now uses a continuous rear face and places approximate windows on the service-recess side; the original drawing remains unchanged. The spiral stair and rear entrance are retained. The tall neighbouring wall at the rear and the owner's description support a higher right-side boundary; its modelled heights are estimates. |
+| `IMG-20260226-WA0092.jpg`, `IMG-20260226-WA0035.jpg`, `IMG20261103114722.jpg` | Enclosed main stair beside the kitchen, its turn and the separate staircase opening. The first-floor slab was cut around the stair and no longer duplicates the service-terrace floor. |
+| Aerial reference, `IMG-20260226-WA0034.jpg`, `IMG20261103115012.jpg` | The upper light roof is the owner's villa. The tank is above the stair-head room as confirmed by the owner; its size and roof layout cannot be established from the aerial image. A mosaic terrace finish is illustrative: the exact level and scale of that photograph have not been verified. |
+
 ## Corrections and checks before remodelling
 
 1. Register the floor plans by the actual main staircase and corresponding walls, not independently by the red rectangles or by the lift shown only on the drawing. Check the footprint against the front, side, court and rear photographs.

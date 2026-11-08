@@ -72,6 +72,23 @@ class ProjectTests(unittest.TestCase):
         self.assertIn('Lounge below', labels)
         self.assertIn('Puja (approx.)', labels)
 
+    def test_first_floor_stair_opening_and_service_terrace(self):
+        slabs = [p for p in self.parts if p['level'] == 'first' and p['name'].startswith('First floor slab')]
+        for x, z in ((11, 8.2), (10, 14.5)):
+            self.assertFalse(any(p['p'][0] < x < p['p'][0] + p['s'][0] and
+                                 p['p'][2] < z < p['p'][2] + p['s'][2] for p in slabs), (x, z))
+        terrace = self.named('First floor service terrace')[0]
+        self.assertTrue(terrace['p'][0] < 10 < terrace['p'][0] + terrace['s'][0])
+        self.assertTrue(terrace['p'][2] < 14.5 < terrace['p'][2] + terrace['s'][2])
+
+    def test_rear_photo_face_has_no_added_windows(self):
+        self.assertFalse([p for p in self.parts if p['name'].startswith(('Rear bedroom window', 'First rear window'))])
+        walls = self.named('Rear solid exterior wall')
+        self.assertEqual({p['level'] for p in walls}, {'ground', 'first'})
+        self.assertAlmostEqual(walls[0]['p'][2], walls[1]['p'][2])
+        self.assertTrue(self.named('Rear service side window'))
+        self.assertTrue(self.named('Servant terrace window'))
+
     def test_rooftop_room_and_tank(self):
         tank = self.named('Water tank')[0]
         platform = self.named('Water tank platform')[0]
@@ -100,7 +117,11 @@ class ProjectTests(unittest.TestCase):
         self.assertAlmostEqual(max(p['p'][2]+p['s'][2] for p in soil)-min(p['p'][2] for p in soil), 29)
         neighbour = self.named('Neighbour boundary wall')
         self.assertGreater(len(neighbour), 1)
-        self.assertAlmostEqual(max(p['p'][1] + p['s'][1] for p in neighbour), .95)
+        self.assertGreaterEqual(min(p['p'][1] + p['s'][1] for p in neighbour), 1.8)
+        self.assertGreaterEqual(max(p['p'][1] + p['s'][1] for p in neighbour), 3.5)
+        wall = sorted(neighbour, key=lambda p: p['p'][2])
+        for a, b in zip(wall, wall[1:]):
+            self.assertAlmostEqual(a['p'][2] + a['s'][2], b['p'][2])
         self.assertAlmostEqual(sum(p['s'][2] for p in neighbour), 28.82)
         for part in self.parts:
             self.assertIn(part['color'], self.model['colors'], part['name'])
@@ -133,6 +154,21 @@ class ProjectTests(unittest.TestCase):
         for image in document['images']:
             view = document['bufferViews'][image['bufferView']]
             self.assertEqual(binary[view['byteOffset']:view['byteOffset']+2], b'\xff\xd8')
+
+        # The terrace image repeats at the same approximate scale in the export.
+        index = next(i for i, p in enumerate(self.parts) if p.get('textureRepeatMeters'))
+        part, node = self.parts[index], mesh_nodes[index]
+        mesh = document['meshes'][node['mesh']]
+        self.assertEqual(len(mesh['primitives']), 2)
+        self.assertEqual(document['accessors'][mesh['primitives'][0]['indices']]['count'], 6)
+        self.assertEqual(document['accessors'][mesh['primitives'][1]['indices']]['count'], 30)
+        self.assertEqual(document['materials'][mesh['primitives'][1]['material']]['name'], 'roof')
+        accessor = document['accessors'][mesh['primitives'][0]['attributes']['TEXCOORD_0']]
+        view = document['bufferViews'][accessor['bufferView']]
+        top_uv = struct.unpack_from('<8f', binary, view['byteOffset'] + 16 * 2 * 4)
+        tile = part['textureRepeatMeters']
+        self.assertAlmostEqual(top_uv[0], part['p'][0] / tile, places=5)
+        self.assertAlmostEqual(top_uv[4], (part['p'][0] + part['s'][0]) / tile, places=5)
 
 if __name__ == '__main__':
     unittest.main()

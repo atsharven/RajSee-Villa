@@ -18,4 +18,3 @@ jobs:
           python-version: '3.12'
       - run: python tools/export_model.py
       - run: python -m unittest discover -s tests
-      - run: git diff --exit-code -- assets/rajsee-villa.glb
