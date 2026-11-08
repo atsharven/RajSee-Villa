@@ -15,7 +15,7 @@ Updated 9 November 2026. This is the working reference for the existing Ansal A-
 - The first-floor study has a door to the service terrace beside the servant room. A spiral metal stair is at the rear.
 - The owner confirms that there is **neither an installed lift nor a lift shaft** in the actual villa, despite the lift shown in the plan.
 - The owner confirms that the rooftop water tank sits **on top of the stair-head room**.
-- The owner asked for the terrace beside the courtyard and grills to be represented as larger in the model, but is not sure whether that larger extent already exists or is a proposed change. Its depth and exact grille arrangement require confirmation.
+- The owner clarified that the opening and planter form part of the first-floor terrace, with overhead grilles at the opening and court only; the main terrace has no overhead grille. The exact terrace dimensions and grille spacing still require confirmation.
 - The hall ceiling heights confirmed by the owner are **9½ ft on the red-wall side** and **10 ft on the opposite side**. The red-wall side was identified as the TV side.
 - The hall currently has no false ceiling. Recessed profile-light ideas were discussed; their feasibility and electrical design need on-site checking.
 - The hall sides were described as 5,250 × 5,220 mm at the red-wall end and 4,050 × 4,940 mm at the opposite end. Confirm whether these are clear internal dimensions.

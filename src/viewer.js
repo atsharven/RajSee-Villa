@@ -36,18 +36,18 @@
       link.addEventListener('click', () => { assumptions.open = true; });
     }
   }
-  const cameras = {front: [.36, .37], side: [1.33, .40], rear: [3.42, .36], above: [.55, 1.10]};
+  const cameras = {front: [.36, .37], side: [1.33, .40], neighbour: [-1.33, .40], rear: [3.42, .36], above: [.55, 1.10]};
   // Approximate views for visual comparison; these are not calibrated camera poses.
   const photoMatches = {
-    front: {title:'Front and garden', src:'assets/front.jpg', camera:'front', yaw:.20, pitch:.03, zoom:1.05, focus:[5.8,3.5,.7], boundary:false},
-    frontside: {title:'Front and courtyard side', src:'assets/Photos Ansal A 60/Iphone Front left.jpeg', camera:'front', yaw:.78, pitch:.03, zoom:1.10, focus:[4.6,3.5,4.8], boundary:true},
-    side: {title:'Courtyard-side elevation', src:'assets/Photos Ansal A 60/Iphone Side.jpeg', camera:'side', yaw:1.50, pitch:.03, zoom:1.20, focus:[2.0,3.1,10.2], boundary:true},
-    courtyard: {title:'Courtyard and glazing', src:'assets/courtyard.jpg', camera:'side', yaw:1.52, pitch:.03, zoom:1.65, focus:[4.5,3.3,8.1], boundary:false},
-    terrace: {title:'First-floor terrace, seen from side', src:'assets/Photos Ansal A 60/Iphone Side.jpeg', camera:'side', yaw:1.45, pitch:.03, zoom:1.35, focus:[2.4,4.1,10.2], boundary:false},
-    rear: {title:'Rear and service yard', src:'assets/Photos Ansal A 60/Iphone Wide Back.jpeg', camera:'rear', yaw:3.13, pitch:.03, zoom:.80, focus:[6.3,4.0,18.5], boundary:true},
-    spiral: {title:'Rear spiral stair', src:'assets/rear-stair.jpg', camera:'rear', yaw:3.32, pitch:.03, zoom:1.65, focus:[10.5,2.5,17.8], boundary:false},
-    terracefloor: {title:'Terrace surface — level to verify', src:'assets/Photos Ansal A 60/IMG-20260226-WA0034.jpg', mode:'interior', floor:'roof', camera:'above', yaw:.55, pitch:1.10, zoom:1.10, focus:[5.7,6.2,10], boundary:false},
-    aerial: {title:'Aerial reference — upper light roof', src:'assets/aerial-reference.png', camera:'above', yaw:-1.37, pitch:1.35, zoom:1.10, focus:[5.7,6.1,9.5], boundary:false}
+    front: {title:'Front and garden', src:'assets/front.jpg', camera:'front', yaw:.20, pitch:.03, zoom:1.05, focus:[5.8,3.5,.7]},
+    frontside: {title:'Front and courtyard side', src:'assets/Photos Ansal A 60/Iphone Front left.jpeg', camera:'front', yaw:.78, pitch:.03, zoom:1.10, focus:[4.6,3.5,4.8]},
+    side: {title:'Courtyard-side elevation', src:'assets/Photos Ansal A 60/Iphone Side.jpeg', camera:'side', yaw:1.50, pitch:.03, zoom:1.20, focus:[2.0,3.1,10.2]},
+    courtyard: {title:'Courtyard and glazing', src:'assets/courtyard.jpg', camera:'side', yaw:1.52, pitch:.03, zoom:1.65, focus:[4.5,3.3,8.1]},
+    terrace: {title:'First-floor terrace, seen from side', src:'assets/Photos Ansal A 60/Iphone Side.jpeg', camera:'side', yaw:1.45, pitch:.03, zoom:1.35, focus:[2.4,4.1,10.2]},
+    rear: {title:'Rear and service yard', src:'assets/Photos Ansal A 60/Iphone Wide Back.jpeg', camera:'rear', yaw:3.13, pitch:.03, zoom:.80, focus:[6.3,4.0,18.5]},
+    spiral: {title:'Rear spiral stair', src:'assets/rear-stair.jpg', camera:'rear', yaw:3.32, pitch:.03, zoom:1.65, focus:[10.5,2.5,17.8]},
+    terracefloor: {title:'Terrace surface — level to verify', src:'assets/Photos Ansal A 60/IMG-20260226-WA0034.jpg', mode:'interior', floor:'roof', camera:'above', yaw:.55, pitch:1.10, zoom:1.10, focus:[5.7,6.2,10]},
+    aerial: {title:'Aerial reference — upper light roof', src:'assets/aerial-reference.png', camera:'above', yaw:-1.37, pitch:1.35, zoom:1.10, focus:[5.7,6.1,9.5]}
   };
   const state = {mode: 'base', floor: 'ground', camera: 'above', yaw: .55, pitch: 1.10, zoom: 1, drag: null, focus: null, photoMatch: null};
   const faces = [
@@ -148,7 +148,6 @@
     state.zoom = preset.zoom;
     state.focus = preset.focus;
     state.photoMatch = button.dataset.photoMatch;
-    boundary.checked = preset.boundary;
     showPhoto(preset.src, preset.title);
     updateControls();
     draw();
@@ -180,9 +179,10 @@
 
   function visible(part) {
     if (state.mode !== 'interior') return !part.interiorOnly && (boundary.checked || part.level !== 'boundary');
-    if (state.floor === 'roof') return part.level === 'roof' || part.level === 'roof-detail' ||
-      part.name.startsWith('Court pergola') ||
-      (part.name.startsWith('Terrace pergola') && part.name !== 'Terrace pergola outside post');
+    const grille = part.name.startsWith('Court pergola') ||
+      (part.name.startsWith('Terrace opening grille') && part.name !== 'Terrace opening grille post');
+    if (state.floor === 'roof') return part.level === 'roof' || part.level === 'roof-detail' || grille;
+    if (state.floor === 'first' && grille) return true;
     if (part.level === state.floor) return true;
     if (part.level === 'spiral') return state.floor === 'ground' || (state.floor === 'first' && part.p[1] >= 2.55);
     return false;

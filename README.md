@@ -27,7 +27,7 @@ The whole-villa, exterior and interior views all use `src/model.js`. Edit that o
 ## Working with the model
 
 - **Whole villa** shows the building, site and roof together.
-- **Exterior** starts at the front and can be rotated to the sides and rear; the boundary can be hidden.
+- **Exterior** starts at the front and can be rotated to the sides and rear. Choose **Neighbour side** to see the adjacent wall, and use **Boundary** to show or hide it.
 - **Interior** offers ground, first and roof views. The tank is above the stair-head room as confirmed by the owner; dimensions and other unverified details are in the assumptions panel.
 - **Compare with a photo** opens a reference next to the model and selects an approximate angle. Choose another photo from the collection if needed; it remains on the device.
 - `assets/rajsee-villa.glb` can be opened in software that supports glTF 2.0. Its components are grouped by floor and site area.

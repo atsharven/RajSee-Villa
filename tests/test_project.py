@@ -44,7 +44,15 @@ class ProjectTests(unittest.TestCase):
         self.assertFalse(terrace.get('interiorOnly', False))
         self.assertFalse(self.named('First floor service terrace')[0].get('interiorOnly', False))
         self.assertTrue(self.named('Terrace grille upright'))
-        self.assertTrue(self.named('Terrace pergola slat'))
+        grille = self.named('Terrace opening grille bar')
+        self.assertTrue(grille)
+        self.assertTrue(self.named('Court pergola slat'))
+        self.assertFalse(self.named('Terrace pergola slat'))
+        self.assertAlmostEqual(terrace['p'][2], 10.125)
+        self.assertAlmostEqual(terrace['p'][2] + terrace['s'][2], 14.875)
+        # The main terrace beyond the marked opening must be open to the sky.
+        for bar in grille + self.named('Court pergola slat'):
+            self.assertLessEqual(bar['p'][2] + bar['s'][2], 11.25)
         self.assertTrue(self.named('Study door to service terrace'))
         self.assertTrue(self.named('Servant room door to terrace'))
         self.assertTrue(self.named('Courtyard back wall'))
@@ -80,6 +88,12 @@ class ProjectTests(unittest.TestCase):
         terrace = self.named('First floor service terrace')[0]
         self.assertTrue(terrace['p'][0] < 10 < terrace['p'][0] + terrace['s'][0])
         self.assertTrue(terrace['p'][2] < 14.5 < terrace['p'][2] + terrace['s'][2])
+        # No wall may cut across the clear part of the shared service terrace.
+        barriers = [p for p in self.parts if p['level'] == 'first' and p['s'][1] > .3
+                    and p['p'][0] < 11.9 and p['p'][0] + p['s'][0] > 8.7
+                    and p['p'][2] < 16.75 and p['p'][2] + p['s'][2] > 13.8
+                    and p['p'][1] < 5 and p['p'][1] + p['s'][1] > 3.45]
+        self.assertFalse(barriers, [p['name'] for p in barriers])
 
     def test_rear_photo_face_has_no_added_windows(self):
         self.assertFalse([p for p in self.parts if p['name'].startswith(('Rear bedroom window', 'First rear window'))])
@@ -96,7 +110,9 @@ class ProjectTests(unittest.TestCase):
         self.assertAlmostEqual(tank['p'][1], platform['p'][1] + platform['s'][1])
         room = self.named('Rooftop room roof')[0]
         self.assertAlmostEqual(room['s'][0], 3.2)
-        self.assertAlmostEqual(room['s'][2], 1.6)
+        self.assertGreaterEqual(room['s'][2], 3.0)
+        self.assertLess(platform['s'][0] * platform['s'][2], room['s'][0] * room['s'][2])
+        self.assertTrue(room['p'][2] < 8.2 < room['p'][2] + room['s'][2])
         self.assertGreater(room['p'][1], 6.46)
         self.assertAlmostEqual(platform['p'][1], room['p'][1] + room['s'][1])
         for axis in (0, 2):
@@ -118,7 +134,7 @@ class ProjectTests(unittest.TestCase):
         neighbour = self.named('Neighbour boundary wall')
         self.assertGreater(len(neighbour), 1)
         self.assertAlmostEqual(min(p['p'][1] + p['s'][1] for p in neighbour), 1.8)
-        self.assertAlmostEqual(max(p['p'][1] + p['s'][1] for p in neighbour), 3.5)
+        self.assertAlmostEqual(max(p['p'][1] + p['s'][1] for p in neighbour), 6.9)
         wall = sorted(neighbour, key=lambda p: p['p'][2])
         for a, b in zip(wall, wall[1:]):
             self.assertAlmostEqual(a['p'][2] + a['s'][2], b['p'][2])

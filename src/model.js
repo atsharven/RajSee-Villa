@@ -760,7 +760,7 @@ window.RAJSEE_MODEL = {
       "s": [
         0.16000000000000014,
         3.0,
-        3.0
+        0.7
       ],
       "color": "wall",
       "level": "first"
@@ -830,12 +830,12 @@ window.RAJSEE_MODEL = {
       "p": [
         0.0,
         3.1399999999999997,
-        11.25
+        10.125
       ],
       "s": [
         4.875,
         0.16000000000000014,
-        3.625
+        4.75
       ],
       "color": "terrace",
       "level": "first"
@@ -1216,26 +1216,11 @@ window.RAJSEE_MODEL = {
       "level": "first"
     },
     {
-      "name": "First floor terrace end",
-      "p": [
-        8.5,
-        3.3,
-        15.795
-      ],
-      "s": [
-        3.25,
-        1.0,
-        0.16000000000000014
-      ],
-      "color": "wall",
-      "level": "first"
-    },
-    {
       "name": "Terrace parapet",
       "p": [
         0.0,
         3.3,
-        11.17
+        10.045
       ],
       "s": [
         4.875,
@@ -1250,42 +1235,12 @@ window.RAJSEE_MODEL = {
       "p": [
         -0.08,
         3.3,
-        11.25
+        10.125
       ],
       "s": [
         0.16,
         0.9000000000000004,
-        3.625
-      ],
-      "color": "wall",
-      "level": "first"
-    },
-    {
-      "name": "Terrace back parapet",
-      "p": [
-        8.5,
-        3.3,
-        16.87
-      ],
-      "s": [
-        3.25,
-        0.9000000000000004,
-        0.1599999999999966
-      ],
-      "color": "wall",
-      "level": "first"
-    },
-    {
-      "name": "Terrace end parapet",
-      "p": [
-        11.67,
-        3.3,
-        15.875
-      ],
-      "s": [
-        0.16000000000000014,
-        0.9000000000000004,
-        1.0749999999999993
+        4.75
       ],
       "color": "wall",
       "level": "first"
@@ -7927,7 +7882,7 @@ window.RAJSEE_MODEL = {
       "p": [
         1.25,
         4.25,
-        11.225
+        10.1
       ],
       "s": [
         3.5,
@@ -7942,7 +7897,7 @@ window.RAJSEE_MODEL = {
       "p": [
         1.25,
         4.48,
-        11.225
+        10.1
       ],
       "s": [
         3.5,
@@ -7957,7 +7912,7 @@ window.RAJSEE_MODEL = {
       "p": [
         1.25,
         4.72,
-        11.225
+        10.1
       ],
       "s": [
         3.5,
@@ -7972,7 +7927,7 @@ window.RAJSEE_MODEL = {
       "p": [
         1.25,
         4.92,
-        11.225
+        10.1
       ],
       "s": [
         3.5,
@@ -7987,7 +7942,7 @@ window.RAJSEE_MODEL = {
       "p": [
         1.23,
         4.2,
-        11.225
+        10.1
       ],
       "s": [
         0.040000000000000036,
@@ -8002,7 +7957,7 @@ window.RAJSEE_MODEL = {
       "p": [
         1.5216666666666667,
         4.2,
-        11.225
+        10.1
       ],
       "s": [
         0.040000000000000036,
@@ -8017,7 +7972,7 @@ window.RAJSEE_MODEL = {
       "p": [
         1.8133333333333335,
         4.2,
-        11.225
+        10.1
       ],
       "s": [
         0.040000000000000036,
@@ -8032,7 +7987,7 @@ window.RAJSEE_MODEL = {
       "p": [
         2.105,
         4.2,
-        11.225
+        10.1
       ],
       "s": [
         0.040000000000000036,
@@ -8047,7 +8002,7 @@ window.RAJSEE_MODEL = {
       "p": [
         2.396666666666667,
         4.2,
-        11.225
+        10.1
       ],
       "s": [
         0.040000000000000036,
@@ -8062,7 +8017,7 @@ window.RAJSEE_MODEL = {
       "p": [
         2.6883333333333335,
         4.2,
-        11.225
+        10.1
       ],
       "s": [
         0.040000000000000036,
@@ -8077,7 +8032,7 @@ window.RAJSEE_MODEL = {
       "p": [
         2.98,
         4.2,
-        11.225
+        10.1
       ],
       "s": [
         0.040000000000000036,
@@ -8092,7 +8047,7 @@ window.RAJSEE_MODEL = {
       "p": [
         3.271666666666667,
         4.2,
-        11.225
+        10.1
       ],
       "s": [
         0.040000000000000036,
@@ -8107,7 +8062,7 @@ window.RAJSEE_MODEL = {
       "p": [
         3.5633333333333335,
         4.2,
-        11.225
+        10.1
       ],
       "s": [
         0.040000000000000036,
@@ -8122,7 +8077,7 @@ window.RAJSEE_MODEL = {
       "p": [
         3.855,
         4.2,
-        11.225
+        10.1
       ],
       "s": [
         0.040000000000000036,
@@ -8137,7 +8092,7 @@ window.RAJSEE_MODEL = {
       "p": [
         4.146666666666667,
         4.2,
-        11.225
+        10.1
       ],
       "s": [
         0.03999999999999915,
@@ -8152,7 +8107,7 @@ window.RAJSEE_MODEL = {
       "p": [
         4.438333333333334,
         4.2,
-        11.225
+        10.1
       ],
       "s": [
         0.03999999999999915,
@@ -8167,7 +8122,7 @@ window.RAJSEE_MODEL = {
       "p": [
         4.73,
         4.2,
-        11.225
+        10.1
       ],
       "s": [
         0.03999999999999915,
@@ -8182,7 +8137,7 @@ window.RAJSEE_MODEL = {
       "p": [
         8.45,
         6.46,
-        8.930000000000001
+        10.23
       ],
       "s": [
         3.200000000000001,
@@ -8197,12 +8152,12 @@ window.RAJSEE_MODEL = {
       "p": [
         8.45,
         6.46,
-        7.45
+        7.25
       ],
       "s": [
         0.11999999999999922,
         2.04,
-        1.6000000000000005
+        3.1
       ],
       "color": "wall",
       "level": "roof-detail"
@@ -8212,12 +8167,12 @@ window.RAJSEE_MODEL = {
       "p": [
         11.530000000000001,
         6.46,
-        7.45
+        7.25
       ],
       "s": [
         0.11999999999999922,
         2.04,
-        1.6000000000000005
+        3.1
       ],
       "color": "wall",
       "level": "roof-detail"
@@ -8227,7 +8182,7 @@ window.RAJSEE_MODEL = {
       "p": [
         8.45,
         6.46,
-        7.45
+        7.25
       ],
       "s": [
         0.7000000000000011,
@@ -8242,7 +8197,7 @@ window.RAJSEE_MODEL = {
       "p": [
         10.05,
         6.46,
-        7.45
+        7.25
       ],
       "s": [
         1.5999999999999996,
@@ -8257,7 +8212,7 @@ window.RAJSEE_MODEL = {
       "p": [
         9.15,
         8.41,
-        7.45
+        7.25
       ],
       "s": [
         0.9000000000000004,
@@ -8272,7 +8227,7 @@ window.RAJSEE_MODEL = {
       "p": [
         9.15,
         6.46,
-        7.4350000000000005
+        7.235
       ],
       "s": [
         0.9000000000000004,
@@ -8287,12 +8242,12 @@ window.RAJSEE_MODEL = {
       "p": [
         8.45,
         8.5,
-        7.45
+        7.25
       ],
       "s": [
         3.200000000000001,
         0.14000000000000057,
-        1.6000000000000005
+        3.1
       ],
       "color": "roof",
       "level": "roof-detail"
@@ -8641,7 +8596,7 @@ window.RAJSEE_MODEL = {
       ],
       "s": [
         0.18,
-        2.33,
+        7.03,
         1.516842105263158
       ],
       "color": "boundary",
@@ -8657,7 +8612,7 @@ window.RAJSEE_MODEL = {
       ],
       "s": [
         0.18,
-        2.33,
+        7.03,
         1.516842105263158
       ],
       "color": "boundary",
@@ -8673,7 +8628,7 @@ window.RAJSEE_MODEL = {
       ],
       "s": [
         0.18,
-        2.33,
+        7.03,
         1.516842105263158
       ],
       "color": "boundary",
@@ -8689,7 +8644,7 @@ window.RAJSEE_MODEL = {
       ],
       "s": [
         0.18,
-        2.33,
+        7.03,
         1.516842105263158
       ],
       "color": "boundary",
@@ -8705,7 +8660,7 @@ window.RAJSEE_MODEL = {
       ],
       "s": [
         0.18,
-        2.33,
+        7.03,
         1.516842105263158
       ],
       "color": "boundary",
@@ -8721,7 +8676,7 @@ window.RAJSEE_MODEL = {
       ],
       "s": [
         0.18,
-        2.33,
+        7.03,
         1.516842105263158
       ],
       "color": "boundary",
@@ -8737,7 +8692,7 @@ window.RAJSEE_MODEL = {
       ],
       "s": [
         0.18,
-        2.33,
+        7.03,
         1.516842105263158
       ],
       "color": "boundary",
@@ -8753,7 +8708,7 @@ window.RAJSEE_MODEL = {
       ],
       "s": [
         0.18,
-        2.33,
+        7.03,
         1.516842105263158
       ],
       "color": "boundary",
@@ -8769,7 +8724,7 @@ window.RAJSEE_MODEL = {
       ],
       "s": [
         0.18,
-        2.33,
+        7.03,
         1.516842105263158
       ],
       "color": "boundary",
@@ -8785,7 +8740,7 @@ window.RAJSEE_MODEL = {
       ],
       "s": [
         0.18,
-        2.33,
+        7.03,
         1.516842105263158
       ],
       "color": "boundary",
@@ -8801,7 +8756,7 @@ window.RAJSEE_MODEL = {
       ],
       "s": [
         0.18,
-        2.33,
+        7.03,
         1.516842105263158
       ],
       "color": "boundary",
@@ -8817,7 +8772,7 @@ window.RAJSEE_MODEL = {
       ],
       "s": [
         0.18,
-        3.63,
+        7.03,
         1.516842105263158
       ],
       "color": "boundary",
@@ -8833,7 +8788,7 @@ window.RAJSEE_MODEL = {
       ],
       "s": [
         0.18,
-        3.63,
+        7.03,
         1.516842105263158
       ],
       "color": "boundary",
@@ -9676,156 +9631,6 @@ window.RAJSEE_MODEL = {
       "color": "parapet",
       "level": "roof-detail",
       "seamlessSegments": true
-    },
-    {
-      "name": "Terrace pergola outside post",
-      "p": [
-        0.05,
-        3.3,
-        11.2
-      ],
-      "s": [
-        0.18,
-        3.08,
-        0.18
-      ],
-      "color": "wall",
-      "level": "decoration"
-    },
-    {
-      "name": "Terrace pergola front beam",
-      "p": [
-        0.05,
-        6.18,
-        11.2
-      ],
-      "s": [
-        4.78,
-        0.2,
-        0.18
-      ],
-      "color": "wall",
-      "level": "decoration"
-    },
-    {
-      "name": "Terrace pergola side beam",
-      "p": [
-        0.05,
-        6.18,
-        11.2
-      ],
-      "s": [
-        0.18,
-        0.2,
-        3.58
-      ],
-      "color": "wall",
-      "level": "decoration"
-    },
-    {
-      "name": "Terrace pergola slat",
-      "p": [
-        0.23,
-        6.22,
-        11.68
-      ],
-      "s": [
-        4.55,
-        0.12,
-        0.08
-      ],
-      "color": "wall",
-      "level": "decoration"
-    },
-    {
-      "name": "Terrace pergola slat",
-      "p": [
-        0.23,
-        6.22,
-        12.18
-      ],
-      "s": [
-        4.55,
-        0.12,
-        0.08
-      ],
-      "color": "wall",
-      "level": "decoration"
-    },
-    {
-      "name": "Terrace pergola slat",
-      "p": [
-        0.23,
-        6.22,
-        12.68
-      ],
-      "s": [
-        4.55,
-        0.12,
-        0.08
-      ],
-      "color": "wall",
-      "level": "decoration"
-    },
-    {
-      "name": "Terrace pergola slat",
-      "p": [
-        0.23,
-        6.22,
-        13.18
-      ],
-      "s": [
-        4.55,
-        0.12,
-        0.08
-      ],
-      "color": "wall",
-      "level": "decoration"
-    },
-    {
-      "name": "Terrace pergola slat",
-      "p": [
-        0.23,
-        6.22,
-        13.68
-      ],
-      "s": [
-        4.55,
-        0.12,
-        0.08
-      ],
-      "color": "wall",
-      "level": "decoration"
-    },
-    {
-      "name": "Terrace pergola slat",
-      "p": [
-        0.23,
-        6.22,
-        14.18
-      ],
-      "s": [
-        4.55,
-        0.12,
-        0.08
-      ],
-      "color": "wall",
-      "level": "decoration"
-    },
-    {
-      "name": "Terrace pergola slat",
-      "p": [
-        0.23,
-        6.22,
-        14.68
-      ],
-      "s": [
-        4.55,
-        0.12,
-        0.08
-      ],
-      "color": "wall",
-      "level": "decoration"
     },
     {
       "name": "Main stair first flight",
@@ -10968,12 +10773,12 @@ window.RAJSEE_MODEL = {
       "p": [
         -0.4,
         4.06,
-        11.3
+        10.125
       ],
       "s": [
         0.56,
         0.38,
-        1.4
+        1.125
       ],
       "color": "cream",
       "level": "first"
@@ -11051,6 +10856,216 @@ window.RAJSEE_MODEL = {
         0.035
       ],
       "color": "parapet",
+      "level": "decoration"
+    },
+    {
+      "name": "Terrace opening grille post",
+      "p": [
+        0.05,
+        3.3,
+        10.125
+      ],
+      "s": [
+        0.18,
+        3.08,
+        0.18
+      ],
+      "color": "wall",
+      "level": "decoration"
+    },
+    {
+      "name": "Terrace opening grille frame",
+      "p": [
+        0.05,
+        6.18,
+        10.125
+      ],
+      "s": [
+        4.78,
+        0.2,
+        0.18
+      ],
+      "color": "wall",
+      "level": "decoration"
+    },
+    {
+      "name": "Terrace opening grille frame",
+      "p": [
+        0.05,
+        6.18,
+        11.07
+      ],
+      "s": [
+        4.78,
+        0.2,
+        0.18
+      ],
+      "color": "wall",
+      "level": "decoration"
+    },
+    {
+      "name": "Terrace opening grille frame",
+      "p": [
+        0.05,
+        6.18,
+        10.125
+      ],
+      "s": [
+        0.18,
+        0.2,
+        1.125
+      ],
+      "color": "wall",
+      "level": "decoration"
+    },
+    {
+      "name": "Terrace opening grille frame",
+      "p": [
+        4.65,
+        6.18,
+        10.125
+      ],
+      "s": [
+        0.18,
+        0.2,
+        1.125
+      ],
+      "color": "wall",
+      "level": "decoration"
+    },
+    {
+      "name": "Terrace opening grille bar",
+      "p": [
+        0.43,
+        6.23,
+        10.3
+      ],
+      "s": [
+        0.07,
+        0.12,
+        0.77
+      ],
+      "color": "metal",
+      "level": "decoration"
+    },
+    {
+      "name": "Terrace opening grille bar",
+      "p": [
+        0.89,
+        6.23,
+        10.3
+      ],
+      "s": [
+        0.07,
+        0.12,
+        0.77
+      ],
+      "color": "metal",
+      "level": "decoration"
+    },
+    {
+      "name": "Terrace opening grille bar",
+      "p": [
+        1.35,
+        6.23,
+        10.3
+      ],
+      "s": [
+        0.07,
+        0.12,
+        0.77
+      ],
+      "color": "metal",
+      "level": "decoration"
+    },
+    {
+      "name": "Terrace opening grille bar",
+      "p": [
+        1.81,
+        6.23,
+        10.3
+      ],
+      "s": [
+        0.07,
+        0.12,
+        0.77
+      ],
+      "color": "metal",
+      "level": "decoration"
+    },
+    {
+      "name": "Terrace opening grille bar",
+      "p": [
+        2.27,
+        6.23,
+        10.3
+      ],
+      "s": [
+        0.07,
+        0.12,
+        0.77
+      ],
+      "color": "metal",
+      "level": "decoration"
+    },
+    {
+      "name": "Terrace opening grille bar",
+      "p": [
+        2.73,
+        6.23,
+        10.3
+      ],
+      "s": [
+        0.07,
+        0.12,
+        0.77
+      ],
+      "color": "metal",
+      "level": "decoration"
+    },
+    {
+      "name": "Terrace opening grille bar",
+      "p": [
+        3.19,
+        6.23,
+        10.3
+      ],
+      "s": [
+        0.07,
+        0.12,
+        0.77
+      ],
+      "color": "metal",
+      "level": "decoration"
+    },
+    {
+      "name": "Terrace opening grille bar",
+      "p": [
+        3.65,
+        6.23,
+        10.3
+      ],
+      "s": [
+        0.07,
+        0.12,
+        0.77
+      ],
+      "color": "metal",
+      "level": "decoration"
+    },
+    {
+      "name": "Terrace opening grille bar",
+      "p": [
+        4.11,
+        6.23,
+        10.3
+      ],
+      "s": [
+        0.07,
+        0.12,
+        0.77
+      ],
+      "color": "metal",
       "level": "decoration"
     }
   ],
@@ -11249,7 +11264,17 @@ window.RAJSEE_MODEL = {
     "aerial_property": "upper light-coloured roof",
     "lounge_opening_status": "Approximate location traced from plan; confirm extent, railing and puja layout on site",
     "roof_tank_position": "On top of stair-head room (owner confirmed); dimensions and support estimated",
-    "neighbour_boundary_heights_m_above_ground_estimate": [1.8, 2.2, 3.5],
-    "photo_audit": "Rear wall, service windows, front/side details and first-floor openings revised against plan and photographs; measurements remain approximate"
+    "neighbour_boundary_heights_m_above_ground_estimate": [
+      1.8,
+      6.9,
+      3.5
+    ],
+    "photo_audit": "Rear wall, service windows, front/side details and first-floor openings revised against plan and photographs; measurements remain approximate",
+    "terrace_owner_correction": "Opening and planter are part of the terrace; grille above the marked opening and court only, no canopy over the open terrace.",
+    "stair_head_footprint_m_estimate": [
+      3.2,
+      3.1
+    ],
+    "service_terrace_owner_correction": "Open between the study, servant room and spiral staircase; no cross walls."
   }
 };
