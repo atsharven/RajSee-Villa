@@ -8,53 +8,102 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23233e38'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-size='40' font-family='Georgia' fill='%23f6f4ee'%3ER%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css">
   <script defer src="src/model.js"></script>
+  <script defer src="src/viewer-config.js"></script>
+  <script defer src="src/renderer.js"></script>
   <script defer src="src/viewer.js"></script>
 </head>
 <body>
-  <header class="site-header">
-    <a class="brand" href="#home" aria-label="RajSee Villa, home">
-      <span class="brand-mark">R<span>·</span></span>
-      <span><strong>RajSee Villa</strong><small>Ansal A-60 · Ajmer</small></span>
-    </a>
-    <nav aria-label="Main navigation">
-      <a href="#plan">Floor plan</a>
-      <a href="#views">Views</a>
-      <a href="#studio">3D model</a>
-      <a href="#references">References</a>
-    </nav>
-    <a class="header-link" href="#plan">Review the layout <span aria-hidden="true">↗</span></a>
+  <header class="site-header" id="home">
+    <a class="brand" href="#home" aria-label="RajSee Villa, home"><span class="brand-mark">R</span><span><strong>RajSee Villa</strong><small>Ansal A-60 · Ajmer</small></span></a>
+    <nav aria-label="Main navigation"><a href="#studio">3D model</a><a href="#plan">Floor plans</a><a href="#references">References</a></nav>
   </header>
-
-  <main id="home">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="eyebrow"><span class="eyebrow-line"></span> A HOME IN PROGRESS</p>
-        <h1 id="hero-title">A better view of<br><em>what’s possible.</em></h1>
-        <p class="hero-intro">Start with the floor plan and photographs to understand the villa. Explore the photo-informed 3D model as a starting point for renovation planning.</p>
-        <div class="hero-actions">
-          <a class="button button-dark" href="#plan">Review the floor plan <span aria-hidden="true">↗</span></a>
-          <a class="text-link" href="#references">View project notes <span aria-hidden="true">→</span></a>
+  <main>
+    <section class="studio-section" id="studio" aria-labelledby="studio-title">
+      <div class="studio-top">
+        <div><p class="eyebrow">YOUR RENOVATION WORKSPACE</p><h1 id="studio-title">Explore your villa</h1><p>Rotate the model, choose a floor and compare it with your photos.</p></div>
+        <a class="model-download" href="assets/rajsee-villa.glb" download>Download 3D model ↓</a>
+      </div>
+      <div class="studio-shell">
+        <div class="studio-header"><div><span class="model-kicker">CURRENT VIEW</span><h2 id="model-title">The whole villa</h2></div><span class="status">Working model</span></div>
+        <p class="review-warning">Some details are estimates. <a href="#assumptions">See assumptions and measurements to check</a>.</p>
+        <div class="model-toolbar">
+          <div class="control-group mode-controls" role="group" aria-label="Choose model view">
+            <button type="button" class="control is-active" data-mode="base" aria-pressed="true">Whole villa</button>
+            <button type="button" class="control" data-mode="exterior" aria-pressed="false">Exterior</button>
+            <button type="button" class="control" data-mode="interior" aria-pressed="false">Interior</button>
+          </div>
+          <div class="control-group floor-controls" role="group" aria-label="Choose floor" hidden>
+            <button type="button" class="control is-active" data-floor="ground" aria-pressed="true">Ground</button>
+            <button type="button" class="control" data-floor="first" aria-pressed="false">First</button>
+            <button type="button" class="control" data-floor="roof" aria-pressed="false">Roof &amp; tank</button>
+          </div>
         </div>
-        <div class="hero-note"><span class="dot"></span> Plan and photo review <span class="note-separator">/</span> Photo-informed working model</div>
+        <div class="view-toolbar">
+          <div class="control-group camera-controls" role="group" aria-label="Choose viewpoint">
+            <button type="button" class="control subtle" data-camera="front" aria-pressed="false">Front</button>
+            <button type="button" class="control subtle" data-camera="side" aria-pressed="false">Side</button>
+            <button type="button" class="control subtle" data-camera="neighbour" aria-pressed="false">Neighbour side</button>
+            <button type="button" class="control subtle" data-camera="rear" aria-pressed="false">Rear</button>
+            <button type="button" class="control subtle is-active" data-camera="above" aria-pressed="true">Above</button>
+          </div>
+          <div class="view-options">
+            <label class="option-control" id="boundary-control"><input type="checkbox" id="boundary-toggle" checked> Boundary</label>
+            <label class="option-control" id="label-control" hidden><input type="checkbox" id="label-toggle" checked> Room labels</label>
+            <label class="option-control"><input type="checkbox" id="texture-toggle"> Show textures</label>
+          </div>
+        </div>
+        <details class="photo-match-toolbar" id="photo-tools">
+          <summary>Compare with a photo <span>Choose a reference angle or your own image</span></summary>
+          <div class="photo-tools-content">
+            <label for="photo-preset">Reference angle</label>
+            <select id="photo-preset"><option value="">Choose an angle</option></select>
+            <label class="photo-upload">Choose another photo<input id="photo-upload" type="file" accept="image/*"></label>
+          </div>
+        </details>
+        <div class="studio-stage" id="studio-stage">
+          <div class="canvas-wrap">
+            <canvas id="villa-canvas" tabindex="0" aria-label="Interactive approximate 3D model of RajSee Villa. Drag to rotate, or use arrow keys."></canvas>
+            <div class="canvas-tag" aria-hidden="true"><span class="tag-dot"></span> <span id="canvas-tag-text">SITE &amp; ROOFTOP</span></div>
+            <span class="canvas-hint">Drag to rotate · scroll to zoom</span>
+          </div>
+          <aside class="comparison-photo" id="comparison-photo" aria-label="Reference photograph" hidden>
+            <div class="comparison-photo-header"><strong id="comparison-photo-title">Reference photo</strong><button type="button" id="comparison-close" aria-label="Close reference photo">×</button></div>
+            <img id="comparison-photo-image" alt="">
+            <p>Angles are approximate. Drag and zoom to compare. Selected photos stay on this device.</p>
+          </aside>
+        </div>
+        <div class="studio-footer">
+          <p id="model-detail">A working view of the villa, garden and rooftop.</p>
+          <label class="zoom-control" for="zoom-range">Zoom <span id="zoom-value">100%</span><input type="range" id="zoom-range" min="60" max="220" step="5" value="100"></label>
+        </div>
       </div>
-      <div class="hero-image-wrap">
-        <img class="hero-image" src="assets/front.jpg" alt="The current front of RajSee Villa, showing the balcony and garden area">
-        <div class="image-caption"><span>01 / VILLA REFERENCE</span><strong>The front, as photographed</strong></div>
-      </div>
-      <div class="hero-side-label" aria-hidden="true">A SPACE TO REIMAGINE · RAJSEE VILLA</div>
+      <details class="model-assumptions" id="assumptions">
+        <summary><span><small>MODEL REFERENCE</small><strong>Assumptions & measurements to check</strong></span><span class="plan-expand" aria-hidden="true">+</span></summary>
+        <div class="assumptions-content">
+          <p>These are the current assumptions used across all views and the downloadable model. The drawing and photographs are references, not a measured survey.</p>
+          <ul>
+            <li><strong>Plot and boundary:</strong> the plan states 14.50 × 29.00 m, but its red outline is not proportionate to those dimensions. House position, garden depth, gates and setbacks are estimated. The adjacent-home side is shown as a much taller shared-side wall, with lower garden and rear returns. Its assumed heights are approximately 1.8 m at the front, 6.9 m beside the villa and 3.5 m at the back; the actual height, ownership and changes along the length need checking. Use Neighbour side to see it, or untick Boundary to look through it.</li>
+            <li><strong>Levels and stairs:</strong> ground to first floor is set at 3.30 m, and first-floor surface to roof surface at about 3.16 m. The confirmed hall ceiling heights of 9½ ft and 10 ft are not yet reproduced. The stair's nine-step first flight, turn, other steps, enclosure and landings are photo-informed approximations.</li>
+            <li><strong>Tank and stair-head room:</strong> you confirmed the tank is on top of the stair-head room. The tank is represented as about 1.20 m in diameter and 1.27 m high, on an estimated platform. The larger stair-head is shown over the combined stair/core area, approximately 3.20 × 3.10 m; the plan's 3.20 × 1.60 m machine-room callout describes only part of that area. The actual outline, height and tank supports need checking. No lift or lift shaft is present.</li>
+            <li><strong>Terraces and roof walls:</strong> the courtyard-side terrace includes the opening and planter; the model places overhead grilles over the opening and court, while the main terrace stays open to the sky. The service terrace has no cross walls. Exact edges, grille positions, roof access and parapet heights need checking. The roof parapets are roughly 0.86 m high in the model, with lower portions at the front. The mosaic is taken from a terrace photograph; its exact level, extent and scale are unconfirmed.</li>
+            <li><strong>Openings and finishes:</strong> the separate court and lounge openings, lounge railing, puja marker, window and door positions, room layout and rear spiral stair are approximate. The blank rear face follows the rear photographs; the service-side windows are estimated from the photos and plan. The puja marker is a label rather than a fully modelled room. Facade colours and materials are based on selected photos and are not a complete record of finishes.</li>
+          </ul>
+          <p>Before construction or ordering materials, verify the existing building, measurements and structure on site.</p>
+        </div>
+      </details>
     </section>
 
     <section class="plan-section" id="plan" aria-labelledby="plan-title">
       <div class="section-heading">
-        <div><p class="eyebrow">START WITH THE BASICS</p><h2 id="plan-title">Understand the layout.</h2></div>
-        <p>Original plan views with notes from the photographs and your corrections. Select a floor to explore.</p>
+        <div><p class="eyebrow">ORIGINAL DRAWINGS</p><h2 id="plan-title">Floor plans</h2></div>
+        <p>Choose a floor to see the drawing and its key notes.</p>
       </div>
       <div class="orientation-note">
         <strong>Find your bearings</strong>
         <p>On these plans, the front and garden face the 24 m road at the bottom. The side road is on the left, the 12 m road is at the back, and villa A-0061 is on the right. The north marker appears to point left; check on site.</p>
       </div>
       <div class="plan-list">
-        <details class="plan-floor" open>
+        <details class="plan-floor">
           <summary><span><small>01 / ORIGINAL DRAWING</small><strong>Ground floor</strong></span><span class="plan-expand" aria-hidden="true">+</span></summary>
           <div class="plan-content">
             <a class="plan-image" href="assets/plan-ground.png" aria-label="Open the ground floor drawing at full size"><img src="assets/plan-ground.png" alt="Ground floor from the original plan, with the 24 metre road at the front" loading="lazy"></a>
@@ -113,8 +162,8 @@
         <div><strong>Site size on the plan</strong><span>14.50 × 29.00 m · 420.50 sq m</span></div>
         <p>The red boundary is not drawn in the same proportions as those dimensions, so garden depth and setbacks cannot be taken from its outline. <a href="docs/layout-review.md">Read the full layout review ↗</a> · <a href="docs/floor-plan.pdf">Open the original plan ↗</a></p>
       </div>
-      <div class="photo-evidence" aria-labelledby="photo-evidence-title">
-        <div class="photo-heading"><p class="eyebrow">PHOTO CROSS-CHECK</p><h3 id="photo-evidence-title">What the photographs show.</h3></div>
+      <details class="photo-evidence">
+        <summary>Reference photos</summary>
         <div class="photo-grid">
           <a href="assets/front.jpg"><img src="assets/front.jpg" alt="Front facade, balcony and garden" loading="lazy"><span><strong>Front & garden</strong><small>Facade, balcony and existing openings</small></span></a>
           <a href="assets/courtyard.jpg"><img src="assets/courtyard.jpg" alt="Courtyard showing slatted opening, walls and doors" loading="lazy"><span><strong>Courtyard</strong><small>Slats above, walls and doors around</small></span></a>
@@ -122,115 +171,11 @@
           <a href="assets/main-stair.jpg"><img src="assets/main-stair.jpg" alt="Enclosed staircase beside the kitchen" loading="lazy"><span><strong>Main stair</strong><small>Enclosed flight beside the kitchen</small></span></a>
           <a href="assets/rear-stair.jpg"><img src="assets/rear-stair.jpg" alt="Metal spiral staircase at the rear of the villa" loading="lazy"><span><strong>Rear service area</strong><small>The round metal staircase</small></span></a>
         </div>
-      </div>
-    </section>
-
-    <section class="views-section" id="views" aria-labelledby="views-title">
-      <div class="section-heading">
-        <div><p class="eyebrow">CURRENT WORKING SKETCH</p><h2 id="views-title">Explore the model.</h2></div>
-        <p>Compare the views with the plan and photographs above; dimensions still need checking.</p>
-      </div>
-      <div class="view-grid">
-        <button class="view-card" type="button" data-entry="base">
-          <span class="card-image"><img src="assets/aerial-reference.png" alt=""><span class="card-number">01</span></span>
-          <span class="card-content"><span><strong>The whole villa</strong><small>Site, floors and rooftop together</small></span><span class="card-arrow" aria-hidden="true">↗</span></span>
-        </button>
-        <button class="view-card" type="button" data-entry="exterior">
-          <span class="card-image"><img src="assets/front.jpg" alt=""><span class="card-number">02</span></span>
-          <span class="card-content"><span><strong>Outside & garden</strong><small>Facade, courtyard and boundary</small></span><span class="card-arrow" aria-hidden="true">↗</span></span>
-        </button>
-        <button class="view-card" type="button" data-entry="interior">
-          <span class="card-image"><img src="assets/courtyard.jpg" alt=""><span class="card-number">03</span></span>
-          <span class="card-content"><span><strong>Inside the villa</strong><small>Ground, first and roof levels</small></span><span class="card-arrow" aria-hidden="true">↗</span></span>
-        </button>
-      </div>
-    </section>
-
-    <section class="studio-section" id="studio" aria-labelledby="studio-title">
-      <div class="studio-top">
-        <div><p class="eyebrow">3D MODEL / UNDER REVIEW</p><h2 id="studio-title">Look a little closer.</h2></div>
-        <p>Drag to rotate. Choose a view or use the zoom to explore.</p>
-      </div>
-      <div class="studio-shell">
-        <div class="studio-header">
-          <div><span class="model-kicker">RAJSEE VILLA / WORKING MODEL</span><h3 id="model-title">The whole villa</h3></div>
-          <a class="model-download" href="assets/rajsee-villa.glb" download>Download 3D model <span aria-hidden="true">↓</span></a>
-        </div>
-        <p class="review-warning"><strong>Working model.</strong> The whole-villa, exterior and interior views share one model. Some details remain estimates; <a href="#assumptions">see all assumptions below</a>.</p>
-        <div class="model-toolbar">
-          <div class="control-group mode-controls" role="group" aria-label="Choose model view">
-            <button type="button" class="control is-active" data-mode="base" aria-pressed="true">Whole villa</button>
-            <button type="button" class="control" data-mode="exterior" aria-pressed="false">Exterior</button>
-            <button type="button" class="control" data-mode="interior" aria-pressed="false">Interior</button>
-          </div>
-          <div class="control-group floor-controls" role="group" aria-label="Choose floor" hidden>
-            <button type="button" class="control is-active" data-floor="ground" aria-pressed="true">Ground</button>
-            <button type="button" class="control" data-floor="first" aria-pressed="false">First</button>
-            <button type="button" class="control" data-floor="roof" aria-pressed="false">Roof & tank</button>
-          </div>
-        </div>
-        <div class="view-toolbar">
-          <div class="control-group camera-controls" role="group" aria-label="Choose viewpoint">
-            <button type="button" class="control subtle" data-camera="front" aria-pressed="false">Front</button>
-            <button type="button" class="control subtle" data-camera="side" aria-pressed="false">Side</button>
-            <button type="button" class="control subtle" data-camera="neighbour" aria-pressed="false">Neighbour side</button>
-            <button type="button" class="control subtle" data-camera="rear" aria-pressed="false">Rear</button>
-            <button type="button" class="control subtle is-active" data-camera="above" aria-pressed="true">Above</button>
-          </div>
-          <label class="boundary-control"><input type="checkbox" id="boundary-toggle" checked> Boundary</label>
-          <label class="boundary-control" id="label-control" hidden><input type="checkbox" id="label-toggle" checked> Room labels</label>
-        </div>
-        <div class="photo-match-toolbar">
-          <span>Compare with a photo</span>
-          <div class="photo-match-buttons" role="group" aria-label="Choose a reference photograph">
-            <button type="button" data-photo-match="front" aria-pressed="false">Front</button>
-            <button type="button" data-photo-match="frontside" aria-pressed="false">Front side</button>
-            <button type="button" data-photo-match="side" aria-pressed="false">Side</button>
-            <button type="button" data-photo-match="courtyard" aria-pressed="false">Courtyard</button>
-            <button type="button" data-photo-match="terrace" aria-pressed="false">First terrace</button>
-            <button type="button" data-photo-match="rear" aria-pressed="false">Rear</button>
-            <button type="button" data-photo-match="spiral" aria-pressed="false">Spiral stair</button>
-            <button type="button" data-photo-match="terracefloor" aria-pressed="false">Terrace surface</button>
-            <button type="button" data-photo-match="aerial" aria-pressed="false">Aerial</button>
-            <label class="photo-upload">Choose another<input id="photo-upload" type="file" accept="image/*"></label>
-          </div>
-        </div>
-        <div class="studio-stage" id="studio-stage">
-          <div class="canvas-wrap">
-            <canvas id="villa-canvas" tabindex="0" aria-label="Interactive approximate 3D model of RajSee Villa. Drag to rotate, or use arrow keys. Choose a view and floor above."></canvas>
-            <div class="canvas-tag" aria-hidden="true"><span class="tag-dot"></span> <span id="canvas-tag-text">SITE & ROOFTOP</span></div>
-            <span class="canvas-hint">Drag to rotate</span>
-          </div>
-          <aside class="comparison-photo" id="comparison-photo" aria-label="Reference photograph" hidden>
-            <div class="comparison-photo-header"><strong id="comparison-photo-title">Reference photo</strong><button type="button" id="comparison-close" aria-label="Close reference photo">×</button></div>
-            <img id="comparison-photo-image" alt="">
-            <p>The angle is approximate. Drag and zoom the model to compare; your selected photos stay on this device.</p>
-          </aside>
-        </div>
-        <div class="studio-footer">
-          <p id="model-detail">A working view of the villa, garden and rooftop.</p>
-          <label class="zoom-control" for="zoom-range">Zoom <span id="zoom-value">100%</span><input type="range" id="zoom-range" min="60" max="220" step="5" value="100"></label>
-        </div>
-      </div>
-      <details class="model-assumptions" id="assumptions">
-        <summary><span><small>MODEL REFERENCE</small><strong>Assumptions & measurements to check</strong></span><span class="plan-expand" aria-hidden="true">+</span></summary>
-        <div class="assumptions-content">
-          <p>These are the current assumptions used across all views and the downloadable model. The drawing and photographs are references, not a measured survey.</p>
-          <ul>
-            <li><strong>Plot and boundary:</strong> the plan states 14.50 × 29.00 m, but its red outline is not proportionate to those dimensions. House position, garden depth, gates and setbacks are estimated. The adjacent-home side is shown as a much taller shared-side wall, with lower garden and rear returns. Its assumed heights are approximately 1.8 m at the front, 6.9 m beside the villa and 3.5 m at the back; the actual height, ownership and changes along the length need checking. Use Neighbour side to see it, or untick Boundary to look through it.</li>
-            <li><strong>Levels and stairs:</strong> ground to first floor is set at 3.30 m, and first-floor surface to roof surface at about 3.16 m. The confirmed hall ceiling heights of 9½ ft and 10 ft are not yet reproduced. The stair's nine-step first flight, turn, other steps, enclosure and landings are photo-informed approximations.</li>
-            <li><strong>Tank and stair-head room:</strong> you confirmed the tank is on top of the stair-head room. The tank is represented as about 1.20 m in diameter and 1.27 m high, on an estimated platform. The larger stair-head is shown over the combined stair/core area, approximately 3.20 × 3.10 m; the plan's 3.20 × 1.60 m machine-room callout describes only part of that area. The actual outline, height and tank supports need checking. No lift or lift shaft is present.</li>
-            <li><strong>Terraces and roof walls:</strong> the courtyard-side terrace includes the opening and planter; the model places overhead grilles over the opening and court, while the main terrace stays open to the sky. The service terrace has no cross walls. Exact edges, grille positions, roof access and parapet heights need checking. The roof parapets are roughly 0.86 m high in the model, with lower portions at the front. The mosaic is taken from a terrace photograph; its exact level, extent and scale are unconfirmed.</li>
-            <li><strong>Openings and finishes:</strong> the separate court and lounge openings, lounge railing, puja marker, window and door positions, room layout and rear spiral stair are approximate. The blank rear face follows the rear photographs; the service-side windows are estimated from the photos and plan. The puja marker is a label rather than a fully modelled room. Facade colours and materials are based on selected photos and are not a complete record of finishes.</li>
-          </ul>
-          <p>Before construction or ordering materials, verify the existing building, measurements and structure on site.</p>
-        </div>
       </details>
-      <p class="model-note">This draft is not a measured survey. Do not use it for construction or material quantities.</p>
     </section>
 
     <section class="reference-section" id="references" aria-labelledby="references-title">
-      <div><p class="eyebrow">PROJECT REFERENCES</p><h2 id="references-title">Keep the details together.</h2></div>
+      <div><p class="eyebrow">PROJECT REFERENCES</p><h2 id="references-title">Project references</h2></div>
       <div class="reference-links">
         <a href="#assumptions"><span><strong>Model assumptions</strong><small>Current estimates and measurements to check</small></span><span aria-hidden="true">↗</span></a>
         <a href="docs/layout-review.md"><span><strong>Floor-plan review</strong><small>Room-by-room reading, photo checks and model corrections</small></span><span aria-hidden="true">↗</span></a>
@@ -240,6 +185,6 @@
       </div>
     </section>
   </main>
-  <footer class="site-footer"><span>RAJSEE VILLA</span><span>Made for planning, one view at a time.</span><a href="#home">Back to top ↑</a></footer>
+  <footer class="site-footer"><span>RAJSEE VILLA · WORKING MODEL</span><a href="#home">Back to top ↑</a></footer>
 </body>
 </html>

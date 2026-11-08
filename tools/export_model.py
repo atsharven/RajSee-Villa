@@ -1,6 +1,5 @@
 """Build the editable GLB from the single browser model; Python standard library only."""
 from pathlib import Path
-import base64
 import json
 import math
 import struct
@@ -96,7 +95,7 @@ for name in names:
     rgb = [int(value[i:i+2],16)/255 for i in (1,3,5)]
     pbr = {'baseColorFactor': rgb+[1], 'metallicFactor': .03, 'roughnessFactor': .86}
     if name in images:
-        raw = base64.b64decode(images[name].split(',',1)[1])
+        raw = (ROOT / images[name]).read_bytes()
         image_defs.append({'name': 'Photo material ' + name, 'bufferView': segment(raw), 'mimeType': 'image/jpeg'})
         texture_defs.append({'source': len(image_defs)-1, 'sampler': 0})
         pbr['baseColorTexture'] = {'index': len(texture_defs)-1}
