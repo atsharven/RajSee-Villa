@@ -61,7 +61,7 @@ The owner asked for the terrace beside the courtyard and grills to be represente
 
 - Most of the outlined roof is labelled `OPEN TERRACE`. The `COURT BELOW` opening and slatted treatment remain on the side-road side.
 - A `MACHINE ROOM 3200 × 1600` is shown next to the main stair, with stair directions, a shaft, rainwater pipe and railing also marked. The label does not establish the machine room's equipment or present construction.
-- The PDF does **not** label a water tank. The owner requested a small tank area in the model, but its existing or proposed status, position, size and supports need confirmation. The tank, room height and stair details in the current model are illustrative.
+- The PDF does **not** label a water tank. The owner confirmed that the tank sits on top of the stair-head room. The model's tank size, supports and stair-head-room dimensions remain estimates; see the [model assumptions](../index.html#assumptions).
 
 ## What the photographs and owner have established
 
@@ -80,8 +80,8 @@ The owner asked for the terrace beside the courtyard and grills to be represente
 2. The draft now shows separate openings for `COURT BELOW` and `LOUNGE BELOW`, with an indicative railing and puja marker. Verify the lounge opening's extent and rail position, the puja walls, and the extent of Terrace 02 and its grille against the actual building.
 3. Keep the study's confirmed terrace door, the rear spiral stair and the enclosed courtyard-facing wall. Check their real positions and sizes in photographs or measurements.
 4. The assumed lift doors and shaft walls have been removed from the draft 3D model. Reconstruct the actual main stair and the space around it from photographs or measurements; the remaining stair-side partition and flights are still schematic and should not be treated as a survey.
-5. Distinguish the machine room labelled on the roof plan from the separately requested water tank. Establish the actual roof access, room use, tank and supports rather than inventing them.
+5. The tank is positioned on top of the stair-head room as confirmed by the owner. Check its size, supports and the relationship between that room and the machine room labelled on the drawing.
 6. Measure the front and side setbacks, first-floor terrace boundaries, bedroom 01 depth and the floor-to-floor heights. Existing photos show the upper landing, lounge opening and part of a terrace; additional views that make their connections clear, and views of the service terrace, roof and main staircase, would help. Floor elevations and sections would be particularly useful.
-7. Treat the current 3D viewer and GLB as **superseded working sketches under review**, including their decorative facades, assumed openings, garden boundaries and dimensions. Do not use them to order materials, take quantities, or guide construction.
+7. Treat the current 3D viewer and GLB as **working sketches under review**, including their decorative facades, assumed openings, garden boundaries and dimensions. Do not use them to order materials, take quantities, or guide construction.
 
 The shared property folder also contains original `.dwg` drawings, including working-plan files. They could contain useful dimensions and elevations, but they could not be read with the CAD tools available locally during this review. A PDF export of the floor plans and, if available, the elevations and sections would allow them to be checked without changing the originals.

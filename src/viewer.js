@@ -20,6 +20,13 @@
   const zoomValue = document.querySelector('#zoom-value');
   const title = document.querySelector('#model-title');
   const tag = document.querySelector('#canvas-tag-text');
+  const assumptions = document.querySelector('#assumptions');
+  if (assumptions) {
+    if (window.location.hash === '#assumptions') assumptions.open = true;
+    for (const link of document.querySelectorAll('a[href="#assumptions"]')) {
+      link.addEventListener('click', () => { assumptions.open = true; });
+    }
+  }
   const cameras = {front: [.36, .37], side: [1.33, .40], rear: [3.42, .36], above: [.55, 1.10]};
   const state = {mode: 'base', floor: 'ground', camera: 'above', yaw: .55, pitch: 1.10, zoom: 1, drag: null};
   const faces = [
@@ -127,6 +134,13 @@
     if (part.name === 'Ground inside boundary - soil') return 0;
     if (part.level === 'site') return part.name === 'Curved garden edging' || part.name === 'Front entrance steps' ? 2 : 1;
     if (part.name === 'Courtyard paving' || part.name === 'Courtyard sunken bed') return 1;
+    // The neighbour-side boundary is consistently in front of or behind the
+    // house when viewed from that side; long wall faces need this ordering.
+    if (part.name === 'Neighbour boundary wall') {
+      const side = Math.sin(state.yaw);
+      if (side < -.35) return 4;
+      if (side > .35) return 2.5;
+    }
     return 3;
   }
 

@@ -14,6 +14,7 @@ Updated 9 November 2026. This is the working reference for the existing Ansal A-
 - The courtyard-facing ground floor is enclosed by a wall with glazed openings and a side door; the courtyard itself is open to the sky beneath the slatted canopy.
 - The first-floor study has a door to the service terrace beside the servant room. A spiral metal stair is at the rear.
 - The owner confirms that there is **neither an installed lift nor a lift shaft** in the actual villa, despite the lift shown in the plan.
+- The owner confirms that the rooftop water tank sits **on top of the stair-head room**.
 - The owner asked for the terrace beside the courtyard and grills to be represented as larger in the model, but is not sure whether that larger extent already exists or is a proposed change. Its depth and exact grille arrangement require confirmation.
 - The hall ceiling heights confirmed by the owner are **9½ ft on the red-wall side** and **10 ft on the opposite side**. The red-wall side was identified as the TV side.
 - The hall currently has no false ceiling. Recessed profile-light ideas were discussed; their feasibility and electrical design need on-site checking.
@@ -27,13 +28,7 @@ The hall opening faces west according to the family. The approximate ₹3 lakh p
 
 ## Model assumptions to check
 
-- **Floor-to-floor and ceiling heights:** 3.3 m floor-to-floor is assumed; the confirmed hall ceiling heights are clear ceiling heights and do not establish that distance. The current model uses generic levels and does not yet reproduce both confirmed hall heights.
-- **Main stairs and former lift assumption:** the plan marks a lift area of **1,770 × 1,600 mm**, but the owner confirms neither lift nor shaft is present. The draft model's assumed lift doors and shaft walls have been removed. Remaining stair-side partitions, flights, headroom and the use of that space must be checked. The roof drawing separately labels a machine room **3,200 × 1,600 mm**, but does not establish its equipment or whether the room exists as drawn.
-- **Water tank:** a small rooftop tank and platform were requested by the owner but are not labelled on this plan. Existing or proposed status, location, size and supports have not been confirmed.
-- **First-floor courtyard terrace:** extended toward the court to reflect the owner's request; its exact depth, edge and grille dimensions are not yet known.
-- **Site and garden:** the overall plot uses the plan's written dimensions, but the red site outline is not proportionate to those written dimensions and its relationship to the existing fence is unverified. House position, boundary heights, front-garden depth, curved edging, gate and individual setbacks in the model are estimates.
-- **Openings and puja:** the first-floor `COURT BELOW` and adjacent `LOUNGE BELOW` are distinct on the plan, with a puja area beside the lounge. The draft now shows an approximate lounge cut-out, railing and puja marker. Their exact extent, railing arrangement and the puja walls still require checking.
-- **Rear and roof:** photographs do not resolve every surface or opening. The shapes and alignment should be refined with additional measurements or clearer views.
+The current model assumptions and provisional measurements are maintained together under [Assumptions & measurements to check](../index.html#assumptions) on the project page.
 
 ## Other renovation directions
 

@@ -751,6 +751,111 @@ window.RAJSEE_MODEL = {
       "level": "ground"
     },
     {
+      "name": "First floor neighbour wall",
+      "p": [
+        11.67,
+        3.3,
+        0.0
+      ],
+      "s": [
+        0.16000000000000014,
+        3.0,
+        1.75
+      ],
+      "color": "wall",
+      "level": "first"
+    },
+    {
+      "name": "First floor neighbour wall",
+      "p": [
+        11.67,
+        3.3,
+        1.75
+      ],
+      "s": [
+        0.16000000000000014,
+        0.7999999999999998,
+        1.125
+      ],
+      "color": "wall",
+      "level": "first"
+    },
+    {
+      "name": "First floor neighbour wall",
+      "p": [
+        11.67,
+        5.65,
+        1.75
+      ],
+      "s": [
+        0.16000000000000014,
+        0.6499999999999995,
+        1.125
+      ],
+      "color": "wall",
+      "level": "first"
+    },
+    {
+      "name": "First floor neighbour wall",
+      "p": [
+        11.67,
+        3.3,
+        2.875
+      ],
+      "s": [
+        0.16000000000000014,
+        3.0,
+        8.875
+      ],
+      "color": "wall",
+      "level": "first"
+    },
+    {
+      "name": "First floor neighbour wall",
+      "p": [
+        11.67,
+        3.3,
+        11.75
+      ],
+      "s": [
+        0.16000000000000014,
+        0.75,
+        1.125
+      ],
+      "color": "wall",
+      "level": "first"
+    },
+    {
+      "name": "First floor neighbour wall",
+      "p": [
+        11.67,
+        5.699999999999999,
+        11.75
+      ],
+      "s": [
+        0.16000000000000014,
+        0.6000000000000005,
+        1.125
+      ],
+      "color": "wall",
+      "level": "first"
+    },
+    {
+      "name": "First floor neighbour wall",
+      "p": [
+        11.67,
+        3.3,
+        12.875
+      ],
+      "s": [
+        0.16000000000000014,
+        3.0,
+        3.0
+      ],
+      "color": "wall",
+      "level": "first"
+    },
+    {
       "name": "First floor slab 1",
       "p": [
         1.25,
@@ -1301,111 +1406,6 @@ window.RAJSEE_MODEL = {
         3.25,
         1.0,
         0.16000000000000014
-      ],
-      "color": "wall",
-      "level": "first"
-    },
-    {
-      "name": "First floor neighbour wall",
-      "p": [
-        11.67,
-        3.3,
-        0.0
-      ],
-      "s": [
-        0.16000000000000014,
-        3.0,
-        1.75
-      ],
-      "color": "wall",
-      "level": "first"
-    },
-    {
-      "name": "First floor neighbour wall",
-      "p": [
-        11.67,
-        3.3,
-        1.75
-      ],
-      "s": [
-        0.16000000000000014,
-        0.7999999999999998,
-        1.125
-      ],
-      "color": "wall",
-      "level": "first"
-    },
-    {
-      "name": "First floor neighbour wall",
-      "p": [
-        11.67,
-        5.65,
-        1.75
-      ],
-      "s": [
-        0.16000000000000014,
-        0.6499999999999995,
-        1.125
-      ],
-      "color": "wall",
-      "level": "first"
-    },
-    {
-      "name": "First floor neighbour wall",
-      "p": [
-        11.67,
-        3.3,
-        2.875
-      ],
-      "s": [
-        0.16000000000000014,
-        3.0,
-        8.875
-      ],
-      "color": "wall",
-      "level": "first"
-    },
-    {
-      "name": "First floor neighbour wall",
-      "p": [
-        11.67,
-        3.3,
-        11.75
-      ],
-      "s": [
-        0.16000000000000014,
-        0.75,
-        1.125
-      ],
-      "color": "wall",
-      "level": "first"
-    },
-    {
-      "name": "First floor neighbour wall",
-      "p": [
-        11.67,
-        5.699999999999999,
-        11.75
-      ],
-      "s": [
-        0.16000000000000014,
-        0.6000000000000005,
-        1.125
-      ],
-      "color": "wall",
-      "level": "first"
-    },
-    {
-      "name": "First floor neighbour wall",
-      "p": [
-        11.67,
-        3.3,
-        12.875
-      ],
-      "s": [
-        0.16000000000000014,
-        3.0,
-        3.0
       ],
       "color": "wall",
       "level": "first"
