@@ -64,8 +64,8 @@
       title.textContent = names[state.floor];
       tag.textContent = names[state.floor].toUpperCase();
       detail.textContent = state.floor === 'roof'
-        ? 'The tank platform and lift room are provisional.'
-        : 'The floor view includes the lift and the main stair core.';
+        ? 'The tank, rooftop room and their positions are illustrative.'
+        : 'The main stair and the surrounding space need further checking.';
     }
   }
 

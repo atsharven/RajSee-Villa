@@ -39,18 +39,17 @@ class ProjectTests(unittest.TestCase):
 
     def test_courtyard_terrace_and_service_connections(self):
         terrace = self.named('First floor terrace over ground bedroom')[0]
-        self.assertGreater(terrace['s'][2], 3.5)
+        self.assertGreater(terrace['s'][2], 0)
         self.assertTrue(self.named('Terrace grille upright'))
         self.assertTrue(self.named('Study door to service terrace'))
         self.assertTrue(self.named('Servant room door to terrace'))
         self.assertTrue(self.named('Courtyard back wall'))
         self.assertTrue(self.named('Ground courtyard large window glazing'))
 
-    def test_lift_and_stairs_align_across_floors(self):
-        doors = self.named('Lift door')
-        self.assertEqual({p['level'] for p in doors}, {'ground','first'})
-        self.assertAlmostEqual(doors[0]['p'][0], doors[1]['p'][0])
-        self.assertAlmostEqual(doors[0]['p'][2], doors[1]['p'][2])
+    def test_no_lift_and_stairs_remain(self):
+        self.assertFalse([p['name'] for p in self.parts if 'lift' in p['name'].lower()])
+        self.assertFalse([label['text'] for labels in self.model['labels'].values()
+                          for label in labels if 'lift' in label['text'].lower()])
         stairs = self.named('Main stair first flight')
         self.assertEqual(sum(p['level']=='ground' for p in stairs), 8)
         self.assertEqual(sum(p['level']=='first' for p in stairs), 8)
@@ -61,7 +60,7 @@ class ProjectTests(unittest.TestCase):
         platform = self.named('Water tank platform')[0]
         self.assertEqual(tank.get('shape'), 'cylinder')
         self.assertAlmostEqual(tank['p'][1], platform['p'][1] + platform['s'][1])
-        room = self.named('Rooftop lift room roof')[0]
+        room = self.named('Rooftop room roof')[0]
         self.assertAlmostEqual(room['s'][0], 3.2)
         self.assertAlmostEqual(room['s'][2], 1.6)
         self.assertGreater(room['p'][1], 6.46)

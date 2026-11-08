@@ -106,7 +106,7 @@ for shape, geo in geometries.items():
                                                                     'indices': geo['indices'], 'material': i}]})
 
 group_names = {'ground':'Ground floor','first':'First floor','roof':'Roof terrace',
-               'roof-detail':'Rooftop tank and lift room','site':'Garden and paths',
+               'roof-detail':'Rooftop tank and provisional room','site':'Garden and paths',
                'boundary':'Boundary and gate','decoration':'Facade and courtyard details','spiral':'Rear spiral stair'}
 nodes = [{'name': value, 'children': []} for value in group_names.values()]
 group_index = {key:i for i,key in enumerate(group_names)}
