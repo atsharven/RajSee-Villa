@@ -1,44 +1,40 @@
 # RajSee Villa
 
-A single project for the Ansal A-60 villa in Ajmer, bringing the original floor plan, photographs, layout review and draft 3D views together in one place.
+A local workspace for the Ansal A-60 villa: one shared 3D model, the original plans, photographs and renovation notes. Open [index.html](index.html) in a browser; it works from this folder without installation or internet access.
 
-Open **[index.html](index.html)** to start. Review the ground, first and roof plans, then explore the draft model using the floor and viewpoint controls. The page works locally without a build step or internet connection.
+The model is an approximate planning reference, not a measured survey. The page's **Assumptions & measurements to check** records what still needs verification.
 
-**The 3D model is a working sketch and is under review.** Start with the [floor-plan and photo review](docs/layout-review.md), which separates the plan, owner observations and unresolved questions. The current model assumptions are collected on the project page under [Assumptions & measurements to check](index.html#assumptions). Do not use the model for quantities or construction.
+## Using the model
 
-## Project contents
+- Choose **Whole villa**, **Exterior** or **Interior**. In Interior, choose Ground, First or Roof & tank. Drag to rotate and use the zoom slider or mouse wheel.
+- The model opens in a plain, solid-colour view. Turn on **Show textures** to see the photo materials; the switch applies across views until the page is reloaded. It changes the viewer only: the downloadable 3D model retains its materials.
+- Turn **Boundary** on or off in outside views; **Neighbour side** looks toward the adjacent wall. Room labels can be hidden in the interior views.
+- Open **Compare with a photo** to select a reference angle or a photo from your device. Angles are approximate and selected local photos are not uploaded.
+- The page also contains the original floor plans, notes, photo references and the downloadable `assets/rajsee-villa.glb`.
+
+## Project layout
 
 ```text
-index.html                 Landing page and model studio
-styles.css                 Page and viewer styling
-src/model.js               Single source of geometry for all three views and the export
-src/viewer.js              Interactive canvas viewer
-assets/rajsee-villa.glb    Editable 3D export of the same model
-assets/                    Selected photographs, aerial reference and plan views
-docs/                      Floor plan, layout review, project notes and renovation research
-tools/export_model.py      Regenerate the GLB from src/model.js
-tests/                     Model and project checks
+index.html              Page, floor-plan notes and the central assumptions list
+styles.css              Page and viewer presentation
+src/model.js            Single source for geometry, colours, labels and texture paths
+src/viewer-config.js    Camera angles and photo comparison choices
+src/renderer.js         Model drawing and material display
+src/viewer.js           Controls, interactions and view state
+assets/textures/        Image materials used by the viewer and 3D export
+assets/                 Plans, original reference photos and 3D export
+docs/                   Layout review, project notes and renovation research
+tools/export_model.py   Rebuild the 3D file from the shared model
+tests/                  Project and model checks
 ```
 
-The photo collection is also available in `assets/Photos Ansal A 60`. The originals in the shared folder remain untouched.
+For future changes, update the model once in `src/model.js`; all browser views use it. Each part has a position (`p`) and size (`s`) in metres: x runs toward the neighbour, y is height, and z runs from the front toward the rear. Photo choices and their approximate angles live in `src/viewer-config.js`. The image files in `assets/textures/` can be replaced when a different finish is needed; keep the source photos and the existing plan intact.
 
-The whole-villa, exterior and interior views all use `src/model.js`. Edit that one model, then rebuild the GLB with the command below; the checks compare every exported part's position and size with the source so an out-of-date download is caught.
-
-## Working with the model
-
-- **Whole villa** shows the building, site and roof together.
-- **Exterior** starts at the front and can be rotated to the sides and rear. Choose **Neighbour side** to see the adjacent wall, and use **Boundary** to show or hide it.
-- **Interior** offers ground, first and roof views. The tank is above the stair-head room as confirmed by the owner; dimensions and other unverified details are in the assumptions panel.
-- **Compare with a photo** opens a reference next to the model and selects an approximate angle. Choose another photo from the collection if needed; it remains on the device.
-- `assets/rajsee-villa.glb` can be opened in software that supports glTF 2.0. Its components are grouped by floor and site area.
-
-If the model data changes, regenerate the 3D export and run the checks with Python 3:
+After changing model data or texture files, regenerate the downloadable 3D file and run the checks using Python 3:
 
 ```text
 python tools/export_model.py
 python -m unittest discover -s tests
 ```
 
-No Python packages or JavaScript dependencies are required. The project can also be served by any static web server if preferred.
-
-See [project notes](docs/project-reference.md) for sources, confirmed decisions and assumptions. The current page and model are local project files; this repository does not publish them automatically.
+The project requires no Python packages or JavaScript dependencies. The checks compare the exported parts and textures with the source model. GitHub Actions runs these checks on pushes and pull requests and verifies that the committed 3D export is current; this project does not publish itself.

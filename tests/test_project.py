@@ -2,6 +2,7 @@ from pathlib import Path
 from html.parser import HTMLParser
 import json
 import math
+import re
 import struct
 import unittest
 
@@ -37,6 +38,10 @@ class ProjectTests(unittest.TestCase):
         parser.feed((ROOT/'index.html').read_text(encoding='utf-8'))
         for link in parser.links:
             self.assertTrue((ROOT/link).is_file(), link)
+        for reference in re.findall(r"src:'([^']+)'", (ROOT/'src'/'viewer-config.js').read_text(encoding='utf-8')):
+            self.assertTrue((ROOT/reference).is_file(), reference)
+        for reference in self.model['images'].values():
+            self.assertTrue((ROOT/reference).is_file(), reference)
 
     def test_courtyard_terrace_and_service_connections(self):
         terrace = self.named('First floor terrace over ground bedroom')[0]
@@ -169,7 +174,9 @@ class ProjectTests(unittest.TestCase):
         self.assertTrue(any(mesh['name'].startswith('cylinder /') for mesh in document['meshes']))
         for image in document['images']:
             view = document['bufferViews'][image['bufferView']]
-            self.assertEqual(binary[view['byteOffset']:view['byteOffset']+2], b'\xff\xd8')
+            raw = binary[view['byteOffset']:view['byteOffset'] + view['byteLength']]
+            name = image['name'].removeprefix('Photo material ')
+            self.assertEqual(raw, (ROOT / self.model['images'][name]).read_bytes())
 
         # The terrace image repeats at the same approximate scale in the export.
         index = next(i for i, p in enumerate(self.parts) if p.get('textureRepeatMeters'))
