@@ -14,6 +14,7 @@ globalThis.RAJSEE_MODEL = (() => {
         box(name, color, origin.map((v, axis) => v + i * step[axis]), size);
       }
     }
+    // span is the wall's lengthwise range. An opening is [start, end, sill, head].
     function wall(name, color, axis, centre, span, height, thickness, openings = []) {
       function section(start, end, bottom, top) {
         if (end - start < 0.00001 || top - bottom < 0.00001) return;
@@ -50,6 +51,7 @@ globalThis.RAJSEE_MODEL = (() => {
     [4.8, 13.655, 9.195, 14.795], [1.945, 14.795, 9.195, 15.955],
     [1.945, 15.955, 8.58, 18.85], [1.945, 18.85, 4.955, 19.08]
   ];
+  // These rectangles are the clear headroom for the two turning stair flights.
   const stairWell = [[10.55, 7.41, 11.53, 9.25], [9.5, 9.25, 11.53, 10.23]];
   const loungeVoid = [4.83, 7.24, 6.385, 10.375];
 
@@ -58,7 +60,7 @@ globalThis.RAJSEE_MODEL = (() => {
     const [x, z, right, rear] = rect;
     const left = Math.max(x, cut[0]), front = Math.max(z, cut[1]);
     const end = Math.min(right, cut[2]), back = Math.min(rear, cut[3]);
-    if (left >= end || front >= back) return [rect];
+    if (end - left < 0.00001 || back - front < 0.00001) return [rect];
     return [[x,z,right,front], [x,back,right,rear], [x,front,left,back], [end,front,right,back]]
       .filter(([x0,z0,x1,z1]) => x1 - x0 > 0.00001 && z1 - z0 > 0.00001);
   }
@@ -74,13 +76,17 @@ globalThis.RAJSEE_MODEL = (() => {
       }
     };
   }
-  deckBuilder(ground, 0)("Ground floor slab", "floor", groundPlan);
+  const groundDeck = deckBuilder(ground, 0);
+  groundDeck("Ground floor slab", "floor", groundPlan);
+  groundDeck("Court inner walkway", "paving", [[3.81,5.5,4.75,10.375]], 0.33);
+  groundDeck("Court dining-side walkway", "paving", [[1.18,5.5,3.81,6.69]], 0.33);
+  groundDeck("Court bedroom threshold", "paving", [[1.12,10.29,3.81,10.375]], 0.33);
   const upperDeck = deckBuilder(first, 3.3, [...stairWell, loungeVoid]);
   upperDeck("First floor slab", "floor", upperPlan);
   upperDeck("Terrace 02", "terrace", [[-0.08,10.125,4.875,14.955]]);
   upperDeck("Service terrace", "terrace", [[8.5,13.575,11.825,16.95]]);
   upperDeck("Rear stair landing", "terrace", [[9.875,16.95,11.325,17.375]]);
-  upperDeck("Front balcony slab", "terrace", [[4.625,-0.2,8.5,1.125]], 0.22);
+  upperDeck("Front balcony slab", "terrace", [[4.625,-0.2,8.5,1.125]]);
   upperDeck("Roof over ground-floor setbacks", "terrace", groundPlan);
   deckBuilder(roof, 6.46, stairWell)("Roof slab", "roof", upperPlan);
 
@@ -169,8 +175,9 @@ globalThis.RAJSEE_MODEL = (() => {
   ground.copies("Dining narrow corner light crossbar", "frame", [[1.1985, 0.001, 1.34], [1.1985, 2.078, 1.34], [1.1985, 2.495, 1.34]], [0.103, 0.044, 0.38]);
   ground.wall("Neighbour side wall", "wall", "z", 11.75, [0, 16.95], [0, 3.14], 0.15);
   ground.wall("Hall to entry lobby wall", "interior", "x", 5.5, [4.75, 8.375], [0, 3.14], 0.15, [[4.93, 5.95, 0, 2.19], [6.77, 7.7, 0, 2.19]]);
-  ground.box("Dining soffit", "ceiling", [1.33, 3.048, 1.34], [4.995, 0.092, 4.08], { overhead: true });
-  ground.box("Drawing soffit", "ceiling", [6.325, 2.8956, 0.08], [5.35, 0.2444, 5.34], { overhead: true });
+  ground.box("Dining soffit", "ceiling", [1.325, 3.048, 1.33], [5, 0.092, 4.095], { overhead: true });
+  ground.box("Drawing soffit", "ceiling", [6.405, 2.8956, 0.08], [5.27, 0.2444, 1.25], { overhead: true });
+  ground.box("Drawing soffit", "ceiling", [6.325, 2.8956, 1.33], [5.35, 0.2444, 4.095], { overhead: true });
   ground.wall("Court facing dining", "wall", "x", 5.5, [1.25, 4.75], [0, 3.14], 0.15, [[1.58, 4.56, 0.025, 2.64]]);
   ground.box("Dining glazed court opening glazing", "glass", [1.58, 0.025, 5.478], [2.98, 2.615, 0.044]);
   ground.copies("Dining glazed court opening jamb or mullion", "frame", [[1.554, 0.025, 5.4485], [2.034, 0.025, 5.4485], [4.094, 0.025, 5.4485], [4.534, 0.025, 5.4485]], [0.052, 2.615, 0.103]);
@@ -183,9 +190,6 @@ globalThis.RAJSEE_MODEL = (() => {
   ground.copies("Bedroom 1 court entry crossbar", "frame", [[2.94, 0.001, 10.3235], [2.94, 2.008, 10.3235], [2.94, 2.495, 10.3235]], [1.66, 0.044, 0.103]);
   ground.box("Bedroom 1 court entry crossbar", "frame", [2.94, 0.528, 10.3235], [0.7, 0.044, 0.103]);
   ground.box("Courtyard sunken bed", "court", [1.12, -0.37, 6.69], [2.69, 0.055, 3.6]);
-  ground.box("Court inner walkway", "paving", [3.81, -0.33, 5.5], [0.94, 0.33, 4.875]);
-  ground.box("Court dining-side walkway", "paving", [1.18, -0.33, 5.5], [2.63, 0.33, 1.19]);
-  ground.box("Court bedroom threshold", "paving", [1.12, -0.33, 10.29], [2.69, 0.33, 0.085]);
   ground.box("Court approach step", "trim", [0.55, -0.4, 5.5], [0.31, 0.13, 1.19]);
   ground.box("Court approach step", "trim", [0.86, -0.4, 5.5], [0.32, 0.26, 1.19]);
   ground.wall("Lobby wall by WC, small room, stair and kitchen", "interior", "z", 8.375, [5.5, 15.375], [0, 3.14], 0.15, [[5.97, 6.83, 0, 2.12], [7.56, 8.43, 0, 2.12], [9.23, 10.21, 0, 2.7], [10.53, 11.48, 0, 2.14], [11.82, 12.66, 0.84, 2.03]]);
@@ -247,13 +251,13 @@ globalThis.RAJSEE_MODEL = (() => {
   first.box("Upper rear bathroom light 2 glass", "glass", [1.99, 4.8, 15.75], [0.07, 0.8, 0.75]);
   first.row("Upper rear bathroom light 2 frame", "frame", [1.97, 4.8, 15.725], [0.11, 0.8, 0.05], [0, 0, 0.375], 3);
   first.copies("Upper rear bathroom light 2 horizontal frame", "frame", [[1.97, 4.778, 15.75], [1.97, 5.578, 15.75], [1.97, 5.178, 15.75]], [0.11, 0.044, 0.75]);
-  first.box("Upper front accent frame left", "red", [9, 3.55, -0.43], [0.2, 2, 0.57]);
-  first.box("Upper front accent frame right", "red", [10.95, 3.55, -0.43], [0.2, 2, 0.57]);
+  first.box("Upper front accent frame left", "red", [9, 3.78, -0.43], [0.2, 1.57, 0.57]);
+  first.box("Upper front accent frame right", "red", [10.95, 3.78, -0.43], [0.2, 1.57, 0.57]);
   first.box("Upper front accent sill", "red", [9, 3.55, -0.43], [2.15, 0.23, 0.57]);
   first.box("Upper front accent canopy", "red", [9, 5.35, -0.43], [2.15, 0.2, 0.57]);
   first.wall("Master dressing partition", "interior", "z", 8.5, [1.125, 5.375], [3.3, 6.3], 0.11, [[4, 5, 3.3, 5.45]]);
   first.wall("Dressing bathroom partition", "interior", "x", 3.25, [8.5, 11.75], [3.3, 6.3], 0.11, [[9.625, 10.55, 3.3, 5.45]]);
-  first.wall("First bathroom inner partition", "interior", "z", 4.875, [14.875, 19], [3.3, 6.3], 0.11, [[15.25, 16.075, 3.3, 5.45], [17.3, 18.125, 3.3, 5.45]]);
+  first.wall("First bathroom inner partition", "interior", "z", 4.875, [14.955, 18.69], [3.3, 6.3], 0.11, [[15.25, 16.075, 3.3, 5.45], [17.3, 18.125, 3.3, 5.45]]);
   first.wall("Upper courtyard back wall", "wall", "z", 4.75, [5.375, 10.375], [3.3, 6.3], 0.16, [[6.125, 6.875, 4.42, 5.95], [7.75, 9.875, 4.1, 5.95]]);
   first.box("Upper courtyard large window glazing", "glass", [4.715, 4.1, 7.75], [0.07, 1.85, 2.125]);
   first.copies("Upper courtyard large window frame", "frame", [[4.69, 4.1, 7.727], [4.69, 4.1, 8.25825], [4.69, 4.1, 9.32075], [4.69, 4.1, 9.852]], [0.12, 1.85, 0.046]);
@@ -278,7 +282,7 @@ globalThis.RAJSEE_MODEL = (() => {
   first.box("Servant terrace window", "glass", [8.465, 4.1, 17.15], [0.07, 1.65, 1.3]);
   first.row("Servant terrace window upright", "frame", [8.44, 4.1, 17.13], [0.11, 1.65, 0.045], [0, 0, 0.65], 3);
   first.copies("Servant terrace window rail", "frame", [[8.44, 4.08, 17.15], [8.44, 5.73, 17.15]], [0.11, 0.045, 1.3]);
-  first.box("First terrace projecting planter", "cream", [-0.4, 3.86, 10.125], [0.56, 0.38, 1.66]);
+  first.box("First terrace projecting planter", "cream", [-0.4, 3.86, 10.125], [0.32, 0.38, 1.66]);
   first.wall("First floor neighbour wall", "wall", "z", 11.75, [0, 13.575], [3.3, 6.3], 0.15);
   first.wall("First floor front master wall", "wall", "x", 1.125, [1.25, 8.5], [3.3, 6.3], 0.15, [[4.65, 5.78, 3.35, 5.74], [6.04, 8.07, 3.3, 5.74]]);
   first.box("Master front window group glazing", "glass", [4.65, 3.35, 1.103], [1.13, 2.39, 0.044]);
@@ -338,11 +342,10 @@ globalThis.RAJSEE_MODEL = (() => {
   roofHead.wall("Rooftop room front jamb", "wall", "x", 6.75, [8.45, 11.65], [6.46, 8.5], 0.15, [[10.48, 11.42, 6.46, 8.4]]);
   roofHead.box("Rooftop room door", "door", [10.48, 6.46, 6.7175], [0.94, 1.94, 0.065]);
   // Parapet follows each turn of the roof. The metal guard fills the opening at the front.
-  roofHead.wall("Roof parapet", "parapet", "x", 1.125, [1.25, 8.5], [6.46, 6.8], 0.14);
   roofHead.wall("Roof parapet", "parapet", "z", 8.5, [0, 1.125], [6.46, 7.21], 0.14);
   roofHead.wall("Roof parapet", "parapet", "x", 0, [8.5, 9.75], [6.46, 7.21], 0.14);
-  roofHead.wall("Roof parapet", "parapet", "x", 0, [11.125, 11.75], [6.46, 7.21], 0.14);
-  roofHead.wall("Roof parapet", "parapet", "z", 11.75, [0, 13.575], [6.46, 7.32], 0.14);
+  roofHead.wall("Roof parapet", "parapet", "x", 0, [11.125, 11.15], [6.46, 7.21], 0.14);
+  roofHead.wall("Roof parapet", "parapet", "z", 11.75, [1.25, 13.575], [6.46, 7.32], 0.14);
   roofHead.wall("Roof parapet", "parapet", "x", 13.575, [9.12, 11.75], [6.46, 7.32], 0.14);
   roofHead.wall("Roof parapet", "parapet", "z", 9.12, [13.575, 15.875], [6.46, 7.32], 0.14);
   roofHead.wall("Roof parapet", "parapet", "x", 15.875, [8.5, 9.12], [6.46, 7.32], 0.14);
@@ -363,14 +366,14 @@ globalThis.RAJSEE_MODEL = (() => {
   // Exterior projections and grilles.
   facade.box("Front stone surround upright", "cream", [1.125, 0, 0.66], [0.65, 5.95, 0.64]);
   facade.box("Front stone surround top", "cream", [1.125, 5.95, 0.66], [7.375, 0.85, 0.64]);
-  facade.box("Front tower red accent", "red", [11.5, 0, -0.14], [0.25, 7.4, 0.18]);
-  facade.box("Front tower above roof", "wall", [11.15, 6.46, 0], [0.6, 0.94, 1.25]);
+  facade.box("Front tower red accent", "red", [11.5, 0, -0.14], [0.25, 7.4, 0.06]);
+  facade.box("Front tower above roof", "wall", [11.15, 6.46, -0.08], [0.67, 0.94, 1.33]);
   facade.box("Court pergola side beam", "wall", [1.225, 6.23, 5.5], [0.175, 0.22, 4.75]);
-  facade.box("Court pergola support", "wall", [1.275, 3.3, 10.075], [0.2, 3.1, 0.175]);
+  facade.box("Court pergola support", "wall", [1.275, 3.3, 10.075], [0.2, 2.93, 0.175]);
   facade.box("Master side red window sill", "red", [0.83, 3.84, 2.58], [0.47, 0.2, 2.34]);
   facade.box("Master side red window canopy", "red", [0.83, 5.72, 2.58], [0.47, 0.18, 2.34]);
   facade.box("Master side red window return", "red", [0.83, 3.84, 4.75], [0.47, 2.06, 0.17]);
-  facade.box("Courtyard canopy red fascia", "red", [1.1, 6.2, 5.5], [0.15, 0.18, 4.75]);
+  facade.box("Courtyard canopy red fascia", "red", [1.1, 6.2, 5.5], [0.125, 0.18, 4.75]);
   facade.copies("Rear side window canopy", "red", [[1.77, 2.68, 15.5], [1.77, 5.98, 15.5]], [0.27, 0.16, 3.22]);
   facade.copies("Terrace opening grille frame", "wall", [[0.05, 6.18, 10.125], [0.05, 6.18, 11.56]], [4.78, 0.2, 0.18]);
   facade.copies("Terrace opening grille frame", "wall", [[0.05, 6.18, 10.305], [4.65, 6.18, 10.305]], [0.18, 0.2, 1.255]);
@@ -378,7 +381,7 @@ globalThis.RAJSEE_MODEL = (() => {
   facade.box("Stepped stone relief upper panel", "stone", [6.03, 6.11, 0.634], [1.1, 0.15, 0.026]);
   facade.row("Pale inset in relief", "cream", [6.11, 6.15, 0.614], [0.105, 0.083, 0.024], [0.255, 0, 0], 4);
   facade.row("Court pergola slat", "rail", [1.24, 6.25, 6.15], [3.48, 0.13, 0.077], [0, 0, 0.57], 7);
-  facade.copies("Terrace opening grille post", "wall", [[-0.01, 3.32, 10.12], [-0.01, 3.32, 11.54]], [0.28, 3.38, 0.24]);
+  facade.copies("Terrace opening grille post", "wall", [[-0.01, 3.32, 10.12], [-0.01, 3.32, 11.54]], [0.28, 3.11, 0.24]);
   facade.box("Terrace frame above planter", "wall", [-0.01, 6.43, 10.12], [0.32, 0.27, 1.66]);
   facade.row("Terrace opening grille bar", "rail", [0.42, 6.24, 10.31], [0.065, 0.11, 1.24], [0.54, 0, 0], 8);
   facade.box("Rear vent shaft face", "wall", [1.42, 0, 14.88], [0.14, 2.3, 0.8]);
@@ -394,7 +397,7 @@ globalThis.RAJSEE_MODEL = (() => {
   // Site, approaches and raised garden.
   site.box("Paved side driveway", "paving", [-2.1, -0.45, -4.9725], [2.25, 0.08, 25.7725]);
   site.box("Garden boundary path", "paving", [0.9, -0.13, -5.00437], [10.95, 0.06, 0.41437]);
-  site.box("Garden right side path", "paving", [11.35, -0.13, -5.00437], [0.65, 0.06, 4.335]);
+  site.box("Garden right side path", "paving", [11.35, -0.13, -4.59], [0.65, 0.06, 4.19]);
   site.box("Garden side retaining curb", "trim", [1.13, -0.39, -4.63], [0.16, 0.36, 3.13]);
   site.box("Front garden apron curb", "trim", [2.31, -0.37, -0.46], [9.2, 0.38, 0.13]);
   site.box("Front entrance steps", "trim", [0.25, -0.4, -0.42], [0.31, 0.13, 1.77]);
@@ -419,11 +422,13 @@ globalThis.RAJSEE_MODEL = (() => {
   }
 
   // Compound walls and gates.
-  boundary.box("Front utility wall", "cream", [1.05, -0.5, -5.1], [2.1, 1.75, 0.11475]);
+  boundary.box("Front utility wall", "cream", [1.25, -0.5, -5.1], [1.9, 1.75, 0.11475]);
   boundary.box("Front unfinished wall base", "boundary", [3.15, -0.5, -5.1], [9.1, 0.95, 0.11475]);
   boundary.box("Front unfinished brickwork", "brick", [3.15, 0.45, -5.1], [9.1, 0.75, 0.11475]);
-  boundary.box("Side compound wall", "boundary", [-2.25, -0.5, -4.98525], [0.18, 1.6, 25.98525]);
-  boundary.box("Rear compound wall", "boundary", [0.35, -0.5, 20.82], [11.9, 1.55, 0.18]);
+  for (const [front, rear] of [[-4.94063,-4.4625], [-4.284,-1.275], [-1.0965,3], [3.28,8], [8.28,13], [13.28,18], [18.28,20.75]]) {
+    boundary.box("Side compound wall", "boundary", [-2.25,-0.5,front], [0.18,1.6,rear-front]);
+  }
+  boundary.box("Rear compound wall", "boundary", [0.5, -0.5, 20.82], [11.57, 1.55, 0.18]);
   boundary.copies("Side boundary pier", "brick", [[-2.25, -0.5, -4.4625], [-2.25, -0.5, -1.275]], [0.28, 1.86, 0.1785]);
   boundary.row("Side boundary pier", "brick", [-2.25, -0.5, 3], [0.28, 1.86, 0.28], [0, 0, 5], 4);
   boundary.copies("Front gate pillar", "boundary", [[-2.25, -0.5, -5.1], [1, -0.5, -5.1]], [0.25, 1.95, 0.15937]);
