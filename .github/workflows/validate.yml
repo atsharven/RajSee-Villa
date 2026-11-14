@@ -1,9 +1,6 @@
-name: Validate project
+name: Validate model
 
-on:
-  push:
-  pull_request:
-  workflow_dispatch:
+on: [push, pull_request, workflow_dispatch]
 
 permissions:
   contents: read
@@ -13,9 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-node@v4
         with:
-          python-version: '3.12'
-      - run: python tools/export_model.py
-      - run: git diff --exit-code -- assets/rajsee-villa.glb
-      - run: python -m unittest discover -s tests
+          node-version: 22
+      - run: node --test tests/model.test.cjs

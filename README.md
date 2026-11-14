@@ -1,44 +1,26 @@
 # RajSee Villa
 
-A local workspace for the Ansal A-60 villa: one shared 3D model, the original plans, photographs and renovation notes. Open [index.html](index.html) in a browser; it works from this folder without installation or internet access.
+Open [the viewer](index.html) directly in a browser. It runs offline. The starting view contains the house, both staircases, the court, terraces, roof structures, garden and compound walls in plain colours. Choose a floor to see a cut at 1.22 m above it. **Top plan** looks straight down. Drag or use the arrow keys to orbit, and use the wheel, pinch or zoom buttons to move closer.
 
-The model is an approximate planning reference, not a measured survey. The page's **Assumptions & measurements to check** records what still needs verification.
+The original plan, photographs and the owner's observations describe the existing house. The screened rear door probably opens into Bedroom 2. The boundary offsets, wall and slab thicknesses, stair geometry and floor heights are approximate. Check site dimensions before setting out work. [Photo evidence and open measurements](docs/existing-condition-review.md) · [Original drawing](assets/Photos%20Ansal%20A%2060/Map%20Ansal%20A-60.pdf)
 
-## Planning images
+## Planning files
 
-Open the [ground and first-floor cutaways](assets/existing-floor-cutaways.png) to trace the rooms, stairs and terraces. The [exterior sheet](assets/existing-villa.png) pairs the reconstruction with three original photographs and shows both rear entrances. Use the [November photo review](docs/existing-condition-review.md) to check which parts of the building are established and which dimensions were inferred.
+- [Editable 3D model](assets/rajsee-villa.glb)
+- [Exterior and rear access](assets/existing-villa.png)
+- [Ground and first-floor cutaways](assets/existing-floor-cutaways.png)
 
-## Using the model
+## Editing the model
 
-- Choose **Whole villa**, **Exterior** or **Interior**. In Interior, choose Ground, First or Roof & tank. Drag to rotate and use the zoom slider or mouse wheel.
-- The model opens in a plain, solid-colour view. Turn on **Show textures** to see the photo materials; the switch applies across views until the page is reloaded. It changes the viewer only: the downloadable 3D model retains its materials.
-- Turn **Boundary** on or off in outside views; **Neighbour side** looks toward the adjacent wall. Room labels can be hidden in the interior views.
-- Open **Compare with a photo** to select a reference angle or a photo from your device. Angles are approximate and selected local photos are not uploaded.
-- The page also contains the original floor plans, notes, photo references and the downloadable `assets/rajsee-villa.glb`.
+`src/model.js` describes the villa in metres. X increases from the side road toward the neighbour, Y is height and Z increases from front to rear. Add a wall with its openings, lay a deck around a void or repeat a group of parts there. The viewer and export both use those solids.
 
-## Project layout
+`src/geometry.js` supplies the closed meshes and floor sections. `src/renderer.js` draws them, and `src/viewer.js` connects the controls, labels and reference images. The browser loads these scripts locally.
 
-```text
-index.html              Page, floor-plan notes and the central assumptions list
-styles.css              Page and viewer presentation
-src/model.js            Single source for geometry, colours, labels and texture paths
-src/viewer-config.js    Camera angles and photo comparison choices
-src/renderer.js         Model drawing and material display
-src/viewer.js           Controls, interactions and view state
-assets/textures/        Image materials used by the viewer and 3D export
-assets/                 Plans, original reference photos and 3D export
-docs/                   Layout review, project notes and renovation research
-tools/export_model.py   Rebuild the 3D file from the shared model
-tests/                  Project and model checks
+Use Node.js 22 or later to regenerate the GLB and check a change. No package installation is needed.
+
+```sh
+node tools/export-model.cjs
+node --test tests/model.test.cjs
 ```
 
-For future changes, update the model once in `src/model.js`; all browser views use it. Each part has a position (`p`) and size (`s`) in metres: x runs toward the neighbour, y is height, and z runs from the front toward the rear. Photo choices and their approximate angles live in `src/viewer-config.js`. The image files in `assets/textures/` can be replaced when a different finish is needed; keep the source photos and the existing plan intact.
-
-After changing model data or texture files, regenerate the downloadable 3D file and run the checks using Python 3:
-
-```text
-python tools/export_model.py
-python -m unittest discover -s tests
-```
-
-The project requires no Python packages or JavaScript dependencies. The checks compare the exported parts and textures with the source model. GitHub Actions runs these checks on pushes and pull requests and verifies that the committed 3D export is current; this project does not publish itself.
+The checks compare the committed GLB with the source, inspect mesh closure, trace the room envelopes and verify the floor joints and planned openings. The supplied source files live in `assets/Photos Ansal A 60/`.

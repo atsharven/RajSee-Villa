@@ -52,8 +52,22 @@ globalThis.RAJSEE_MODEL = (() => {
     [1.945, 15.955, 8.58, 18.85], [1.945, 18.85, 4.955, 19.08]
   ];
   // These rectangles are the clear headroom for the two turning stair flights.
-  const stairWell = [[10.55, 7.41, 11.53, 9.25], [9.5, 9.25, 11.53, 10.23]];
+  const stairWell = [[10.54, 7.41, 11.58, 9.25], [9.17, 9.25, 11.58, 10.23]];
   const loungeVoid = [4.83, 7.24, 6.385, 10.375];
+
+  // Reuse the photographed window divisions on the two storeys.
+  function casement(level, name, axis, centre, start, end, sill, head, mullions, rails) {
+    function bar(label, material, lo, hi, bottom, top, depth) {
+      if (axis === "x") level.box(label, material, [lo,bottom,centre-depth/2], [hi-lo,top-bottom,depth]);
+      else level.box(label, material, [centre-depth/2,bottom,lo], [depth,top-bottom,hi-lo]);
+    }
+    bar(name+" glass", "glass", start,end,sill,head,0.07);
+    for (const fraction of mullions) {
+      const x = start + fraction*(end-start);
+      bar(name+" mullion", "frame", x-0.023,x+0.023,sill,head,0.11);
+    }
+    for (const y of rails) bar(name+" rail", "frame", start,end,y-0.022,y+0.022,0.12);
+  }
 
   // Trim a deck at a stairwell, an open edge or a previously laid slab.
   function subtract(rect, cut) {
@@ -85,7 +99,7 @@ globalThis.RAJSEE_MODEL = (() => {
   upperDeck("First floor slab", "floor", upperPlan);
   upperDeck("Terrace 02", "terrace", [[-0.08,10.125,4.875,14.955]]);
   upperDeck("Service terrace", "terrace", [[8.5,13.575,11.825,16.95]]);
-  upperDeck("Rear stair landing", "terrace", [[9.875,16.95,11.325,17.375]]);
+  upperDeck("Rear stair landing", "terrace", [[10.79,16.95,11.325,17.06]]);
   upperDeck("Front balcony slab", "terrace", [[4.625,-0.2,8.5,1.125]]);
   upperDeck("Roof over ground-floor setbacks", "terrace", groundPlan);
   deckBuilder(roof, 6.46, stairWell)("Roof slab", "roof", upperPlan);
@@ -105,13 +119,13 @@ globalThis.RAJSEE_MODEL = (() => {
 
   function rearSpiral() {
     const cx = 10.825, cz = 17.875, steps = 18;
-    spiral.box("Rear spiral centre pole", "metal", [cx - 0.055, 0, cz - 0.055], [0.11, 4, 0.11]);
+    spiral.box("Rear spiral centre pole", "metal", [cx - 0.055, -0.07, cz - 0.055], [0.11, 4.07, 0.11], { shape: "cylinder" });
     let previous;
     for (let i = 0; i < steps; i++) {
       const angle = 0.65 - i * 1.75 * Math.PI / (steps - 1);
-      const y = i * (3.3 - 0.055) / (steps - 1);
+      const y = -0.07 + i * (3.3 + 0.07 - 0.055) / (steps - 1);
       const x = Math.cos(angle), z = -Math.sin(angle);
-      spiral.box("Rear spiral tread", "stair", [cx + 0.405*x - 0.415, y, cz + 0.405*z - 0.105],
+      spiral.box("Rear spiral tread", "steel", [cx + 0.405*x - 0.415, y, cz + 0.405*z - 0.105],
         [0.83, 0.055, 0.21], { yaw: angle });
       const rail = [cx + 0.747*x, y + 0.95, cz + 0.747*z];
       if (i % 2 === 0 || i === steps - 1) {
@@ -136,15 +150,9 @@ globalThis.RAJSEE_MODEL = (() => {
   ground.wall("Bedroom garden wall", "wall", "z", 0.61, [10.375, 14.875], [0, 3.14], 0.16, [[12.875, 14.25, 0.75, 2.35]]);
   ground.wall("Bedroom side return", "wall", "x", 14.875, [0.61, 2.025], [0, 3.14], 0.16);
   ground.wall("Bathroom outer wall", "wall", "z", 2.025, [14.875, 19], [0, 3.14], 0.16, [[15.8, 16.55, 1.5, 2.25], [17.675, 18.425, 1.5, 2.25]]);
-  ground.box("Bedroom side window glass", "glass", [0.575, 0.75, 12.875], [0.07, 1.6, 1.375]);
-  ground.row("Bedroom side window frame", "frame", [0.555, 0.75, 12.85], [0.11, 1.6, 0.05], [0, 0, 0.6875], 3);
-  ground.copies("Bedroom side window horizontal frame", "frame", [[0.555, 0.728, 12.875], [0.555, 2.328, 12.875], [0.555, 1.928, 12.875]], [0.11, 0.044, 1.375]);
-  ground.box("Rear bathroom light 1 glass", "glass", [1.99, 1.5, 17.675], [0.07, 0.75, 0.75]);
-  ground.row("Rear bathroom light 1 frame", "frame", [1.97, 1.5, 17.65], [0.11, 0.75, 0.05], [0, 0, 0.375], 3);
-  ground.copies("Rear bathroom light 1 horizontal frame", "frame", [[1.97, 1.478, 17.675], [1.97, 2.228, 17.675], [1.97, 1.828, 17.675]], [0.11, 0.044, 0.75]);
-  ground.box("Rear bathroom light 2 glass", "glass", [1.99, 1.5, 15.8], [0.07, 0.75, 0.75]);
-  ground.row("Rear bathroom light 2 frame", "frame", [1.97, 1.5, 15.775], [0.11, 0.75, 0.05], [0, 0, 0.375], 3);
-  ground.copies("Rear bathroom light 2 horizontal frame", "frame", [[1.97, 1.478, 15.8], [1.97, 2.228, 15.8], [1.97, 1.828, 15.8]], [0.11, 0.044, 0.75]);
+  casement(ground, "Bedroom side window", "z", 0.61, 12.875, 14.25, 0.75, 2.35, [0,0.5,1], [0.75,1.95,2.35]);
+  casement(ground, "Rear bathroom light 1", "z", 2.025, 17.675, 18.425, 1.5, 2.25, [0,0.5,1], [1.5,1.85,2.25]);
+  casement(ground, "Rear bathroom light 2", "z", 2.025, 15.8, 16.55, 1.5, 2.25, [0,0.5,1], [1.5,1.85,2.25]);
   ground.box("Existing front glazing", "glass", [1.475, 0, 1.115], [3.0226, 2.1336, 0.06]);
   ground.box("Existing front door", "door", [4.4976, 0, 1.115], [1.0922, 2.1336, 0.06]);
   ground.box("Existing front transom", "glass", [1.475, 2.1336, 1.115], [4.1148, 0.4572, 0.06]);
@@ -159,9 +167,7 @@ globalThis.RAJSEE_MODEL = (() => {
   ground.wall("Ground toilet 1 partition", "interior", "x", 14.875, [2.025, 4.75], [0, 3.14], 0.11, [[3, 3.875, 0, 2.15]]);
   ground.wall("Ground guest WC front wall", "interior", "x", 5.5, [8.375, 11.75], [0, 3.14], 0.11);
   ground.wall("Courtyard back wall", "wall", "z", 4.75, [5.5, 10.375], [0, 3.14], 0.16, [[6, 6.925, 0, 2.35], [7.675, 9.875, 0.15, 2.45]]);
-  ground.box("Ground courtyard large window glazing", "glass", [4.715, 0.15, 7.675], [0.07, 2.3, 2.2]);
-  ground.copies("Ground courtyard large window frame", "frame", [[4.69, 0.15, 7.652], [4.69, 0.15, 8.202], [4.69, 0.15, 9.302], [4.69, 0.15, 9.852]], [0.12, 2.3, 0.046]);
-  ground.copies("Ground courtyard large window frame", "frame", [[4.69, 0.125, 7.675], [4.69, 0.815, 7.675], [4.69, 2.025, 7.675], [4.69, 2.425, 7.675]], [0.12, 0.05, 2.2]);
+  casement(ground, "Ground courtyard large window", "z", 4.75, 7.675, 9.875, 0.15, 2.45, [0,0.25,0.75,1], [0.15,0.84,2.05,2.45]);
   ground.box("Ground courtyard side door", "door", [4.69, 0, 6], [0.12, 2.1, 0.925]);
   ground.box("Courtyard door upper glass glazing", "glass", [4.715, 2.1, 6], [0.07, 0.25, 0.925]);
   ground.wall("Kitchen stair enclosure (approximate)", "interior", "x", 10.375, [8.375, 11.75], [0, 3.14], 0.11);
@@ -245,12 +251,8 @@ globalThis.RAJSEE_MODEL = (() => {
   first.box("Upper front right window glass", "glass", [9.25, 4.15, -0.035], [1.75, 1.5, 0.07]);
   first.row("Upper front right window frame", "frame", [9.225, 4.15, -0.055], [0.05, 1.5, 0.11], [0.875, 0, 0], 3);
   first.copies("Upper front right window horizontal frame", "frame", [[9.25, 4.128, -0.055], [9.25, 5.628, -0.055], [9.25, 5.178, -0.055]], [1.75, 0.044, 0.11]);
-  first.box("Upper rear bathroom light 1 glass", "glass", [1.99, 4.8, 17.75], [0.07, 0.8, 0.75]);
-  first.row("Upper rear bathroom light 1 frame", "frame", [1.97, 4.8, 17.725], [0.11, 0.8, 0.05], [0, 0, 0.375], 3);
-  first.copies("Upper rear bathroom light 1 horizontal frame", "frame", [[1.97, 4.778, 17.75], [1.97, 5.578, 17.75], [1.97, 5.178, 17.75]], [0.11, 0.044, 0.75]);
-  first.box("Upper rear bathroom light 2 glass", "glass", [1.99, 4.8, 15.75], [0.07, 0.8, 0.75]);
-  first.row("Upper rear bathroom light 2 frame", "frame", [1.97, 4.8, 15.725], [0.11, 0.8, 0.05], [0, 0, 0.375], 3);
-  first.copies("Upper rear bathroom light 2 horizontal frame", "frame", [[1.97, 4.778, 15.75], [1.97, 5.578, 15.75], [1.97, 5.178, 15.75]], [0.11, 0.044, 0.75]);
+  casement(first, "Upper rear bathroom light 1", "z", 2.025, 17.75, 18.5, 4.8, 5.6, [0,0.5,1], [4.8,5.2,5.6]);
+  casement(first, "Upper rear bathroom light 2", "z", 2.025, 15.75, 16.5, 4.8, 5.6, [0,0.5,1], [4.8,5.2,5.6]);
   first.box("Upper front accent frame left", "red", [9, 3.78, -0.43], [0.2, 1.57, 0.57]);
   first.box("Upper front accent frame right", "red", [10.95, 3.78, -0.43], [0.2, 1.57, 0.57]);
   first.box("Upper front accent sill", "red", [9, 3.55, -0.43], [2.15, 0.23, 0.57]);
@@ -259,12 +261,8 @@ globalThis.RAJSEE_MODEL = (() => {
   first.wall("Dressing bathroom partition", "interior", "x", 3.25, [8.5, 11.75], [3.3, 6.3], 0.11, [[9.625, 10.55, 3.3, 5.45]]);
   first.wall("First bathroom inner partition", "interior", "z", 4.875, [14.955, 18.69], [3.3, 6.3], 0.11, [[15.25, 16.075, 3.3, 5.45], [17.3, 18.125, 3.3, 5.45]]);
   first.wall("Upper courtyard back wall", "wall", "z", 4.75, [5.375, 10.375], [3.3, 6.3], 0.16, [[6.125, 6.875, 4.42, 5.95], [7.75, 9.875, 4.1, 5.95]]);
-  first.box("Upper courtyard large window glazing", "glass", [4.715, 4.1, 7.75], [0.07, 1.85, 2.125]);
-  first.copies("Upper courtyard large window frame", "frame", [[4.69, 4.1, 7.727], [4.69, 4.1, 8.25825], [4.69, 4.1, 9.32075], [4.69, 4.1, 9.852]], [0.12, 1.85, 0.046]);
-  first.copies("Upper courtyard large window frame", "frame", [[4.69, 4.075, 7.75], [4.69, 4.63, 7.75], [4.69, 5.525, 7.75], [4.69, 5.925, 7.75]], [0.12, 0.05, 2.125]);
-  first.box("Upper courtyard small window glazing", "glass", [4.715, 4.42, 6.125], [0.07, 1.53, 0.75]);
-  first.copies("Upper courtyard small window frame", "frame", [[4.69, 4.42, 6.102], [4.69, 4.42, 6.2895], [4.69, 4.42, 6.6645], [4.69, 4.42, 6.852]], [0.12, 1.53, 0.046]);
-  first.copies("Upper courtyard small window frame", "frame", [[4.69, 4.395, 6.125], [4.69, 4.854, 6.125], [4.69, 5.525, 6.125], [4.69, 5.925, 6.125]], [0.12, 0.05, 0.75]);
+  casement(first, "Upper courtyard large window", "z", 4.75, 7.75, 9.875, 4.1, 5.95, [0,0.25,0.75,1], [4.1,4.655,5.55,5.95]);
+  casement(first, "Upper courtyard small window", "z", 4.75, 6.125, 6.875, 4.42, 5.95, [0,0.25,0.75,1], [4.42,4.879,5.55,5.95]);
   first.wall("Rear bathroom stacked outer wall", "wall", "x", 14.875, [2.025, 4.875], [3.3, 6.3], 0.16);
   first.wall("Small terrace end parapet", "wall", "x", 14.875, [0, 2.025], [3.3, 4.2], 0.16);
   first.wall("Study wall with terrace door", "wall", "x", 13.575, [8.5, 11.75], [3.3, 6.3], 0.16, [[9.675, 10.575, 3.3, 5.45]]);
@@ -409,7 +407,8 @@ globalThis.RAJSEE_MODEL = (() => {
   site.box("Site soil", "earth", [-2.25,-0.6,-5.1], [14.5,0.14,26.1]);
   const paving = deckBuilder(site, 0, groundPlan);
   paving("Front paved apron", "paving", [[1.18,-0.4,11.74,1.25]], 0.38);
-  paving("Rear service paving", "paving", [[8.38,15.38,11.88,19.16]], 0.19);
+  const yard = deckBuilder(site, -0.07, groundPlan);
+  yard("Rear service paving", "paving", [[8.38,15.38,11.88,19.16]], 0.18);
   // The raised bed turns into the apron on a quarter circle.
   const garden = deckBuilder(site, -0.09);
   garden("Garden soil", "earth", [[1.19,-4.58,11.35,-1.53]] ,0.34);
