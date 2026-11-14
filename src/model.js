@@ -1,968 +1,511 @@
-window.RAJSEE_MODEL = {
-  "parts": [
-    {"name": "Ground floor slab 1", "p": [1.25, -0.16, 1.25], "s": [5.075, 0.16, 4.25], "color": "floor", "level": "ground"},
-    {"name": "Ground floor slab 2", "p": [6.325, -0.16, 0.0], "s": [5.425, 0.16, 5.5], "color": "floor", "level": "ground"},
-    {"name": "Ground floor slab 3", "p": [4.75, -0.16, 5.5], "s": [7.0, 0.16, 4.875], "color": "floor", "level": "ground"},
-    {"name": "Ground floor slab 4", "p": [0.0, -0.16, 10.375], "s": [11.75, 0.16, 4.5], "color": "floor", "level": "ground"},
-    {"name": "Ground floor slab 5", "p": [2.025, -0.16, 14.875], "s": [6.35, 0.16, 4.125], "color": "floor", "level": "ground"},
-    {"name": "Ground floor slab 6", "p": [8.375, -0.16, 14.875], "s": [3.375, 0.16, 2.0749999999999993], "color": "floor", "level": "ground"},
-    {"name": "Front hall wall", "p": [1.25, 0, 1.17], "s": [0.2250000000000001, 3.3, 0.16000000000000014], "color": "wall", "level": "ground"},
-    {"name": "Front hall wall", "p": [1.475, 2.5907999999999998, 1.17], "s": [4.114799999999999, 0.7092000000000003, 0.16000000000000014], "color": "wall", "level": "ground"},
-    {"name": "Front hall wall", "p": [5.589799999999999, 0, 1.17], "s": [0.7352000000000007, 3.3, 0.16000000000000014], "color": "wall", "level": "ground"},
-    {"name": "Front drawing wall", "p": [6.325, 0, -0.08], "s": [2.9750000000000005, 3.3, 0.16], "color": "wall", "level": "ground"},
-    {"name": "Front drawing wall", "p": [9.3, 2.35, -0.08], "s": [1.75, 0.95, 0.16], "color": "wall", "level": "ground"},
-    {"name": "Front drawing wall", "p": [11.05, 0, -0.08], "s": [0.6999999999999993, 3.3, 0.16], "color": "wall", "level": "ground"},
-    {"name": "Front step in wall", "p": [6.245, 0, 0.0], "s": [0.16000000000000014, 3.3, 1.25], "color": "wall", "level": "ground"},
-    {"name": "Bedroom garden wall", "p": [0.53, 0, 10.375], "s": [0.16, 3.3, 2.5], "color": "wall", "level": "ground"},
-    {"name": "Bedroom garden wall", "p": [0.53, 0, 12.875], "s": [0.16, 0.75, 1.375], "color": "wall", "level": "ground"},
-    {"name": "Bedroom garden wall", "p": [0.53, 2.35, 12.875], "s": [0.16, 0.95, 1.375], "color": "wall", "level": "ground"},
-    {"name": "Bedroom garden wall", "p": [0.53, 0, 14.25], "s": [0.16, 3.3, 0.625], "color": "wall", "level": "ground"},
-    {"name": "Bedroom side return", "p": [0.61, 0, 14.795], "s": [1.415, 3.3, 0.16000000000000014], "color": "wall", "level": "ground"},
-    {"name": "Bathroom outer wall", "p": [1.9449999999999998, 0, 14.875], "s": [0.16000000000000014, 3.3, 0.9250000000000007], "color": "wall", "level": "ground"},
-    {"name": "Bathroom outer wall", "p": [1.9449999999999998, 0, 15.8], "s": [0.16000000000000014, 1.5, 0.75], "color": "wall", "level": "ground"},
-    {"name": "Bathroom outer wall", "p": [1.9449999999999998, 2.25, 15.8], "s": [0.16000000000000014, 1.05, 0.75], "color": "wall", "level": "ground"},
-    {"name": "Bathroom outer wall", "p": [1.9449999999999998, 0, 16.55], "s": [0.16000000000000014, 3.3, 1.125], "color": "wall", "level": "ground"},
-    {"name": "Bathroom outer wall", "p": [1.9449999999999998, 0, 17.675], "s": [0.16000000000000014, 1.5, 0.75], "color": "wall", "level": "ground"},
-    {"name": "Bathroom outer wall", "p": [1.9449999999999998, 2.25, 17.675], "s": [0.16000000000000014, 1.05, 0.75], "color": "wall", "level": "ground"},
-    {"name": "Bathroom outer wall", "p": [1.9449999999999998, 0, 18.425], "s": [0.16000000000000014, 3.3, 0.5749999999999993], "color": "wall", "level": "ground"},
-    {"name": "First floor slab 1", "p": [1.25, 3.1399999999999997, 1.125], "s": [7.25, 0.16000000000000014, 4.25], "color": "floor", "level": "first"},
-    {"name": "First floor slab 2", "p": [8.5, 3.1399999999999997, 0.0], "s": [3.25, 0.16000000000000014, 5.375], "color": "floor", "level": "first"},
-    {"name": "First floor slab beside lounge - front", "p": [4.875, 3.1399999999999997, 5.375], "s": [6.875, 0.16000000000000014, 1.8650000000000002], "color": "floor", "level": "first"},
-    {"name": "First floor slab 4", "p": [2.025, 3.1399999999999997, 14.875], "s": [2.85, 0.16000000000000014, 4.125], "color": "floor", "level": "first"},
-    {"name": "First floor terrace over ground bedroom", "p": [0.0, 3.1399999999999997, 10.125], "s": [4.875, 0.16000000000000014, 4.75], "color": "terrace", "level": "first"},
-    {"name": "First floor service terrace", "p": [8.5, 3.1399999999999997, 13.575], "s": [3.25, 0.16000000000000014, 3.375], "color": "terrace", "level": "first"},
-    {"name": "Front balcony slab", "p": [4.625, 3.0799999999999996, -0.25], "s": [3.875, 0.2200000000000002, 1.375], "color": "paving", "level": "first"},
-    {"name": "First floor front bathroom wall", "p": [8.5, 3.3, -0.08], "s": [0.75, 3.0, 0.16], "color": "wall", "level": "first"},
-    {"name": "First floor front bathroom wall", "p": [9.25, 3.3, -0.08], "s": [1.75, 0.8499999999999996, 0.16], "color": "wall", "level": "first"},
-    {"name": "First floor front bathroom wall", "p": [9.25, 5.65, -0.08], "s": [1.75, 0.6499999999999995, 0.16], "color": "wall", "level": "first"},
-    {"name": "First floor front bathroom wall", "p": [11.0, 3.3, -0.08], "s": [0.75, 3.0, 0.16], "color": "wall", "level": "first"},
-    {"name": "First floor front step wall", "p": [8.42, 3.3, 0.0], "s": [0.16000000000000014, 3.0, 1.125], "color": "wall", "level": "first"},
-    {"name": "First floor rear bathroom wall", "p": [1.9449999999999998, 3.3, 14.875], "s": [0.16000000000000014, 3.0, 0.875], "color": "wall", "level": "first"},
-    {"name": "First floor rear bathroom wall", "p": [1.9449999999999998, 3.3, 15.75], "s": [0.16000000000000014, 1.5, 0.75], "color": "wall", "level": "first"},
-    {"name": "First floor rear bathroom wall", "p": [1.9449999999999998, 5.6, 15.75], "s": [0.16000000000000014, 0.7000000000000002, 0.75], "color": "wall", "level": "first"},
-    {"name": "First floor rear bathroom wall", "p": [1.9449999999999998, 3.3, 16.5], "s": [0.16000000000000014, 3.0, 1.25], "color": "wall", "level": "first"},
-    {"name": "First floor rear bathroom wall", "p": [1.9449999999999998, 3.3, 17.75], "s": [0.16000000000000014, 1.5, 0.75], "color": "wall", "level": "first"},
-    {"name": "First floor rear bathroom wall", "p": [1.9449999999999998, 5.6, 17.75], "s": [0.16000000000000014, 0.7000000000000002, 0.75], "color": "wall", "level": "first"},
-    {"name": "First floor rear bathroom wall", "p": [1.9449999999999998, 3.3, 18.5], "s": [0.16000000000000014, 3.0, 0.5], "color": "wall", "level": "first"},
-    {"name": "Front balcony railing post", "p": [4.707, 3.3, -0.27], "s": [0.03599999999999959, 0.9199999999999999, 0.04000000000000001], "color": "metal", "level": "first"},
-    {"name": "Front balcony railing post", "p": [5.332, 3.3, -0.27], "s": [0.03599999999999959, 0.9199999999999999, 0.04000000000000001], "color": "metal", "level": "first"},
-    {"name": "Front balcony railing post", "p": [5.957, 3.3, -0.27], "s": [0.03599999999999959, 0.9199999999999999, 0.04000000000000001], "color": "metal", "level": "first"},
-    {"name": "Front balcony railing post", "p": [6.582, 3.3, -0.27], "s": [0.03599999999999959, 0.9199999999999999, 0.04000000000000001], "color": "metal", "level": "first"},
-    {"name": "Front balcony railing post", "p": [7.207, 3.3, -0.27], "s": [0.03599999999999959, 0.9199999999999999, 0.04000000000000001], "color": "metal", "level": "first"},
-    {"name": "Front balcony railing post", "p": [7.832, 3.3, -0.27], "s": [0.03599999999999959, 0.9199999999999999, 0.04000000000000001], "color": "metal", "level": "first"},
-    {"name": "Front balcony railing post", "p": [8.456999999999999, 3.3, -0.27], "s": [0.036000000000001364, 0.9199999999999999, 0.04000000000000001], "color": "metal", "level": "first"},
-    {"name": "Front balcony railing", "p": [4.625, 3.3320000000000003, -0.27], "s": [3.875, 0.03599999999999959, 0.04000000000000001], "color": "metal", "level": "first"},
-    {"name": "Front balcony railing", "p": [4.625, 3.632, -0.27], "s": [3.875, 0.03599999999999959, 0.04000000000000001], "color": "metal", "level": "first"},
-    {"name": "Front balcony railing", "p": [4.625, 3.9320000000000004, -0.27], "s": [3.875, 0.03599999999999959, 0.04000000000000001], "color": "metal", "level": "first"},
-    {"name": "Front balcony railing", "p": [4.625, 4.202, -0.27], "s": [3.875, 0.03599999999999959, 0.04000000000000001], "color": "metal", "level": "first"},
-    {"name": "Balcony side railing", "p": [4.605, 3.3320000000000003, -0.25], "s": [0.03999999999999915, 0.03599999999999959, 1.375], "color": "metal", "level": "first"},
-    {"name": "Balcony side railing", "p": [4.605, 3.632, -0.25], "s": [0.03999999999999915, 0.03599999999999959, 1.375], "color": "metal", "level": "first"},
-    {"name": "Balcony side railing", "p": [4.605, 3.9320000000000004, -0.25], "s": [0.03999999999999915, 0.03599999999999959, 1.375], "color": "metal", "level": "first"},
-    {"name": "Balcony side railing", "p": [4.605, 4.202, -0.25], "s": [0.03999999999999915, 0.03599999999999959, 1.375], "color": "metal", "level": "first"},
-    {"name": "Front stone surround upright", "p": [1.125, 0, 0.66], "s": [0.65, 6.8, 0.64], "color": "cream", "level": "decoration"},
-    {"name": "Front stone surround top", "p": [1.125, 5.95, 0.66], "s": [7.375, 0.85, 0.64], "color": "cream", "level": "decoration"},
-    {"name": "Front tower red accent", "p": [11.5, 0, -0.14], "s": [0.25, 6.3, 0.18000000000000002], "color": "red", "level": "decoration"},
-    {"name": "Front balcony fascia", "p": [4.625, 3.08, -0.33], "s": [3.875, 0.21999999999999975, 0.13], "color": "red", "level": "first"},
-    {"name": "Roof slab 1", "p": [1.25, 6.3, 1.125], "s": [7.25, 0.16000000000000014, 4.25], "color": "terrace-mosaic", "level": "roof", "topTextureOnly": true, "textureRepeatMeters": 0.65},
-    {"name": "Roof slab 2", "p": [8.5, 6.3, 0.0], "s": [3.25, 0.16000000000000014, 5.375], "color": "terrace-mosaic", "level": "roof", "topTextureOnly": true, "textureRepeatMeters": 0.65},
-    {"name": "Roof slab 4", "p": [2.025, 6.3, 14.875], "s": [2.85, 0.16000000000000014, 4.125], "color": "terrace-mosaic", "level": "roof", "topTextureOnly": true, "textureRepeatMeters": 0.65},
-    {"name": "Upper front right window glass", "p": [9.25, 4.1499999999999995, -0.035], "s": [1.75, 1.5000000000000009, 0.07], "color": "glass", "level": "first"},
-    {"name": "Upper front right window frame", "p": [9.225, 4.1499999999999995, -0.055], "s": [0.05000000000000071, 1.5000000000000009, 0.11], "color": "frame", "level": "first"},
-    {"name": "Upper front right window frame", "p": [10.1, 4.1499999999999995, -0.055], "s": [0.05000000000000071, 1.5000000000000009, 0.11], "color": "frame", "level": "first"},
-    {"name": "Upper front right window frame", "p": [10.975, 4.1499999999999995, -0.055], "s": [0.05000000000000071, 1.5000000000000009, 0.11], "color": "frame", "level": "first"},
-    {"name": "Upper front right window horizontal frame", "p": [9.25, 4.127999999999999, -0.055], "s": [1.75, 0.04400000000000048, 0.11], "color": "frame", "level": "first"},
-    {"name": "Upper front right window horizontal frame", "p": [9.25, 5.628, -0.055], "s": [1.75, 0.04400000000000048, 0.11], "color": "frame", "level": "first"},
-    {"name": "Upper front right window horizontal frame", "p": [9.25, 5.178, -0.055], "s": [1.75, 0.04400000000000048, 0.11], "color": "frame", "level": "first"},
-    {"name": "Bedroom side window glass", "p": [0.575, 0.75, 12.875], "s": [0.07, 1.6, 1.375], "color": "glass", "level": "ground"},
-    {"name": "Bedroom side window frame", "p": [0.555, 0.75, 12.85], "s": [0.11, 1.6, 0.05000000000000071], "color": "frame", "level": "ground"},
-    {"name": "Bedroom side window frame", "p": [0.555, 0.75, 13.5375], "s": [0.11, 1.6, 0.05000000000000071], "color": "frame", "level": "ground"},
-    {"name": "Bedroom side window frame", "p": [0.555, 0.75, 14.225], "s": [0.11, 1.6, 0.05000000000000071], "color": "frame", "level": "ground"},
-    {"name": "Bedroom side window horizontal frame", "p": [0.555, 0.728, 12.875], "s": [0.11, 0.04400000000000004, 1.375], "color": "frame", "level": "ground"},
-    {"name": "Bedroom side window horizontal frame", "p": [0.555, 2.3280000000000003, 12.875], "s": [0.11, 0.043999999999999595, 1.375], "color": "frame", "level": "ground"},
-    {"name": "Bedroom side window horizontal frame", "p": [0.555, 1.9280000000000002, 12.875], "s": [0.11, 0.04400000000000004, 1.375], "color": "frame", "level": "ground"},
-    {"name": "Rear bathroom light 1 glass", "p": [1.99, 1.5, 17.675], "s": [0.07000000000000006, 0.75, 0.75], "color": "glass", "level": "ground"},
-    {"name": "Rear bathroom light 1 frame", "p": [1.97, 1.5, 17.650000000000002], "s": [0.1100000000000001, 0.75, 0.04999999999999716], "color": "frame", "level": "ground"},
-    {"name": "Rear bathroom light 1 frame", "p": [1.97, 1.5, 18.025000000000002], "s": [0.1100000000000001, 0.75, 0.04999999999999716], "color": "frame", "level": "ground"},
-    {"name": "Rear bathroom light 1 frame", "p": [1.97, 1.5, 18.400000000000002], "s": [0.1100000000000001, 0.75, 0.04999999999999716], "color": "frame", "level": "ground"},
-    {"name": "Rear bathroom light 1 horizontal frame", "p": [1.97, 1.478, 17.675], "s": [0.1100000000000001, 0.04400000000000004, 0.75], "color": "frame", "level": "ground"},
-    {"name": "Rear bathroom light 1 horizontal frame", "p": [1.97, 2.228, 17.675], "s": [0.1100000000000001, 0.043999999999999595, 0.75], "color": "frame", "level": "ground"},
-    {"name": "Rear bathroom light 1 horizontal frame", "p": [1.97, 1.828, 17.675], "s": [0.1100000000000001, 0.04400000000000004, 0.75], "color": "frame", "level": "ground"},
-    {"name": "Rear bathroom light 2 glass", "p": [1.99, 1.5, 15.8], "s": [0.07000000000000006, 0.75, 0.75], "color": "glass", "level": "ground"},
-    {"name": "Rear bathroom light 2 frame", "p": [1.97, 1.5, 15.775], "s": [0.1100000000000001, 0.75, 0.05000000000000071], "color": "frame", "level": "ground"},
-    {"name": "Rear bathroom light 2 frame", "p": [1.97, 1.5, 16.150000000000002], "s": [0.1100000000000001, 0.75, 0.04999999999999716], "color": "frame", "level": "ground"},
-    {"name": "Rear bathroom light 2 frame", "p": [1.97, 1.5, 16.525000000000002], "s": [0.1100000000000001, 0.75, 0.04999999999999716], "color": "frame", "level": "ground"},
-    {"name": "Rear bathroom light 2 horizontal frame", "p": [1.97, 1.478, 15.8], "s": [0.1100000000000001, 0.04400000000000004, 0.75], "color": "frame", "level": "ground"},
-    {"name": "Rear bathroom light 2 horizontal frame", "p": [1.97, 2.228, 15.8], "s": [0.1100000000000001, 0.043999999999999595, 0.75], "color": "frame", "level": "ground"},
-    {"name": "Rear bathroom light 2 horizontal frame", "p": [1.97, 1.828, 15.8], "s": [0.1100000000000001, 0.04400000000000004, 0.75], "color": "frame", "level": "ground"},
-    {"name": "Upper rear bathroom light 1 glass", "p": [1.99, 4.8, 17.75], "s": [0.07000000000000006, 0.7999999999999998, 0.75], "color": "glass", "level": "first"},
-    {"name": "Upper rear bathroom light 1 frame", "p": [1.97, 4.8, 17.725], "s": [0.1100000000000001, 0.7999999999999998, 0.04999999999999716], "color": "frame", "level": "first"},
-    {"name": "Upper rear bathroom light 1 frame", "p": [1.97, 4.8, 18.1], "s": [0.1100000000000001, 0.7999999999999998, 0.04999999999999716], "color": "frame", "level": "first"},
-    {"name": "Upper rear bathroom light 1 frame", "p": [1.97, 4.8, 18.475], "s": [0.1100000000000001, 0.7999999999999998, 0.04999999999999716], "color": "frame", "level": "first"},
-    {"name": "Upper rear bathroom light 1 horizontal frame", "p": [1.97, 4.778, 17.75], "s": [0.1100000000000001, 0.04400000000000048, 0.75], "color": "frame", "level": "first"},
-    {"name": "Upper rear bathroom light 1 horizontal frame", "p": [1.97, 5.577999999999999, 17.75], "s": [0.1100000000000001, 0.04400000000000048, 0.75], "color": "frame", "level": "first"},
-    {"name": "Upper rear bathroom light 1 horizontal frame", "p": [1.97, 5.177999999999999, 17.75], "s": [0.1100000000000001, 0.04400000000000048, 0.75], "color": "frame", "level": "first"},
-    {"name": "Upper rear bathroom light 2 glass", "p": [1.99, 4.8, 15.75], "s": [0.07000000000000006, 0.7999999999999998, 0.75], "color": "glass", "level": "first"},
-    {"name": "Upper rear bathroom light 2 frame", "p": [1.97, 4.8, 15.725], "s": [0.1100000000000001, 0.7999999999999998, 0.05000000000000071], "color": "frame", "level": "first"},
-    {"name": "Upper rear bathroom light 2 frame", "p": [1.97, 4.8, 16.1], "s": [0.1100000000000001, 0.7999999999999998, 0.04999999999999716], "color": "frame", "level": "first"},
-    {"name": "Upper rear bathroom light 2 frame", "p": [1.97, 4.8, 16.475], "s": [0.1100000000000001, 0.7999999999999998, 0.04999999999999716], "color": "frame", "level": "first"},
-    {"name": "Upper rear bathroom light 2 horizontal frame", "p": [1.97, 4.778, 15.75], "s": [0.1100000000000001, 0.04400000000000048, 0.75], "color": "frame", "level": "first"},
-    {"name": "Upper rear bathroom light 2 horizontal frame", "p": [1.97, 5.577999999999999, 15.75], "s": [0.1100000000000001, 0.04400000000000048, 0.75], "color": "frame", "level": "first"},
-    {"name": "Upper rear bathroom light 2 horizontal frame", "p": [1.97, 5.177999999999999, 15.75], "s": [0.1100000000000001, 0.04400000000000048, 0.75], "color": "frame", "level": "first"},
-    {"name": "Existing front glazing", "p": [1.475, 0, 1.115], "s": [3.0226, 2.1336, 0.05999999999999983], "color": "glass", "level": "ground"},
-    {"name": "Existing front door", "p": [4.4976, 0, 1.115], "s": [1.0921999999999992, 2.1336, 0.05999999999999983], "color": "old-door", "level": "ground"},
-    {"name": "Existing front transom", "p": [1.475, 2.1336, 1.115], "s": [4.114799999999999, 0.45719999999999983, 0.05999999999999983], "color": "glass", "level": "ground"},
-    {"name": "Existing front upright", "p": [1.4587499999999998, 0, 1.115], "s": [0.03250000000000042, 2.5907999999999998, 0.05999999999999983], "color": "frame", "level": "ground"},
-    {"name": "Existing front upright", "p": [2.3837500000000005, 0, 1.115], "s": [0.03249999999999886, 2.5907999999999998, 0.05999999999999983], "color": "frame", "level": "ground"},
-    {"name": "Existing front upright", "p": [3.5587500000000007, 0, 1.115], "s": [0.03249999999999886, 2.5907999999999998, 0.05999999999999983], "color": "frame", "level": "ground"},
-    {"name": "Existing front upright", "p": [4.481350000000001, 0, 1.115], "s": [0.03249999999999886, 2.5907999999999998, 0.05999999999999983], "color": "frame", "level": "ground"},
-    {"name": "Existing front upright", "p": [5.57355, 0, 1.115], "s": [0.03249999999999886, 2.5907999999999998, 0.05999999999999983], "color": "frame", "level": "ground"},
-    {"name": "Existing front rail", "p": [1.475, -0.025, 1.115], "s": [4.114799999999999, 0.05, 0.05999999999999983], "color": "frame", "level": "ground"},
-    {"name": "Existing front rail", "p": [1.475, 0.745, 1.115], "s": [4.114799999999999, 0.050000000000000044, 0.05999999999999983], "color": "frame", "level": "ground"},
-    {"name": "Existing front rail", "p": [1.475, 2.1086, 1.115], "s": [4.114799999999999, 0.04999999999999982, 0.05999999999999983], "color": "frame", "level": "ground"},
-    {"name": "Existing front rail", "p": [1.475, 2.5658, 1.115], "s": [4.114799999999999, 0.04999999999999982, 0.05999999999999983], "color": "frame", "level": "ground"},
-    {"name": "Existing right door", "p": [10.0, 0, -0.135], "s": [1.0500000000000007, 1.95, 0.06000000000000001], "color": "old-door", "level": "ground"},
-    {"name": "Existing right sidelight", "p": [9.3, 0, -0.135], "s": [0.6999999999999993, 1.95, 0.06000000000000001], "color": "glass", "level": "ground"},
-    {"name": "Existing right transom", "p": [9.3, 1.95, -0.135], "s": [1.75, 0.40000000000000013, 0.06000000000000001], "color": "glass", "level": "ground"},
-    {"name": "Right opening frame", "p": [9.282499999999999, 0, -0.135], "s": [0.03500000000000192, 2.35, 0.06000000000000001], "color": "frame", "level": "ground"},
-    {"name": "Right opening frame", "p": [9.982499999999998, 0, -0.135], "s": [0.035000000000003695, 2.35, 0.06000000000000001], "color": "frame", "level": "ground"},
-    {"name": "Right opening frame", "p": [11.032499999999999, 0, -0.135], "s": [0.03500000000000192, 2.35, 0.06000000000000001], "color": "frame", "level": "ground"},
-    {"name": "Right opening frame rail", "p": [9.3, 1.925, -0.135], "s": [1.75, 0.04999999999999982, 0.06000000000000001], "color": "frame", "level": "ground"},
-    {"name": "Right opening frame rail", "p": [9.3, 2.325, -0.135], "s": [1.75, 0.04999999999999982, 0.06000000000000001], "color": "frame", "level": "ground"},
-    {"name": "Upper front accent frame left", "p": [9.0, 3.55, -0.43], "s": [0.1999999999999993, 2.0, 0.57], "color": "red", "level": "first"},
-    {"name": "Upper front accent frame right", "p": [10.95, 3.55, -0.43], "s": [0.20000000000000107, 2.0, 0.57], "color": "red", "level": "first"},
-    {"name": "Upper front accent sill", "p": [9.0, 3.55, -0.43], "s": [2.1500000000000004, 0.22999999999999998, 0.57], "color": "red", "level": "first"},
-    {"name": "Upper front accent canopy", "p": [9.0, 5.35, -0.43], "s": [2.1500000000000004, 0.20000000000000018, 0.57], "color": "red", "level": "first"},
-    {"name": "Front tower above roof - estimated", "p": [11.15, 6.3, 0.0], "s": [0.6, 1.1000000000000005, 1.25], "color": "wall", "level": "decoration"},
-    {"name": "Front tower accent above roof - estimated", "p": [11.5, 6.3, -0.14], "s": [0.25, 1.1000000000000005, 0.18000000000000002], "color": "red", "level": "decoration"},
-    {"name": "Front terrace guard rail - estimated", "p": [8.92, 6.55, 0.0], "s": [1.375, 0.025000000000000355, 0.04], "color": "metal", "level": "decoration"},
-    {"name": "Front terrace guard rail - estimated", "p": [8.92, 6.82, 0.0], "s": [1.375, 0.025000000000000355, 0.04], "color": "metal", "level": "decoration"},
-    {"name": "Front terrace guard rail - estimated", "p": [8.92, 7.1, 0.0], "s": [1.375, 0.025000000000000355, 0.04], "color": "metal", "level": "decoration"},
-    {"name": "Front terrace guard post - estimated", "p": [8.92, 6.3, 0.0], "s": [0.03500000000000014, 0.8300000000000001, 0.04], "color": "metal", "level": "decoration"},
-    {"name": "Front terrace guard post - estimated", "p": [9.27, 6.3, 0.0], "s": [0.03500000000000014, 0.8300000000000001, 0.04], "color": "metal", "level": "decoration"},
-    {"name": "Front terrace guard post - estimated", "p": [9.62, 6.3, 0.0], "s": [0.03500000000000014, 0.8300000000000001, 0.04], "color": "metal", "level": "decoration"},
-    {"name": "Front terrace guard post - estimated", "p": [9.97, 6.3, 0.0], "s": [0.03500000000000014, 0.8300000000000001, 0.04], "color": "metal", "level": "decoration"},
-    {"name": "Ground bedroom 1 partition", "p": [4.695, 0, 10.375], "s": [0.10999999999999943, 3.0, 0.5749999999999993], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Ground bedroom 1 partition", "p": [4.695, 2.15, 10.95], "s": [0.10999999999999943, 0.8500000000000001, 0.9250000000000007], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Ground bedroom 1 partition", "p": [4.695, 0, 11.875], "s": [0.10999999999999943, 3.0, 3.0], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Ground toilet 1 partition", "p": [2.025, 0, 14.82], "s": [0.9750000000000001, 3.0, 0.10999999999999943], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Ground toilet 1 partition", "p": [3.0, 2.15, 14.82], "s": [0.875, 0.8500000000000001, 0.10999999999999943], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Ground toilet 1 partition", "p": [3.875, 0, 14.82], "s": [0.875, 3.0, 0.10999999999999943], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Ground guest WC front wall", "p": [8.375, 0, 5.445], "s": [3.375, 3.0, 0.10999999999999943], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Master dressing partition", "p": [8.445, 3.3, 1.125], "s": [0.10999999999999943, 3.0, 2.875], "color": "interior", "level": "first", "interiorOnly": true},
-    {"name": "Master dressing partition", "p": [8.445, 5.449999999999999, 4.0], "s": [0.10999999999999943, 0.8500000000000005, 1.0], "color": "interior", "level": "first", "interiorOnly": true},
-    {"name": "Master dressing partition", "p": [8.445, 3.3, 5.0], "s": [0.10999999999999943, 3.0, 0.375], "color": "interior", "level": "first", "interiorOnly": true},
-    {"name": "Dressing bathroom partition", "p": [8.5, 3.3, 3.195], "s": [1.125, 3.0, 0.11000000000000032], "color": "interior", "level": "first", "interiorOnly": true},
-    {"name": "Dressing bathroom partition", "p": [9.625, 5.449999999999999, 3.195], "s": [0.9250000000000007, 0.8500000000000005, 0.11000000000000032], "color": "interior", "level": "first", "interiorOnly": true},
-    {"name": "Dressing bathroom partition", "p": [10.55, 3.3, 3.195], "s": [1.1999999999999993, 3.0, 0.11000000000000032], "color": "interior", "level": "first", "interiorOnly": true},
-    {"name": "First bathroom inner partition", "p": [4.82, 3.3, 14.875], "s": [0.10999999999999943, 3.0, 0.375], "color": "interior", "level": "first", "interiorOnly": true},
-    {"name": "First bathroom inner partition", "p": [4.82, 5.449999999999999, 15.25], "s": [0.10999999999999943, 0.8500000000000005, 0.8249999999999993], "color": "interior", "level": "first", "interiorOnly": true},
-    {"name": "First bathroom inner partition", "p": [4.82, 3.3, 16.075], "s": [0.10999999999999943, 3.0, 1.2250000000000014], "color": "interior", "level": "first", "interiorOnly": true},
-    {"name": "First bathroom inner partition", "p": [4.82, 5.449999999999999, 17.3], "s": [0.10999999999999943, 0.8500000000000005, 0.8249999999999993], "color": "interior", "level": "first", "interiorOnly": true},
-    {"name": "First bathroom inner partition", "p": [4.82, 3.3, 18.125], "s": [0.10999999999999943, 3.0, 0.875], "color": "interior", "level": "first", "interiorOnly": true},
-    {"name": "Courtyard back wall", "p": [4.67, 0, 5.5], "s": [0.16000000000000014, 3.3, 0.5], "color": "wall", "level": "ground"},
-    {"name": "Courtyard back wall", "p": [4.67, 2.35, 6.0], "s": [0.16000000000000014, 0.95, 0.9249999999999998], "color": "wall", "level": "ground"},
-    {"name": "Courtyard back wall", "p": [4.67, 0, 6.925], "s": [0.16000000000000014, 3.3, 0.75], "color": "wall", "level": "ground"},
-    {"name": "Courtyard back wall", "p": [4.67, 0, 7.675], "s": [0.16000000000000014, 0.15, 2.2], "color": "wall", "level": "ground"},
-    {"name": "Courtyard back wall", "p": [4.67, 2.45, 7.675], "s": [0.16000000000000014, 0.8499999999999999, 2.2], "color": "wall", "level": "ground"},
-    {"name": "Courtyard back wall", "p": [4.67, 0, 9.875], "s": [0.16000000000000014, 3.3, 0.5], "color": "wall", "level": "ground"},
-    {"name": "Ground courtyard large window glazing", "p": [4.715, 0.15, 7.675], "s": [0.07000000000000028, 2.3000000000000003, 2.2], "color": "glass", "level": "ground"},
-    {"name": "Ground courtyard large window frame", "p": [4.69, 0.15, 7.652], "s": [0.11999999999999922, 2.3000000000000003, 0.045999999999999375], "color": "frame", "level": "ground"},
-    {"name": "Ground courtyard large window frame", "p": [4.69, 0.15, 8.202], "s": [0.11999999999999922, 2.3000000000000003, 0.045999999999999375], "color": "frame", "level": "ground"},
-    {"name": "Ground courtyard large window frame", "p": [4.69, 0.15, 9.302], "s": [0.11999999999999922, 2.3000000000000003, 0.045999999999999375], "color": "frame", "level": "ground"},
-    {"name": "Ground courtyard large window frame", "p": [4.69, 0.15, 9.852], "s": [0.11999999999999922, 2.3000000000000003, 0.045999999999999375], "color": "frame", "level": "ground"},
-    {"name": "Ground courtyard large window frame", "p": [4.69, 0.125, 7.675], "s": [0.11999999999999922, 0.04999999999999999, 2.2], "color": "frame", "level": "ground"},
-    {"name": "Ground courtyard large window frame", "p": [4.69, 0.8150000000000001, 7.675], "s": [0.11999999999999922, 0.050000000000000044, 2.2], "color": "frame", "level": "ground"},
-    {"name": "Ground courtyard large window frame", "p": [4.69, 2.0250000000000004, 7.675], "s": [0.11999999999999922, 0.04999999999999982, 2.2], "color": "frame", "level": "ground"},
-    {"name": "Ground courtyard large window frame", "p": [4.69, 2.4250000000000003, 7.675], "s": [0.11999999999999922, 0.04999999999999982, 2.2], "color": "frame", "level": "ground"},
-    {"name": "Ground courtyard side door", "p": [4.69, 0, 6.0], "s": [0.11999999999999922, 2.1, 0.9249999999999998], "color": "old-door", "level": "ground"},
-    {"name": "Courtyard door upper glass glazing", "p": [4.715, 2.1, 6.0], "s": [0.07000000000000028, 0.25, 0.9249999999999998], "color": "glass", "level": "ground"},
-    {"name": "Courtyard door upper glass frame", "p": [4.69, 2.1, 5.977], "s": [0.11999999999999922, 0.25, 0.045999999999999375], "color": "frame", "level": "ground"},
-    {"name": "Courtyard door upper glass frame", "p": [4.69, 2.1, 6.2082500000000005], "s": [0.11999999999999922, 0.25, 0.045999999999999375], "color": "frame", "level": "ground"},
-    {"name": "Courtyard door upper glass frame", "p": [4.69, 2.1, 6.67075], "s": [0.11999999999999922, 0.25, 0.045999999999999375], "color": "frame", "level": "ground"},
-    {"name": "Courtyard door upper glass frame", "p": [4.69, 2.1, 6.902], "s": [0.11999999999999922, 0.25, 0.045999999999999375], "color": "frame", "level": "ground"},
-    {"name": "Courtyard door upper glass frame", "p": [4.69, 2.075, 6.0], "s": [0.11999999999999922, 0.04999999999999982, 0.9249999999999998], "color": "frame", "level": "ground"},
-    {"name": "Courtyard door upper glass frame", "p": [4.69, 2.1500000000000004, 6.0], "s": [0.11999999999999922, 0.04999999999999982, 0.9249999999999998], "color": "frame", "level": "ground"},
-    {"name": "Courtyard door upper glass frame", "p": [4.69, 1.9250000000000003, 6.0], "s": [0.11999999999999922, 0.04999999999999982, 0.9249999999999998], "color": "frame", "level": "ground"},
-    {"name": "Courtyard door upper glass frame", "p": [4.69, 2.325, 6.0], "s": [0.11999999999999922, 0.04999999999999982, 0.9249999999999998], "color": "frame", "level": "ground"},
-    {"name": "Upper courtyard back wall", "p": [4.67, 3.3, 5.375], "s": [0.16000000000000014, 3.0, 0.75], "color": "wall", "level": "first"},
-    {"name": "Upper courtyard back wall", "p": [4.67, 3.3, 6.125], "s": [0.16000000000000014, 1.12, 0.75], "color": "wall", "level": "first"},
-    {"name": "Upper courtyard back wall", "p": [4.67, 5.949999999999999, 6.125], "s": [0.16000000000000014, 0.35000000000000053, 0.75], "color": "wall", "level": "first"},
-    {"name": "Upper courtyard back wall", "p": [4.67, 3.3, 6.875], "s": [0.16000000000000014, 3.0, 0.875], "color": "wall", "level": "first"},
-    {"name": "Upper courtyard back wall", "p": [4.67, 3.3, 7.75], "s": [0.16000000000000014, 0.7999999999999998, 2.125], "color": "wall", "level": "first"},
-    {"name": "Upper courtyard back wall", "p": [4.67, 5.949999999999999, 7.75], "s": [0.16000000000000014, 0.35000000000000053, 2.125], "color": "wall", "level": "first"},
-    {"name": "Upper courtyard back wall", "p": [4.67, 3.3, 9.875], "s": [0.16000000000000014, 3.0, 0.5], "color": "wall", "level": "first"},
-    {"name": "Upper courtyard large window glazing", "p": [4.715, 4.1, 7.75], "s": [0.07000000000000028, 1.8499999999999996, 2.125], "color": "glass", "level": "first"},
-    {"name": "Upper courtyard large window frame", "p": [4.69, 4.1, 7.727], "s": [0.11999999999999922, 1.8499999999999996, 0.045999999999999375], "color": "frame", "level": "first"},
-    {"name": "Upper courtyard large window frame", "p": [4.69, 4.1, 8.25825], "s": [0.11999999999999922, 1.8499999999999996, 0.045999999999999375], "color": "frame", "level": "first"},
-    {"name": "Upper courtyard large window frame", "p": [4.69, 4.1, 9.32075], "s": [0.11999999999999922, 1.8499999999999996, 0.045999999999999375], "color": "frame", "level": "first"},
-    {"name": "Upper courtyard large window frame", "p": [4.69, 4.1, 9.852], "s": [0.11999999999999922, 1.8499999999999996, 0.045999999999999375], "color": "frame", "level": "first"},
-    {"name": "Upper courtyard large window frame", "p": [4.69, 4.074999999999999, 7.75], "s": [0.11999999999999922, 0.05000000000000071, 2.125], "color": "frame", "level": "first"},
-    {"name": "Upper courtyard large window frame", "p": [4.69, 4.629999999999999, 7.75], "s": [0.11999999999999922, 0.05000000000000071, 2.125], "color": "frame", "level": "first"},
-    {"name": "Upper courtyard large window frame", "p": [4.69, 5.524999999999999, 7.75], "s": [0.11999999999999922, 0.05000000000000071, 2.125], "color": "frame", "level": "first"},
-    {"name": "Upper courtyard large window frame", "p": [4.69, 5.924999999999999, 7.75], "s": [0.11999999999999922, 0.05000000000000071, 2.125], "color": "frame", "level": "first"},
-    {"name": "Upper courtyard small window glazing", "p": [4.715, 4.42, 6.125], "s": [0.07000000000000028, 1.5299999999999994, 0.75], "color": "glass", "level": "first"},
-    {"name": "Upper courtyard small window frame", "p": [4.69, 4.42, 6.102], "s": [0.11999999999999922, 1.5299999999999994, 0.045999999999999375], "color": "frame", "level": "first"},
-    {"name": "Upper courtyard small window frame", "p": [4.69, 4.42, 6.2895], "s": [0.11999999999999922, 1.5299999999999994, 0.045999999999999375], "color": "frame", "level": "first"},
-    {"name": "Upper courtyard small window frame", "p": [4.69, 4.42, 6.6645], "s": [0.11999999999999922, 1.5299999999999994, 0.045999999999999375], "color": "frame", "level": "first"},
-    {"name": "Upper courtyard small window frame", "p": [4.69, 4.42, 6.852], "s": [0.11999999999999922, 1.5299999999999994, 0.045999999999999375], "color": "frame", "level": "first"},
-    {"name": "Upper courtyard small window frame", "p": [4.69, 4.395, 6.125], "s": [0.11999999999999922, 0.05000000000000071, 0.75], "color": "frame", "level": "first"},
-    {"name": "Upper courtyard small window frame", "p": [4.69, 4.853999999999999, 6.125], "s": [0.11999999999999922, 0.05000000000000071, 0.75], "color": "frame", "level": "first"},
-    {"name": "Upper courtyard small window frame", "p": [4.69, 5.524999999999999, 6.125], "s": [0.11999999999999922, 0.05000000000000071, 0.75], "color": "frame", "level": "first"},
-    {"name": "Upper courtyard small window frame", "p": [4.69, 5.924999999999999, 6.125], "s": [0.11999999999999922, 0.05000000000000071, 0.75], "color": "frame", "level": "first"},
-    {"name": "Rear bathroom stacked outer wall", "p": [2.025, 3.3, 14.795], "s": [2.85, 3.0, 0.16000000000000014], "color": "wall", "level": "first"},
-    {"name": "Small terrace end parapet", "p": [0.0, 3.3, 14.795], "s": [2.025, 0.9000000000000004, 0.16000000000000014], "color": "wall", "level": "first"},
-    {"name": "Court pergola side beam", "p": [1.225, 6.23, 5.5], "s": [0.17499999999999982, 0.21999999999999975, 4.75], "color": "wall", "level": "decoration"},
-    {"name": "Court pergola support", "p": [1.275, 3.3, 10.075], "s": [0.20000000000000018, 3.1000000000000005, 0.1750000000000007], "color": "wall", "level": "decoration"},
-    {"name": "Study wall with terrace door", "p": [8.5, 3.3, 13.495], "s": [1.1750000000000007, 3.0, 0.16000000000000014], "color": "wall", "level": "first"},
-    {"name": "Study wall with terrace door", "p": [9.675, 5.449999999999999, 13.495], "s": [0.8999999999999986, 0.8500000000000005, 0.16000000000000014], "color": "wall", "level": "first"},
-    {"name": "Study wall with terrace door", "p": [10.575, 3.3, 13.495], "s": [1.1750000000000007, 3.0, 0.16000000000000014], "color": "wall", "level": "first"},
-    {"name": "Study door to service terrace", "p": [9.675, 3.3, 13.52], "s": [0.8999999999999986, 2.1500000000000004, 0.10999999999999943], "color": "old-door", "level": "first"},
-    {"name": "Study terrace door frame", "p": [9.65, 3.3, 13.5], "s": [0.05000000000000071, 2.1800000000000006, 0.14999999999999858], "color": "frame", "level": "first"},
-    {"name": "Study terrace door frame", "p": [10.549999999999999, 3.3, 13.5], "s": [0.05000000000000071, 2.1800000000000006, 0.14999999999999858], "color": "frame", "level": "first"},
-    {"name": "Study terrace door lintel", "p": [9.675, 5.43, 13.5], "s": [0.8999999999999986, 0.05000000000000071, 0.14999999999999858], "color": "frame", "level": "first"},
-    {"name": "Servant room terrace wall", "p": [8.42, 3.3, 15.875], "s": [0.16000000000000014, 3.0, 0.125], "color": "wall", "level": "first"},
-    {"name": "Servant room terrace wall", "p": [8.42, 5.449999999999999, 16.0], "s": [0.16000000000000014, 0.8500000000000005, 0.875], "color": "wall", "level": "first"},
-    {"name": "Servant room door to terrace", "p": [8.445, 3.3, 16.0], "s": [0.10999999999999943, 2.1500000000000004, 0.875], "color": "old-door", "level": "first"},
-    {"name": "Servant room south wall", "p": [4.875, 3.3, 15.795], "s": [3.625, 3.0, 0.16000000000000014], "color": "interior", "level": "first", "interiorOnly": true},
-    {"name": "Rear spiral centre pole", "p": [10.77, 0, 17.82], "s": [0.10999999999999943, 4.0, 0.10999999999999943], "color": "steel", "level": "spiral"},
-    {"name": "Rear spiral tread 01", "p": [10.733767280869902, 0.0, 17.523870688787152], "s": [0.8299999999999983, 0.055, 0.21000000000000085], "color": "stair", "level": "spiral", "yaw": 0.65},
-    {"name": "Rear spiral railing post", "p": [11.396674597516144, 0.0, 17.399925754915177], "s": [0.045999999999999375, 0.95, 0.045999999999999375], "color": "steel", "level": "spiral"},
-    {"name": "Rear spiral tread 02", "p": [10.795201177909417, 0.1941176470588235, 17.639520336691128], "s": [0.8299999999999983, 0.05499999999999999, 0.21000000000000085], "color": "stair", "level": "spiral", "yaw": 0.3266007562481095},
-    {"name": "Rear spiral tread 03", "p": [10.816697915728891, 0.388235294117647, 17.76869794709206], "s": [0.8299999999999983, 0.05499999999999999, 0.21000000000000085], "color": "stair", "level": "spiral", "yaw": 0.0032015124962190278},
-    {"name": "Rear spiral railing post", "p": [11.548996171746944, 0.388235294117647, 17.849608474250726], "s": [0.045999999999999375, 0.95, 0.045999999999999375], "color": "steel", "level": "spiral"},
-    {"name": "Rear spiral tread 04", "p": [10.796028740393387, 0.5823529411764706, 17.898010552652096], "s": [0.8299999999999983, 0.05500000000000005, 0.21000000000000085], "color": "stair", "level": "spiral", "yaw": -0.3201977312556713},
-    {"name": "Rear spiral tread 05", "p": [10.735336605231344, 0.776470588235294, 18.014051189910116], "s": [0.8299999999999983, 0.05500000000000005, 0.21000000000000085], "color": "stair", "level": "spiral", "yaw": -0.643596975007562},
-    {"name": "Rear spiral railing post", "p": [11.399557030016755, 0.776470588235294, 18.30025728759001], "s": [0.045999999999999375, 0.95, 0.045999999999999375], "color": "steel", "level": "spiral"},
-    {"name": "Rear spiral tread 06", "p": [10.64091399220901, 0.9705882352941176, 18.10478891588895], "s": [0.8299999999999983, 0.05500000000000005, 0.21000000000000085], "color": "stair", "level": "spiral", "yaw": -0.9669962187594524},
-    {"name": "Rear spiral tread 07", "p": [10.522550515550076, 1.1647058823529413, 18.160816160680966], "s": [0.8299999999999983, 0.05499999999999994, 0.21000000000000085], "color": "stair", "level": "spiral", "yaw": -1.2903954625113427},
-    {"name": "Rear spiral railing post", "p": [11.008725436724628, 1.1647058823529413, 18.56982560125076], "s": [0.045999999999999375, 0.95, 0.045999999999999375], "color": "steel", "level": "spiral"},
-    {"name": "Rear spiral tread 08", "p": [10.392517947212303, 1.3588235294117645, 18.176324092111614], "s": [0.8299999999999983, 0.05499999999999994, 0.21000000000000085], "color": "stair", "level": "spiral", "yaw": -1.6137947062632332},
-    {"name": "Rear spiral tread 09", "p": [10.26429789546512, 1.552941176470588, 18.149704867935753], "s": [0.8299999999999983, 0.05499999999999994, 0.21000000000000085], "color": "stair", "level": "spiral", "yaw": -1.937193950015124},
-    {"name": "Rear spiral railing post", "p": [10.534383889629812, 1.552941176470588, 18.54941710437179], "s": [0.045999999999999375, 0.9500000000000002, 0.045999999999999375], "color": "steel", "level": "spiral"},
-    {"name": "Rear spiral tread 10", "p": [10.151184049205382, 1.7470588235294118, 18.083718334839194], "s": [0.8299999999999983, 0.05499999999999994, 0.21000000000000085], "color": "stair", "level": "spiral", "yaw": -2.260593193767014},
-    {"name": "Rear spiral tread 11", "p": [10.064903905510285, 1.9411764705882353, 17.98520589110883], "s": [0.8299999999999983, 0.05499999999999994, 0.21000000000000085], "color": "stair", "level": "spiral", "yaw": -2.583992437518905},
-    {"name": "Rear spiral railing post", "p": [10.168150030529093, 1.9411764705882353, 18.24727612652642], "s": [0.045999999999999375, 0.95, 0.045999999999999375], "color": "steel", "level": "spiral"},
-    {"name": "Rear spiral tread 12", "p": [10.014402877929655, 2.135294117647059, 17.864381179319082], "s": [0.8299999999999983, 0.05500000000000016, 0.21000000000000085], "color": "stair", "level": "spiral", "yaw": -2.9073916812707954},
-    {"name": "Rear spiral tread 13", "p": [10.004916847595034, 2.3294117647058825, 17.733771149098327], "s": [0.8299999999999983, 0.05500000000000016, 0.21000000000000085], "color": "stair", "level": "spiral", "yaw": -3.2307909250226854},
-    {"name": "Rear spiral railing post", "p": [10.057969720072512, 2.3294117647058825, 17.785457212629584], "s": [0.045999999999999375, 0.9499999999999997, 0.045999999999999375], "color": "steel", "level": "spiral"},
-    {"name": "Rear spiral tread 14", "p": [10.037429313845381, 2.5235294117647054, 17.60691727921611], "s": [0.8299999999999983, 0.05500000000000016, 0.21000000000000085], "color": "stair", "level": "spiral", "yaw": -3.5541901687745763},
-    {"name": "Rear spiral tread 15", "p": [10.108569426289417, 2.717647058823529, 17.49697161460297], "s": [0.8299999999999983, 0.05500000000000016, 0.21000000000000085], "color": "stair", "level": "spiral", "yaw": -3.8775894125264663},
-    {"name": "Rear spiral railing post", "p": [10.248352007470357, 2.717647058823529, 17.350519292127906], "s": [0.045999999999999375, 0.9499999999999997, 0.045999999999999375], "color": "steel", "level": "spiral"},
-    {"name": "Rear spiral tread 16", "p": [10.210961470208334, 2.911764705882353, 17.415333179366364], "s": [0.8299999999999983, 0.05500000000000016, 0.21000000000000085], "color": "stair", "level": "spiral", "yaw": -4.200988656278356},
-    {"name": "Rear spiral tread 17", "p": [10.333989571104944, 3.105882352941176, 17.370466140734994], "s": [0.8299999999999983, 0.05500000000000016, 0.21000000000000085], "color": "stair", "level": "spiral", "yaw": -4.524387900030248},
-    {"name": "Rear spiral railing post", "p": [10.662389008151937, 3.105882352941176, 17.118162299309173], "s": [0.045999999999999375, 0.9500000000000002, 0.045999999999999375], "color": "steel", "level": "spiral"},
-    {"name": "Rear spiral tread 18", "p": [10.464898334822058, 3.3, 17.367022255163185], "s": [0.8299999999999983, 0.05500000000000016, 0.21000000000000085], "color": "stair", "level": "spiral", "yaw": -4.847787143782138},
-    {"name": "Rear spiral railing post", "p": [10.902833676203779, 3.3, 17.111836795197686], "s": [0.045999999999999375, 0.9500000000000002, 0.045999999999999375], "color": "steel", "level": "spiral"},
-    {"name": "Rear stair landing", "p": [9.875, 3.15, 16.95], "s": [1.4499999999999993, 0.1499999999999999, 0.4250000000000007], "color": "terrace", "level": "first"},
-    {"name": "Ground inside boundary - soil", "p": [-2.25, -0.6, -5.1], "s": [3.625, 0.14, 2.31094], "color": "earth", "level": "site"},
-    {"name": "Ground inside boundary - soil", "p": [-2.25, -0.6, -2.78906], "s": [3.625, 0.14, 2.31094], "color": "earth", "level": "site"},
-    {"name": "Ground inside boundary - soil", "p": [-2.25, -0.6, -0.47812], "s": [3.625, 0.14, 3.35312], "color": "earth", "level": "site"},
-    {"name": "Ground inside boundary - soil", "p": [-2.25, -0.6, 2.875], "s": [3.625, 0.14, 3.625], "color": "earth", "level": "site"},
-    {"name": "Ground inside boundary - soil", "p": [-2.25, -0.6, 6.5], "s": [3.625, 0.14, 3.625], "color": "earth", "level": "site"},
-    {"name": "Ground inside boundary - soil", "p": [-2.25, -0.6, 10.125], "s": [3.625, 0.14, 3.625], "color": "earth", "level": "site"},
-    {"name": "Ground inside boundary - soil", "p": [-2.25, -0.6, 13.75], "s": [3.625, 0.14, 3.625], "color": "earth", "level": "site"},
-    {"name": "Ground inside boundary - soil", "p": [-2.25, -0.6, 17.375], "s": [3.625, 0.14, 3.625], "color": "earth", "level": "site"},
-    {"name": "Ground inside boundary - soil", "p": [1.375, -0.6, -5.1], "s": [3.625, 0.14, 2.31094], "color": "earth", "level": "site"},
-    {"name": "Ground inside boundary - soil", "p": [1.375, -0.6, -2.78906], "s": [3.625, 0.14, 2.31094], "color": "earth", "level": "site"},
-    {"name": "Ground inside boundary - soil", "p": [1.375, -0.6, -0.47812], "s": [3.625, 0.14, 3.35312], "color": "earth", "level": "site"},
-    {"name": "Ground inside boundary - soil", "p": [1.375, -0.6, 2.875], "s": [3.625, 0.14, 3.625], "color": "earth", "level": "site"},
-    {"name": "Ground inside boundary - soil", "p": [1.375, -0.6, 6.5], "s": [3.625, 0.14, 3.625], "color": "earth", "level": "site"},
-    {"name": "Ground inside boundary - soil", "p": [1.375, -0.6, 10.125], "s": [3.625, 0.14, 3.625], "color": "earth", "level": "site"},
-    {"name": "Ground inside boundary - soil", "p": [1.375, -0.6, 13.75], "s": [3.625, 0.14, 3.625], "color": "earth", "level": "site"},
-    {"name": "Ground inside boundary - soil", "p": [1.375, -0.6, 17.375], "s": [3.625, 0.14, 3.625], "color": "earth", "level": "site"},
-    {"name": "Ground inside boundary - soil", "p": [5.0, -0.6, -5.1], "s": [3.625, 0.14, 2.31094], "color": "earth", "level": "site"},
-    {"name": "Ground inside boundary - soil", "p": [5.0, -0.6, -2.78906], "s": [3.625, 0.14, 2.31094], "color": "earth", "level": "site"},
-    {"name": "Ground inside boundary - soil", "p": [5.0, -0.6, -0.47812], "s": [3.625, 0.14, 3.35312], "color": "earth", "level": "site"},
-    {"name": "Ground inside boundary - soil", "p": [5.0, -0.6, 2.875], "s": [3.625, 0.14, 3.625], "color": "earth", "level": "site"},
-    {"name": "Ground inside boundary - soil", "p": [5.0, -0.6, 6.5], "s": [3.625, 0.14, 3.625], "color": "earth", "level": "site"},
-    {"name": "Ground inside boundary - soil", "p": [5.0, -0.6, 10.125], "s": [3.625, 0.14, 3.625], "color": "earth", "level": "site"},
-    {"name": "Ground inside boundary - soil", "p": [5.0, -0.6, 13.75], "s": [3.625, 0.14, 3.625], "color": "earth", "level": "site"},
-    {"name": "Ground inside boundary - soil", "p": [5.0, -0.6, 17.375], "s": [3.625, 0.14, 3.625], "color": "earth", "level": "site"},
-    {"name": "Ground inside boundary - soil", "p": [8.625, -0.6, -5.1], "s": [3.625, 0.14, 2.31094], "color": "earth", "level": "site"},
-    {"name": "Ground inside boundary - soil", "p": [8.625, -0.6, -2.78906], "s": [3.625, 0.14, 2.31094], "color": "earth", "level": "site"},
-    {"name": "Ground inside boundary - soil", "p": [8.625, -0.6, -0.47812], "s": [3.625, 0.14, 3.35312], "color": "earth", "level": "site"},
-    {"name": "Ground inside boundary - soil", "p": [8.625, -0.6, 2.875], "s": [3.625, 0.14, 3.625], "color": "earth", "level": "site"},
-    {"name": "Ground inside boundary - soil", "p": [8.625, -0.6, 6.5], "s": [3.625, 0.14, 3.625], "color": "earth", "level": "site"},
-    {"name": "Ground inside boundary - soil", "p": [8.625, -0.6, 10.125], "s": [3.625, 0.14, 3.625], "color": "earth", "level": "site"},
-    {"name": "Ground inside boundary - soil", "p": [8.625, -0.6, 13.75], "s": [3.625, 0.14, 3.625], "color": "earth", "level": "site"},
-    {"name": "Ground inside boundary - soil", "p": [8.625, -0.6, 17.375], "s": [3.625, 0.14, 3.625], "color": "earth", "level": "site"},
-    {"name": "Paved side driveway", "p": [-2.1, -0.45, -4.9725], "s": [2.25, 0.08, 25.7725], "color": "paving", "level": "site"},
-    {"name": "Garden boundary path", "p": [0.9, -0.13, -5.00437], "s": [10.95, 0.06, 0.41437], "color": "paving", "level": "site"},
-    {"name": "Garden right side path", "p": [11.35, -0.13, -5.00437], "s": [0.6500000000000004, 0.06, 4.335], "color": "paving", "level": "site"},
-    {"name": "Front utility wall", "p": [1.05, -0.5, -5.1], "s": [2.0999999999999996, 1.75, 0.11475], "color": "cream", "level": "boundary"},
-    {"name": "Front unfinished wall base", "p": [3.15, -0.5, -5.1], "s": [9.1, 0.95, 0.11475], "color": "boundary", "level": "boundary"},
-    {"name": "Front unfinished brickwork", "p": [3.15, 0.45, -5.1], "s": [9.1, 0.75, 0.11475], "color": "brick", "level": "boundary"},
-    {"name": "Side compound wall", "p": [-2.25, -0.5, -4.98525], "s": [0.18000000000000016, 1.6, 25.98525], "color": "boundary", "level": "boundary"},
-    {"name": "Rear compound wall", "p": [0.35, -0.5, 20.82], "s": [11.9, 1.55, 0.18], "color": "boundary", "level": "boundary"},
-    {"name": "Side boundary pier", "p": [-2.25, -0.5, -4.4625], "s": [0.28, 1.86, 0.1785], "color": "brick", "level": "boundary"},
-    {"name": "Side boundary pier", "p": [-2.25, -0.5, -1.275], "s": [0.28, 1.86, 0.1785], "color": "brick", "level": "boundary"},
-    {"name": "Side boundary pier", "p": [-2.25, -0.5, 3], "s": [0.28, 1.86, 0.28], "color": "brick", "level": "boundary"},
-    {"name": "Side boundary pier", "p": [-2.25, -0.5, 8], "s": [0.28, 1.86, 0.28], "color": "brick", "level": "boundary"},
-    {"name": "Side boundary pier", "p": [-2.25, -0.5, 13], "s": [0.28, 1.86, 0.28], "color": "brick", "level": "boundary"},
-    {"name": "Side boundary pier", "p": [-2.25, -0.5, 18], "s": [0.28, 1.86, 0.28], "color": "brick", "level": "boundary"},
-    {"name": "Front gate pillar", "p": [-2.25, -0.5, -5.1], "s": [0.25, 1.95, 0.15937], "color": "boundary", "level": "boundary"},
-    {"name": "Front gate pillar", "p": [1.0, -0.5, -5.1], "s": [0.25, 1.95, 0.15937], "color": "boundary", "level": "boundary"},
-    {"name": "Front gate horizontal rail", "p": [-2.05, 0.04, -5.0745], "s": [3.0999999999999996, 0.03500000000000001, 0.051], "color": "red", "level": "boundary"},
-    {"name": "Front gate horizontal rail", "p": [-2.05, 0.42, -5.0745], "s": [3.0999999999999996, 0.034999999999999976, 0.051], "color": "red", "level": "boundary"},
-    {"name": "Front gate horizontal rail", "p": [-2.05, 0.8, -5.0745], "s": [3.0999999999999996, 0.03500000000000003, 0.051], "color": "red", "level": "boundary"},
-    {"name": "Front gate horizontal rail", "p": [-2.05, 1.18, -5.0745], "s": [3.0999999999999996, 0.03499999999999992, 0.051], "color": "red", "level": "boundary"},
-    {"name": "Front gate upright", "p": [-2.05, 0, -5.0745], "s": [0.028000000000000025, 1.2, 0.051], "color": "red", "level": "boundary"},
-    {"name": "Front gate upright", "p": [-1.7727272727272725, 0, -5.0745], "s": [0.028000000000000025, 1.2, 0.051], "color": "red", "level": "boundary"},
-    {"name": "Front gate upright", "p": [-1.4954545454545451, 0, -5.0745], "s": [0.028000000000000025, 1.2, 0.051], "color": "red", "level": "boundary"},
-    {"name": "Front gate upright", "p": [-1.218181818181818, 0, -5.0745], "s": [0.028000000000000025, 1.2, 0.051], "color": "red", "level": "boundary"},
-    {"name": "Front gate upright", "p": [-0.9409090909090907, 0, -5.0745], "s": [0.028000000000000025, 1.2, 0.051], "color": "red", "level": "boundary"},
-    {"name": "Front gate upright", "p": [-0.6636363636363634, 0, -5.0745], "s": [0.028000000000000025, 1.2, 0.051], "color": "red", "level": "boundary"},
-    {"name": "Front gate upright", "p": [-0.38636363636363624, 0, -5.0745], "s": [0.028000000000000025, 1.2, 0.051], "color": "red", "level": "boundary"},
-    {"name": "Front gate upright", "p": [-0.1090909090909089, 0, -5.0745], "s": [0.027999999999999997, 1.2, 0.051], "color": "red", "level": "boundary"},
-    {"name": "Front gate upright", "p": [0.16818181818181843, 0, -5.0745], "s": [0.027999999999999997, 1.2, 0.051], "color": "red", "level": "boundary"},
-    {"name": "Front gate upright", "p": [0.44545454545454577, 0, -5.0745], "s": [0.028000000000000025, 1.2, 0.051], "color": "red", "level": "boundary"},
-    {"name": "Front gate upright", "p": [0.7227272727272731, 0, -5.0745], "s": [0.028000000000000025, 1.2, 0.051], "color": "red", "level": "boundary"},
-    {"name": "Front gate upright", "p": [1.0000000000000004, 0, -5.0745], "s": [0.028000000000000025, 1.2, 0.051], "color": "red", "level": "boundary"},
-    {"name": "Rooftop room back wall", "p": [8.45, 6.46, 10.23], "s": [3.200000000000001, 2.04, 0.11999999999999922], "color": "wall", "level": "roof-detail"},
-    {"name": "Rooftop room side wall", "p": [8.45, 6.46, 6.6899999999999995], "s": [0.11999999999999922, 2.04, 3.66], "color": "wall", "level": "roof-detail"},
-    {"name": "Rooftop room side wall", "p": [11.530000000000001, 6.46, 6.6899999999999995], "s": [0.11999999999999922, 2.04, 3.66], "color": "wall", "level": "roof-detail"},
-    {"name": "Rooftop room roof", "p": [8.45, 8.5, 6.6899999999999995], "s": [3.200000000000001, 0.14000000000000057, 3.66], "color": "roof", "level": "roof-detail"},
-    {"name": "Water tank platform", "p": [9.3, 8.64, 7.525], "s": [1.45, 0.18, 1.45], "color": "terrace", "level": "roof-detail"},
-    {"name": "Water tank", "p": [9.425, 8.82, 7.65], "s": [1.2, 1.27, 1.2], "color": "tank", "level": "roof-detail", "shape": "cylinder"},
-    {"name": "Water tank lid", "p": [9.805, 10.09, 8.03], "s": [0.44, 0.07, 0.44], "color": "tank", "level": "roof-detail", "shape": "cylinder"},
-    {"name": "Lounge railing along opening (approximate)", "p": [6.359999999999999, 3.61, 7.24], "s": [0.05, 0.04, 3.135], "color": "wine-rail", "level": "first", "interiorOnly": true},
-    {"name": "Lounge railing return (approximate)", "p": [4.875, 3.61, 10.35], "s": [1.5099999999999998, 0.04, 0.05], "color": "wine-rail", "level": "first", "interiorOnly": true},
-    {"name": "Lounge railing along opening (approximate)", "p": [6.359999999999999, 3.91, 7.24], "s": [0.05, 0.04, 3.135], "color": "wine-rail", "level": "first", "interiorOnly": true},
-    {"name": "Lounge railing return (approximate)", "p": [4.875, 3.91, 10.35], "s": [1.5099999999999998, 0.04, 0.05], "color": "wine-rail", "level": "first", "interiorOnly": true},
-    {"name": "Lounge railing along opening (approximate)", "p": [6.359999999999999, 4.2, 7.24], "s": [0.05, 0.04, 3.135], "color": "wine-rail", "level": "first", "interiorOnly": true},
-    {"name": "Lounge railing return (approximate)", "p": [4.875, 4.2, 10.35], "s": [1.5099999999999998, 0.04, 0.05], "color": "wine-rail", "level": "first", "interiorOnly": true},
-    {"name": "Lounge railing post (approximate)", "p": [6.35, 3.3, 7.24], "s": [0.07, 0.94, 0.07], "color": "wine-rail", "level": "first", "interiorOnly": true},
-    {"name": "Lounge railing post (approximate)", "p": [6.35, 3.3, 8.02], "s": [0.07, 0.94, 0.07], "color": "wine-rail", "level": "first", "interiorOnly": true},
-    {"name": "Lounge railing post (approximate)", "p": [6.35, 3.3, 8.8], "s": [0.07, 0.94, 0.07], "color": "wine-rail", "level": "first", "interiorOnly": true},
-    {"name": "Lounge railing post (approximate)", "p": [6.35, 3.3, 9.58], "s": [0.07, 0.94, 0.07], "color": "wine-rail", "level": "first", "interiorOnly": true},
-    {"name": "Lounge railing post (approximate)", "p": [6.35, 3.3, 10.335], "s": [0.07, 0.94, 0.07], "color": "wine-rail", "level": "first", "interiorOnly": true},
-    {"name": "Lounge railing return post (approximate)", "p": [4.875, 3.3, 10.34], "s": [0.07, 0.94, 0.07], "color": "wine-rail", "level": "first", "interiorOnly": true},
-    {"name": "Lounge railing return post (approximate)", "p": [5.625, 3.3, 10.34], "s": [0.07, 0.94, 0.07], "color": "wine-rail", "level": "first", "interiorOnly": true},
-    {"name": "Neighbour boundary wall", "p": [12.07, -0.5, -4.98525], "s": [0.18, 2.3, 0.96699], "color": "boundary", "level": "boundary", "seamlessSegments": true},
-    {"name": "Neighbour boundary wall", "p": [12.07, -0.5, -4.01826], "s": [0.18, 2.3, 0.96699], "color": "boundary", "level": "boundary", "seamlessSegments": true},
-    {"name": "Neighbour boundary wall", "p": [12.07, -0.5, -3.05128], "s": [0.18, 2.3, 0.96699], "color": "boundary", "level": "boundary", "seamlessSegments": true},
-    {"name": "Neighbour boundary wall", "p": [12.07, -0.5, -2.08429], "s": [0.18, 2.3, 0.96699], "color": "boundary", "level": "boundary", "seamlessSegments": true},
-    {"name": "Neighbour boundary wall", "p": [12.07, -0.5, -1.1173], "s": [0.18, 3.1, 0.96699], "color": "boundary", "level": "boundary", "seamlessSegments": true},
-    {"name": "Neighbour boundary wall", "p": [12.07, -0.5, -0.15032], "s": [0.18, 8.4, 1.43137], "color": "boundary", "level": "boundary", "seamlessSegments": true},
-    {"name": "Neighbour boundary wall", "p": [12.07, -0.5, 1.28105], "s": [0.18, 8.4, 1.51684], "color": "boundary", "level": "boundary", "seamlessSegments": true},
-    {"name": "Neighbour boundary wall", "p": [12.07, -0.5, 2.79789], "s": [0.18, 8.4, 1.51684], "color": "boundary", "level": "boundary", "seamlessSegments": true},
-    {"name": "Neighbour boundary wall", "p": [12.07, -0.5, 4.31474], "s": [0.18, 8.4, 1.51684], "color": "boundary", "level": "boundary", "seamlessSegments": true},
-    {"name": "Neighbour boundary wall", "p": [12.07, -0.5, 5.83158], "s": [0.18, 8.4, 1.51684], "color": "boundary", "level": "boundary", "seamlessSegments": true},
-    {"name": "Neighbour boundary wall", "p": [12.07, -0.5, 7.34842], "s": [0.18, 8.4, 1.51684], "color": "boundary", "level": "boundary", "seamlessSegments": true},
-    {"name": "Neighbour boundary wall", "p": [12.07, -0.5, 8.86526], "s": [0.18, 8.4, 1.51684], "color": "boundary", "level": "boundary", "seamlessSegments": true},
-    {"name": "Neighbour boundary wall", "p": [12.07, -0.5, 10.38211], "s": [0.18, 8.4, 1.51684], "color": "boundary", "level": "boundary", "seamlessSegments": true},
-    {"name": "Neighbour boundary wall", "p": [12.07, -0.5, 11.89895], "s": [0.18, 8.4, 1.51684], "color": "boundary", "level": "boundary", "seamlessSegments": true},
-    {"name": "Neighbour boundary wall", "p": [12.07, -0.5, 13.41579], "s": [0.18, 8.4, 1.51684], "color": "boundary", "level": "boundary", "seamlessSegments": true},
-    {"name": "Neighbour boundary wall", "p": [12.07, -0.5, 14.93263], "s": [0.18, 8.4, 1.51684], "color": "boundary", "level": "boundary", "seamlessSegments": true},
-    {"name": "Neighbour boundary wall", "p": [12.07, -0.5, 16.44947], "s": [0.18, 7.35, 1.51684], "color": "boundary", "level": "boundary", "seamlessSegments": true},
-    {"name": "Neighbour boundary wall", "p": [12.07, -0.5, 17.96632], "s": [0.18, 5.6, 1.51684], "color": "boundary", "level": "boundary", "seamlessSegments": true},
-    {"name": "Neighbour boundary wall", "p": [12.07, -0.5, 19.48316], "s": [0.18, 4.0, 1.51684], "color": "boundary", "level": "boundary", "seamlessSegments": true},
-    {"name": "Roof slab around openings - front", "p": [4.875, 6.3, 5.375], "s": [6.875, 0.16, 2.075], "color": "terrace-mosaic", "level": "roof", "topTextureOnly": true, "textureRepeatMeters": 0.65},
-    {"name": "Roof slab around openings - stair west", "p": [4.875, 6.3, 7.45], "s": [5.675, 0.16, 1.8], "color": "terrace-mosaic", "level": "roof", "topTextureOnly": true, "textureRepeatMeters": 0.65},
-    {"name": "Roof slab around openings - stair east", "p": [11.6, 6.3, 7.45], "s": [0.15, 0.16, 1.8], "color": "terrace-mosaic", "level": "roof", "topTextureOnly": true, "textureRepeatMeters": 0.65},
-    {"name": "Roof slab around openings - rear", "p": [4.875, 6.3, 13.575], "s": [3.625, 0.16, 1.3], "color": "terrace-mosaic", "level": "roof", "topTextureOnly": true, "textureRepeatMeters": 0.65},
-    {"name": "Roof terrace parapet (approximate)", "p": [1.25, 6.46, 1.055], "s": [1.45, 0.34, 0.14], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [2.7, 6.46, 1.055], "s": [1.45, 0.34, 0.14], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [4.15, 6.46, 1.055], "s": [1.45, 0.34, 0.14], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [5.6, 6.46, 1.055], "s": [1.45, 0.34, 0.14], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [7.050000000000001, 6.46, 1.055], "s": [1.45, 0.34, 0.14], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [8.43, 6.46, 0.0], "s": [0.14, 0.75, 1.125], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [8.5, 6.46, -0.07], "s": [1.25, 0.75, 0.14], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [11.125, 6.46, -0.07], "s": [0.625, 0.75, 0.14], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [11.68, 6.46, 0.0], "s": [0.14, 0.86, 1.5083333333333333], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [11.68, 6.46, 1.508333333333333], "s": [0.14, 0.86, 1.5083333333333333], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [11.68, 6.46, 3.016666666666666], "s": [0.14, 0.86, 1.5083333333333333], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [11.68, 6.46, 4.5249999999999995], "s": [0.14, 0.86, 1.5083333333333333], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [11.68, 6.46, 6.033333333333332], "s": [0.14, 0.86, 1.5083333333333333], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [11.68, 6.46, 7.541666666666667], "s": [0.14, 0.86, 1.5083333333333333], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [11.68, 6.46, 9.049999999999999], "s": [0.14, 0.86, 1.5083333333333333], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [11.68, 6.46, 10.558333333333334], "s": [0.14, 0.86, 1.5083333333333333], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [11.68, 6.46, 12.066666666666665], "s": [0.14, 0.86, 1.5083333333333333], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [8.5, 6.46, 13.504999999999999], "s": [1.0833333333333333, 0.86, 0.14], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [9.583333333333334, 6.46, 13.504999999999999], "s": [1.0833333333333333, 0.86, 0.14], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [10.666666666666666, 6.46, 13.504999999999999], "s": [1.0833333333333333, 0.86, 0.14], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [2.025, 6.46, 18.93], "s": [1.295, 0.86, 0.14], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [3.32, 6.46, 18.93], "s": [1.295, 0.86, 0.14], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [4.615, 6.46, 18.93], "s": [0.2599999999999998, 0.86, 0.14], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [1.9549999999999998, 6.46, 14.875], "s": [0.14, 0.86, 1.375], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [1.9549999999999998, 6.46, 16.25], "s": [0.14, 0.86, 1.375], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [1.9549999999999998, 6.46, 17.625], "s": [0.14, 0.86, 1.375], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [2.025, 6.46, 14.805], "s": [1.425, 0.86, 0.14], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [3.45, 6.46, 14.805], "s": [1.425, 0.86, 0.14], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [4.805, 6.46, 5.375], "s": [0.14, 0.86, 1.5833333333333333], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [4.805, 6.46, 6.958333333333333], "s": [0.14, 0.86, 1.5833333333333333], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [4.805, 6.46, 8.541666666666666], "s": [0.14, 0.86, 1.5833333333333333], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [4.805, 6.46, 10.125], "s": [0.14, 0.86, 1.5833333333333333], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [4.805, 6.46, 11.708333333333332], "s": [0.14, 0.86, 1.5833333333333333], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [4.805, 6.46, 13.291666666666668], "s": [0.14, 0.86, 1.5833333333333333], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [1.25, 6.46, 5.305], "s": [1.2083333333333333, 0.86, 0.14], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [2.458333333333333, 6.46, 5.305], "s": [1.2083333333333333, 0.86, 0.14], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [3.6666666666666665, 6.46, 5.305], "s": [1.2083333333333333, 0.86, 0.14], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [1.18, 6.46, 1.125], "s": [0.14, 0.86, 1.4166666666666667], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [1.18, 6.46, 2.5416666666666665], "s": [0.14, 0.86, 1.4166666666666667], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Roof terrace parapet (approximate)", "p": [1.18, 6.46, 3.958333333333333], "s": [0.14, 0.86, 1.4166666666666667], "color": "parapet", "level": "roof-detail", "seamlessSegments": true},
-    {"name": "Main stair first flight", "p": [8.48, 0, 9.26], "s": [0.22999999999999998, 0.19412, 0.92], "color": "stair", "level": "ground", "interiorOnly": true},
-    {"name": "Main stair first flight", "p": [8.71, 0.09824, 9.26], "s": [0.22999999999999998, 0.29, 0.92], "color": "stair", "level": "ground", "interiorOnly": true},
-    {"name": "Main stair first flight", "p": [8.940000000000001, 0.29235, 9.26], "s": [0.22999999999999998, 0.29, 0.92], "color": "stair", "level": "ground", "interiorOnly": true},
-    {"name": "Main stair first flight", "p": [9.17, 0.48647, 9.26], "s": [0.22999999999999998, 0.29, 0.92], "color": "stair", "level": "ground", "interiorOnly": true},
-    {"name": "Main stair first flight", "p": [9.4, 0.68059, 9.26], "s": [0.22999999999999998, 0.29, 0.92], "color": "stair", "level": "ground", "interiorOnly": true},
-    {"name": "Main stair first flight", "p": [9.63, 0.87471, 9.26], "s": [0.22999999999999998, 0.29, 0.92], "color": "stair", "level": "ground", "interiorOnly": true},
-    {"name": "Main stair first flight", "p": [9.86, 1.06882, 9.26], "s": [0.22999999999999998, 0.29, 0.92], "color": "stair", "level": "ground", "interiorOnly": true},
-    {"name": "Main stair first flight", "p": [10.09, 1.26294, 9.26], "s": [0.22999999999999998, 0.29, 0.92], "color": "stair", "level": "ground", "interiorOnly": true},
-    {"name": "Main stair first flight", "p": [10.32, 1.45706, 9.26], "s": [0.22999999999999998, 0.29, 0.92], "color": "stair", "level": "ground", "interiorOnly": true},
-    {"name": "Main stair landing", "p": [10.55, 1.45706, 9.26], "s": [1.0, 0.29, 0.92], "color": "stair", "level": "ground", "interiorOnly": true},
-    {"name": "Main stair second flight", "p": [10.57, 1.69118, 9.02], "s": [0.93, 0.25, 0.23], "color": "stair", "level": "ground", "interiorOnly": true},
-    {"name": "Main stair second flight", "p": [10.57, 1.88529, 8.79], "s": [0.93, 0.25, 0.23], "color": "stair", "level": "ground", "interiorOnly": true},
-    {"name": "Main stair second flight", "p": [10.57, 2.07941, 8.559999999999999], "s": [0.93, 0.25, 0.23], "color": "stair", "level": "ground", "interiorOnly": true},
-    {"name": "Main stair second flight", "p": [10.57, 2.27353, 8.33], "s": [0.93, 0.25, 0.23], "color": "stair", "level": "ground", "interiorOnly": true},
-    {"name": "Main stair second flight", "p": [10.57, 2.46765, 8.1], "s": [0.93, 0.25, 0.23], "color": "stair", "level": "ground", "interiorOnly": true},
-    {"name": "Main stair second flight", "p": [10.57, 2.66176, 7.87], "s": [0.93, 0.25, 0.23], "color": "stair", "level": "ground", "interiorOnly": true},
-    {"name": "Main stair second flight", "p": [10.57, 2.85588, 7.640000000000001], "s": [0.93, 0.25, 0.23], "color": "stair", "level": "ground", "interiorOnly": true},
-    {"name": "Main stair second flight", "p": [10.57, 3.05, 7.41], "s": [0.93, 0.25, 0.23], "color": "stair", "level": "ground", "interiorOnly": true},
-    {"name": "Main stair first flight", "p": [8.48, 3.3, 9.26], "s": [0.22999999999999998, 0.18588, 0.92], "color": "stair", "level": "first", "interiorOnly": true},
-    {"name": "Main stair first flight", "p": [8.71, 3.38176, 9.26], "s": [0.22999999999999998, 0.29, 0.92], "color": "stair", "level": "first", "interiorOnly": true},
-    {"name": "Main stair first flight", "p": [8.940000000000001, 3.56765, 9.26], "s": [0.22999999999999998, 0.29, 0.92], "color": "stair", "level": "first", "interiorOnly": true},
-    {"name": "Main stair first flight", "p": [9.17, 3.75353, 9.26], "s": [0.22999999999999998, 0.29, 0.92], "color": "stair", "level": "first", "interiorOnly": true},
-    {"name": "Main stair first flight", "p": [9.4, 3.93941, 9.26], "s": [0.22999999999999998, 0.29, 0.92], "color": "stair", "level": "first", "interiorOnly": true},
-    {"name": "Main stair first flight", "p": [9.63, 4.12529, 9.26], "s": [0.22999999999999998, 0.29, 0.92], "color": "stair", "level": "first", "interiorOnly": true},
-    {"name": "Main stair first flight", "p": [9.86, 4.31118, 9.26], "s": [0.22999999999999998, 0.29, 0.92], "color": "stair", "level": "first", "interiorOnly": true},
-    {"name": "Main stair first flight", "p": [10.09, 4.49706, 9.26], "s": [0.22999999999999998, 0.29, 0.92], "color": "stair", "level": "first", "interiorOnly": true},
-    {"name": "Main stair first flight", "p": [10.32, 4.68294, 9.26], "s": [0.22999999999999998, 0.29, 0.92], "color": "stair", "level": "first", "interiorOnly": true},
-    {"name": "Main stair landing", "p": [10.55, 4.68294, 9.26], "s": [1.0, 0.29, 0.92], "color": "stair", "level": "first", "interiorOnly": true},
-    {"name": "Main stair second flight", "p": [10.57, 4.90882, 9.02], "s": [0.93, 0.25, 0.23], "color": "stair", "level": "first", "interiorOnly": true},
-    {"name": "Main stair second flight", "p": [10.57, 5.09471, 8.79], "s": [0.93, 0.25, 0.23], "color": "stair", "level": "first", "interiorOnly": true},
-    {"name": "Main stair second flight", "p": [10.57, 5.28059, 8.559999999999999], "s": [0.93, 0.25, 0.23], "color": "stair", "level": "first", "interiorOnly": true},
-    {"name": "Main stair second flight", "p": [10.57, 5.46647, 8.33], "s": [0.93, 0.25, 0.23], "color": "stair", "level": "first", "interiorOnly": true},
-    {"name": "Main stair second flight", "p": [10.57, 5.65235, 8.1], "s": [0.93, 0.25, 0.23], "color": "stair", "level": "first", "interiorOnly": true},
-    {"name": "Main stair second flight", "p": [10.57, 5.83824, 7.87], "s": [0.93, 0.25, 0.23], "color": "stair", "level": "first", "interiorOnly": true},
-    {"name": "Main stair second flight", "p": [10.57, 6.02412, 7.640000000000001], "s": [0.93, 0.25, 0.23], "color": "stair", "level": "first", "interiorOnly": true},
-    {"name": "Main stair second flight", "p": [10.57, 6.21, 7.41], "s": [0.93, 0.25, 0.23], "color": "stair", "level": "first", "interiorOnly": true},
-    {"name": "Kitchen stair enclosure (approximate)", "p": [8.375, 0, 10.32], "s": [3.375, 3, 0.11], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Rear solid exterior wall", "p": [2.025, 3.3, 18.92], "s": [2.85, 3, 0.16], "color": "wall", "level": "first"},
-    {"name": "Rear service side wall", "p": [8.29, 0, 16.95], "s": [0.16, 3.3, 0.37], "color": "wall", "level": "ground"},
-    {"name": "Rear service side sill", "p": [8.29, 0, 17.32], "s": [0.16, 0.8, 0.98], "color": "wall", "level": "ground"},
-    {"name": "Rear service side lintel", "p": [8.29, 2.35, 17.32], "s": [0.16, 0.95, 0.98], "color": "wall", "level": "ground"},
-    {"name": "Rear service side wall", "p": [8.29, 0, 18.3], "s": [0.16, 3.3, 0.4], "color": "wall", "level": "ground"},
-    {"name": "Rear service side window", "p": [8.33, 0.8, 17.32], "s": [0.07, 1.55, 0.98], "color": "glass", "level": "ground"},
-    {"name": "Rear service side window upright", "p": [8.31, 0.8, 17.3], "s": [0.11, 1.55, 0.045], "color": "frame", "level": "ground"},
-    {"name": "Rear service side window upright", "p": [8.31, 0.8, 17.77], "s": [0.11, 1.55, 0.045], "color": "frame", "level": "ground"},
-    {"name": "Rear service side window upright", "p": [8.31, 0.8, 18.28], "s": [0.11, 1.55, 0.045], "color": "frame", "level": "ground"},
-    {"name": "Rear service side window rail", "p": [8.31, 0.78, 17.32], "s": [0.11, 0.045, 0.98], "color": "frame", "level": "ground"},
-    {"name": "Rear service side window rail", "p": [8.31, 2.33, 17.32], "s": [0.11, 0.045, 0.98], "color": "frame", "level": "ground"},
-    {"name": "Servant room terrace wall", "p": [8.42, 3.3, 16.875], "s": [0.16, 3, 0.275], "color": "wall", "level": "first"},
-    {"name": "Servant terrace window sill", "p": [8.42, 3.3, 17.15], "s": [0.16, 0.8, 1.3], "color": "wall", "level": "first"},
-    {"name": "Servant terrace window lintel", "p": [8.42, 5.75, 17.15], "s": [0.16, 0.55, 1.3], "color": "wall", "level": "first"},
-    {"name": "Servant room terrace wall", "p": [8.42, 3.3, 18.45], "s": [0.16, 3, 0.32], "color": "wall", "level": "first"},
-    {"name": "Servant terrace window", "p": [8.465, 4.1, 17.15], "s": [0.07, 1.65, 1.3], "color": "glass", "level": "first"},
-    {"name": "Servant terrace window upright", "p": [8.44, 4.1, 17.13], "s": [0.11, 1.65, 0.045], "color": "frame", "level": "first"},
-    {"name": "Servant terrace window upright", "p": [8.44, 4.1, 17.78], "s": [0.11, 1.65, 0.045], "color": "frame", "level": "first"},
-    {"name": "Servant terrace window upright", "p": [8.44, 4.1, 18.43], "s": [0.11, 1.65, 0.045], "color": "frame", "level": "first"},
-    {"name": "Servant terrace window rail", "p": [8.44, 4.08, 17.15], "s": [0.11, 0.045, 1.3], "color": "frame", "level": "first"},
-    {"name": "Servant terrace window rail", "p": [8.44, 5.73, 17.15], "s": [0.11, 0.045, 1.3], "color": "frame", "level": "first"},
-    {"name": "First floor slab at stairs - front", "p": [6.385, 3.14, 7.24], "s": [5.365, 0.16, 0.17], "color": "floor", "level": "first"},
-    {"name": "First floor slab at stairs - west", "p": [6.385, 3.14, 7.41], "s": [4.165, 0.16, 1.84], "color": "floor", "level": "first"},
-    {"name": "First floor slab at stairs - east", "p": [11.6, 3.14, 7.41], "s": [0.15, 0.16, 1.84], "color": "floor", "level": "first"},
-    {"name": "First floor slab by service terrace - front", "p": [4.875, 3.14, 10.375], "s": [6.875, 0.16, 3.2], "color": "floor", "level": "first"},
-    {"name": "First floor slab by service terrace - back", "p": [4.875, 3.14, 13.575], "s": [3.625, 0.16, 1.3], "color": "floor", "level": "first"},
-    {"name": "Master side red window sill", "p": [0.83, 3.84, 2.58], "s": [0.47, 0.2, 2.34], "color": "red", "level": "decoration"},
-    {"name": "Master side red window canopy", "p": [0.83, 5.72, 2.58], "s": [0.47, 0.18, 2.34], "color": "red", "level": "decoration"},
-    {"name": "Master side red window return", "p": [0.83, 3.84, 4.75], "s": [0.47, 2.06, 0.17], "color": "red", "level": "decoration"},
-    {"name": "Courtyard canopy red fascia", "p": [1.1, 6.2, 5.5], "s": [0.15, 0.18, 4.75], "color": "red", "level": "decoration"},
-    {"name": "First terrace projecting planter", "p": [-0.4, 3.86, 10.125], "s": [0.56, 0.38, 1.66], "color": "cream", "level": "first"},
-    {"name": "Rear entrance brick pillar", "p": [-2.25, -0.5, 20.75], "s": [0.32, 1.85, 0.32], "color": "brick", "level": "boundary"},
-    {"name": "Rear entrance brick pillar", "p": [0.18, -0.5, 20.75], "s": [0.32, 1.85, 0.32], "color": "brick", "level": "boundary"},
-    {"name": "Rear side window canopy", "p": [1.77, 2.68, 15.5], "s": [0.27, 0.16, 3.22], "color": "red", "level": "decoration"},
-    {"name": "Rear side window canopy", "p": [1.77, 5.98, 15.5], "s": [0.27, 0.16, 3.22], "color": "red", "level": "decoration"},
-    {"name": "Terrace opening grille frame", "p": [0.05, 6.18, 10.125], "s": [4.78, 0.2, 0.18], "color": "wall", "level": "decoration"},
-    {"name": "Terrace opening grille frame", "p": [0.05, 6.18, 11.56], "s": [4.78, 0.2, 0.18], "color": "wall", "level": "decoration"},
-    {"name": "Terrace opening grille frame", "p": [0.05, 6.18, 10.125], "s": [0.18, 0.2, 1.67], "color": "wall", "level": "decoration"},
-    {"name": "Terrace opening grille frame", "p": [4.65, 6.18, 10.125], "s": [0.18, 0.2, 1.67], "color": "wall", "level": "decoration"},
-    {"name": "Dining side wall", "p": [1.175, 0, 1.25], "s": [0.15, 3.3, 0.09], "color": "wall", "level": "ground"},
-    {"name": "Dining side wall", "p": [1.175, 2.54, 1.34], "s": [0.15, 0.76, 0.38], "color": "wall", "level": "ground"},
-    {"name": "Dining side wall", "p": [1.175, 0, 1.72], "s": [0.15, 3.3, 3.78], "color": "wall", "level": "ground"},
-    {"name": "Dining narrow corner light glazing", "p": [1.228, 0, 1.34], "s": [0.044, 2.54, 0.38], "color": "glass", "level": "ground"},
-    {"name": "Dining narrow corner light jamb or mullion", "p": [1.1985, 0, 1.314], "s": [0.103, 2.54, 0.052], "color": "frame", "level": "ground"},
-    {"name": "Dining narrow corner light jamb or mullion", "p": [1.1985, 0, 1.694], "s": [0.103, 2.54, 0.052], "color": "frame", "level": "ground"},
-    {"name": "Dining narrow corner light crossbar", "p": [1.1985, 0.001, 1.34], "s": [0.103, 0.044, 0.38], "color": "frame", "level": "ground"},
-    {"name": "Dining narrow corner light crossbar", "p": [1.1985, 2.078, 1.34], "s": [0.103, 0.044, 0.38], "color": "frame", "level": "ground"},
-    {"name": "Dining narrow corner light crossbar", "p": [1.1985, 2.495, 1.34], "s": [0.103, 0.044, 0.38], "color": "frame", "level": "ground"},
-    {"name": "Neighbour side wall", "p": [11.675, 0, 0], "s": [0.15, 3.3, 16.95], "color": "wall", "level": "ground"},
-    {"name": "First floor neighbour wall", "p": [11.675, 3.3, 0], "s": [0.15, 3.0, 13.575], "color": "wall", "level": "first"},
-    {"name": "Drawing room red end wall", "p": [11.659, 0.01, 0.07], "s": [0.012, 2.886, 5.35], "color": "hall-red", "level": "ground", "interiorOnly": true},
-    {"name": "Hall to entry lobby wall", "p": [4.75, 0, 5.425], "s": [0.18, 3.14, 0.15], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Hall to entry lobby wall", "p": [4.93, 2.19, 5.425], "s": [1.02, 0.95, 0.15], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Hall to entry lobby wall", "p": [5.95, 0, 5.425], "s": [0.82, 3.14, 0.15], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Hall to entry lobby wall", "p": [6.77, 2.19, 5.425], "s": [0.93, 0.95, 0.15], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Hall to entry lobby wall", "p": [7.7, 0, 5.425], "s": [0.675, 3.14, 0.15], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Dining soffit", "p": [1.33, 3.048, 1.34], "s": [4.995, 0.092, 4.08], "color": "ceiling", "level": "ground", "interiorOnly": true, "overhead": true},
-    {"name": "Drawing soffit", "p": [6.325, 2.8956, 0.08], "s": [5.35, 0.2444, 5.34], "color": "ceiling", "level": "ground", "interiorOnly": true, "overhead": true},
-    {"name": "Court facing dining", "p": [1.25, 0, 5.425], "s": [0.33, 3.3, 0.15], "color": "wall", "level": "ground"},
-    {"name": "Court facing dining", "p": [1.58, 0, 5.425], "s": [2.98, 0.025, 0.15], "color": "wall", "level": "ground"},
-    {"name": "Court facing dining", "p": [1.58, 2.64, 5.425], "s": [2.98, 0.66, 0.15], "color": "wall", "level": "ground"},
-    {"name": "Court facing dining", "p": [4.56, 0, 5.425], "s": [0.19, 3.3, 0.15], "color": "wall", "level": "ground"},
-    {"name": "Dining glazed court opening glazing", "p": [1.58, 0.025, 5.478], "s": [2.98, 2.615, 0.044], "color": "glass", "level": "ground"},
-    {"name": "Dining glazed court opening jamb or mullion", "p": [1.554, 0.025, 5.4485], "s": [0.052, 2.615, 0.103], "color": "frame", "level": "ground"},
-    {"name": "Dining glazed court opening jamb or mullion", "p": [2.034, 0.025, 5.4485], "s": [0.052, 2.615, 0.103], "color": "frame", "level": "ground"},
-    {"name": "Dining glazed court opening jamb or mullion", "p": [4.094, 0.025, 5.4485], "s": [0.052, 2.615, 0.103], "color": "frame", "level": "ground"},
-    {"name": "Dining glazed court opening jamb or mullion", "p": [4.534, 0.025, 5.4485], "s": [0.052, 2.615, 0.103], "color": "frame", "level": "ground"},
-    {"name": "Dining glazed court opening crossbar", "p": [1.58, 0.026, 5.4485], "s": [2.98, 0.044, 0.103], "color": "frame", "level": "ground"},
-    {"name": "Dining glazed court opening crossbar", "p": [1.58, 2.078, 5.4485], "s": [2.98, 0.044, 0.103], "color": "frame", "level": "ground"},
-    {"name": "Dining glazed court opening crossbar", "p": [1.58, 2.595, 5.4485], "s": [2.98, 0.044, 0.103], "color": "frame", "level": "ground"},
-    {"name": "Bedroom court wall", "p": [0, 0, 10.3], "s": [2.94, 3.3, 0.15], "color": "wall", "level": "ground"},
-    {"name": "Bedroom court wall", "p": [2.94, 2.54, 10.3], "s": [1.66, 0.76, 0.15], "color": "wall", "level": "ground"},
-    {"name": "Bedroom court wall", "p": [4.6, 0, 10.3], "s": [0.15, 3.3, 0.15], "color": "wall", "level": "ground"},
-    {"name": "Bedroom 1 court entry glazing", "p": [2.94, 0, 10.353], "s": [0.7, 2.54, 0.044], "color": "glass", "level": "ground"},
-    {"name": "Bedroom 1 court entry door", "p": [3.64, 0, 10.35], "s": [0.96, 2.03, 0.05], "color": "old-door", "level": "ground"},
-    {"name": "Bedroom 1 court entry transom", "p": [3.64, 2.03, 10.353], "s": [0.96, 0.51, 0.044], "color": "glass", "level": "ground"},
-    {"name": "Bedroom 1 court entry jamb or mullion", "p": [2.914, 0, 10.3235], "s": [0.052, 2.54, 0.103], "color": "frame", "level": "ground"},
-    {"name": "Bedroom 1 court entry jamb or mullion", "p": [3.614, 0, 10.3235], "s": [0.052, 2.54, 0.103], "color": "frame", "level": "ground"},
-    {"name": "Bedroom 1 court entry jamb or mullion", "p": [4.574, 0, 10.3235], "s": [0.052, 2.54, 0.103], "color": "frame", "level": "ground"},
-    {"name": "Bedroom 1 court entry crossbar", "p": [2.94, 0.001, 10.3235], "s": [1.66, 0.044, 0.103], "color": "frame", "level": "ground"},
-    {"name": "Bedroom 1 court entry crossbar", "p": [2.94, 0.528, 10.3235], "s": [0.7, 0.044, 0.103], "color": "frame", "level": "ground"},
-    {"name": "Bedroom 1 court entry crossbar", "p": [2.94, 2.008, 10.3235], "s": [1.66, 0.044, 0.103], "color": "frame", "level": "ground"},
-    {"name": "Bedroom 1 court entry crossbar", "p": [2.94, 2.495, 10.3235], "s": [1.66, 0.044, 0.103], "color": "frame", "level": "ground"},
-    {"name": "Courtyard sunken bed", "p": [1.12, -0.37, 6.69], "s": [2.69, 0.055, 3.6], "color": "court-floor", "level": "ground"},
-    {"name": "Court inner walkway", "p": [3.81, -0.33, 5.5], "s": [0.94, 0.33, 4.875], "color": "paving", "level": "ground"},
-    {"name": "Court dining-side walkway", "p": [1.18, -0.33, 5.5], "s": [2.63, 0.33, 1.19], "color": "paving", "level": "ground"},
-    {"name": "Court bedroom threshold", "p": [1.12, -0.33, 10.29], "s": [2.69, 0.33, 0.085], "color": "paving", "level": "ground"},
-    {"name": "Court approach step", "p": [0.55, -0.4, 5.5], "s": [0.32, 0.13, 1.19], "color": "step-trim", "level": "ground"},
-    {"name": "Court approach step", "p": [0.86, -0.4, 5.5], "s": [0.32, 0.26, 1.19], "color": "step-trim", "level": "ground"},
-    {"name": "Lobby wall by WC, small room, stair and kitchen", "p": [8.3, 0, 5.5], "s": [0.15, 3.14, 0.47], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Lobby wall by WC, small room, stair and kitchen", "p": [8.3, 2.12, 5.97], "s": [0.15, 1.02, 0.86], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Lobby wall by WC, small room, stair and kitchen", "p": [8.3, 0, 6.83], "s": [0.15, 3.14, 0.73], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Lobby wall by WC, small room, stair and kitchen", "p": [8.3, 2.12, 7.56], "s": [0.15, 1.02, 0.87], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Lobby wall by WC, small room, stair and kitchen", "p": [8.3, 0, 8.43], "s": [0.15, 3.14, 0.8], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Lobby wall by WC, small room, stair and kitchen", "p": [8.3, 2.7, 9.23], "s": [0.15, 0.44, 0.98], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Lobby wall by WC, small room, stair and kitchen", "p": [8.3, 0, 10.21], "s": [0.15, 3.14, 0.32], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Lobby wall by WC, small room, stair and kitchen", "p": [8.3, 2.14, 10.53], "s": [0.15, 1.0, 0.95], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Lobby wall by WC, small room, stair and kitchen", "p": [8.3, 0, 11.48], "s": [0.15, 3.14, 0.34], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Lobby wall by WC, small room, stair and kitchen", "p": [8.3, 0, 11.82], "s": [0.15, 0.84, 0.84], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Lobby wall by WC, small room, stair and kitchen", "p": [8.3, 2.03, 11.82], "s": [0.15, 1.11, 0.84], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Lobby wall by WC, small room, stair and kitchen", "p": [8.3, 0, 12.66], "s": [0.15, 3.14, 2.715], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Small room front wall", "p": [8.375, 0, 7.095], "s": [1.985, 3.14, 0.15], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "WC wall and under-stair store door", "p": [10.36, 0, 7.095], "s": [0.35, 3.14, 0.15], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "WC wall and under-stair store door", "p": [10.71, 1.91, 7.095], "s": [0.75, 1.23, 0.15], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "WC wall and under-stair store door", "p": [11.46, 0, 7.095], "s": [0.29, 3.14, 0.15], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Small room rear and inner stair enclosure", "p": [8.375, 0, 9.065], "s": [2.165, 3.14, 0.15], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Small room end wall", "p": [10.285, 0, 7.17], "s": [0.15, 3.14, 1.97], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Kitchen serving sill", "p": [8.24, 0.8, 11.79], "s": [0.27, 0.06, 0.9], "color": "counter", "level": "ground", "interiorOnly": true},
-    {"name": "Kitchen base cabinets", "p": [11.13, 0.015, 10.55], "s": [0.52, 0.77, 4.72], "color": "kitchen-wood", "level": "ground", "interiorOnly": true},
-    {"name": "Kitchen worktop", "p": [11.105, 0.785, 10.55], "s": [0.57, 0.065, 4.72], "color": "counter", "level": "ground", "interiorOnly": true},
-    {"name": "Kitchen base cabinets", "p": [8.46, 0.015, 12.8], "s": [0.49, 0.77, 2.47], "color": "kitchen-wood", "level": "ground", "interiorOnly": true},
-    {"name": "Kitchen worktop", "p": [8.435, 0.785, 12.8], "s": [0.54, 0.065, 2.47], "color": "counter", "level": "ground", "interiorOnly": true},
-    {"name": "Kitchen sink rim", "p": [11.15, 0.855, 14.23], "s": [0.44, 0.018, 0.75], "color": "steel", "level": "ground", "interiorOnly": true},
-    {"name": "Kitchen sink bowl", "p": [11.19, 0.874, 14.3], "s": [0.36, 0.01, 0.61], "color": "counter", "level": "ground", "interiorOnly": true},
-    {"name": "Kitchen rear access", "p": [8.375, 0, 15.3], "s": [0.525, 3.14, 0.15], "color": "interior", "level": "ground"},
-    {"name": "Kitchen rear access", "p": [8.9, 0, 15.3], "s": [0.62, 0.78, 0.15], "color": "interior", "level": "ground"},
-    {"name": "Kitchen rear access", "p": [8.9, 2.4, 15.3], "s": [0.62, 0.74, 0.15], "color": "interior", "level": "ground"},
-    {"name": "Kitchen rear access", "p": [9.52, 0, 15.3], "s": [0.02, 3.14, 0.15], "color": "interior", "level": "ground"},
-    {"name": "Kitchen rear access", "p": [9.54, 2.4, 15.3], "s": [0.92, 0.74, 0.15], "color": "interior", "level": "ground"},
-    {"name": "Kitchen rear access", "p": [10.46, 0, 15.3], "s": [0.01, 3.14, 0.15], "color": "interior", "level": "ground"},
-    {"name": "Kitchen rear access", "p": [10.47, 0, 15.3], "s": [0.68, 0.78, 0.15], "color": "interior", "level": "ground"},
-    {"name": "Kitchen rear access", "p": [10.47, 2.4, 15.3], "s": [0.68, 0.74, 0.15], "color": "interior", "level": "ground"},
-    {"name": "Kitchen rear access", "p": [11.15, 0, 15.3], "s": [0.6, 3.14, 0.15], "color": "interior", "level": "ground"},
-    {"name": "Kitchen rear light left glazing", "p": [8.9, 0.78, 15.353], "s": [0.62, 1.62, 0.044], "color": "glass", "level": "ground"},
-    {"name": "Kitchen rear light left jamb or mullion", "p": [8.874, 0.78, 15.3235], "s": [0.052, 1.62, 0.103], "color": "frame", "level": "ground"},
-    {"name": "Kitchen rear light left jamb or mullion", "p": [9.494, 0.78, 15.3235], "s": [0.052, 1.62, 0.103], "color": "frame", "level": "ground"},
-    {"name": "Kitchen rear light left crossbar", "p": [8.9, 0.781, 15.3235], "s": [0.62, 0.044, 0.103], "color": "frame", "level": "ground"},
-    {"name": "Kitchen rear light left crossbar", "p": [8.9, 1.998, 15.3235], "s": [0.62, 0.044, 0.103], "color": "frame", "level": "ground"},
-    {"name": "Kitchen rear light left crossbar", "p": [8.9, 2.355, 15.3235], "s": [0.62, 0.044, 0.103], "color": "frame", "level": "ground"},
-    {"name": "Kitchen door toward service bay door", "p": [9.54, 0, 15.35], "s": [0.92, 2.02, 0.05], "color": "old-door", "level": "ground"},
-    {"name": "Kitchen door toward service bay transom", "p": [9.54, 2.02, 15.353], "s": [0.92, 0.38, 0.044], "color": "glass", "level": "ground"},
-    {"name": "Kitchen door toward service bay jamb or mullion", "p": [9.514, 0, 15.3235], "s": [0.052, 2.4, 0.103], "color": "frame", "level": "ground"},
-    {"name": "Kitchen door toward service bay jamb or mullion", "p": [10.434, 0, 15.3235], "s": [0.052, 2.4, 0.103], "color": "frame", "level": "ground"},
-    {"name": "Kitchen door toward service bay crossbar", "p": [9.54, 0.001, 15.3235], "s": [0.92, 0.044, 0.103], "color": "frame", "level": "ground"},
-    {"name": "Kitchen door toward service bay crossbar", "p": [9.54, 1.998, 15.3235], "s": [0.92, 0.044, 0.103], "color": "frame", "level": "ground"},
-    {"name": "Kitchen door toward service bay crossbar", "p": [9.54, 2.355, 15.3235], "s": [0.92, 0.044, 0.103], "color": "frame", "level": "ground"},
-    {"name": "Kitchen rear light right glazing", "p": [10.47, 0.78, 15.353], "s": [0.68, 1.62, 0.044], "color": "glass", "level": "ground"},
-    {"name": "Kitchen rear light right jamb or mullion", "p": [10.444, 0.78, 15.3235], "s": [0.052, 1.62, 0.103], "color": "frame", "level": "ground"},
-    {"name": "Kitchen rear light right jamb or mullion", "p": [11.124, 0.78, 15.3235], "s": [0.052, 1.62, 0.103], "color": "frame", "level": "ground"},
-    {"name": "Kitchen rear light right crossbar", "p": [10.47, 0.781, 15.3235], "s": [0.68, 0.044, 0.103], "color": "frame", "level": "ground"},
-    {"name": "Kitchen rear light right crossbar", "p": [10.47, 1.998, 15.3235], "s": [0.68, 0.044, 0.103], "color": "frame", "level": "ground"},
-    {"name": "Kitchen rear light right crossbar", "p": [10.47, 2.355, 15.3235], "s": [0.68, 0.044, 0.103], "color": "frame", "level": "ground"},
-    {"name": "Kitchen red wall", "p": [11.659, 1.38, 10.45], "s": [0.012, 1.55, 4.84], "color": "hall-red", "level": "ground", "interiorOnly": true},
-    {"name": "Bedroom 1 pale pink finish", "p": [0.12, 0.03, 14.784], "s": [1.84, 2.95, 0.012], "color": "dusty-pink", "level": "ground", "interiorOnly": true},
-    {"name": "Bedroom 2 utility-side wall", "p": [8.3, 0, 15.375], "s": [0.15, 3.3, 1.575], "color": "wall", "level": "ground"},
-    {"name": "Bedroom 2 lobby wall", "p": [4.75, 0, 13.095], "s": [0.11, 3.14, 0.15], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Bedroom 2 lobby wall", "p": [4.86, 2.14, 13.095], "s": [0.85, 1.0, 0.15], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Bedroom 2 lobby wall", "p": [5.71, 0, 13.095], "s": [2.665, 3.14, 0.15], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Ground bathroom dividing wall", "p": [2.025, 0, 16.785], "s": [2.725, 3.14, 0.15], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Bedroom 2 bathroom wall", "p": [4.675, 0, 14.875], "s": [0.15, 3.14, 2.465], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Bedroom 2 bathroom wall", "p": [4.675, 2.1, 17.34], "s": [0.15, 1.04, 0.79], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Bedroom 2 bathroom wall", "p": [4.675, 0, 18.13], "s": [0.15, 3.14, 0.87], "color": "interior", "level": "ground", "interiorOnly": true},
-    {"name": "Rear solid exterior wall", "p": [2.025, 0, 18.92], "s": [5.095, 3.3, 0.16], "color": "wall", "level": "ground"},
-    {"name": "Rear solid exterior wall", "p": [7.12, 2.66, 18.92], "s": [1.255, 0.64, 0.16], "color": "wall", "level": "ground"},
-    {"name": "Rear entry recess wall", "p": [7.12, 0, 18.485], "s": [0.18, 2.7, 0.15], "color": "wall", "level": "ground"},
-    {"name": "Rear entry recess wall", "p": [7.3, 2.4, 18.485], "s": [0.89, 0.3, 0.15], "color": "wall", "level": "ground"},
-    {"name": "Rear entry recess wall", "p": [8.19, 0, 18.485], "s": [0.185, 2.7, 0.15], "color": "wall", "level": "ground"},
-    {"name": "Rear entry recess cheek", "p": [7.055, 0, 18.56], "s": [0.13, 2.66, 0.44], "color": "wall", "level": "ground"},
-    {"name": "Rear entry recess hood", "p": [7.1, 2.64, 18.48], "s": [1.33, 0.18, 0.64], "color": "wall", "level": "ground"},
-    {"name": "Rear screened bedroom entrance door", "p": [7.3, 0, 18.535], "s": [0.89, 2.02, 0.05], "color": "old-door", "level": "ground"},
-    {"name": "Rear screened bedroom entrance transom", "p": [7.3, 2.02, 18.538], "s": [0.89, 0.38, 0.044], "color": "glass", "level": "ground"},
-    {"name": "Rear screened bedroom entrance jamb or mullion", "p": [7.274, 0, 18.5085], "s": [0.052, 2.4, 0.103], "color": "frame", "level": "ground"},
-    {"name": "Rear screened bedroom entrance jamb or mullion", "p": [8.164, 0, 18.5085], "s": [0.052, 2.4, 0.103], "color": "frame", "level": "ground"},
-    {"name": "Rear screened bedroom entrance crossbar", "p": [7.3, 0.001, 18.5085], "s": [0.89, 0.044, 0.103], "color": "frame", "level": "ground"},
-    {"name": "Rear screened bedroom entrance crossbar", "p": [7.3, 1.998, 18.5085], "s": [0.89, 0.044, 0.103], "color": "frame", "level": "ground"},
-    {"name": "Rear screened bedroom entrance crossbar", "p": [7.3, 2.355, 18.5085], "s": [0.89, 0.044, 0.103], "color": "frame", "level": "ground"},
-    {"name": "Rear bamboo screen slat", "p": [7.33, 0.07, 18.612], "s": [0.055, 1.89, 0.034], "color": "bamboo-light", "level": "ground"},
-    {"name": "Rear bamboo screen slat", "p": [7.411, 0.07, 18.612], "s": [0.055, 1.89, 0.034], "color": "bamboo", "level": "ground"},
-    {"name": "Rear bamboo screen slat", "p": [7.492, 0.07, 18.612], "s": [0.055, 1.89, 0.034], "color": "bamboo", "level": "ground"},
-    {"name": "Rear bamboo screen slat", "p": [7.573, 0.07, 18.612], "s": [0.055, 1.89, 0.034], "color": "bamboo-light", "level": "ground"},
-    {"name": "Rear bamboo screen slat", "p": [7.654, 0.07, 18.612], "s": [0.055, 1.89, 0.034], "color": "bamboo", "level": "ground"},
-    {"name": "Rear bamboo screen slat", "p": [7.735, 0.07, 18.612], "s": [0.055, 1.89, 0.034], "color": "bamboo", "level": "ground"},
-    {"name": "Rear bamboo screen slat", "p": [7.816, 0.07, 18.612], "s": [0.055, 1.89, 0.034], "color": "bamboo-light", "level": "ground"},
-    {"name": "Rear bamboo screen slat", "p": [7.897, 0.07, 18.612], "s": [0.055, 1.89, 0.034], "color": "bamboo", "level": "ground"},
-    {"name": "Rear bamboo screen slat", "p": [7.978, 0.07, 18.612], "s": [0.055, 1.89, 0.034], "color": "bamboo", "level": "ground"},
-    {"name": "Rear bamboo screen slat", "p": [8.059, 0.07, 18.612], "s": [0.055, 1.89, 0.034], "color": "bamboo-light", "level": "ground"},
-    {"name": "Rear bamboo screen slat", "p": [8.14, 0.07, 18.612], "s": [0.055, 1.89, 0.034], "color": "bamboo", "level": "ground"},
-    {"name": "Rear screen crosspiece", "p": [7.33, 0.16, 18.647], "s": [0.87, 0.048, 0.04], "color": "bamboo-light", "level": "ground"},
-    {"name": "Rear screen crosspiece", "p": [7.33, 0.91, 18.647], "s": [0.87, 0.048, 0.04], "color": "bamboo-light", "level": "ground"},
-    {"name": "Rear screen crosspiece", "p": [7.33, 1.78, 18.647], "s": [0.87, 0.048, 0.04], "color": "bamboo-light", "level": "ground"},
-    {"name": "First floor front master wall", "p": [1.25, 3.3, 1.05], "s": [3.4, 3.0, 0.15], "color": "wall", "level": "first"},
-    {"name": "First floor front master wall", "p": [4.65, 3.3, 1.05], "s": [1.13, 0.05, 0.15], "color": "wall", "level": "first"},
-    {"name": "First floor front master wall", "p": [4.65, 5.74, 1.05], "s": [1.13, 0.56, 0.15], "color": "wall", "level": "first"},
-    {"name": "First floor front master wall", "p": [5.78, 3.3, 1.05], "s": [0.26, 3.0, 0.15], "color": "wall", "level": "first"},
-    {"name": "First floor front master wall", "p": [6.04, 5.74, 1.05], "s": [2.03, 0.56, 0.15], "color": "wall", "level": "first"},
-    {"name": "First floor front master wall", "p": [8.07, 3.3, 1.05], "s": [0.43, 3.0, 0.15], "color": "wall", "level": "first"},
-    {"name": "Master front window group glazing", "p": [4.65, 3.35, 1.103], "s": [1.13, 2.39, 0.044], "color": "glass", "level": "first"},
-    {"name": "Master front window group jamb or mullion", "p": [4.624, 3.35, 1.0735], "s": [0.052, 2.39, 0.103], "color": "frame", "level": "first"},
-    {"name": "Master front window group jamb or mullion", "p": [5.204, 3.35, 1.0735], "s": [0.052, 2.39, 0.103], "color": "frame", "level": "first"},
-    {"name": "Master front window group jamb or mullion", "p": [5.754, 3.35, 1.0735], "s": [0.052, 2.39, 0.103], "color": "frame", "level": "first"},
-    {"name": "Master front window group crossbar", "p": [4.65, 3.351, 1.0735], "s": [1.13, 0.044, 0.103], "color": "frame", "level": "first"},
-    {"name": "Master front window group crossbar", "p": [4.65, 3.878, 1.0735], "s": [1.13, 0.044, 0.103], "color": "frame", "level": "first"},
-    {"name": "Master front window group crossbar", "p": [4.65, 5.198, 1.0735], "s": [1.13, 0.044, 0.103], "color": "frame", "level": "first"},
-    {"name": "Master front window group crossbar", "p": [4.65, 5.695, 1.0735], "s": [1.13, 0.044, 0.103], "color": "frame", "level": "first"},
-    {"name": "Master balcony access glazing", "p": [6.04, 3.3, 1.103], "s": [1.14, 2.44, 0.044], "color": "glass", "level": "first"},
-    {"name": "Master balcony access door", "p": [7.18, 3.3, 1.1], "s": [0.89, 1.92, 0.05], "color": "old-door", "level": "first"},
-    {"name": "Master balcony access transom", "p": [7.18, 5.22, 1.103], "s": [0.89, 0.52, 0.044], "color": "glass", "level": "first"},
-    {"name": "Master balcony access jamb or mullion", "p": [6.014, 3.3, 1.0735], "s": [0.052, 2.44, 0.103], "color": "frame", "level": "first"},
-    {"name": "Master balcony access jamb or mullion", "p": [6.574, 3.3, 1.0735], "s": [0.052, 2.44, 0.103], "color": "frame", "level": "first"},
-    {"name": "Master balcony access jamb or mullion", "p": [7.154, 3.3, 1.0735], "s": [0.052, 2.44, 0.103], "color": "frame", "level": "first"},
-    {"name": "Master balcony access jamb or mullion", "p": [8.044, 3.3, 1.0735], "s": [0.052, 2.44, 0.103], "color": "frame", "level": "first"},
-    {"name": "Master balcony access crossbar", "p": [6.04, 3.301, 1.0735], "s": [2.03, 0.044, 0.103], "color": "frame", "level": "first"},
-    {"name": "Master balcony access crossbar", "p": [6.04, 3.878, 1.0735], "s": [1.14, 0.044, 0.103], "color": "frame", "level": "first"},
-    {"name": "Master balcony access crossbar", "p": [6.04, 5.198, 1.0735], "s": [2.03, 0.044, 0.103], "color": "frame", "level": "first"},
-    {"name": "Master balcony access crossbar", "p": [6.04, 5.695, 1.0735], "s": [2.03, 0.044, 0.103], "color": "frame", "level": "first"},
-    {"name": "First floor master side wall", "p": [1.175, 3.3, 1.125], "s": [0.15, 3.0, 0.215], "color": "wall", "level": "first"},
-    {"name": "First floor master side wall", "p": [1.175, 3.3, 1.34], "s": [0.15, 0.06, 0.38], "color": "wall", "level": "first"},
-    {"name": "First floor master side wall", "p": [1.175, 5.81, 1.34], "s": [0.15, 0.49, 0.38], "color": "wall", "level": "first"},
-    {"name": "First floor master side wall", "p": [1.175, 3.3, 1.72], "s": [0.15, 3.0, 1.04], "color": "wall", "level": "first"},
-    {"name": "First floor master side wall", "p": [1.175, 3.3, 2.76], "s": [0.15, 0.7, 2.08], "color": "wall", "level": "first"},
-    {"name": "First floor master side wall", "p": [1.175, 5.68, 2.76], "s": [0.15, 0.62, 2.08], "color": "wall", "level": "first"},
-    {"name": "First floor master side wall", "p": [1.175, 3.3, 4.84], "s": [0.15, 3.0, 0.535], "color": "wall", "level": "first"},
-    {"name": "Master side corner light glazing", "p": [1.228, 3.36, 1.34], "s": [0.044, 2.45, 0.38], "color": "glass", "level": "first"},
-    {"name": "Master side corner light jamb or mullion", "p": [1.1985, 3.36, 1.314], "s": [0.103, 2.45, 0.052], "color": "frame", "level": "first"},
-    {"name": "Master side corner light jamb or mullion", "p": [1.1985, 3.36, 1.694], "s": [0.103, 2.45, 0.052], "color": "frame", "level": "first"},
-    {"name": "Master side corner light crossbar", "p": [1.1985, 3.361, 1.34], "s": [0.103, 0.044, 0.38], "color": "frame", "level": "first"},
-    {"name": "Master side corner light crossbar", "p": [1.1985, 5.238, 1.34], "s": [0.103, 0.044, 0.38], "color": "frame", "level": "first"},
-    {"name": "Master side corner light crossbar", "p": [1.1985, 5.765, 1.34], "s": [0.103, 0.044, 0.38], "color": "frame", "level": "first"},
-    {"name": "Master side ribbon window glazing", "p": [1.228, 4.0, 2.76], "s": [0.044, 1.68, 2.08], "color": "glass", "level": "first"},
-    {"name": "Master side ribbon window jamb or mullion", "p": [1.1985, 4.0, 2.734], "s": [0.103, 1.68, 0.052], "color": "frame", "level": "first"},
-    {"name": "Master side ribbon window jamb or mullion", "p": [1.1985, 4.0, 4.814], "s": [0.103, 1.68, 0.052], "color": "frame", "level": "first"},
-    {"name": "Master side ribbon window crossbar", "p": [1.1985, 4.001, 2.76], "s": [0.103, 0.044, 2.08], "color": "frame", "level": "first"},
-    {"name": "Master side ribbon window crossbar", "p": [1.1985, 4.418, 2.76], "s": [0.103, 0.044, 2.08], "color": "frame", "level": "first"},
-    {"name": "Master side ribbon window crossbar", "p": [1.1985, 4.888, 2.76], "s": [0.103, 0.044, 2.08], "color": "frame", "level": "first"},
-    {"name": "Master side ribbon window crossbar", "p": [1.1985, 5.278, 2.76], "s": [0.103, 0.044, 2.08], "color": "frame", "level": "first"},
-    {"name": "Master side ribbon window crossbar", "p": [1.1985, 5.635, 2.76], "s": [0.103, 0.044, 2.08], "color": "frame", "level": "first"},
-    {"name": "Master staggered casement bars", "p": [1.1975, 4, 3.917], "s": [0.105, 0.45, 0.066], "color": "frame", "level": "first"},
-    {"name": "Master staggered casement bars", "p": [1.1975, 4.45, 3.327], "s": [0.105, 0.46, 0.066], "color": "frame", "level": "first"},
-    {"name": "Master staggered casement bars", "p": [1.1975, 4.91, 4.077], "s": [0.105, 0.39, 0.066], "color": "frame", "level": "first"},
-    {"name": "Master staggered casement bars", "p": [1.1975, 5.3, 3.527], "s": [0.105, 0.38, 0.066], "color": "frame", "level": "first"},
-    {"name": "Master wall toward court", "p": [1.25, 3.3, 5.295], "s": [3.5, 3.0, 0.16], "color": "wall", "level": "first"},
-    {"name": "Master bedroom inner wall", "p": [4.75, 3.3, 5.3], "s": [2.47, 3.0, 0.15], "color": "interior", "level": "first", "interiorOnly": true},
-    {"name": "Master bedroom inner wall", "p": [7.22, 5.46, 5.3], "s": [0.92, 0.84, 0.15], "color": "interior", "level": "first", "interiorOnly": true},
-    {"name": "Master bedroom inner wall", "p": [8.14, 3.3, 5.3], "s": [0.36, 3.0, 0.15], "color": "interior", "level": "first", "interiorOnly": true},
-    {"name": "Master timber floor", "p": [1.34, 3.302, 1.21], "s": [7.07, 0.021, 4.08], "color": "wood-floor", "level": "first", "interiorOnly": true},
-    {"name": "Dressing timber floor", "p": [8.59, 3.302, 3.32], "s": [3.06, 0.021, 2.0], "color": "wood-floor", "level": "first", "interiorOnly": true},
-    {"name": "Bedroom 3 and landing terrace wall", "p": [4.8, 3.3, 10.375], "s": [0.15, 3.0, 1.605], "color": "wall", "level": "first"},
-    {"name": "Bedroom 3 and landing terrace wall", "p": [4.8, 5.76, 11.98], "s": [0.15, 0.54, 2.76], "color": "wall", "level": "first"},
-    {"name": "Bedroom 3 and landing terrace wall", "p": [4.8, 3.3, 14.74], "s": [0.15, 3.0, 0.135], "color": "wall", "level": "first"},
-    {"name": "Bedroom 3 terrace opening glazing", "p": [4.853, 3.3, 11.98], "s": [0.044, 2.46, 1.85], "color": "glass", "level": "first"},
-    {"name": "Bedroom 3 terrace opening door", "p": [4.85, 3.3, 13.83], "s": [0.05, 1.93, 0.91], "color": "old-door", "level": "first"},
-    {"name": "Bedroom 3 terrace opening transom", "p": [4.853, 5.23, 13.83], "s": [0.044, 0.53, 0.91], "color": "glass", "level": "first"},
-    {"name": "Bedroom 3 terrace opening jamb or mullion", "p": [4.8235, 3.3, 11.954], "s": [0.103, 2.46, 0.052], "color": "frame", "level": "first"},
-    {"name": "Bedroom 3 terrace opening jamb or mullion", "p": [4.8235, 3.3, 12.864], "s": [0.103, 2.46, 0.052], "color": "frame", "level": "first"},
-    {"name": "Bedroom 3 terrace opening jamb or mullion", "p": [4.8235, 3.3, 13.804], "s": [0.103, 2.46, 0.052], "color": "frame", "level": "first"},
-    {"name": "Bedroom 3 terrace opening jamb or mullion", "p": [4.8235, 3.3, 14.714], "s": [0.103, 2.46, 0.052], "color": "frame", "level": "first"},
-    {"name": "Bedroom 3 terrace opening crossbar", "p": [4.8235, 3.301, 11.98], "s": [0.103, 0.044, 2.76], "color": "frame", "level": "first"},
-    {"name": "Bedroom 3 terrace opening crossbar", "p": [4.8235, 3.888, 11.98], "s": [0.103, 0.044, 1.85], "color": "frame", "level": "first"},
-    {"name": "Bedroom 3 terrace opening crossbar", "p": [4.8235, 5.208, 11.98], "s": [0.103, 0.044, 2.76], "color": "frame", "level": "first"},
-    {"name": "Bedroom 3 terrace opening crossbar", "p": [4.8235, 5.715, 11.98], "s": [0.103, 0.044, 2.76], "color": "frame", "level": "first"},
-    {"name": "Bedroom 3 landing wall", "p": [4.875, 3.3, 11.3], "s": [2.495, 3.0, 0.15], "color": "interior", "level": "first", "interiorOnly": true},
-    {"name": "Bedroom 3 landing wall", "p": [7.37, 5.46, 11.3], "s": [0.98, 0.84, 0.15], "color": "interior", "level": "first", "interiorOnly": true},
-    {"name": "Bedroom 3 landing wall", "p": [8.35, 3.3, 11.3], "s": [0.15, 3.0, 0.15], "color": "interior", "level": "first", "interiorOnly": true},
-    {"name": "Study and bedroom partition", "p": [8.425, 3.3, 10.375], "s": [0.15, 3.0, 0.055], "color": "interior", "level": "first", "interiorOnly": true},
-    {"name": "Study and bedroom partition", "p": [8.425, 5.46, 10.43], "s": [0.15, 0.84, 0.89], "color": "interior", "level": "first", "interiorOnly": true},
-    {"name": "Study and bedroom partition", "p": [8.425, 3.3, 11.32], "s": [0.15, 3.0, 2.255], "color": "interior", "level": "first", "interiorOnly": true},
-    {"name": "Study wall along stair", "p": [8.5, 3.3, 10.3], "s": [3.25, 3.0, 0.15], "color": "interior", "level": "first", "interiorOnly": true},
-    {"name": "Bedroom 3 service terrace return", "p": [9.045, 3.3, 13.575], "s": [0.15, 3.0, 2.3], "color": "wall", "level": "first"},
-    {"name": "Recess return at study", "p": [8.5, 3.3, 13.495], "s": [0.62, 3.0, 0.16], "color": "wall", "level": "first"},
-    {"name": "Recess return at service room", "p": [8.5, 3.3, 15.795], "s": [0.62, 3.0, 0.16], "color": "wall", "level": "first"},
-    {"name": "Roof slab over bedroom return", "p": [8.5, 6.3, 13.575], "s": [0.62, 0.16, 2.3], "color": "terrace-mosaic", "level": "roof", "topTextureOnly": true, "textureRepeatMeters": 1.25},
-    {"name": "Roof terrace parapet (approximate)", "p": [9.05, 6.46, 13.575], "s": [0.14, 0.86, 2.3], "color": "parapet", "level": "roof-detail"},
-    {"name": "Roof terrace parapet (approximate)", "p": [8.5, 6.46, 15.805], "s": [0.62, 0.86, 0.14], "color": "parapet", "level": "roof-detail"},
-    {"name": "Roof terrace parapet (approximate)", "p": [8.43, 6.46, 15.875], "s": [0.14, 0.86, 2.8949999999999996], "color": "parapet", "level": "roof-detail"},
-    {"name": "First bathroom dividing wall", "p": [2.025, 3.3, 17.05], "s": [2.85, 3.0, 0.15], "color": "interior", "level": "first", "interiorOnly": true},
-    {"name": "Service terrace rear parapet", "p": [8.5, 3.3, 16.89], "s": [2.29, 0.97, 0.14], "color": "wall", "level": "first"},
-    {"name": "Puja reveal beside lounge opening", "p": [4.82, 3.3, 7.175], "s": [1.55, 3.0, 0.13], "color": "interior", "level": "first", "interiorOnly": true},
-    {"name": "Terrace parapet", "p": [-0.08, 3.3, 10.125], "s": [0.16, 1.0, 4.75], "color": "wall", "level": "first"},
-    {"name": "Terrace grille upright", "p": [1.17, 3.32, 10.1005], "s": [0.037, 1.02, 0.049], "color": "wine-rail", "level": "first"},
-    {"name": "Terrace grille upright", "p": [1.62, 3.32, 10.1005], "s": [0.037, 1.02, 0.049], "color": "wine-rail", "level": "first"},
-    {"name": "Terrace grille upright", "p": [2.07, 3.32, 10.1005], "s": [0.037, 1.02, 0.049], "color": "wine-rail", "level": "first"},
-    {"name": "Terrace grille upright", "p": [2.52, 3.32, 10.1005], "s": [0.037, 1.02, 0.049], "color": "wine-rail", "level": "first"},
-    {"name": "Terrace grille upright", "p": [2.97, 3.32, 10.1005], "s": [0.037, 1.02, 0.049], "color": "wine-rail", "level": "first"},
-    {"name": "Terrace grille upright", "p": [3.42, 3.32, 10.1005], "s": [0.037, 1.02, 0.049], "color": "wine-rail", "level": "first"},
-    {"name": "Terrace grille upright", "p": [3.87, 3.32, 10.1005], "s": [0.037, 1.02, 0.049], "color": "wine-rail", "level": "first"},
-    {"name": "Terrace grille upright", "p": [4.32, 3.32, 10.1005], "s": [0.037, 1.02, 0.049], "color": "wine-rail", "level": "first"},
-    {"name": "Terrace grille upright", "p": [4.77, 3.32, 10.1005], "s": [0.037, 1.02, 0.049], "color": "wine-rail", "level": "first"},
-    {"name": "Terrace grille horizontal", "p": [1.16, 3.53, 10.1005], "s": [3.68, 0.027, 0.049], "color": "wine-rail", "level": "first"},
-    {"name": "Terrace grille horizontal", "p": [1.16, 3.73, 10.1005], "s": [3.68, 0.027, 0.049], "color": "wine-rail", "level": "first"},
-    {"name": "Terrace grille horizontal", "p": [1.16, 3.93, 10.1005], "s": [3.68, 0.027, 0.049], "color": "wine-rail", "level": "first"},
-    {"name": "Terrace grille horizontal", "p": [1.16, 4.13, 10.1005], "s": [3.68, 0.027, 0.049], "color": "wine-rail", "level": "first"},
-    {"name": "Terrace grille horizontal", "p": [1.16, 4.31, 10.1005], "s": [3.68, 0.027, 0.049], "color": "wine-rail", "level": "first"},
-    {"name": "Upper courtyard wall corner return", "p": [4.7, 3.3, 5.3], "s": [0.25, 3.0, 0.16], "color": "wall", "level": "first"},
-    {"name": "Upper courtyard wall corner return", "p": [4.7, 3.3, 10.29], "s": [0.25, 3.0, 0.16], "color": "wall", "level": "first"},
-    {"name": "Roof slab around openings - middle", "p": [4.875, 6.3, 9.25], "s": [4.625, 0.16, 0.98], "color": "terrace-mosaic", "level": "roof", "topTextureOnly": true, "textureRepeatMeters": 0.65},
-    {"name": "Roof slab around openings - middle", "p": [11.58, 6.3, 9.25], "s": [0.17, 0.16, 0.98], "color": "terrace-mosaic", "level": "roof", "topTextureOnly": true, "textureRepeatMeters": 0.65},
-    {"name": "Roof slab around openings - middle", "p": [4.875, 6.3, 10.23], "s": [6.875, 0.16, 3.345], "color": "terrace-mosaic", "level": "roof", "topTextureOnly": true, "textureRepeatMeters": 0.65},
-    {"name": "First floor slab at stairs - rear", "p": [6.385, 3.14, 9.25], "s": [3.115, 0.16, 0.98], "color": "floor", "level": "first"},
-    {"name": "First floor slab at stairs - rear", "p": [11.58, 3.14, 9.25], "s": [0.17, 0.16, 0.98], "color": "floor", "level": "first"},
-    {"name": "First floor slab at stairs - rear", "p": [6.385, 3.14, 10.23], "s": [5.365, 0.16, 0.145], "color": "floor", "level": "first"},
-    {"name": "Rooftop room front jamb", "p": [8.45, 6.46, 6.675], "s": [2.03, 2.04, 0.15], "color": "wall", "level": "roof-detail"},
-    {"name": "Rooftop room front jamb", "p": [10.48, 8.4, 6.675], "s": [0.94, 0.1, 0.15], "color": "wall", "level": "roof-detail"},
-    {"name": "Rooftop room front jamb", "p": [11.42, 6.46, 6.675], "s": [0.23, 2.04, 0.15], "color": "wall", "level": "roof-detail"},
-    {"name": "Rooftop room door", "p": [10.48, 6.46, 6.7175], "s": [0.94, 1.94, 0.065], "color": "old-door", "level": "roof-detail"},
-    {"name": "Upper stair enclosure by flight", "p": [8.46, 3.3, 9.075], "s": [2.06, 2.98, 0.15], "color": "interior", "level": "first", "interiorOnly": true},
-    {"name": "Stepped stone relief base", "p": [5.88, 5.97, 0.632], "s": [1.4, 0.14, 0.028], "color": "recess-stone", "level": "decoration"},
-    {"name": "Stepped stone relief upper panel", "p": [6.03, 6.11, 0.634], "s": [1.1, 0.15, 0.026], "color": "recess-stone", "level": "decoration"},
-    {"name": "Pale inset in relief", "p": [6.11, 6.15, 0.614], "s": [0.105, 0.083, 0.024], "color": "cream", "level": "decoration"},
-    {"name": "Pale inset in relief", "p": [6.365, 6.15, 0.614], "s": [0.105, 0.083, 0.024], "color": "cream", "level": "decoration"},
-    {"name": "Pale inset in relief", "p": [6.62, 6.15, 0.614], "s": [0.105, 0.083, 0.024], "color": "cream", "level": "decoration"},
-    {"name": "Pale inset in relief", "p": [6.875, 6.15, 0.614], "s": [0.105, 0.083, 0.024], "color": "cream", "level": "decoration"},
-    {"name": "Court pergola slat", "p": [1.24, 6.25, 6.15], "s": [3.48, 0.13, 0.077], "color": "wine-rail", "level": "decoration"},
-    {"name": "Court pergola slat", "p": [1.24, 6.25, 6.72], "s": [3.48, 0.13, 0.077], "color": "wine-rail", "level": "decoration"},
-    {"name": "Court pergola slat", "p": [1.24, 6.25, 7.29], "s": [3.48, 0.13, 0.077], "color": "wine-rail", "level": "decoration"},
-    {"name": "Court pergola slat", "p": [1.24, 6.25, 7.86], "s": [3.48, 0.13, 0.077], "color": "wine-rail", "level": "decoration"},
-    {"name": "Court pergola slat", "p": [1.24, 6.25, 8.43], "s": [3.48, 0.13, 0.077], "color": "wine-rail", "level": "decoration"},
-    {"name": "Court pergola slat", "p": [1.24, 6.25, 9.0], "s": [3.48, 0.13, 0.077], "color": "wine-rail", "level": "decoration"},
-    {"name": "Court pergola slat", "p": [1.24, 6.25, 9.57], "s": [3.48, 0.13, 0.077], "color": "wine-rail", "level": "decoration"},
-    {"name": "Terrace opening grille post", "p": [-0.01, 3.32, 10.12], "s": [0.28, 3.38, 0.24], "color": "wall", "level": "decoration"},
-    {"name": "Terrace opening grille post", "p": [-0.01, 3.32, 11.54], "s": [0.28, 3.38, 0.24], "color": "wall", "level": "decoration"},
-    {"name": "Terrace frame above planter", "p": [-0.01, 6.43, 10.12], "s": [0.32, 0.27, 1.66], "color": "wall", "level": "decoration"},
-    {"name": "Terrace opening grille bar", "p": [0.42, 6.24, 10.31], "s": [0.065, 0.11, 1.24], "color": "wine-rail", "level": "decoration"},
-    {"name": "Terrace opening grille bar", "p": [0.96, 6.24, 10.31], "s": [0.065, 0.11, 1.24], "color": "wine-rail", "level": "decoration"},
-    {"name": "Terrace opening grille bar", "p": [1.5, 6.24, 10.31], "s": [0.065, 0.11, 1.24], "color": "wine-rail", "level": "decoration"},
-    {"name": "Terrace opening grille bar", "p": [2.04, 6.24, 10.31], "s": [0.065, 0.11, 1.24], "color": "wine-rail", "level": "decoration"},
-    {"name": "Terrace opening grille bar", "p": [2.58, 6.24, 10.31], "s": [0.065, 0.11, 1.24], "color": "wine-rail", "level": "decoration"},
-    {"name": "Terrace opening grille bar", "p": [3.12, 6.24, 10.31], "s": [0.065, 0.11, 1.24], "color": "wine-rail", "level": "decoration"},
-    {"name": "Terrace opening grille bar", "p": [3.66, 6.24, 10.31], "s": [0.065, 0.11, 1.24], "color": "wine-rail", "level": "decoration"},
-    {"name": "Terrace opening grille bar", "p": [4.2, 6.24, 10.31], "s": [0.065, 0.11, 1.24], "color": "wine-rail", "level": "decoration"},
-    {"name": "Rear vent shaft face", "p": [1.42, 0, 14.88], "s": [0.14, 2.3, 0.8], "color": "shaft", "level": "decoration"},
-    {"name": "Rear vent shaft face", "p": [1.42, 2.86, 14.88], "s": [0.14, 3.25, 0.8], "color": "shaft", "level": "decoration"},
-    {"name": "Rear vent shaft face", "p": [1.42, 6.71, 14.88], "s": [0.14, 0.94, 0.8], "color": "shaft", "level": "decoration"},
-    {"name": "Vent shaft jamb", "p": [1.42, 2.3, 14.88], "s": [0.14, 0.56, 0.13], "color": "shaft", "level": "decoration"},
-    {"name": "Vent shaft jamb", "p": [1.42, 2.3, 15.55], "s": [0.14, 0.56, 0.13], "color": "shaft", "level": "decoration"},
-    {"name": "Vent shaft recess", "p": [1.66, 2.3, 15.01], "s": [0.06, 0.56, 0.54], "color": "shaft-dark", "level": "decoration"},
-    {"name": "Vent shaft jamb", "p": [1.42, 6.11, 14.88], "s": [0.14, 0.6, 0.13], "color": "shaft", "level": "decoration"},
-    {"name": "Vent shaft jamb", "p": [1.42, 6.11, 15.55], "s": [0.14, 0.6, 0.13], "color": "shaft", "level": "decoration"},
-    {"name": "Vent shaft recess", "p": [1.66, 6.11, 15.01], "s": [0.06, 0.6, 0.54], "color": "shaft-dark", "level": "decoration"},
-    {"name": "Vent stack side return", "p": [1.55, 0, 14.88], "s": [0.48, 7.65, 0.11], "color": "wall", "level": "decoration"},
-    {"name": "Vent stack side return", "p": [1.55, 0, 15.57], "s": [0.48, 7.65, 0.11], "color": "wall", "level": "decoration"},
-    {"name": "Vent stack cap", "p": [1.42, 7.62, 14.88], "s": [0.64, 0.09, 0.81], "color": "wall", "level": "decoration"},
-    {"name": "Upper rear window drip hood", "p": [8.47, 5.8, 16.02], "s": [0.5, 0.17, 2.61], "color": "wall", "level": "first"},
-    {"name": "Front paved apron", "p": [1.18, -0.38, -0.4], "s": [10.56, 0.38, 1.65], "color": "paving", "level": "site"},
-    {"name": "Front garden soil", "p": [1.19, -0.43, -4.58], "s": [10.25, 0.34, 4.23], "color": "earth", "level": "site"},
-    {"name": "Garden side retaining curb", "p": [1.13, -0.39, -4.63], "s": [0.16, 0.36, 3.13], "color": "step-trim", "level": "site"},
-    {"name": "Curved garden edging", "p": [1.12904, -0.38, -1.52938], "s": [0.146, 0.39, 0.154], "color": "step-trim", "level": "site", "yaw": 0.060415},
-    {"name": "Curved garden edging", "p": [1.14535, -0.38, -1.39511], "s": [0.146, 0.39, 0.154], "color": "step-trim", "level": "site", "yaw": 0.181246},
-    {"name": "Curved garden edging", "p": [1.17771, -0.38, -1.2638], "s": [0.146, 0.39, 0.154], "color": "step-trim", "level": "site", "yaw": 0.302076},
-    {"name": "Curved garden edging", "p": [1.22567, -0.38, -1.13734], "s": [0.146, 0.39, 0.154], "color": "step-trim", "level": "site", "yaw": 0.422907},
-    {"name": "Curved garden edging", "p": [1.28852, -0.38, -1.01758], "s": [0.146, 0.39, 0.154], "color": "step-trim", "level": "site", "yaw": 0.543737},
-    {"name": "Curved garden edging", "p": [1.36535, -0.38, -0.90627], "s": [0.146, 0.39, 0.154], "color": "step-trim", "level": "site", "yaw": 0.664568},
-    {"name": "Curved garden edging", "p": [1.45504, -0.38, -0.80504], "s": [0.146, 0.39, 0.154], "color": "step-trim", "level": "site", "yaw": 0.785398},
-    {"name": "Curved garden edging", "p": [1.55627, -0.38, -0.71535], "s": [0.146, 0.39, 0.154], "color": "step-trim", "level": "site", "yaw": 0.906229},
-    {"name": "Curved garden edging", "p": [1.66758, -0.38, -0.63852], "s": [0.146, 0.39, 0.154], "color": "step-trim", "level": "site", "yaw": 1.027059},
-    {"name": "Curved garden edging", "p": [1.78734, -0.38, -0.57567], "s": [0.146, 0.39, 0.154], "color": "step-trim", "level": "site", "yaw": 1.14789},
-    {"name": "Curved garden edging", "p": [1.9138, -0.38, -0.52771], "s": [0.146, 0.39, 0.154], "color": "step-trim", "level": "site", "yaw": 1.26872},
-    {"name": "Curved garden edging", "p": [2.04511, -0.38, -0.49535], "s": [0.146, 0.39, 0.154], "color": "step-trim", "level": "site", "yaw": 1.389551},
-    {"name": "Curved garden edging", "p": [2.17938, -0.38, -0.47904], "s": [0.146, 0.39, 0.154], "color": "step-trim", "level": "site", "yaw": 1.510381},
-    {"name": "Front garden apron curb", "p": [2.31, -0.37, -0.46], "s": [9.2, 0.38, 0.13], "color": "step-trim", "level": "site"},
-    {"name": "Front entrance steps", "p": [0.25, -0.4, -0.42], "s": [0.32, 0.13, 1.78], "color": "step-trim", "level": "site"},
-    {"name": "Front entrance steps", "p": [0.56, -0.4, -0.42], "s": [0.32, 0.26, 1.78], "color": "step-trim", "level": "site"},
-    {"name": "Front entrance steps", "p": [0.87, -0.4, -0.42], "s": [0.32, 0.39, 1.78], "color": "step-trim", "level": "site"},
-    {"name": "Rear service paving", "p": [8.38, -0.19, 15.38], "s": [3.5, 0.19, 3.78], "color": "paving", "level": "site"},
-    {"name": "Rear path", "p": [2.03, -0.25, 19], "s": [9.89, 0.18, 1.37], "color": "paving", "level": "site"},
-    {"name": "Side road approach paving", "p": [-0.02, -0.43, 1.35], "s": [1.16, 0.07, 9.02], "color": "paving", "level": "site"},
-    {"name": "Rear side paving", "p": [0.05, -0.43, 14.9], "s": [1.96, 0.08, 5.49], "color": "paving", "level": "site"},
-    {"name": "Rear boundary rail post", "p": [0.42, 1.04, 20.86], "s": [0.033, 0.63, 0.04], "color": "wine-rail", "level": "boundary"},
-    {"name": "Rear boundary rail post", "p": [1.57, 1.04, 20.86], "s": [0.033, 0.63, 0.04], "color": "wine-rail", "level": "boundary"},
-    {"name": "Rear boundary rail post", "p": [2.72, 1.04, 20.86], "s": [0.033, 0.63, 0.04], "color": "wine-rail", "level": "boundary"},
-    {"name": "Rear boundary rail post", "p": [3.87, 1.04, 20.86], "s": [0.033, 0.63, 0.04], "color": "wine-rail", "level": "boundary"},
-    {"name": "Rear boundary rail post", "p": [5.02, 1.04, 20.86], "s": [0.033, 0.63, 0.04], "color": "wine-rail", "level": "boundary"},
-    {"name": "Rear boundary rail post", "p": [6.17, 1.04, 20.86], "s": [0.033, 0.63, 0.04], "color": "wine-rail", "level": "boundary"},
-    {"name": "Rear boundary rail post", "p": [7.32, 1.04, 20.86], "s": [0.033, 0.63, 0.04], "color": "wine-rail", "level": "boundary"},
-    {"name": "Rear boundary rail post", "p": [8.47, 1.04, 20.86], "s": [0.033, 0.63, 0.04], "color": "wine-rail", "level": "boundary"},
-    {"name": "Rear boundary rail post", "p": [9.62, 1.04, 20.86], "s": [0.033, 0.63, 0.04], "color": "wine-rail", "level": "boundary"},
-    {"name": "Rear boundary rail", "p": [0.42, 1.19, 20.86], "s": [9.24, 0.023, 0.04], "color": "wine-rail", "level": "boundary"},
-    {"name": "Rear boundary rail", "p": [0.42, 1.38, 20.86], "s": [9.24, 0.023, 0.04], "color": "wine-rail", "level": "boundary"},
-    {"name": "Rear boundary rail", "p": [0.42, 1.57, 20.86], "s": [9.24, 0.023, 0.04], "color": "wine-rail", "level": "boundary"},
-    {"name": "Front tower guard wall", "p": [11.4, 6.31, 0.06], "s": [0.28, 1.34, 2.42], "color": "wall", "level": "decoration"},
-    {"name": "Upper bathroom and dressing rear wall", "p": [8.5, 3.3, 5.3], "s": [3.25, 3.0, 0.15], "color": "interior", "level": "first", "interiorOnly": true},
-    {"name": "Rear upper bedroom face", "p": [4.875, 3.3, 18.69], "s": [3.625, 3.0, 0.16], "color": "wall", "level": "first"},
-    {"name": "Rear upper wall return", "p": [4.795, 3.3, 18.77], "s": [0.16, 3.0, 0.23], "color": "wall", "level": "first"},
-    {"name": "First floor slab 4 at rear return", "p": [4.875, 3.14, 14.875], "s": [3.625, 0.16, 3.895], "color": "floor", "level": "first"},
-    {"name": "Roof slab 4 at rear return", "p": [4.875, 6.3, 14.875], "s": [3.625, 0.16, 3.895], "color": "terrace-mosaic", "level": "roof", "topTextureOnly": true, "textureRepeatMeters": 0.65},
-    {"name": "Roof terrace parapet (approximate)", "p": [4.875, 6.46, 18.7], "s": [1.035, 0.86, 0.14], "color": "parapet", "level": "roof-detail"},
-    {"name": "Roof terrace parapet (approximate)", "p": [5.91, 6.46, 18.7], "s": [1.295, 0.86, 0.14], "color": "parapet", "level": "roof-detail"},
-    {"name": "Roof terrace parapet (approximate)", "p": [7.205, 6.46, 18.7], "s": [1.295, 0.86, 0.14], "color": "parapet", "level": "roof-detail"},
-    {"name": "Roof terrace parapet (approximate)", "p": [4.805, 6.46, 18.77], "s": [0.14, 0.86, 0.23], "color": "parapet", "level": "roof-detail"},
-    {"name": "Rear spiral handrail", "p": [11.32227, 1.02306, 17.50472], "s": [0.30941, 0.048, 0.048], "color": "steel", "level": "spiral", "yaw": -1.082561, "tilt": 0.6781754},
-    {"name": "Rear spiral handrail", "p": [11.39854, 1.21718, 17.72996], "s": [0.30941, 0.048, 0.048], "color": "steel", "level": "spiral", "yaw": -1.4060904, "tilt": 0.6781754},
-    {"name": "Rear spiral handrail", "p": [11.39924, 1.41129, 17.96776], "s": [0.30941, 0.048, 0.048], "color": "steel", "level": "spiral", "yaw": -1.7296199, "tilt": 0.6781754},
-    {"name": "Rear spiral handrail", "p": [11.3243, 1.60541, 18.19344], "s": [0.30941, 0.048, 0.048], "color": "steel", "level": "spiral", "yaw": -2.0531493, "tilt": 0.6781754},
-    {"name": "Rear spiral handrail", "p": [11.1815, 1.79953, 18.38359], "s": [0.30941, 0.048, 0.048], "color": "steel", "level": "spiral", "yaw": -2.3766787, "tilt": 0.6781754},
-    {"name": "Rear spiral handrail", "p": [10.98566, 1.99365, 18.51848], "s": [0.30941, 0.048, 0.048], "color": "steel", "level": "spiral", "yaw": -2.7002081, "tilt": 0.6781754},
-    {"name": "Rear spiral handrail", "p": [10.7571, 2.18776, 18.58411], "s": [0.30941, 0.048, 0.048], "color": "steel", "level": "spiral", "yaw": -3.0237375, "tilt": 0.6781754},
-    {"name": "Rear spiral handrail", "p": [10.51953, 2.38188, 18.57368], "s": [0.30941, 0.048, 0.048], "color": "steel", "level": "spiral", "yaw": 2.9359184, "tilt": 0.6781754},
-    {"name": "Rear spiral handrail", "p": [10.2976, 2.576, 18.48825], "s": [0.30941, 0.048, 0.048], "color": "steel", "level": "spiral", "yaw": 2.612389, "tilt": 0.6781754},
-    {"name": "Rear spiral handrail", "p": [10.11434, 2.77012, 18.3367], "s": [0.30941, 0.048, 0.048], "color": "steel", "level": "spiral", "yaw": 2.2888596, "tilt": 0.6781754},
-    {"name": "Rear spiral handrail", "p": [9.98877, 2.96424, 18.13476], "s": [0.30941, 0.048, 0.048], "color": "steel", "level": "spiral", "yaw": 1.9653302, "tilt": 0.6781754},
-    {"name": "Rear spiral handrail", "p": [9.93392, 3.15835, 17.90337], "s": [0.30941, 0.048, 0.048], "color": "steel", "level": "spiral", "yaw": 1.6418007, "tilt": 0.6781754},
-    {"name": "Rear spiral handrail", "p": [9.95547, 3.35247, 17.66655], "s": [0.30941, 0.048, 0.048], "color": "steel", "level": "spiral", "yaw": 1.3182713, "tilt": 0.6781754},
-    {"name": "Rear spiral handrail", "p": [10.0512, 3.54659, 17.44887], "s": [0.30941, 0.048, 0.048], "color": "steel", "level": "spiral", "yaw": 0.9947419, "tilt": 0.6781754},
-    {"name": "Rear spiral handrail", "p": [10.21116, 3.74071, 17.27291], "s": [0.30941, 0.048, 0.048], "color": "steel", "level": "spiral", "yaw": 0.6712125, "tilt": 0.6781754},
-    {"name": "Rear spiral handrail", "p": [10.41876, 3.93482, 17.15694], "s": [0.30941, 0.048, 0.048], "color": "steel", "level": "spiral", "yaw": 0.3476831, "tilt": 0.6781754},
-    {"name": "Rear spiral handrail", "p": [10.65246, 4.12894, 17.11298], "s": [0.30941, 0.048, 0.048], "color": "steel", "level": "spiral", "yaw": 0.0241537, "tilt": 0.6781754},
-    {"name": "Bedroom 1 projecting court-side pier", "p": [-0.02, 0, 10.36], "s": [0.63, 3.3, 1.54], "color": "wall", "level": "ground"},
-    {"name": "Bedroom 1 road-side overhang", "p": [0.02, 2.81, 11.9], "s": [0.6, 0.49, 2.97], "color": "wall", "level": "ground"}
-  ],
-  "colors": {
-    "wall": "#879caf",
-    "interior": "#e5ddcf",
-    "floor": "#dbd4c7",
-    "cream": "#dabc9c",
-    "red": "#804d4d",
-    "frame": "#eee9dd",
-    "glass": "#526771",
-    "balcony": "#925755",
-    "metal": "#333d3c",
-    "terrace": "#a7a7a0",
-    "ground": "#c8c5b8",
-    "roof": "#c0beb5",
-    "old-door": "#d7cec0",
-    "paving": "#bfb8a8",
-    "earth": "#b6a084",
-    "newwall": "#e5ded1",
-    "newstone": "#cbbba5",
-    "newglass": "#788f91",
-    "wood": "#886247",
-    "stair": "#87847e",
-    "boundary": "#9e9a90",
-    "brick": "#945f4b",
-    "tank": "#313939",
-    "parapet": "#8fa5ad",
-    "terrace-mosaic": "#c0beb5",
-    "hall-red": "#a53038",
-    "court-floor": "#aea99c",
-    "wood-floor": "#b79570",
-    "kitchen-wood": "#b99b70",
-    "counter": "#55585a",
-    "light-blue": "#acc6c5",
-    "dusty-pink": "#d6bbc0",
-    "bamboo": "#a98152",
-    "bamboo-light": "#c9ad7d",
-    "wine-rail": "#75424a",
-    "shaft-dark": "#434c50",
-    "shaft": "#879caf",
-    "recess-stone": "#a99783",
-    "ceiling": "#eeebe5",
-    "steel": "#a5a9aa",
-    "step-trim": "#c2a78a"
-  },
-  "images": {
-    "wall": "assets/textures/wall.jpg",
-    "cream": "assets/textures/cream.jpg",
-    "red": "assets/textures/red.jpg",
-    "glass": "assets/textures/glass.jpg",
-    "paving": "assets/textures/paving.jpg",
-    "earth": "assets/textures/earth.jpg",
-    "brick": "assets/textures/brick.jpg",
-    "terrace-mosaic": "assets/textures/terrace-mosaic.jpg"
-  },
-  "labels": {
-    "ground": [
-      {"text": "Dining", "x": 2.875, "z": 3.375},
-      {"text": "Drawing / hall", "x": 9.125, "z": 2.875},
-      {"text": "Bedroom 1", "x": 2.375, "z": 12.625},
-      {"text": "Bedroom 2", "x": 6.375, "z": 15.625},
-      {"text": "Kitchen", "x": 9.875, "z": 13.0},
-      {"text": "Court", "x": 2.5, "z": 8.125},
-      {"text": "Entry", "x": 7.15, "z": 6.4},
-      {"text": "Lounge", "x": 5.75, "z": 8.7},
-      {"text": "Toilet 01", "x": 3.35, "z": 15.85},
-      {"text": "Toilet 02", "x": 3.35, "z": 17.85},
-      {"text": "Toilet 06", "x": 10.0, "z": 6.25},
-      {"text": "Main stair", "x": 10.55, "z": 9.7},
-      {"text": "Small room", "x": 9.35, "z": 8.12}
-    ],
-    "first": [
-      {"text": "Master bedroom", "x": 4.875, "z": 3.25},
-      {"text": "Bedroom 3", "x": 6.625, "z": 13.625},
-      {"text": "Study", "x": 10.125, "z": 12.0},
-      {"text": "Terrace 02", "x": 2.375, "z": 13.5},
-      {"text": "Service terrace", "x": 10.125, "z": 15.125},
-      {"text": "Servant room", "x": 6.625, "z": 17.875},
-      {"text": "Spiral stair", "x": 10.825, "z": 17.875},
-      {"text": "Puja (approx.)", "x": 5.625, "z": 6.3},
-      {"text": "Lounge below", "x": 5.63, "z": 8.8},
-      {"text": "Toilet 03", "x": 3.4, "z": 15.9},
-      {"text": "Toilet 04", "x": 3.4, "z": 18.0},
-      {"text": "Toilet 05", "x": 10.0, "z": 1.8},
-      {"text": "Dress", "x": 10.0, "z": 4.25},
-      {"text": "Stair opening", "x": 10.9, "z": 8.2},
-      {"text": "Court below", "x": 2.6, "z": 7.9}
-    ],
-    "roof": [
-      {"text": "Tank above stair head", "x": 10.025, "z": 8.25}
-    ]
-  },
-  "metadata": {
-    "title": "RajSee Villa · Ansal A-60",
-    "model_status": "Existing villa reconstructed from the supplied plan, site photos and owner input. Heights and site geometry are provisional.",
-    "plot_m": [
-      14.5,
-      29
-    ],
-    "assumed_floor_to_floor_m": 3.3,
-    "roof_machine_room_m": [
-      3.2,
-      1.6
-    ],
-    "aerial_property": "upper light-coloured roof",
-    "lounge_opening_status": "Upper railing and puja partition are visible in the November photos. The void and recess dimensions follow the plan approximately.",
-    "roof_tank_position": "On top of stair-head room (owner confirmed); dimensions and support estimated",
-    "neighbour_boundary_heights_m_above_ground_estimate": [
-      1.8,
-      7.9,
-      3.5
-    ],
-    "photo_audit": "November 2026 photo review. Two hall openings, courtyard returns, kitchen/stair core, screened rear door and terrace edges.",
-    "terrace_owner_correction": "Opening and planter are part of the terrace; grille above the marked opening and court only, no canopy over the open terrace.",
-    "stair_head_footprint_m_estimate": [
-      3.2,
-      3.66
-    ],
-    "service_terrace_owner_correction": "Open between the study, servant room and spiral staircase; no cross walls.",
-    "front_compound_offset_m_estimate": 5.1,
-    "rear_compound_offset_m_estimate": 2.0,
-    "compound_note": "Illustrative visible enclosure. The printed 14.50 x 29.00 m site and the drawn red line do not reconcile at the house scale.",
-    "hall_clear_ceiling_m": [
-      2.8956,
-      3.048
-    ],
-    "rear_screened_door": "The rear door is photographed. Owner considers the Bedroom 2 connection probable.",
-    "kitchen_service": "Door, sidelights and spiral are visible together from the kitchen. The depth of the sheltered recess is inferred.",
-    "first_floor_uncertainties": "Upper stair-side landing, clear widths, door swings, service return, planter and grille extent are approximate.",
-    "court_pergola": "Seven internal bars counted between edge beams in Iphone Wide Side Porch.jpeg."
+// Dimensions are metres. X runs from the side road to the neighbour, Z from front to rear.
+// A box starts at its minimum corner. Window and door openings are spans along a wall.
+globalThis.RAJSEE_MODEL = (() => {
+  const parts = [];
+  function floor(level) {
+    function box(name, color, p, s, options = {}) {
+      parts.push({ name, level, color, p, s, ...options });
+    }
+    function copies(name, color, origins, size) {
+      for (const origin of origins) box(name, color, origin, size);
+    }
+    function row(name, color, origin, size, step, count) {
+      for (let i = 0; i < count; i++) {
+        box(name, color, origin.map((v, axis) => v + i * step[axis]), size);
+      }
+    }
+    function wall(name, color, axis, centre, span, height, thickness, openings = []) {
+      function section(start, end, bottom, top) {
+        if (end - start < 0.00001 || top - bottom < 0.00001) return;
+        const edge = centre - thickness / 2;
+        if (axis === "x") box(name, color, [start, bottom, edge], [end - start, top - bottom, thickness]);
+        else box(name, color, [edge, bottom, start], [thickness, top - bottom, end - start]);
+      }
+      let cursor = span[0];
+      const [base, top] = height;
+      for (const [start, end, sill, head] of openings) {
+        section(cursor, start, base, top);
+        section(start, end, base, sill);
+        section(start, end, head, top);
+        cursor = end;
+      }
+      section(cursor, span[1], base, top);
+    }
+    return { box, copies, row, wall };
   }
-};
+
+  const ground = floor("ground"), first = floor("first"), roof = floor("roof");
+  const site = floor("site"), boundary = floor("boundary"), facade = floor("facade");
+  const roofHead = floor("roof-head"), spiral = floor("spiral");
+
+  // Plan rectangles use [left, front, right, rear]. Bands include the exterior wall thickness.
+  const groundPlan = [
+    [6.245, -0.08, 11.825, 1.17], [1.175, 1.17, 11.825, 5.575],
+    [4.67, 5.575, 11.825, 10.3], [-0.02, 10.3, 11.825, 14.955],
+    [1.945, 14.955, 11.825, 16.95], [1.945, 16.95, 8.45, 19.08]
+  ];
+  const upperPlan = [
+    [8.42, -0.08, 11.825, 1.05], [1.175, 1.05, 11.825, 5.455],
+    [4.67, 5.455, 11.825, 10.375], [4.8, 10.375, 11.825, 13.655],
+    [4.8, 13.655, 9.195, 14.795], [1.945, 14.795, 9.195, 15.955],
+    [1.945, 15.955, 8.58, 18.85], [1.945, 18.85, 4.955, 19.08]
+  ];
+  const stairWell = [[10.55, 7.41, 11.53, 9.25], [9.5, 9.25, 11.53, 10.23]];
+  const loungeVoid = [4.83, 7.24, 6.385, 10.375];
+
+  // Trim a deck at a stairwell, an open edge or a previously laid slab.
+  function subtract(rect, cut) {
+    const [x, z, right, rear] = rect;
+    const left = Math.max(x, cut[0]), front = Math.max(z, cut[1]);
+    const end = Math.min(right, cut[2]), back = Math.min(rear, cut[3]);
+    if (left >= end || front >= back) return [rect];
+    return [[x,z,right,front], [x,back,right,rear], [x,front,left,back], [end,front,right,back]]
+      .filter(([x0,z0,x1,z1]) => x1 - x0 > 0.00001 && z1 - z0 > 0.00001);
+  }
+  function deckBuilder(level, top, holes = []) {
+    const occupied = [...holes];
+    return (name, color, rectangles, thickness = 0.16) => {
+      for (const rect of rectangles) {
+        const tiles = occupied.reduce((tiles, cut) => tiles.flatMap(tile => subtract(tile, cut)), [rect]);
+        for (const [x,z,right,rear] of tiles) {
+          level.box(name, color, [x, top - thickness, z], [right - x, thickness, rear - z], { deck: true });
+        }
+        occupied.push(rect);
+      }
+    };
+  }
+  deckBuilder(ground, 0)("Ground floor slab", "floor", groundPlan);
+  const upperDeck = deckBuilder(first, 3.3, [...stairWell, loungeVoid]);
+  upperDeck("First floor slab", "floor", upperPlan);
+  upperDeck("Terrace 02", "terrace", [[-0.08,10.125,4.875,14.955]]);
+  upperDeck("Service terrace", "terrace", [[8.5,13.575,11.825,16.95]]);
+  upperDeck("Rear stair landing", "terrace", [[9.875,16.95,11.325,17.375]]);
+  upperDeck("Front balcony slab", "terrace", [[4.625,-0.2,8.5,1.125]], 0.22);
+  upperDeck("Roof over ground-floor setbacks", "terrace", groundPlan);
+  deckBuilder(roof, 6.46, stairWell)("Roof slab", "roof", upperPlan);
+
+  function mainStair(level, base, top) {
+    const rise = (top - base) / 17;
+    for (let i = 0; i < 17; i++) {
+      const tread = base + rise * (i + 1);
+      const depth = Math.min(tread - base, i < 9 ? 0.29 : 0.25);
+      if (i < 9) level.box("Main stair first flight", "stair", [8.48 + i * 0.23, tread - depth, 9.26], [0.23, depth, 0.92]);
+      else level.box("Main stair second flight", "stair", [10.57, tread - depth, 9.02 - (i - 9) * 0.23], [0.93, depth, 0.23]);
+    }
+    level.box("Main stair landing", "stair", [10.55, base + 9 * rise - 0.29, 9.26], [1, 0.29, 0.92]);
+  }
+  mainStair(ground, 0, 3.3);
+  mainStair(first, 3.3, 6.46);
+
+  function rearSpiral() {
+    const cx = 10.825, cz = 17.875, steps = 18;
+    spiral.box("Rear spiral centre pole", "metal", [cx - 0.055, 0, cz - 0.055], [0.11, 4, 0.11]);
+    let previous;
+    for (let i = 0; i < steps; i++) {
+      const angle = 0.65 - i * 1.75 * Math.PI / (steps - 1);
+      const y = i * (3.3 - 0.055) / (steps - 1);
+      const x = Math.cos(angle), z = -Math.sin(angle);
+      spiral.box("Rear spiral tread", "stair", [cx + 0.405*x - 0.415, y, cz + 0.405*z - 0.105],
+        [0.83, 0.055, 0.21], { yaw: angle });
+      const rail = [cx + 0.747*x, y + 0.95, cz + 0.747*z];
+      if (i % 2 === 0 || i === steps - 1) {
+        spiral.box("Rear spiral railing post", "metal", [rail[0] - 0.023, y, rail[2] - 0.023], [0.046, 0.95, 0.046]);
+      }
+      if (previous) {
+        const [dx,dy,dz] = rail.map((v,k) => v - previous[k]);
+        const length = Math.hypot(dx,dy,dz);
+        const mid = rail.map((v,k) => (v + previous[k]) / 2);
+        spiral.box("Rear spiral handrail", "metal", [mid[0]-length/2, mid[1]-0.024, mid[2]-0.024],
+          [length,0.048,0.048], { yaw: Math.atan2(-dz,dx), tilt: Math.asin(dy/length) });
+      }
+      previous = rail;
+    }
+  }
+  rearSpiral();
+
+  // Ground floor, court and kitchen.
+  ground.wall("Front hall wall", "wall", "x", 1.25, [1.25, 6.325], [0, 3.14], 0.16, [[1.475, 5.5898, 0, 2.5908]]);
+  ground.wall("Front drawing wall", "wall", "x", 0, [6.325, 11.75], [0, 3.14], 0.16, [[9.3, 11.05, 0, 2.35]]);
+  ground.wall("Front step in wall", "wall", "z", 6.325, [0, 1.25], [0, 3.14], 0.16);
+  ground.wall("Bedroom garden wall", "wall", "z", 0.61, [10.375, 14.875], [0, 3.14], 0.16, [[12.875, 14.25, 0.75, 2.35]]);
+  ground.wall("Bedroom side return", "wall", "x", 14.875, [0.61, 2.025], [0, 3.14], 0.16);
+  ground.wall("Bathroom outer wall", "wall", "z", 2.025, [14.875, 19], [0, 3.14], 0.16, [[15.8, 16.55, 1.5, 2.25], [17.675, 18.425, 1.5, 2.25]]);
+  ground.box("Bedroom side window glass", "glass", [0.575, 0.75, 12.875], [0.07, 1.6, 1.375]);
+  ground.row("Bedroom side window frame", "frame", [0.555, 0.75, 12.85], [0.11, 1.6, 0.05], [0, 0, 0.6875], 3);
+  ground.copies("Bedroom side window horizontal frame", "frame", [[0.555, 0.728, 12.875], [0.555, 2.328, 12.875], [0.555, 1.928, 12.875]], [0.11, 0.044, 1.375]);
+  ground.box("Rear bathroom light 1 glass", "glass", [1.99, 1.5, 17.675], [0.07, 0.75, 0.75]);
+  ground.row("Rear bathroom light 1 frame", "frame", [1.97, 1.5, 17.65], [0.11, 0.75, 0.05], [0, 0, 0.375], 3);
+  ground.copies("Rear bathroom light 1 horizontal frame", "frame", [[1.97, 1.478, 17.675], [1.97, 2.228, 17.675], [1.97, 1.828, 17.675]], [0.11, 0.044, 0.75]);
+  ground.box("Rear bathroom light 2 glass", "glass", [1.99, 1.5, 15.8], [0.07, 0.75, 0.75]);
+  ground.row("Rear bathroom light 2 frame", "frame", [1.97, 1.5, 15.775], [0.11, 0.75, 0.05], [0, 0, 0.375], 3);
+  ground.copies("Rear bathroom light 2 horizontal frame", "frame", [[1.97, 1.478, 15.8], [1.97, 2.228, 15.8], [1.97, 1.828, 15.8]], [0.11, 0.044, 0.75]);
+  ground.box("Existing front glazing", "glass", [1.475, 0, 1.115], [3.0226, 2.1336, 0.06]);
+  ground.box("Existing front door", "door", [4.4976, 0, 1.115], [1.0922, 2.1336, 0.06]);
+  ground.box("Existing front transom", "glass", [1.475, 2.1336, 1.115], [4.1148, 0.4572, 0.06]);
+  ground.copies("Existing front upright", "frame", [[1.45875, 0, 1.1], [2.38375, 0, 1.1], [3.55875, 0, 1.1], [4.48135, 0, 1.1], [5.57355, 0, 1.1]], [0.0325, 2.5908, 0.09]);
+  ground.copies("Existing front rail", "frame", [[1.475, -0.025, 1.1], [1.475, 0.745, 1.1], [1.475, 2.1086, 1.1], [1.475, 2.5658, 1.1]], [4.1148, 0.05, 0.09]);
+  ground.box("Existing right door", "door", [10, 0, -0.135], [1.05, 1.95, 0.06]);
+  ground.box("Existing right sidelight", "glass", [9.3, 0, -0.135], [0.7, 1.95, 0.06]);
+  ground.box("Existing right transom", "glass", [9.3, 1.95, -0.135], [1.75, 0.4, 0.06]);
+  ground.copies("Right opening frame", "frame", [[9.2825, 0, -0.15], [9.9825, 0, -0.15], [11.0325, 0, -0.15]], [0.035, 2.35, 0.09]);
+  ground.copies("Right opening frame rail", "frame", [[9.3, 1.925, -0.15], [9.3, 2.325, -0.15]], [1.75, 0.05, 0.09]);
+  ground.wall("Ground bedroom 1 partition", "interior", "z", 4.75, [10.375, 14.875], [0, 3.14], 0.11, [[10.95, 11.875, 0, 2.15]]);
+  ground.wall("Ground toilet 1 partition", "interior", "x", 14.875, [2.025, 4.75], [0, 3.14], 0.11, [[3, 3.875, 0, 2.15]]);
+  ground.wall("Ground guest WC front wall", "interior", "x", 5.5, [8.375, 11.75], [0, 3.14], 0.11);
+  ground.wall("Courtyard back wall", "wall", "z", 4.75, [5.5, 10.375], [0, 3.14], 0.16, [[6, 6.925, 0, 2.35], [7.675, 9.875, 0.15, 2.45]]);
+  ground.box("Ground courtyard large window glazing", "glass", [4.715, 0.15, 7.675], [0.07, 2.3, 2.2]);
+  ground.copies("Ground courtyard large window frame", "frame", [[4.69, 0.15, 7.652], [4.69, 0.15, 8.202], [4.69, 0.15, 9.302], [4.69, 0.15, 9.852]], [0.12, 2.3, 0.046]);
+  ground.copies("Ground courtyard large window frame", "frame", [[4.69, 0.125, 7.675], [4.69, 0.815, 7.675], [4.69, 2.025, 7.675], [4.69, 2.425, 7.675]], [0.12, 0.05, 2.2]);
+  ground.box("Ground courtyard side door", "door", [4.69, 0, 6], [0.12, 2.1, 0.925]);
+  ground.box("Courtyard door upper glass glazing", "glass", [4.715, 2.1, 6], [0.07, 0.25, 0.925]);
+  ground.wall("Kitchen stair enclosure (approximate)", "interior", "x", 10.375, [8.375, 11.75], [0, 3.14], 0.11);
+  ground.wall("Rear service side wall", "wall", "z", 8.37, [16.95, 19], [0, 3.14], 0.16, [[17.32, 18.3, 0.8, 2.35]]);
+  ground.box("Rear service side window", "glass", [8.33, 0.8, 17.32], [0.07, 1.55, 0.98]);
+  ground.copies("Rear service side window upright", "frame", [[8.31, 0.8, 17.3], [8.31, 0.8, 17.77], [8.31, 0.8, 18.28]], [0.11, 1.55, 0.045]);
+  ground.copies("Rear service side window rail", "frame", [[8.31, 0.78, 17.32], [8.31, 2.33, 17.32]], [0.11, 0.045, 0.98]);
+  ground.wall("Dining side wall", "wall", "z", 1.25, [1.25, 5.5], [0, 3.14], 0.15, [[1.34, 1.72, 0, 2.54]]);
+  ground.box("Dining narrow corner light glazing", "glass", [1.228, 0, 1.34], [0.044, 2.54, 0.38]);
+  ground.copies("Dining narrow corner light jamb or mullion", "frame", [[1.1985, 0, 1.314], [1.1985, 0, 1.694]], [0.103, 2.54, 0.052]);
+  ground.copies("Dining narrow corner light crossbar", "frame", [[1.1985, 0.001, 1.34], [1.1985, 2.078, 1.34], [1.1985, 2.495, 1.34]], [0.103, 0.044, 0.38]);
+  ground.wall("Neighbour side wall", "wall", "z", 11.75, [0, 16.95], [0, 3.14], 0.15);
+  ground.wall("Hall to entry lobby wall", "interior", "x", 5.5, [4.75, 8.375], [0, 3.14], 0.15, [[4.93, 5.95, 0, 2.19], [6.77, 7.7, 0, 2.19]]);
+  ground.box("Dining soffit", "ceiling", [1.33, 3.048, 1.34], [4.995, 0.092, 4.08], { overhead: true });
+  ground.box("Drawing soffit", "ceiling", [6.325, 2.8956, 0.08], [5.35, 0.2444, 5.34], { overhead: true });
+  ground.wall("Court facing dining", "wall", "x", 5.5, [1.25, 4.75], [0, 3.14], 0.15, [[1.58, 4.56, 0.025, 2.64]]);
+  ground.box("Dining glazed court opening glazing", "glass", [1.58, 0.025, 5.478], [2.98, 2.615, 0.044]);
+  ground.copies("Dining glazed court opening jamb or mullion", "frame", [[1.554, 0.025, 5.4485], [2.034, 0.025, 5.4485], [4.094, 0.025, 5.4485], [4.534, 0.025, 5.4485]], [0.052, 2.615, 0.103]);
+  ground.copies("Dining glazed court opening crossbar", "frame", [[1.58, 0.026, 5.4485], [1.58, 2.078, 5.4485], [1.58, 2.595, 5.4485]], [2.98, 0.044, 0.103]);
+  ground.wall("Bedroom court wall", "wall", "x", 10.375, [0, 4.75], [0, 3.14], 0.15, [[2.94, 4.6, 0, 2.54]]);
+  ground.box("Bedroom 1 court entry glazing", "glass", [2.94, 0, 10.353], [0.7, 2.54, 0.044]);
+  ground.box("Bedroom 1 court entry door", "door", [3.64, 0, 10.35], [0.96, 2.03, 0.05]);
+  ground.box("Bedroom 1 court entry transom", "glass", [3.64, 2.03, 10.353], [0.96, 0.51, 0.044]);
+  ground.copies("Bedroom 1 court entry jamb or mullion", "frame", [[2.914, 0, 10.3235], [3.614, 0, 10.3235], [4.574, 0, 10.3235]], [0.052, 2.54, 0.103]);
+  ground.copies("Bedroom 1 court entry crossbar", "frame", [[2.94, 0.001, 10.3235], [2.94, 2.008, 10.3235], [2.94, 2.495, 10.3235]], [1.66, 0.044, 0.103]);
+  ground.box("Bedroom 1 court entry crossbar", "frame", [2.94, 0.528, 10.3235], [0.7, 0.044, 0.103]);
+  ground.box("Courtyard sunken bed", "court", [1.12, -0.37, 6.69], [2.69, 0.055, 3.6]);
+  ground.box("Court inner walkway", "paving", [3.81, -0.33, 5.5], [0.94, 0.33, 4.875]);
+  ground.box("Court dining-side walkway", "paving", [1.18, -0.33, 5.5], [2.63, 0.33, 1.19]);
+  ground.box("Court bedroom threshold", "paving", [1.12, -0.33, 10.29], [2.69, 0.33, 0.085]);
+  ground.box("Court approach step", "trim", [0.55, -0.4, 5.5], [0.31, 0.13, 1.19]);
+  ground.box("Court approach step", "trim", [0.86, -0.4, 5.5], [0.32, 0.26, 1.19]);
+  ground.wall("Lobby wall by WC, small room, stair and kitchen", "interior", "z", 8.375, [5.5, 15.375], [0, 3.14], 0.15, [[5.97, 6.83, 0, 2.12], [7.56, 8.43, 0, 2.12], [9.23, 10.21, 0, 2.7], [10.53, 11.48, 0, 2.14], [11.82, 12.66, 0.84, 2.03]]);
+  ground.wall("Small room front wall", "interior", "x", 7.17, [8.375, 10.36], [0, 3.14], 0.15);
+  ground.wall("WC wall and under-stair store door", "interior", "x", 7.17, [10.36, 11.75], [0, 3.14], 0.15, [[10.71, 11.46, 0, 1.91]]);
+  ground.wall("Small room rear and inner stair enclosure", "interior", "x", 9.14, [8.375, 10.54], [0, 3.14], 0.15);
+  ground.wall("Small room end wall", "interior", "z", 10.36, [7.17, 9.14], [0, 3.14], 0.15);
+  ground.box("Kitchen serving sill", "counter", [8.24, 0.8, 11.79], [0.27, 0.06, 0.9]);
+  ground.box("Kitchen base cabinets", "cabinet", [11.13, 0, 10.55], [0.52, 0.785, 4.72]);
+  ground.box("Kitchen base cabinets", "cabinet", [8.46, 0, 12.8], [0.49, 0.785, 2.47]);
+  ground.box("Kitchen worktop", "counter", [11.105, 0.785, 10.55], [0.57, 0.065, 4.72]);
+  ground.box("Kitchen worktop", "counter", [8.435, 0.785, 12.8], [0.54, 0.065, 2.47]);
+  ground.box("Kitchen sink rim", "steel", [11.15, 0.85, 14.23], [0.44, 0.018, 0.75]);
+  ground.box("Kitchen sink bowl", "counter", [11.19, 0.868, 14.3], [0.36, 0.01, 0.61]);
+  ground.wall("Kitchen rear access", "interior", "x", 15.375, [8.375, 11.75], [0, 3.14], 0.15, [[8.9, 9.52, 0.78, 2.4], [9.54, 10.46, 0, 2.4], [10.47, 11.15, 0.78, 2.4]]);
+  ground.box("Kitchen rear light left glazing", "glass", [8.9, 0.78, 15.353], [0.62, 1.62, 0.044]);
+  ground.copies("Kitchen rear light left jamb or mullion", "frame", [[8.874, 0.78, 15.3235], [9.494, 0.78, 15.3235]], [0.052, 1.62, 0.103]);
+  ground.copies("Kitchen rear light left crossbar", "frame", [[8.9, 0.781, 15.3235], [8.9, 1.998, 15.3235], [8.9, 2.355, 15.3235]], [0.62, 0.044, 0.103]);
+  ground.box("Kitchen door toward service bay door", "door", [9.54, 0, 15.35], [0.92, 2.02, 0.05]);
+  ground.box("Kitchen door toward service bay transom", "glass", [9.54, 2.02, 15.353], [0.92, 0.38, 0.044]);
+  ground.copies("Kitchen door toward service bay jamb or mullion", "frame", [[9.514, 0, 15.3235], [10.434, 0, 15.3235]], [0.052, 2.4, 0.103]);
+  ground.copies("Kitchen door toward service bay crossbar", "frame", [[9.54, 0.001, 15.3235], [9.54, 1.998, 15.3235], [9.54, 2.355, 15.3235]], [0.92, 0.044, 0.103]);
+  ground.box("Kitchen rear light right glazing", "glass", [10.47, 0.78, 15.353], [0.68, 1.62, 0.044]);
+  ground.copies("Kitchen rear light right jamb or mullion", "frame", [[10.444, 0.78, 15.3235], [11.124, 0.78, 15.3235]], [0.052, 1.62, 0.103]);
+  ground.copies("Kitchen rear light right crossbar", "frame", [[10.47, 0.781, 15.3235], [10.47, 1.998, 15.3235], [10.47, 2.355, 15.3235]], [0.68, 0.044, 0.103]);
+  ground.wall("Bedroom 2 utility-side wall", "wall", "z", 8.375, [15.375, 16.95], [0, 3.14], 0.15);
+  ground.wall("Bedroom 2 lobby wall", "interior", "x", 13.17, [4.75, 8.375], [0, 3.14], 0.15, [[4.86, 5.71, 0, 2.14]]);
+  ground.wall("Ground bathroom dividing wall", "interior", "x", 16.86, [2.025, 4.75], [0, 3.14], 0.15);
+  ground.wall("Bedroom 2 bathroom wall", "interior", "z", 4.75, [14.875, 19], [0, 3.14], 0.15, [[17.34, 18.13, 0, 2.1]]);
+  ground.wall("Rear solid exterior wall", "wall", "x", 19, [2.025, 8.375], [0, 3.14], 0.16, [[7.12, 8.375, 0, 2.66]]);
+  ground.wall("Rear entry recess wall", "wall", "x", 18.56, [7.12, 8.375], [0, 2.7], 0.15, [[7.3, 8.19, 0, 2.4]]);
+  ground.wall("Rear entry recess cheek", "wall", "z", 7.12, [18.56, 19], [0, 2.66], 0.13);
+  ground.box("Rear entry recess hood", "wall", [7.1, 2.64, 18.48], [1.33, 0.18, 0.64]);
+  ground.box("Rear screened bedroom entrance door", "door", [7.3, 0, 18.535], [0.89, 2.02, 0.05]);
+  ground.box("Rear screened bedroom entrance transom", "glass", [7.3, 2.02, 18.538], [0.89, 0.38, 0.044]);
+  ground.copies("Rear screened bedroom entrance jamb or mullion", "frame", [[7.274, 0, 18.5085], [8.164, 0, 18.5085]], [0.052, 2.4, 0.103]);
+  ground.copies("Rear screened bedroom entrance crossbar", "frame", [[7.3, 0.001, 18.5085], [7.3, 1.998, 18.5085], [7.3, 2.355, 18.5085]], [0.89, 0.044, 0.103]);
+  ground.row("Rear bamboo screen slat", "bamboo", [7.33, 0.07, 18.612], [0.055, 1.89, 0.034], [0.081, 0, 0], 11);
+  ground.copies("Rear screen crosspiece", "bamboo", [[7.33, 0.16, 18.647], [7.33, 0.91, 18.647], [7.33, 1.78, 18.647]], [0.87, 0.048, 0.04]);
+  ground.box("Bedroom 1 projecting court-side pier", "wall", [-0.02, 0, 10.36], [0.63, 3.14, 1.54]);
+  ground.box("Bedroom 1 road-side overhang", "wall", [0.02, 2.81, 11.9], [0.51, 0.33, 2.97]);
+  ground.copies("Courtyard door transom jamb", "frame", [[4.69,2.1,5.977], [4.69,2.1,6.902]], [0.12,0.25,0.046]);
+  ground.row("Courtyard door transom rail", "frame", [4.69,2.08,6], [0.12,0.04,0.925], [0,0.25,0], 2);
+
+  // First floor, landing and terraces.
+  first.wall("First floor front bathroom wall", "wall", "x", 0, [8.5, 11.75], [3.3, 6.3], 0.16, [[9.25, 11, 4.15, 5.65]]);
+  first.wall("First floor front step wall", "wall", "z", 8.5, [0, 1.125], [3.3, 6.3], 0.16);
+  first.wall("First floor rear bathroom wall", "wall", "z", 2.025, [14.875, 19], [3.3, 6.3], 0.16, [[15.75, 16.5, 4.8, 5.6], [17.75, 18.5, 4.8, 5.6]]);
+  first.row("Front balcony railing post", "metal", [4.707, 3.3, -0.27], [0.036, 0.92, 0.04], [0.625, 0, 0], 7);
+  first.copies("Front balcony railing", "metal", [[4.625, 3.332, -0.27], [4.625, 3.632, -0.27], [4.625, 3.932, -0.27], [4.625, 4.202, -0.27]], [3.875, 0.036, 0.04]);
+  first.copies("Balcony side railing", "metal", [[4.605, 3.332, -0.25], [4.605, 3.632, -0.25], [4.605, 3.932, -0.25], [4.605, 4.202, -0.25]], [0.04, 0.036, 1.375]);
+  first.box("Front balcony fascia", "red", [4.625, 3.08, -0.33], [3.875, 0.22, 0.13]);
+  first.box("Upper front right window glass", "glass", [9.25, 4.15, -0.035], [1.75, 1.5, 0.07]);
+  first.row("Upper front right window frame", "frame", [9.225, 4.15, -0.055], [0.05, 1.5, 0.11], [0.875, 0, 0], 3);
+  first.copies("Upper front right window horizontal frame", "frame", [[9.25, 4.128, -0.055], [9.25, 5.628, -0.055], [9.25, 5.178, -0.055]], [1.75, 0.044, 0.11]);
+  first.box("Upper rear bathroom light 1 glass", "glass", [1.99, 4.8, 17.75], [0.07, 0.8, 0.75]);
+  first.row("Upper rear bathroom light 1 frame", "frame", [1.97, 4.8, 17.725], [0.11, 0.8, 0.05], [0, 0, 0.375], 3);
+  first.copies("Upper rear bathroom light 1 horizontal frame", "frame", [[1.97, 4.778, 17.75], [1.97, 5.578, 17.75], [1.97, 5.178, 17.75]], [0.11, 0.044, 0.75]);
+  first.box("Upper rear bathroom light 2 glass", "glass", [1.99, 4.8, 15.75], [0.07, 0.8, 0.75]);
+  first.row("Upper rear bathroom light 2 frame", "frame", [1.97, 4.8, 15.725], [0.11, 0.8, 0.05], [0, 0, 0.375], 3);
+  first.copies("Upper rear bathroom light 2 horizontal frame", "frame", [[1.97, 4.778, 15.75], [1.97, 5.578, 15.75], [1.97, 5.178, 15.75]], [0.11, 0.044, 0.75]);
+  first.box("Upper front accent frame left", "red", [9, 3.55, -0.43], [0.2, 2, 0.57]);
+  first.box("Upper front accent frame right", "red", [10.95, 3.55, -0.43], [0.2, 2, 0.57]);
+  first.box("Upper front accent sill", "red", [9, 3.55, -0.43], [2.15, 0.23, 0.57]);
+  first.box("Upper front accent canopy", "red", [9, 5.35, -0.43], [2.15, 0.2, 0.57]);
+  first.wall("Master dressing partition", "interior", "z", 8.5, [1.125, 5.375], [3.3, 6.3], 0.11, [[4, 5, 3.3, 5.45]]);
+  first.wall("Dressing bathroom partition", "interior", "x", 3.25, [8.5, 11.75], [3.3, 6.3], 0.11, [[9.625, 10.55, 3.3, 5.45]]);
+  first.wall("First bathroom inner partition", "interior", "z", 4.875, [14.875, 19], [3.3, 6.3], 0.11, [[15.25, 16.075, 3.3, 5.45], [17.3, 18.125, 3.3, 5.45]]);
+  first.wall("Upper courtyard back wall", "wall", "z", 4.75, [5.375, 10.375], [3.3, 6.3], 0.16, [[6.125, 6.875, 4.42, 5.95], [7.75, 9.875, 4.1, 5.95]]);
+  first.box("Upper courtyard large window glazing", "glass", [4.715, 4.1, 7.75], [0.07, 1.85, 2.125]);
+  first.copies("Upper courtyard large window frame", "frame", [[4.69, 4.1, 7.727], [4.69, 4.1, 8.25825], [4.69, 4.1, 9.32075], [4.69, 4.1, 9.852]], [0.12, 1.85, 0.046]);
+  first.copies("Upper courtyard large window frame", "frame", [[4.69, 4.075, 7.75], [4.69, 4.63, 7.75], [4.69, 5.525, 7.75], [4.69, 5.925, 7.75]], [0.12, 0.05, 2.125]);
+  first.box("Upper courtyard small window glazing", "glass", [4.715, 4.42, 6.125], [0.07, 1.53, 0.75]);
+  first.copies("Upper courtyard small window frame", "frame", [[4.69, 4.42, 6.102], [4.69, 4.42, 6.2895], [4.69, 4.42, 6.6645], [4.69, 4.42, 6.852]], [0.12, 1.53, 0.046]);
+  first.copies("Upper courtyard small window frame", "frame", [[4.69, 4.395, 6.125], [4.69, 4.854, 6.125], [4.69, 5.525, 6.125], [4.69, 5.925, 6.125]], [0.12, 0.05, 0.75]);
+  first.wall("Rear bathroom stacked outer wall", "wall", "x", 14.875, [2.025, 4.875], [3.3, 6.3], 0.16);
+  first.wall("Small terrace end parapet", "wall", "x", 14.875, [0, 2.025], [3.3, 4.2], 0.16);
+  first.wall("Study wall with terrace door", "wall", "x", 13.575, [8.5, 11.75], [3.3, 6.3], 0.16, [[9.675, 10.575, 3.3, 5.45]]);
+  first.box("Study door to service terrace", "door", [9.675, 3.3, 13.52], [0.9, 2.15, 0.11]);
+  first.copies("Study terrace door frame", "frame", [[9.65, 3.3, 13.5], [10.55, 3.3, 13.5]], [0.05, 2.18, 0.15]);
+  first.box("Study terrace door lintel", "frame", [9.675, 5.43, 13.5], [0.9, 0.05, 0.15]);
+  first.wall("Servant room terrace wall", "wall", "z", 8.5, [15.875, 18.77], [3.3, 6.3], 0.16, [[16, 16.875, 3.3, 5.45], [17.15, 18.45, 4.1, 5.75]]);
+  first.box("Servant room door to terrace", "door", [8.445, 3.3, 16], [0.11, 2.15, 0.875]);
+  first.wall("Servant room south wall", "interior", "x", 15.875, [4.875, 8.5], [3.3, 6.3], 0.16);
+  first.copies("Lounge railing along opening (approximate)", "rail", [[6.36, 3.61, 7.24], [6.36, 3.91, 7.24], [6.36, 4.2, 7.24]], [0.05, 0.04, 3.135]);
+  first.copies("Lounge railing return (approximate)", "rail", [[4.83, 3.61, 10.35], [4.83, 3.91, 10.35], [4.83, 4.2, 10.35]], [1.555, 0.04, 0.05]);
+  first.copies("Lounge railing post (approximate)", "rail", [[6.35, 3.3, 7.24], [6.35, 3.3, 8.02], [6.35, 3.3, 8.8], [6.35, 3.3, 9.58], [6.35, 3.3, 10.335]], [0.07, 0.94, 0.07]);
+  first.copies("Lounge railing return post (approximate)", "rail", [[4.875, 3.3, 10.34], [5.625, 3.3, 10.34]], [0.07, 0.94, 0.07]);
+  first.wall("Rear solid exterior wall", "wall", "x", 19, [2.025, 4.875], [3.3, 6.3], 0.16);
+  first.box("Servant terrace window", "glass", [8.465, 4.1, 17.15], [0.07, 1.65, 1.3]);
+  first.row("Servant terrace window upright", "frame", [8.44, 4.1, 17.13], [0.11, 1.65, 0.045], [0, 0, 0.65], 3);
+  first.copies("Servant terrace window rail", "frame", [[8.44, 4.08, 17.15], [8.44, 5.73, 17.15]], [0.11, 0.045, 1.3]);
+  first.box("First terrace projecting planter", "cream", [-0.4, 3.86, 10.125], [0.56, 0.38, 1.66]);
+  first.wall("First floor neighbour wall", "wall", "z", 11.75, [0, 13.575], [3.3, 6.3], 0.15);
+  first.wall("First floor front master wall", "wall", "x", 1.125, [1.25, 8.5], [3.3, 6.3], 0.15, [[4.65, 5.78, 3.35, 5.74], [6.04, 8.07, 3.3, 5.74]]);
+  first.box("Master front window group glazing", "glass", [4.65, 3.35, 1.103], [1.13, 2.39, 0.044]);
+  first.copies("Master front window group jamb or mullion", "frame", [[4.624, 3.35, 1.0735], [5.204, 3.35, 1.0735], [5.754, 3.35, 1.0735]], [0.052, 2.39, 0.103]);
+  first.copies("Master front window group crossbar", "frame", [[4.65, 3.351, 1.0735], [4.65, 3.878, 1.0735], [4.65, 5.198, 1.0735], [4.65, 5.695, 1.0735]], [1.13, 0.044, 0.103]);
+  first.box("Master balcony access glazing", "glass", [6.04, 3.3, 1.103], [1.14, 2.44, 0.044]);
+  first.box("Master balcony access door", "door", [7.18, 3.3, 1.1], [0.89, 1.92, 0.05]);
+  first.box("Master balcony access transom", "glass", [7.18, 5.22, 1.103], [0.89, 0.52, 0.044]);
+  first.copies("Master balcony access jamb or mullion", "frame", [[6.014, 3.3, 1.0735], [6.574, 3.3, 1.0735], [7.154, 3.3, 1.0735], [8.044, 3.3, 1.0735]], [0.052, 2.44, 0.103]);
+  first.copies("Master balcony access crossbar", "frame", [[6.04, 3.301, 1.0735], [6.04, 5.198, 1.0735], [6.04, 5.695, 1.0735]], [2.03, 0.044, 0.103]);
+  first.box("Master balcony access crossbar", "frame", [6.04, 3.878, 1.0735], [1.14, 0.044, 0.103]);
+  first.wall("First floor master side wall", "wall", "z", 1.25, [1.125, 5.375], [3.3, 6.3], 0.15, [[1.34, 1.72, 3.36, 5.81], [2.76, 4.84, 4, 5.68]]);
+  first.box("Master side corner light glazing", "glass", [1.228, 3.36, 1.34], [0.044, 2.45, 0.38]);
+  first.copies("Master side corner light jamb or mullion", "frame", [[1.1985, 3.36, 1.314], [1.1985, 3.36, 1.694]], [0.103, 2.45, 0.052]);
+  first.copies("Master side corner light crossbar", "frame", [[1.1985, 3.361, 1.34], [1.1985, 5.238, 1.34], [1.1985, 5.765, 1.34]], [0.103, 0.044, 0.38]);
+  first.box("Master side ribbon window glazing", "glass", [1.228, 4, 2.76], [0.044, 1.68, 2.08]);
+  first.copies("Master side ribbon window jamb or mullion", "frame", [[1.1985, 4, 2.734], [1.1985, 4, 4.814]], [0.103, 1.68, 0.052]);
+  first.copies("Master side ribbon window crossbar", "frame", [[1.1985, 4.001, 2.76], [1.1985, 4.418, 2.76], [1.1985, 4.888, 2.76], [1.1985, 5.278, 2.76], [1.1985, 5.635, 2.76]], [0.103, 0.044, 2.08]);
+  first.box("Master staggered casement bars", "frame", [1.1975, 4, 3.917], [0.105, 0.45, 0.066]);
+  first.box("Master staggered casement bars", "frame", [1.1975, 4.45, 3.327], [0.105, 0.46, 0.066]);
+  first.box("Master staggered casement bars", "frame", [1.1975, 4.91, 4.077], [0.105, 0.39, 0.066]);
+  first.box("Master staggered casement bars", "frame", [1.1975, 5.3, 3.527], [0.105, 0.38, 0.066]);
+  first.wall("Master wall toward court", "wall", "x", 5.375, [1.25, 4.75], [3.3, 6.3], 0.16);
+  first.wall("Master bedroom inner wall", "interior", "x", 5.375, [4.75, 8.5], [3.3, 6.3], 0.15, [[7.22, 8.14, 3.3, 5.46]]);
+  first.wall("Bedroom 3 and landing terrace wall", "wall", "z", 4.875, [10.375, 14.875], [3.3, 6.3], 0.15, [[11.98, 14.74, 3.3, 5.76]]);
+  first.box("Bedroom 3 terrace opening glazing", "glass", [4.853, 3.3, 11.98], [0.044, 2.46, 1.85]);
+  first.box("Bedroom 3 terrace opening door", "door", [4.85, 3.3, 13.83], [0.05, 1.93, 0.91]);
+  first.box("Bedroom 3 terrace opening transom", "glass", [4.853, 5.23, 13.83], [0.044, 0.53, 0.91]);
+  first.copies("Bedroom 3 terrace opening jamb or mullion", "frame", [[4.8235, 3.3, 11.954], [4.8235, 3.3, 12.864], [4.8235, 3.3, 13.804], [4.8235, 3.3, 14.714]], [0.103, 2.46, 0.052]);
+  first.copies("Bedroom 3 terrace opening crossbar", "frame", [[4.8235, 3.301, 11.98], [4.8235, 5.208, 11.98], [4.8235, 5.715, 11.98]], [0.103, 0.044, 2.76]);
+  first.box("Bedroom 3 terrace opening crossbar", "frame", [4.8235, 3.888, 11.98], [0.103, 0.044, 1.85]);
+  first.wall("Bedroom 3 landing wall", "interior", "x", 11.375, [4.875, 8.5], [3.3, 6.3], 0.15, [[7.37, 8.35, 3.3, 5.46]]);
+  first.wall("Study and bedroom partition", "interior", "z", 8.5, [10.375, 13.575], [3.3, 6.3], 0.15, [[10.43, 11.32, 3.3, 5.46]]);
+  first.wall("Study wall along stair", "interior", "x", 10.375, [8.5, 11.75], [3.3, 6.3], 0.15);
+  first.wall("Bedroom 3 service terrace return", "wall", "z", 9.12, [13.575, 15.875], [3.3, 6.3], 0.15);
+  first.wall("Recess return at service room", "wall", "x", 15.875, [8.5, 9.12], [3.3, 6.3], 0.16);
+  first.wall("First bathroom dividing wall", "interior", "x", 17.125, [2.025, 4.875], [3.3, 6.3], 0.15);
+  first.wall("Service terrace rear parapet", "wall", "x", 16.96, [8.5, 10.79], [3.3, 4.27], 0.14);
+  first.wall("Puja reveal beside lounge opening", "interior", "x", 7.24, [4.82, 6.37], [3.3, 6.3], 0.13);
+  first.wall("Terrace parapet", "wall", "z", 0, [10.125, 14.875], [3.3, 4.3], 0.16);
+  first.row("Terrace grille upright", "rail", [1.17, 3.32, 10.1005], [0.037, 1.02, 0.049], [0.45, 0, 0], 9);
+  first.copies("Terrace grille horizontal", "rail", [[1.16, 3.53, 10.1005], [1.16, 3.73, 10.1005], [1.16, 3.93, 10.1005], [1.16, 4.13, 10.1005], [1.16, 4.31, 10.1005]], [3.68, 0.027, 0.049]);
+  first.wall("Upper stair enclosure by flight", "interior", "x", 9.15, [8.46, 10.52], [3.3, 6.3], 0.15);
+  first.box("Upper rear window drip hood", "wall", [8.47, 5.8, 16.02], [0.5, 0.17, 2.61]);
+  first.wall("Upper bathroom and dressing rear wall", "interior", "x", 5.375, [8.5, 11.75], [3.3, 6.3], 0.15);
+  first.wall("Rear upper bedroom face", "wall", "x", 18.77, [4.875, 8.5], [3.3, 6.3], 0.16);
+  first.wall("Rear upper wall return", "wall", "z", 4.875, [18.77, 19], [3.3, 6.3], 0.16);
+  first.wall("Rear courtyard corner return", "wall", "x", 10.375, [4.75,4.875], [3.3,6.3], 0.16);
+
+  // Stair head and water tank.
+  roofHead.wall("Rooftop room back wall", "wall", "x", 10.29, [8.45, 11.65], [6.46, 8.5], 0.12);
+  roofHead.copies("Rooftop room side wall", "wall", [[8.45, 6.46, 6.69], [11.53, 6.46, 6.69]], [0.12, 2.04, 3.66]);
+  roofHead.box("Rooftop room roof", "roof", [8.45, 8.5, 6.69], [3.2, 0.14, 3.66]);
+  roofHead.box("Water tank platform", "terrace", [9.3, 8.64, 7.525], [1.45, 0.18, 1.45]);
+  roofHead.box("Water tank", "tank", [9.425, 8.82, 7.65], [1.2, 1.27, 1.2], { shape: "cylinder" });
+  roofHead.box("Water tank lid", "tank", [9.805, 10.09, 8.03], [0.44, 0.07, 0.44], { shape: "cylinder" });
+  roofHead.wall("Rooftop room front jamb", "wall", "x", 6.75, [8.45, 11.65], [6.46, 8.5], 0.15, [[10.48, 11.42, 6.46, 8.4]]);
+  roofHead.box("Rooftop room door", "door", [10.48, 6.46, 6.7175], [0.94, 1.94, 0.065]);
+  // Parapet follows each turn of the roof. The metal guard fills the opening at the front.
+  roofHead.wall("Roof parapet", "parapet", "x", 1.125, [1.25, 8.5], [6.46, 6.8], 0.14);
+  roofHead.wall("Roof parapet", "parapet", "z", 8.5, [0, 1.125], [6.46, 7.21], 0.14);
+  roofHead.wall("Roof parapet", "parapet", "x", 0, [8.5, 9.75], [6.46, 7.21], 0.14);
+  roofHead.wall("Roof parapet", "parapet", "x", 0, [11.125, 11.75], [6.46, 7.21], 0.14);
+  roofHead.wall("Roof parapet", "parapet", "z", 11.75, [0, 13.575], [6.46, 7.32], 0.14);
+  roofHead.wall("Roof parapet", "parapet", "x", 13.575, [9.12, 11.75], [6.46, 7.32], 0.14);
+  roofHead.wall("Roof parapet", "parapet", "z", 9.12, [13.575, 15.875], [6.46, 7.32], 0.14);
+  roofHead.wall("Roof parapet", "parapet", "x", 15.875, [8.5, 9.12], [6.46, 7.32], 0.14);
+  roofHead.wall("Roof parapet", "parapet", "z", 8.5, [15.875, 18.77], [6.46, 7.32], 0.14);
+  roofHead.wall("Roof parapet", "parapet", "x", 18.77, [4.875, 8.5], [6.46, 7.32], 0.14);
+  roofHead.wall("Roof parapet", "parapet", "z", 4.875, [18.77, 19], [6.46, 7.32], 0.14);
+  roofHead.wall("Roof parapet", "parapet", "x", 19, [2.025, 4.875], [6.46, 7.32], 0.14);
+  roofHead.wall("Roof parapet", "parapet", "z", 2.025, [14.875, 19], [6.46, 7.32], 0.14);
+  roofHead.wall("Roof parapet", "parapet", "x", 14.875, [2.025, 4.875], [6.46, 7.32], 0.14);
+  roofHead.wall("Roof parapet", "parapet", "z", 4.875, [10.375, 14.875], [6.46, 7.32], 0.14);
+  roofHead.wall("Roof parapet", "parapet", "x", 10.375, [4.75, 4.875], [6.46, 7.32], 0.14);
+  roofHead.wall("Roof parapet", "parapet", "z", 4.75, [5.375, 10.375], [6.46, 7.32], 0.14);
+  roofHead.wall("Roof parapet", "parapet", "x", 5.375, [1.25, 4.75], [6.46, 7.32], 0.14);
+  roofHead.wall("Roof parapet", "parapet", "z", 1.25, [1.125, 5.375], [6.46, 7.32], 0.14);
+  roofHead.row("Front roof guard rail", "metal", [9.75,6.55,-0.02], [1.375,0.035,0.04], [0,0.27,0], 3);
+  roofHead.row("Front roof guard post", "metal", [9.75,6.46,-0.025], [0.035,0.74,0.05], [0.335,0,0], 5);
+
+  // Exterior projections and grilles.
+  facade.box("Front stone surround upright", "cream", [1.125, 0, 0.66], [0.65, 5.95, 0.64]);
+  facade.box("Front stone surround top", "cream", [1.125, 5.95, 0.66], [7.375, 0.85, 0.64]);
+  facade.box("Front tower red accent", "red", [11.5, 0, -0.14], [0.25, 7.4, 0.18]);
+  facade.box("Front tower above roof", "wall", [11.15, 6.46, 0], [0.6, 0.94, 1.25]);
+  facade.box("Court pergola side beam", "wall", [1.225, 6.23, 5.5], [0.175, 0.22, 4.75]);
+  facade.box("Court pergola support", "wall", [1.275, 3.3, 10.075], [0.2, 3.1, 0.175]);
+  facade.box("Master side red window sill", "red", [0.83, 3.84, 2.58], [0.47, 0.2, 2.34]);
+  facade.box("Master side red window canopy", "red", [0.83, 5.72, 2.58], [0.47, 0.18, 2.34]);
+  facade.box("Master side red window return", "red", [0.83, 3.84, 4.75], [0.47, 2.06, 0.17]);
+  facade.box("Courtyard canopy red fascia", "red", [1.1, 6.2, 5.5], [0.15, 0.18, 4.75]);
+  facade.copies("Rear side window canopy", "red", [[1.77, 2.68, 15.5], [1.77, 5.98, 15.5]], [0.27, 0.16, 3.22]);
+  facade.copies("Terrace opening grille frame", "wall", [[0.05, 6.18, 10.125], [0.05, 6.18, 11.56]], [4.78, 0.2, 0.18]);
+  facade.copies("Terrace opening grille frame", "wall", [[0.05, 6.18, 10.305], [4.65, 6.18, 10.305]], [0.18, 0.2, 1.255]);
+  facade.box("Stepped stone relief base", "stone", [5.88, 5.97, 0.632], [1.4, 0.14, 0.028]);
+  facade.box("Stepped stone relief upper panel", "stone", [6.03, 6.11, 0.634], [1.1, 0.15, 0.026]);
+  facade.row("Pale inset in relief", "cream", [6.11, 6.15, 0.614], [0.105, 0.083, 0.024], [0.255, 0, 0], 4);
+  facade.row("Court pergola slat", "rail", [1.24, 6.25, 6.15], [3.48, 0.13, 0.077], [0, 0, 0.57], 7);
+  facade.copies("Terrace opening grille post", "wall", [[-0.01, 3.32, 10.12], [-0.01, 3.32, 11.54]], [0.28, 3.38, 0.24]);
+  facade.box("Terrace frame above planter", "wall", [-0.01, 6.43, 10.12], [0.32, 0.27, 1.66]);
+  facade.row("Terrace opening grille bar", "rail", [0.42, 6.24, 10.31], [0.065, 0.11, 1.24], [0.54, 0, 0], 8);
+  facade.box("Rear vent shaft face", "wall", [1.42, 0, 14.88], [0.14, 2.3, 0.8]);
+  facade.box("Rear vent shaft face", "wall", [1.42, 2.86, 14.88], [0.14, 3.25, 0.8]);
+  facade.box("Rear vent shaft face", "wall", [1.42, 6.71, 14.88], [0.14, 0.94, 0.8]);
+  facade.copies("Vent shaft jamb", "wall", [[1.42, 2.3, 14.88], [1.42, 2.3, 15.55]], [0.14, 0.56, 0.13]);
+  facade.copies("Vent shaft jamb", "wall", [[1.42, 6.11, 14.88], [1.42, 6.11, 15.55]], [0.14, 0.6, 0.13]);
+  facade.box("Vent shaft recess", "shaft-dark", [1.66, 2.3, 15.01], [0.06, 0.56, 0.54]);
+  facade.box("Vent shaft recess", "shaft-dark", [1.66, 6.11, 15.01], [0.06, 0.6, 0.54]);
+  facade.copies("Vent stack side return", "wall", [[1.55, 0, 14.88], [1.55, 0, 15.57]], [0.48, 7.65, 0.11]);
+  facade.box("Vent stack cap", "wall", [1.42, 7.62, 14.88], [0.64, 0.09, 0.81]);
+
+  // Site, approaches and raised garden.
+  site.box("Paved side driveway", "paving", [-2.1, -0.45, -4.9725], [2.25, 0.08, 25.7725]);
+  site.box("Garden boundary path", "paving", [0.9, -0.13, -5.00437], [10.95, 0.06, 0.41437]);
+  site.box("Garden right side path", "paving", [11.35, -0.13, -5.00437], [0.65, 0.06, 4.335]);
+  site.box("Garden side retaining curb", "trim", [1.13, -0.39, -4.63], [0.16, 0.36, 3.13]);
+  site.box("Front garden apron curb", "trim", [2.31, -0.37, -0.46], [9.2, 0.38, 0.13]);
+  site.box("Front entrance steps", "trim", [0.25, -0.4, -0.42], [0.31, 0.13, 1.77]);
+  site.box("Front entrance steps", "trim", [0.56, -0.4, -0.42], [0.31, 0.26, 1.77]);
+  site.box("Front entrance steps", "trim", [0.87, -0.4, -0.42], [0.31, 0.39, 1.77]);
+  site.box("Rear path", "paving", [2.03, -0.25, 19.16], [9.89, 0.18, 1.21]);
+  site.box("Side road approach paving", "paving", [-0.02, -0.43, 1.35], [1.16, 0.07, 9.02]);
+  site.box("Rear side paving", "paving", [0.05, -0.43, 14.9], [1.96, 0.08, 5.49]);
+  site.box("Site soil", "earth", [-2.25,-0.6,-5.1], [14.5,0.14,26.1]);
+  const paving = deckBuilder(site, 0, groundPlan);
+  paving("Front paved apron", "paving", [[1.18,-0.4,11.74,1.25]], 0.38);
+  paving("Rear service paving", "paving", [[8.38,15.38,11.88,19.16]], 0.19);
+  // The raised bed turns into the apron on a quarter circle.
+  const garden = deckBuilder(site, -0.09);
+  garden("Garden soil", "earth", [[1.19,-4.58,11.35,-1.53]] ,0.34);
+  for (let i = 0; i < 13; i++) {
+    const a = (i + 0.5) * Math.PI / 26;
+    const x = 2.31 - 1.12 * Math.cos(a), z = -1.53 + 1.12 * Math.sin(a);
+    site.box("Curved garden edging", "trim", [x-0.07,-0.38,z-0.075], [0.14,0.39,0.15], { yaw: a });
+    const front = -1.53 + 1.12*Math.sin(i*Math.PI/26), rear = -1.53 + 1.12*Math.sin((i+1)*Math.PI/26);
+    garden("Garden soil", "earth", [[x,front,11.35,rear]], 0.34);
+  }
+
+  // Compound walls and gates.
+  boundary.box("Front utility wall", "cream", [1.05, -0.5, -5.1], [2.1, 1.75, 0.11475]);
+  boundary.box("Front unfinished wall base", "boundary", [3.15, -0.5, -5.1], [9.1, 0.95, 0.11475]);
+  boundary.box("Front unfinished brickwork", "brick", [3.15, 0.45, -5.1], [9.1, 0.75, 0.11475]);
+  boundary.box("Side compound wall", "boundary", [-2.25, -0.5, -4.98525], [0.18, 1.6, 25.98525]);
+  boundary.box("Rear compound wall", "boundary", [0.35, -0.5, 20.82], [11.9, 1.55, 0.18]);
+  boundary.copies("Side boundary pier", "brick", [[-2.25, -0.5, -4.4625], [-2.25, -0.5, -1.275]], [0.28, 1.86, 0.1785]);
+  boundary.row("Side boundary pier", "brick", [-2.25, -0.5, 3], [0.28, 1.86, 0.28], [0, 0, 5], 4);
+  boundary.copies("Front gate pillar", "boundary", [[-2.25, -0.5, -5.1], [1, -0.5, -5.1]], [0.25, 1.95, 0.15937]);
+  boundary.row("Front gate horizontal rail", "red", [-2.05, 0.04, -5.0745], [3.1, 0.035, 0.051], [0, 0.38, 0], 4);
+  boundary.row("Front gate upright", "red", [-2.05, 0, -5.0745], [0.028, 1.2, 0.051], [0.27727, 0, 0], 12);
+  boundary.box("Neighbour boundary wall", "boundary", [12.07, -0.5, -4.98525], [0.18, 2.3, 3.86796]);
+  boundary.box("Neighbour boundary wall", "boundary", [12.07, -0.5, -1.1173], [0.18, 3.1, 0.96699]);
+  boundary.box("Neighbour boundary wall", "boundary", [12.07, -0.5, -0.15032], [0.18, 8.4, 10.53241]);
+  boundary.box("Neighbour boundary wall", "boundary", [12.07, -0.5, 10.38211], [0.18, 8.4, 6.06736]);
+  boundary.box("Neighbour boundary wall", "boundary", [12.07, -0.5, 16.44947], [0.18, 7.35, 1.51684]);
+  boundary.box("Neighbour boundary wall", "boundary", [12.07, -0.5, 17.96632], [0.18, 5.6, 1.51684]);
+  boundary.box("Neighbour boundary wall", "boundary", [12.07, -0.5, 19.48316], [0.18, 4, 1.51684]);
+  boundary.copies("Rear entrance brick pillar", "brick", [[-2.25, -0.5, 20.75], [0.18, -0.5, 20.75]], [0.32, 1.85, 0.32]);
+  boundary.row("Rear boundary rail post", "rail", [0.42, 1.04, 20.86], [0.033, 0.63, 0.04], [1.15, 0, 0], 9);
+  boundary.row("Rear boundary rail", "rail", [0.42, 1.19, 20.86], [9.24, 0.023, 0.04], [0, 0.19, 0], 3);
+
+  const colors = {
+    "wall": "#a6b5ba",
+    "interior": "#e4dbca",
+    "floor": "#e8dfcc",
+    "cream": "#e0ccb0",
+    "red": "#aa6d5e",
+    "frame": "#f3ebdd",
+    "glass": "#557b85",
+    "door": "#b99977",
+    "metal": "#535d59",
+    "terrace": "#d5ccba",
+    "roof": "#e1d8c5",
+    "paving": "#c0b7a5",
+    "earth": "#a5997c",
+    "stair": "#aa9d87",
+    "boundary": "#b7b3a5",
+    "brick": "#ac785f",
+    "tank": "#4c5958",
+    "parapet": "#acbabd",
+    "court": "#baae97",
+    "cabinet": "#c4af8d",
+    "counter": "#707670",
+    "bamboo": "#aa8b67",
+    "rail": "#865d55",
+    "shaft-dark": "#616866",
+    "stone": "#bba98f",
+    "ceiling": "#f3ebdb",
+    "steel": "#8d9998",
+    "trim": "#c3ae8f",
+  };
+  const labels = {
+    ground: [
+      ["Dining", 2.875, 3.375],
+      ["Drawing / hall", 9.125, 2.875],
+      ["Bedroom 1", 2.375, 12.625],
+      ["Bedroom 2", 6.375, 15.625],
+      ["Kitchen", 9.875, 13],
+      ["Court", 2.5, 8.125],
+      ["Entry", 7.15, 6.4],
+      ["Lounge", 5.75, 8.7],
+      ["Toilet 01", 3.35, 15.85],
+      ["Toilet 02", 3.35, 17.85],
+      ["Toilet 06", 10, 6.25],
+      ["Main stair", 10.55, 9.7],
+      ["Small room", 9.35, 8.12],
+    ],
+    first: [
+      ["Master bedroom", 4.875, 3.25],
+      ["Bedroom 3", 6.625, 13.625],
+      ["Study", 10.125, 12],
+      ["Terrace 02", 2.375, 13.5],
+      ["Service terrace", 10.125, 15.125],
+      ["Servant room", 6.625, 17.875],
+      ["Spiral stair", 10.825, 17.875],
+      ["Puja", 5.625, 6.3],
+      ["Lounge below", 5.63, 8.8],
+      ["Toilet 03", 3.4, 15.9],
+      ["Toilet 04", 3.4, 18],
+      ["Toilet 05", 10, 1.8],
+      ["Dress", 10, 4.25],
+      ["Stair opening", 10.9, 8.2],
+      ["Court below", 2.6, 7.9],
+    ],
+    roof: [
+      ["Tank above stair head", 10.025, 8.25],
+    ],
+  };
+  return { parts, colors, labels };
+})();

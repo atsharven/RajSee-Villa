@@ -2,205 +2,74 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Explore the existing RajSee Villa from its original plans and site photographs, with floor cutaways and a 3D model.">
-  <title>RajSee Villa | Existing layout</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23233e38'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-size='40' font-family='Georgia' fill='%23f6f4ee'%3ER%3C/text%3E%3C/svg%3E">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f8f6ef">
+  <title>RajSee Villa · Existing model</title>
   <link rel="stylesheet" href="styles.css">
-  <script defer src="src/model.js"></script>
-  <script defer src="src/viewer-config.js"></script>
-  <script defer src="src/renderer.js"></script>
-  <script defer src="src/viewer.js"></script>
+  <script src="src/model.js" defer></script>
+  <script src="src/geometry.js" defer></script>
+  <script src="src/renderer.js" defer></script>
+  <script src="src/viewer.js" defer></script>
 </head>
 <body>
-  <header class="site-header" id="home">
-    <a class="brand" href="#home" aria-label="RajSee Villa, home"><span class="brand-mark">R</span><span><strong>RajSee Villa</strong><small>Ansal A-60 · Ajmer</small></span></a>
-    <nav aria-label="Main navigation"><a href="#studio">3D model</a><a href="#sheets">3D sheets</a><a href="#plan">Drawings</a><a href="#references">References</a></nav>
+  <header class="masthead">
+    <a class="brand" href="./index.html"><span class="mark" aria-hidden="true"></span> RajSee Villa</a>
+    <span class="address">Ansal A-60 <span>/</span> Ajmer</span>
   </header>
   <main>
-    <section class="studio-section" id="studio" aria-labelledby="studio-title">
-      <div class="studio-top">
-        <div><h1 id="studio-title">The existing villa</h1><p>The layout of Ansal A-60, reconstructed from the original drawing and site photographs.</p></div>
-        <div class="studio-actions"><a class="model-download sheet-button" href="#sheets">View the floor cutaways ↓</a><a class="model-download" href="assets/rajsee-villa.glb" download>Download 3D model</a></div>
-      </div>
-      <div class="studio-shell">
-        <div class="studio-header"><div><h2 id="model-title">The whole villa</h2></div><span class="status">Working model</span></div>
-        <p class="review-warning">Setbacks, stair dimensions and the upper landing are approximate. <a href="#assumptions">See model assumptions</a>.</p>
-        <div class="model-toolbar">
-          <div class="control-group mode-controls" role="group" aria-label="Choose model view">
-            <button type="button" class="control is-active" data-mode="base" aria-pressed="true">Whole villa</button>
-            <button type="button" class="control" data-mode="exterior" aria-pressed="false">Exterior</button>
-            <button type="button" class="control" data-mode="interior" aria-pressed="false">Interior</button>
+    <div class="heading">
+      <div><p class="eyebrow">Existing condition</p><h1>The villa model<span>.</span></h1></div>
+      <a class="download" href="assets/rajsee-villa.glb" download><span aria-hidden="true">↓</span> Download 3D model <small>GLB</small></a>
+    </div>
+    <div class="workspace">
+      <section class="drawing" aria-label="Villa model viewer">
+        <div class="views" role="group" aria-label="Model view">
+          <button type="button" data-view="villa" aria-pressed="true">Whole villa</button>
+          <button type="button" data-view="ground" aria-pressed="false">Ground floor</button>
+          <button type="button" data-view="first" aria-pressed="false">First floor</button>
+          <button type="button" data-view="roof" aria-pressed="false">Roof</button>
+        </div>
+        <div class="stage">
+          <div class="stage-head"><span class="stage-title" id="drawing-title">Whole villa</span>
+            <label class="angle"><span class="sr-only">Camera angle</span>
+              <select id="angle"><option value="axon">Axonometric</option><option value="plan">Top plan</option><option value="front">Front</option><option value="court">Court side</option><option value="rear">Rear</option><option value="neighbour">Neighbour side</option><option value="custom" hidden>Free orbit</option></select>
+            </label>
           </div>
-          <div class="control-group floor-controls" role="group" aria-label="Choose floor" hidden>
-            <button type="button" class="control is-active" data-floor="ground" aria-pressed="true">Ground</button>
-            <button type="button" class="control" data-floor="first" aria-pressed="false">First</button>
-            <button type="button" class="control" data-floor="roof" aria-pressed="false">Roof &amp; tank</button>
+          <div class="viewport">
+            <canvas id="model" tabindex="0" aria-label="Interactive villa model. Drag or use arrow keys to rotate, plus and minus to zoom, and Home to reset."></canvas>
+            <div id="room-labels" aria-hidden="true"></div>
+            <div id="fallback" hidden><img src="assets/existing-villa.png" alt="Villa exterior reference sheet"><p>Static drawing · Interactive orbit needs WebGL.</p></div>
+            <noscript><a href="assets/existing-villa.png">Open the exterior drawing</a> · <a href="assets/existing-floor-cutaways.png">Open the floor cutaways</a></noscript>
+          </div>
+          <div class="stage-foot">
+            <div class="scale" aria-label="Model scale"><span id="scale-line"></span>2 m</div>
+            <div class="tools" role="group" aria-label="Camera controls"><button id="out" aria-label="Zoom out" title="Zoom out">−</button><button id="in" aria-label="Zoom in" title="Zoom in">+</button><button id="reset" aria-label="Reset view" title="Reset view">↺</button></div>
           </div>
         </div>
-        <div class="view-toolbar">
-          <div class="control-group camera-controls" role="group" aria-label="Choose viewpoint">
-            <button type="button" class="control subtle is-active" data-camera="front" aria-pressed="true">Front</button>
-            <button type="button" class="control subtle" data-camera="side" aria-pressed="false">Side</button>
-            <button type="button" class="control subtle" data-camera="neighbour" aria-pressed="false">Neighbour side</button>
-            <button type="button" class="control subtle" data-camera="rear" aria-pressed="false">Rear</button>
-            <button type="button" class="control subtle" data-camera="above" aria-pressed="false">Above</button>
-          </div>
-          <div class="view-options">
-            <label class="option-control" id="boundary-control"><input type="checkbox" id="boundary-toggle" checked> Boundary</label>
-            <label class="option-control" id="label-control" hidden><input type="checkbox" id="label-toggle" checked> Room labels</label>
-            <label class="option-control" title="This changes the viewer; the downloaded model keeps its materials."><input type="checkbox" id="texture-toggle" autocomplete="off"> Show textures</label>
-          </div>
+        <div class="draw-notes"><span class="orbit-help">Drag to orbit <b>·</b> Scroll to zoom</span>
+          <label id="boundary-option"><input type="checkbox" id="boundary" checked> Boundary walls</label>
+          <label id="labels-option" hidden><input type="checkbox" id="labels" checked> Room names</label>
         </div>
-        <details class="photo-match-toolbar" id="photo-tools">
-          <summary>Compare with a photo <span>Choose a reference angle or your own image</span></summary>
-          <div class="photo-tools-content">
-            <label for="photo-preset">Reference angle</label>
-            <select id="photo-preset"><option value="">Choose an angle</option></select>
-            <label class="photo-upload">Choose another photo<input id="photo-upload" type="file" accept="image/*"></label>
-          </div>
-        </details>
-        <div class="studio-stage" id="studio-stage">
-          <div class="canvas-wrap">
-            <canvas id="villa-canvas" tabindex="0" aria-label="Interactive approximate 3D model of RajSee Villa. Drag to rotate, or use arrow keys."></canvas>
-            <div class="canvas-tag" aria-hidden="true"><span class="tag-dot"></span> <span id="canvas-tag-text">SITE &amp; ROOFTOP</span></div>
-            <span class="canvas-hint">Drag to rotate · scroll to zoom</span>
-          </div>
-          <aside class="comparison-photo" id="comparison-photo" aria-label="Reference photograph" hidden>
-            <div class="comparison-photo-header"><strong id="comparison-photo-title">Reference photo</strong><button type="button" id="comparison-close" aria-label="Close reference photo">×</button></div>
-            <img id="comparison-photo-image" alt="">
-            <p>Angles are approximate. Drag and zoom to compare. Selected photos stay on this device.</p>
-          </aside>
-        </div>
-        <div class="studio-footer">
-          <p id="model-detail">A working view of the villa, garden and rooftop.</p>
-          <label class="zoom-control" for="zoom-range">Zoom <span id="zoom-value">100%</span><input type="range" id="zoom-range" min="60" max="220" step="5" value="100"></label>
-        </div>
+      </section>
+      <aside class="details" aria-labelledby="area-title">
+        <p class="eyebrow">In this view</p><h2 id="area-title">House &amp; grounds</h2>
+        <p class="description" id="area-copy">The front garden faces the road. The sunken court runs along the left of the house, and the spiral stair serves the yard at the rear.</p>
+        <div class="level-line"><span id="datum-label">Floor levels</span><strong id="datum">0 / 3.30 / 6.46 m</strong></div>
+        <figure class="reference">
+          <a id="photo-link" href="assets/Photos%20Ansal%20A%2060/IMG20261103114234.jpg"><img id="reference-image" src="assets/reference-front.webp" alt="Villa facade seen from the front garden"></a>
+          <figcaption><span class="eyebrow" id="ref-kind">Site photograph</span><a id="reference-title" href="assets/Photos%20Ansal%20A%2060/IMG20261103114234.jpg">Front elevation ↗</a></figcaption>
+        </figure>
+        <a id="plan-link" class="text-link" href="assets/Photos%20Ansal%20A%2060/Map%20Ansal%20A-60.pdf">Original plan <span aria-hidden="true">↗</span></a>
+      </aside>
+    </div>
+    <details id="assumptions">
+      <summary>Sources &amp; dimensions to check</summary>
+      <div class="sources">
+        <p>The local plan and site photographs define this reconstruction. The plan gives a 14.50 × 29.00 m plot. Its outline and room dimensions imply different scales. The model follows the photographed enclosure.</p>
+        <p>The store access, stair rises, upper service return and wall thicknesses need site measurements. Bedroom 2 is the probable connection to the screened rear door. Floor heights are approximate.</p>
+        <nav aria-label="Project references"><a href="docs/existing-condition-review.md">Photo evidence ↗</a><a href="assets/existing-villa.png">Exterior sheet ↗</a><a href="assets/existing-floor-cutaways.png">Floor cutaways ↗</a><a href="assets/Photos%20Ansal%20A%2060/Map%20Ansal%20A-60.pdf">Original drawing ↗</a></nav>
       </div>
-      <details class="model-assumptions" id="assumptions">
-        <summary><span><small>MODEL REFERENCE</small><strong>Assumptions & measurements to check</strong></span><span class="plan-expand" aria-hidden="true">+</span></summary>
-        <div class="assumptions-content">
-          <p>The July 2026 plan supplies the room arrangement. The site photographs establish the visible doors, finishes and changes of level. Floor-to-floor heights, fittings and the compound position are estimates.</p>
-          <ul>
-            <li><strong>Plot and enclosure.</strong> The plan states 14.50 × 29.00 m. The printed outline scales differently from the rooms. The model gives the photographed compound about 5.1 m in front of the projecting drawing-room wall and 2 m behind the rear block. How the remaining depth relates to the visible compound is unknown.</li>
-            <li><strong>Right-hand neighbour.</strong> A-0061 is on the right when facing the villa from the front road. The model places the high wall about 7.9 m above the villa floor, tapering in stages to approximately 3.5 m at the rear. The garden return is lower. These heights and transition points are provisional.</li>
-            <li><strong>Hall and stair core.</strong> Two openings connect the hall to the lobby. The kitchen serving hatch and door, stair entrance, small-room door and WC door follow the interior photos. Clear hall ceilings use the earlier owner-reported 9½ ft at the red wall and 10 ft at the dining end. The model assumes floor levels of 0, 3.30 and 6.46 m. Stair geometry, the under-stair store access and the upper landing over the small room need measuring. The upper landing is provisionally drawn as floor.</li>
-            <li><strong>Courtyard and terraces.</strong> A door with a sidelight serves Bedroom 1 on one return. Full-height glazing faces it across the court from dining. The lounge window and a second door face the side road. Upstairs, the puja recess adjoins the railed lounge void. The main portion of Terrace 02 and the service terrace are open to the sky. The courtyard and the planter end of Terrace 02 have overhead bars. The dimensions of the drop, planter and grilles are approximate.</li>
-            <li><strong>Rear access.</strong> The screened timber entrance is recessed into the broad rear face. The owner considers its connection to Bedroom 2 probable. A separate door with sidelights is visible from both the kitchen and the spiral stair. The model places this opening at the kitchen end of a sheltered service bay. The bay depth and Bedroom 3’s solid stepped return along the upper service terrace follow the drawing approximately.</li>
-            <li><strong>Roof and finishes.</strong> The earlier owner account places the tank on the stair-head room. The head room, tank, vent stack, parapets and other exterior heights are approximate. November photographs guide the exposed brick front boundary and earth bed. The thin rail, visible in older front-road images, is absent from the November entrance apron. The room finishes are schematic.</li>
-          </ul>
-          <p>Before construction or ordering materials, verify the existing building, measurements and structure on site.</p>
-        </div>
-      </details>
-    </section>
-
-    <section class="planning-sheets" id="sheets" aria-labelledby="sheets-title">
-      <div class="section-heading"><h2 id="sheets-title">3D planning sheets</h2><p>Open either image at full size.</p></div>
-      <div class="sheet-grid">
-        <a class="sheet-card" href="assets/existing-floor-cutaways.png">
-          <img src="assets/existing-floor-cutaways.png" width="2450" height="1880" loading="lazy" alt="Labelled ground and first floor cutaways, with the front garden at the bottom">
-          <span><strong>Ground and first floors</strong><small>Room connections, terrace access and the stair cores.</small></span>
-        </a>
-        <a class="sheet-card" href="assets/existing-villa.png">
-          <img src="assets/existing-villa.png" width="2340" height="1620" loading="lazy" alt="Exterior reconstruction with the front approach, courtyard and two rear entrances beside the original photos">
-          <span><strong>Exterior and rear entrances</strong><small>Front and courtyard elevations, with the rear service access.</small></span>
-        </a>
-      </div>
-    </section>
-
-    <section class="plan-section" id="plan" aria-labelledby="plan-title">
-      <div class="section-heading">
-        <div><h2 id="plan-title">Original floor plans</h2></div>
-        <p>Choose a floor to see the drawing and its key notes.</p>
-      </div>
-      <div class="orientation-note">
-        <strong>Find your bearings</strong>
-        <p>On these plans, the front and garden face the 24 m road at the bottom. The side road is on the left, the 12 m road is at the back, and villa A-0061 is on the right. The north marker appears to point left; check on site.</p>
-      </div>
-      <div class="plan-list">
-        <details class="plan-floor">
-          <summary><span><small>01 / ORIGINAL DRAWING</small><strong>Ground floor</strong></span><span class="plan-expand" aria-hidden="true">+</span></summary>
-          <div class="plan-content">
-            <a class="plan-image" href="assets/plan-ground.png" aria-label="Open the ground floor drawing at full size"><img src="assets/plan-ground.png" alt="Ground floor from the original plan, with the 24 metre road at the front" loading="lazy"></a>
-            <div class="plan-copy">
-              <p class="eyebrow">FRONT TO BACK</p>
-              <h3>Hall, court and bedrooms</h3>
-              <p>The drawing and dining area are at the front. Behind them are the entry, the courtyard and separate lounge, with the main stairs along the neighbour side. Two bedrooms and the kitchen sit toward the back.</p>
-              <ul>
-                <li><strong>Drawing:</strong> 5,220 × 5,250 mm shown.</li>
-                <li><strong>Dining:</strong> 4,940 × 4,050 mm shown.</li>
-                <li><strong>Lift on the drawing:</strong> you confirmed the actual villa has neither a lift nor a lift shaft. The photographed small room and WC sit beside the stair.</li>
-                <li><strong>Rear:</strong> the plan and photos show a round service stair.</li>
-                <li><strong>Bedroom 01:</strong> check the printed 1,350 mm dimension; it does not appear consistent with the drawn room.</li>
-              </ul>
-              <p class="plan-source">Tap the drawing for a larger view. Dimensions are as marked on the plan, not verified measurements.</p>
-            </div>
-          </div>
-        </details>
-        <details class="plan-floor">
-          <summary><span><small>02 / ORIGINAL DRAWING</small><strong>First floor</strong></span><span class="plan-expand" aria-hidden="true">+</span></summary>
-          <div class="plan-content">
-            <a class="plan-image" href="assets/plan-first.png" aria-label="Open the first floor drawing at full size"><img src="assets/plan-first.png" alt="First floor plan showing the master bedroom, courtyard below, terrace, study and servant room" loading="lazy"></a>
-            <div class="plan-copy">
-              <p class="eyebrow">FRONT TO BACK</p>
-              <h3>Rooms around the open spaces</h3>
-              <p>The master bedroom spans the front, with dress and toilet at the side. Bedroom 03, the study and servant room lie farther back.</p>
-              <ul>
-                <li><strong>Master bedroom:</strong> 6,930 × 4,050 mm shown.</li>
-                <li><strong>Three distinct areas:</strong> court below, lounge below and Terrace 02. The puja is beside the lounge opening.</li>
-                <li><strong>Study:</strong> you confirmed a door to the service terrace; the drawing marks a window at that edge.</li>
-                <li><strong>Back:</strong> the service terrace is an open area between the study, servant room and round stair, without walls crossing it.</li>
-              </ul>
-              <p class="plan-source">The opening and planter are part of the terrace. The marked opening has overhead grilles; the main terrace remains open to the sky. Its exact size and edges need checking.</p>
-            </div>
-          </div>
-        </details>
-        <details class="plan-floor">
-          <summary><span><small>03 / ORIGINAL DRAWING</small><strong>Roof terrace</strong></span><span class="plan-expand" aria-hidden="true">+</span></summary>
-          <div class="plan-content">
-            <a class="plan-image" href="assets/plan-roof.png" aria-label="Open the roof terrace drawing at full size"><img src="assets/plan-roof.png" alt="Roof plan with open terrace, court below and machine room by the staircase" loading="lazy"></a>
-            <div class="plan-copy">
-              <p class="eyebrow">ABOVE THE FIRST FLOOR</p>
-              <h3>Open terrace and stair core</h3>
-              <p>The plan shows a large open terrace, the court below and a machine room beside the staircase.</p>
-              <ul>
-                <li><strong>Machine room:</strong> 3,200 × 1,600 mm is marked on the roof drawing.</li>
-                <li><strong>Water tank:</strong> you confirmed it sits on top of the stair-head room. It is not labelled on this plan; its size and supports need checking.</li>
-                <li><strong>Adjacent property:</strong> you identified the upper light-coloured roof in the aerial photo as your villa.</li>
-              </ul>
-              <p class="plan-source">The roof access, room use and any tank supports need further photographs or measurements.</p>
-            </div>
-          </div>
-        </details>
-      </div>
-      <div class="plan-findings">
-        <div><strong>Site size on the plan</strong><span>14.50 × 29.00 m · 420.50 sq m</span></div>
-        <p>The red boundary is not drawn in the same proportions as those dimensions, so garden depth and setbacks cannot be taken from its outline. <a href="docs/layout-review.md">Read the full layout review ↗</a> · <a href="docs/floor-plan.pdf">Open the original plan ↗</a></p>
-      </div>
-      <details class="photo-evidence">
-        <summary>Reference photos</summary>
-        <div class="photo-grid">
-          <a href="assets/front.jpg"><img src="assets/front.jpg" alt="Front facade, balcony and garden" loading="lazy"><span><strong>Front & garden</strong><small>Facade, balcony and existing openings</small></span></a>
-          <a href="assets/courtyard.jpg"><img src="assets/courtyard.jpg" alt="Courtyard showing slatted opening, walls and doors" loading="lazy"><span><strong>Courtyard</strong><small>Slats above, walls and doors around</small></span></a>
-          <a href="assets/lounge-opening.jpg"><img src="assets/lounge-opening.jpg" alt="First-floor railing looking into an open space beside the courtyard glazing" loading="lazy"><span><strong>Inside opening</strong><small>Upper railing and space below</small></span></a>
-          <a href="assets/main-stair.jpg"><img src="assets/main-stair.jpg" alt="Enclosed staircase beside the kitchen" loading="lazy"><span><strong>Main stair</strong><small>Enclosed flight beside the kitchen</small></span></a>
-          <a href="assets/rear-stair.jpg"><img src="assets/rear-stair.jpg" alt="Metal spiral staircase at the rear of the villa" loading="lazy"><span><strong>Rear service area</strong><small>The round metal staircase</small></span></a>
-        </div>
-      </details>
-    </section>
-
-    <section class="reference-section" id="references" aria-labelledby="references-title">
-      <div><h2 id="references-title">Project references</h2></div>
-      <div class="reference-links">
-        <a href="docs/existing-condition-review.md"><span><strong>Existing layout and photo evidence</strong><small>Source-by-source notes and remaining uncertainties</small></span><span aria-hidden="true">↗</span></a>
-        <a href="#assumptions"><span><strong>Model assumptions</strong><small>Current estimates and measurements to check</small></span><span aria-hidden="true">↗</span></a>
-        <a href="docs/layout-review.md"><span><strong>Floor-plan review</strong><small>Earlier room-by-room reading of the original drawing</small></span><span aria-hidden="true">↗</span></a>
-        <a href="docs/project-reference.md"><span><strong>Project notes</strong><small>Confirmed decisions and open measurements</small></span><span aria-hidden="true">↗</span></a>
-        <a href="docs/floor-plan.pdf"><span><strong>Original floor plan</strong><small>Ground, first and roof levels</small></span><span aria-hidden="true">↗</span></a>
-        <a href="docs/renovation-research.pdf"><span><strong>Hall renovation research</strong><small>Opening, materials and earlier concepts</small></span><span aria-hidden="true">↗</span></a>
-      </div>
-    </section>
+    </details>
   </main>
-  <footer class="site-footer"><span>RAJSEE VILLA · WORKING MODEL</span><a href="#home">Back to top ↑</a></footer>
 </body>
 </html>
