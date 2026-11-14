@@ -34,7 +34,7 @@
   let selectedPhotoUrl = null;
 
   const state = {
-    mode: 'base', floor: 'ground', camera: 'above', yaw: .55, pitch: 1.10,
+    mode: 'base', floor: 'ground', camera: 'front', yaw: .63, pitch: .47,
     zoom: 1, drag: null, focus: null,
     showBoundary: boundary.checked, showLabels: labels.checked, showTextures: textures.checked
   };
@@ -86,17 +86,17 @@
       detail.textContent = state.floor === 'roof'
         ? 'The tank is above the stair-head room; its dimensions are estimated.'
         : state.floor === 'first'
-          ? 'The lounge opening, puja marker, terrace and stair area need further checking.'
-          : 'The main stair and the surrounding space need further checking.';
+          ? 'Cutaway through the upper rooms, puja recess and landing. The two terraces are open.'
+          : 'Cutaway through the hall, bedrooms, kitchen and stair lobby. Door widths and stair dimensions are approximate.';
     }
   }
 
   function chooseMode(mode) {
     state.mode = mode;
     state.focus = null;
-    state.camera = mode === 'exterior' ? 'front' : 'above';
+    state.camera = mode === 'interior' ? 'above' : 'front';
     [state.yaw, state.pitch] = cameras[state.camera];
-    if (mode === 'interior') state.pitch = .90;
+    if (mode === 'interior') { state.yaw = .10; state.pitch = 1.18; }
     state.zoom = 1;
     updateControls();
     draw();
@@ -162,7 +162,8 @@
     state.camera = 'above';
     state.focus = null;
     [state.yaw, state.pitch] = cameras.above;
-    state.pitch = .95;
+    state.yaw = .10;
+    state.pitch = 1.18;
     state.zoom = 1;
     updateControls();
     draw();

@@ -4,6 +4,10 @@ A local workspace for the Ansal A-60 villa: one shared 3D model, the original pl
 
 The model is an approximate planning reference, not a measured survey. The page's **Assumptions & measurements to check** records what still needs verification.
 
+## Planning images
+
+Open the [ground and first-floor cutaways](assets/existing-floor-cutaways.png) to trace the rooms, stairs and terraces. The [exterior sheet](assets/existing-villa.png) pairs the reconstruction with three original photographs and shows both rear entrances. Use the [November photo review](docs/existing-condition-review.md) to check which parts of the building are established and which dimensions were inferred.
+
 ## Using the model
 
 - Choose **Whole villa**, **Exterior** or **Interior**. In Interior, choose Ground, First or Roof & tank. Drag to rotate and use the zoom slider or mouse wheel.

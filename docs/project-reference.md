@@ -1,5 +1,7 @@
 # RajSee Villa — project reference
 
+For the revised existing layout, source photographs and planning sheets, see the [14 November photo review](existing-condition-review.md).
+
 Updated 9 November 2026. This is the working reference for the existing Ansal A-60 villa. The model combines the plan, photographs and owner feedback; it is not a measured survey or construction drawing. **The existing 3D model has known layout errors and is under review.** Use the [floor-plan and photo review](layout-review.md) for the room-by-room reading and the corrections needed before remodelling.
 
 ## Sources

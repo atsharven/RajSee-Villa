@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Explore the RajSee Villa reference model and renovation notes.">
-  <title>RajSee Villa | Villa Studio</title>
+  <meta name="description" content="Explore the existing RajSee Villa from its original plans and site photographs, with floor cutaways and a 3D model.">
+  <title>RajSee Villa | Existing layout</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23233e38'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-size='40' font-family='Georgia' fill='%23f6f4ee'%3ER%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css">
   <script defer src="src/model.js"></script>
@@ -15,17 +15,17 @@
 <body>
   <header class="site-header" id="home">
     <a class="brand" href="#home" aria-label="RajSee Villa, home"><span class="brand-mark">R</span><span><strong>RajSee Villa</strong><small>Ansal A-60 · Ajmer</small></span></a>
-    <nav aria-label="Main navigation"><a href="#studio">3D model</a><a href="#plan">Floor plans</a><a href="#references">References</a></nav>
+    <nav aria-label="Main navigation"><a href="#studio">3D model</a><a href="#sheets">3D sheets</a><a href="#plan">Drawings</a><a href="#references">References</a></nav>
   </header>
   <main>
     <section class="studio-section" id="studio" aria-labelledby="studio-title">
       <div class="studio-top">
-        <div><p class="eyebrow">YOUR RENOVATION WORKSPACE</p><h1 id="studio-title">Explore your villa</h1><p>Rotate the model, choose a floor and compare it with your photos.</p></div>
-        <a class="model-download" href="assets/rajsee-villa.glb" download>Download 3D model ↓</a>
+        <div><h1 id="studio-title">The existing villa</h1><p>The layout of Ansal A-60, reconstructed from the original drawing and site photographs.</p></div>
+        <div class="studio-actions"><a class="model-download sheet-button" href="#sheets">View the floor cutaways ↓</a><a class="model-download" href="assets/rajsee-villa.glb" download>Download 3D model</a></div>
       </div>
       <div class="studio-shell">
-        <div class="studio-header"><div><span class="model-kicker">CURRENT VIEW</span><h2 id="model-title">The whole villa</h2></div><span class="status">Working model</span></div>
-        <p class="review-warning">Some details are estimates. <a href="#assumptions">See assumptions and measurements to check</a>.</p>
+        <div class="studio-header"><div><h2 id="model-title">The whole villa</h2></div><span class="status">Working model</span></div>
+        <p class="review-warning">Setbacks, stair dimensions and the upper landing are approximate. <a href="#assumptions">See model assumptions</a>.</p>
         <div class="model-toolbar">
           <div class="control-group mode-controls" role="group" aria-label="Choose model view">
             <button type="button" class="control is-active" data-mode="base" aria-pressed="true">Whole villa</button>
@@ -40,11 +40,11 @@
         </div>
         <div class="view-toolbar">
           <div class="control-group camera-controls" role="group" aria-label="Choose viewpoint">
-            <button type="button" class="control subtle" data-camera="front" aria-pressed="false">Front</button>
+            <button type="button" class="control subtle is-active" data-camera="front" aria-pressed="true">Front</button>
             <button type="button" class="control subtle" data-camera="side" aria-pressed="false">Side</button>
             <button type="button" class="control subtle" data-camera="neighbour" aria-pressed="false">Neighbour side</button>
             <button type="button" class="control subtle" data-camera="rear" aria-pressed="false">Rear</button>
-            <button type="button" class="control subtle is-active" data-camera="above" aria-pressed="true">Above</button>
+            <button type="button" class="control subtle" data-camera="above" aria-pressed="false">Above</button>
           </div>
           <div class="view-options">
             <label class="option-control" id="boundary-control"><input type="checkbox" id="boundary-toggle" checked> Boundary</label>
@@ -80,22 +80,37 @@
       <details class="model-assumptions" id="assumptions">
         <summary><span><small>MODEL REFERENCE</small><strong>Assumptions & measurements to check</strong></span><span class="plan-expand" aria-hidden="true">+</span></summary>
         <div class="assumptions-content">
-          <p>These are the current assumptions used across all views and the downloadable model. The drawing and photographs are references, not a measured survey.</p>
+          <p>The July 2026 plan supplies the room arrangement. The site photographs establish the visible doors, finishes and changes of level. Floor-to-floor heights, fittings and the compound position are estimates.</p>
           <ul>
-            <li><strong>Plot and boundary:</strong> the plan states 14.50 × 29.00 m, but its red outline is not proportionate to those dimensions. House position, garden depth, gates and setbacks are estimated. The adjacent-home side is shown as a much taller shared-side wall, with lower garden and rear returns. Its assumed heights are approximately 1.8 m at the front, 6.9 m beside the villa and 3.5 m at the back; the actual height, ownership and changes along the length need checking. Use Neighbour side to see it, or untick Boundary to look through it.</li>
-            <li><strong>Levels and stairs:</strong> ground to first floor is set at 3.30 m, and first-floor surface to roof surface at about 3.16 m. The confirmed hall ceiling heights of 9½ ft and 10 ft are not yet reproduced. The stair's nine-step first flight, turn, other steps, enclosure and landings are photo-informed approximations.</li>
-            <li><strong>Tank and stair-head room:</strong> you confirmed the tank is on top of the stair-head room. The tank is represented as about 1.20 m in diameter and 1.27 m high, on an estimated platform. The larger stair-head is shown over the combined stair/core area, approximately 3.20 × 3.10 m; the plan's 3.20 × 1.60 m machine-room callout describes only part of that area. The actual outline, height and tank supports need checking. No lift or lift shaft is present.</li>
-            <li><strong>Terraces and roof walls:</strong> the courtyard-side terrace includes the opening and planter; the model places overhead grilles over the opening and court, while the main terrace stays open to the sky. The service terrace has no cross walls. Exact edges, grille positions, roof access and parapet heights need checking. The roof parapets are roughly 0.86 m high in the model, with lower portions at the front. The mosaic is taken from a terrace photograph; its exact level, extent and scale are unconfirmed.</li>
-            <li><strong>Openings and finishes:</strong> the separate court and lounge openings, lounge railing, puja marker, window and door positions, room layout and rear spiral stair are approximate. The blank rear face follows the rear photographs; the service-side windows are estimated from the photos and plan. The puja marker is a label rather than a fully modelled room. Facade colours and materials are based on selected photos and are not a complete record of finishes.</li>
+            <li><strong>Plot and enclosure.</strong> The plan states 14.50 × 29.00 m. The printed outline scales differently from the rooms. The model gives the photographed compound about 5.1 m in front of the projecting drawing-room wall and 2 m behind the rear block. How the remaining depth relates to the visible compound is unknown.</li>
+            <li><strong>Right-hand neighbour.</strong> A-0061 is on the right when facing the villa from the front road. The model places the high wall about 7.9 m above the villa floor, tapering in stages to approximately 3.5 m at the rear. The garden return is lower. These heights and transition points are provisional.</li>
+            <li><strong>Hall and stair core.</strong> Two openings connect the hall to the lobby. The kitchen serving hatch and door, stair entrance, small-room door and WC door follow the interior photos. Clear hall ceilings use the earlier owner-reported 9½ ft at the red wall and 10 ft at the dining end. The model assumes floor levels of 0, 3.30 and 6.46 m. Stair geometry, the under-stair store access and the upper landing over the small room need measuring. The upper landing is provisionally drawn as floor.</li>
+            <li><strong>Courtyard and terraces.</strong> A door with a sidelight serves Bedroom 1 on one return. Full-height glazing faces it across the court from dining. The lounge window and a second door face the side road. Upstairs, the puja recess adjoins the railed lounge void. The main portion of Terrace 02 and the service terrace are open to the sky. The courtyard and the planter end of Terrace 02 have overhead bars. The dimensions of the drop, planter and grilles are approximate.</li>
+            <li><strong>Rear access.</strong> The screened timber entrance is recessed into the broad rear face. The owner considers its connection to Bedroom 2 probable. A separate door with sidelights is visible from both the kitchen and the spiral stair. The model places this opening at the kitchen end of a sheltered service bay. The bay depth and Bedroom 3’s solid stepped return along the upper service terrace follow the drawing approximately.</li>
+            <li><strong>Roof and finishes.</strong> The earlier owner account places the tank on the stair-head room. The head room, tank, vent stack, parapets and other exterior heights are approximate. November photographs guide the exposed brick front boundary and earth bed. The thin rail, visible in older front-road images, is absent from the November entrance apron. The room finishes are schematic.</li>
           </ul>
           <p>Before construction or ordering materials, verify the existing building, measurements and structure on site.</p>
         </div>
       </details>
     </section>
 
+    <section class="planning-sheets" id="sheets" aria-labelledby="sheets-title">
+      <div class="section-heading"><h2 id="sheets-title">3D planning sheets</h2><p>Open either image at full size.</p></div>
+      <div class="sheet-grid">
+        <a class="sheet-card" href="assets/existing-floor-cutaways.png">
+          <img src="assets/existing-floor-cutaways.png" width="2450" height="1880" loading="lazy" alt="Labelled ground and first floor cutaways, with the front garden at the bottom">
+          <span><strong>Ground and first floors</strong><small>Room connections, terrace access and the stair cores.</small></span>
+        </a>
+        <a class="sheet-card" href="assets/existing-villa.png">
+          <img src="assets/existing-villa.png" width="2340" height="1620" loading="lazy" alt="Exterior reconstruction with the front approach, courtyard and two rear entrances beside the original photos">
+          <span><strong>Exterior and rear entrances</strong><small>Front and courtyard elevations, with the rear service access.</small></span>
+        </a>
+      </div>
+    </section>
+
     <section class="plan-section" id="plan" aria-labelledby="plan-title">
       <div class="section-heading">
-        <div><p class="eyebrow">ORIGINAL DRAWINGS</p><h2 id="plan-title">Floor plans</h2></div>
+        <div><h2 id="plan-title">Original floor plans</h2></div>
         <p>Choose a floor to see the drawing and its key notes.</p>
       </div>
       <div class="orientation-note">
@@ -114,7 +129,7 @@
               <ul>
                 <li><strong>Drawing:</strong> 5,220 × 5,250 mm shown.</li>
                 <li><strong>Dining:</strong> 4,940 × 4,050 mm shown.</li>
-                <li><strong>Lift on the drawing:</strong> you confirmed the actual villa has neither a lift nor a lift shaft. The space around the stairs needs checking.</li>
+                <li><strong>Lift on the drawing:</strong> you confirmed the actual villa has neither a lift nor a lift shaft. The photographed small room and WC sit beside the stair.</li>
                 <li><strong>Rear:</strong> the plan and photos show a round service stair.</li>
                 <li><strong>Bedroom 01:</strong> check the printed 1,350 mm dimension; it does not appear consistent with the drawn room.</li>
               </ul>
@@ -175,10 +190,11 @@
     </section>
 
     <section class="reference-section" id="references" aria-labelledby="references-title">
-      <div><p class="eyebrow">PROJECT REFERENCES</p><h2 id="references-title">Project references</h2></div>
+      <div><h2 id="references-title">Project references</h2></div>
       <div class="reference-links">
+        <a href="docs/existing-condition-review.md"><span><strong>Existing layout and photo evidence</strong><small>Source-by-source notes and remaining uncertainties</small></span><span aria-hidden="true">↗</span></a>
         <a href="#assumptions"><span><strong>Model assumptions</strong><small>Current estimates and measurements to check</small></span><span aria-hidden="true">↗</span></a>
-        <a href="docs/layout-review.md"><span><strong>Floor-plan review</strong><small>Room-by-room reading, photo checks and model corrections</small></span><span aria-hidden="true">↗</span></a>
+        <a href="docs/layout-review.md"><span><strong>Floor-plan review</strong><small>Earlier room-by-room reading of the original drawing</small></span><span aria-hidden="true">↗</span></a>
         <a href="docs/project-reference.md"><span><strong>Project notes</strong><small>Confirmed decisions and open measurements</small></span><span aria-hidden="true">↗</span></a>
         <a href="docs/floor-plan.pdf"><span><strong>Original floor plan</strong><small>Ground, first and roof levels</small></span><span aria-hidden="true">↗</span></a>
         <a href="docs/renovation-research.pdf"><span><strong>Hall renovation research</strong><small>Opening, materials and earlier concepts</small></span><span aria-hidden="true">↗</span></a>

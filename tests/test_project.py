@@ -57,7 +57,7 @@ class ProjectTests(unittest.TestCase):
         self.assertAlmostEqual(terrace['p'][2] + terrace['s'][2], 14.875)
         # The main terrace beyond the marked opening must be open to the sky.
         for bar in grille + self.named('Court pergola slat'):
-            self.assertLessEqual(bar['p'][2] + bar['s'][2], 11.25)
+            self.assertLessEqual(bar['p'][2] + bar['s'][2], 11.8)
         self.assertTrue(self.named('Study door to service terrace'))
         self.assertTrue(self.named('Servant room door to terrace'))
         self.assertTrue(self.named('Courtyard back wall'))
@@ -95,7 +95,7 @@ class ProjectTests(unittest.TestCase):
         self.assertTrue(terrace['p'][2] < 14.5 < terrace['p'][2] + terrace['s'][2])
         # No wall may cut across the clear part of the shared service terrace.
         barriers = [p for p in self.parts if p['level'] == 'first' and p['s'][1] > .3
-                    and p['p'][0] < 11.9 and p['p'][0] + p['s'][0] > 8.7
+                    and p['p'][0] < 11.9 and p['p'][0] + p['s'][0] > 9.23
                     and p['p'][2] < 16.75 and p['p'][2] + p['s'][2] > 13.8
                     and p['p'][1] < 5 and p['p'][1] + p['s'][1] > 3.45]
         self.assertFalse(barriers, [p['name'] for p in barriers])
@@ -107,6 +107,28 @@ class ProjectTests(unittest.TestCase):
         self.assertAlmostEqual(walls[0]['p'][2], walls[1]['p'][2])
         self.assertTrue(self.named('Rear service side window'))
         self.assertTrue(self.named('Servant terrace window'))
+
+    def test_photo_confirmed_openings_and_terrace_edge(self):
+        def covers(parts, point):
+            return any(all(p['p'][i] < v < p['p'][i] + p['s'][i]
+                           for i, v in enumerate(point)) for p in parts)
+        lobby = self.named('Hall to entry lobby wall')
+        for x in (5.40, 7.20):
+            self.assertFalse(covers(lobby, (x, 1, 5.50)))
+            self.assertTrue(covers(lobby, (x, 2.80, 5.50)))
+        self.assertTrue(covers(lobby, (6.35, 1, 5.50)))
+        self.assertTrue(self.named('Rear screened bedroom entrance door'))
+        self.assertTrue(self.named('Kitchen door toward service bay door'))
+        self.assertTrue(self.named('Bedroom 1 court entry door'))
+        self.assertTrue(self.named('Dining glazed court opening glazing'))
+        self.assertTrue(covers(self.named('Bedroom 3 service terrace return'), (9.12, 4.50, 15)))
+        road_wall = self.named('Bedroom garden wall')[0]
+        lobby_wall = self.named('Ground bedroom 1 partition')[0]
+        room_width = lobby_wall['p'][0] - (road_wall['p'][0] + road_wall['s'][0])
+        self.assertAlmostEqual(room_width, 4, delta=.04)
+        self.assertEqual(len(self.named('Court pergola slat')), 7)
+        for name, height in [('Dining soffit', 3.048), ('Drawing soffit', 2.8956)]:
+            self.assertAlmostEqual(self.named(name)[0]['p'][1], height)
 
     def test_rooftop_room_and_tank(self):
         tank = self.named('Water tank')[0]
@@ -135,15 +157,19 @@ class ProjectTests(unittest.TestCase):
         soil = self.named('Ground inside boundary - soil')
         self.assertEqual(len(soil), 32)
         self.assertAlmostEqual(max(p['p'][0]+p['s'][0] for p in soil)-min(p['p'][0] for p in soil), 14.5)
-        self.assertAlmostEqual(max(p['p'][2]+p['s'][2] for p in soil)-min(p['p'][2] for p in soil), 29)
+        self.assertEqual(self.model['metadata']['plot_m'], [14.5, 29])
+        front = self.model['metadata']['front_compound_offset_m_estimate']
+        rear = self.model['metadata']['rear_compound_offset_m_estimate']
+        self.assertAlmostEqual(min(p['p'][2] for p in soil), -front)
+        self.assertAlmostEqual(max(p['p'][2] + p['s'][2] for p in soil), 19 + rear)
         neighbour = self.named('Neighbour boundary wall')
         self.assertGreater(len(neighbour), 1)
         self.assertAlmostEqual(min(p['p'][1] + p['s'][1] for p in neighbour), 1.8)
-        self.assertAlmostEqual(max(p['p'][1] + p['s'][1] for p in neighbour), 6.9)
+        self.assertAlmostEqual(max(p['p'][1] + p['s'][1] for p in neighbour), 7.9)
         wall = sorted(neighbour, key=lambda p: p['p'][2])
         for a, b in zip(wall, wall[1:]):
-            self.assertAlmostEqual(a['p'][2] + a['s'][2], b['p'][2])
-        self.assertAlmostEqual(sum(p['s'][2] for p in neighbour), 28.82)
+            self.assertAlmostEqual(a['p'][2] + a['s'][2], b['p'][2], places=4)
+        self.assertAlmostEqual(sum(p['s'][2] for p in neighbour), 19 + rear + front - .18 * front / 8, places=4)
         for part in self.parts:
             self.assertIn(part['color'], self.model['colors'], part['name'])
             self.assertTrue(all(value > 0 for value in part['s']), part['name'])
@@ -168,8 +194,10 @@ class ProjectTests(unittest.TestCase):
                 self.assertAlmostEqual(node['scale'][axis], part['s'][axis])
                 self.assertAlmostEqual(node['translation'][axis], part['p'][axis] + part['s'][axis] / 2)
             if 'yaw' in part:
-                self.assertAlmostEqual(node['rotation'][1], math.sin(part['yaw'] / 2))
-                self.assertAlmostEqual(node['rotation'][3], math.cos(part['yaw'] / 2))
+                sy, cy = math.sin(part['yaw'] / 2), math.cos(part['yaw'] / 2)
+                st, ct = math.sin(part.get('tilt', 0) / 2), math.cos(part.get('tilt', 0) / 2)
+                for actual, expected in zip(node['rotation'], (sy*st, sy*ct, cy*st, cy*ct)):
+                    self.assertAlmostEqual(actual, expected)
         self.assertFalse([node['name'] for node in document['nodes'] if 'lift' in node['name'].lower()])
         self.assertTrue(any(mesh['name'].startswith('cylinder /') for mesh in document['meshes']))
         for image in document['images']:

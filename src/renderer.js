@@ -1,10 +1,89 @@
 (() => {
   'use strict';
 
+  // Use depth testing for intersecting walls, trim, glazing and roof edges at oblique angles.
+  // The existing Canvas path also supports local-file textures and browsers without WebGL.
+  function createSolidPainter() {
+    const surface = document.createElement('canvas');
+    const gl = surface.getContext('webgl', {alpha: true, antialias: true, premultipliedAlpha: true});
+    if (!gl) return null;
+    function compile(type, source) {
+      const shader = gl.createShader(type);
+      gl.shaderSource(shader, source);
+      gl.compileShader(shader);
+      if (gl.getShaderParameter(shader, gl.COMPILE_STATUS)) return shader;
+      gl.deleteShader(shader);
+      return null;
+    }
+    const vertex = compile(gl.VERTEX_SHADER, `
+      attribute vec3 position;
+      attribute vec3 color;
+      uniform vec2 extent;
+      varying lowp vec3 shade;
+      void main() {
+        gl_Position = vec4(2.0 * position.x / extent.x - 1.0,
+                           1.0 - 2.0 * position.y / extent.y,
+                           position.z / 80.0, 1.0);
+        shade = color;
+      }`);
+    const fragment = compile(gl.FRAGMENT_SHADER, `
+      precision mediump float;
+      varying lowp vec3 shade;
+      void main() { gl_FragColor = vec4(shade, 1.0); }`);
+    if (!vertex || !fragment) return null;
+    const program = gl.createProgram();
+    gl.attachShader(program, vertex);
+    gl.attachShader(program, fragment);
+    gl.linkProgram(program);
+    gl.deleteShader(vertex);
+    gl.deleteShader(fragment);
+    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) return null;
+    const position = gl.getAttribLocation(program, 'position');
+    const color = gl.getAttribLocation(program, 'color');
+    const extent = gl.getUniformLocation(program, 'extent');
+    const buffer = gl.createBuffer();
+    return (ctx, box, width, height, polygons, palette) => {
+      if (gl.isContextLost()) return false;
+      if (surface.width !== width || surface.height !== height) {
+        surface.width = width;
+        surface.height = height;
+      }
+      const values = [];
+      for (const poly of polygons) {
+        const value = parseInt(palette[poly.color].slice(1), 16);
+        const r = ((value >> 16) & 255) * poly.shade / 255;
+        const g = ((value >> 8) & 255) * poly.shade / 255;
+        const b = (value & 255) * poly.shade / 255;
+        for (let i = 1; i < poly.vertices.length - 1; i++) {
+          for (const v of [poly.vertices[0], poly.vertices[i], poly.vertices[i + 1]]) {
+            values.push(v[0], v[1], v[2], r, g, b);
+          }
+        }
+      }
+      gl.viewport(0, 0, width, height);
+      gl.clearColor(0, 0, 0, 0);
+      gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+      gl.enable(gl.DEPTH_TEST);
+      gl.depthFunc(gl.LEQUAL);
+      gl.useProgram(program);
+      gl.uniform2f(extent, box.width, box.height);
+      gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(values), gl.DYNAMIC_DRAW);
+      gl.enableVertexAttribArray(position);
+      gl.enableVertexAttribArray(color);
+      gl.vertexAttribPointer(position, 3, gl.FLOAT, false, 24, 0);
+      gl.vertexAttribPointer(color, 3, gl.FLOAT, false, 24, 12);
+      gl.drawArrays(gl.TRIANGLES, 0, values.length / 6);
+      ctx.drawImage(surface, 0, 0, box.width, box.height);
+      return true;
+    };
+  }
+
   // The renderer reads shared model data and view state; it does not own controls.
   window.createVillaRenderer = (model, canvas, state) => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return null;
+    const paintSolid = createSolidPainter();
 
     const faces = [
       {i: [0, 1, 2, 3], shade: .82}, {i: [4, 5, 6, 7], shade: 1.02},
@@ -24,11 +103,11 @@
     }
 
     function visible(part) {
+      if (state.mode === 'interior' && part.overhead) return false;
       if (state.mode !== 'interior') return !part.interiorOnly && (state.showBoundary || part.level !== 'boundary');
       const grille = part.name.startsWith('Court pergola') ||
         (part.name.startsWith('Terrace opening grille') && part.name !== 'Terrace opening grille post');
       if (state.floor === 'roof') return part.level === 'roof' || part.level === 'roof-detail' || grille;
-      if (state.floor === 'first' && grille) return true;
       if (part.level === state.floor) return true;
       if (part.level === 'spiral') return state.floor === 'ground' || (state.floor === 'first' && part.p[1] >= 2.55);
       return false;
@@ -97,7 +176,8 @@
       const isExterior = state.mode !== 'interior';
       const co = Math.cos(state.yaw), si = Math.sin(state.yaw), cp = Math.cos(state.pitch), sp = Math.sin(state.pitch);
       let bounds;
-      if (isExterior) bounds = {x: [-2.25, 12.25], y: [-.3, roofTop + .2], z: [-8, 21]};
+      if (isExterior) bounds = {x: [-2.25, 12.25], y: [-.5, roofTop + .2],
+        z: [-model.metadata.front_compound_offset_m_estimate, 19 + model.metadata.rear_compound_offset_m_estimate]};
       else if (state.floor === 'ground') bounds = {x: [0, 11.9], y: [-.2, 4], z: [0, 19.5]};
       else if (state.floor === 'first') bounds = {x: [0, 11.9], y: [2.55, 6.7], z: [0, 19.5]};
       else bounds = {x: [0, 11.9], y: [6.15, roofTop + .3], z: [0, 19.5]};
@@ -135,7 +215,12 @@
 
       for (const part of model.parts) {
         if (!visible(part)) continue;
-        const [x, y, z] = part.p, [width, height, depth] = part.s;
+        const [x, y, z] = part.p, [width, fullHeight, depth] = part.s;
+        const floorCut = state.floor === 'ground' ? 1.15 : 4.48;
+        const keepStairs = part.level === 'spiral' || part.name.startsWith('Main stair');
+        const cut = !isExterior && state.floor !== 'roof' && !keepStairs;
+        const height = cut ? Math.min(fullHeight, floorCut - y) : fullHeight;
+        if (height <= 0) continue;
         if (part.shape === 'cylinder') {
           const bottom = [], top = [], count = 20;
           for (let i = 0; i < count; i++) {
@@ -148,9 +233,15 @@
           continue;
         }
         const mx = x + width / 2, mz = z + depth / 2, rc = Math.cos(part.yaw || 0), rs = Math.sin(part.yaw || 0);
+        const my = y + height / 2;
+        const ct = Math.cos(part.tilt || 0), st = Math.sin(part.tilt || 0);
         const points = [[x, y, z], [x + width, y, z], [x + width, y + height, z], [x, y + height, z],
           [x, y, z + depth], [x + width, y, z + depth], [x + width, y + height, z + depth], [x, y + height, z + depth]]
-          .map(q => { const dx = q[0] - mx, dz = q[2] - mz; return project(mx + rc * dx + rs * dz, q[1], mz - rs * dx + rc * dz); });
+          .map(([px, py, pz]) => {
+            const localX = (px - mx) * ct - (py - my) * st;
+            const localY = (px - mx) * st + (py - my) * ct;
+            return project(mx + rc * localX + rs * (pz - mz), my + localY, mz - rs * localX + rc * (pz - mz));
+          });
         for (const [faceIndex, face] of faces.entries()) {
           // Segment long walls for correct depth ordering without drawing joint caps.
           if (part.seamlessSegments &&
@@ -161,20 +252,24 @@
         }
       }
 
-      polygons.sort((a, b) => a.layer - b.layer || b.depth - a.depth);
-      for (const poly of polygons) {
-        ctx.beginPath();
-        ctx.moveTo(poly.vertices[0][0], poly.vertices[0][1]);
-        for (let i = 1; i < poly.vertices.length; i++) ctx.lineTo(poly.vertices[i][0], poly.vertices[i][1]);
-        ctx.closePath();
-        ctx.fillStyle = colorShade(model.colors[poly.color] || '#b9b9b0', poly.shade);
-        ctx.fill();
-        const texture = textures[poly.color];
-        if (state.showTextures && poly.textured && texture && texture.complete && poly.area > 80) textureFace(texture, poly.vertices, poly);
-        if (poly.name !== 'Ground inside boundary - soil' && !poly.seamlessSegments) {
-          ctx.strokeStyle = 'rgba(50,55,53,.22)';
-          ctx.lineWidth = .55;
-          ctx.stroke();
+      const depthPainted = !state.showTextures && paintSolid &&
+        paintSolid(ctx, box, canvas.width, canvas.height, polygons, model.colors);
+      if (!depthPainted) {
+        polygons.sort((a, b) => a.layer - b.layer || b.depth - a.depth);
+        for (const poly of polygons) {
+          ctx.beginPath();
+          ctx.moveTo(poly.vertices[0][0], poly.vertices[0][1]);
+          for (let i = 1; i < poly.vertices.length; i++) ctx.lineTo(poly.vertices[i][0], poly.vertices[i][1]);
+          ctx.closePath();
+          ctx.fillStyle = colorShade(model.colors[poly.color] || '#b9b9b0', poly.shade);
+          ctx.fill();
+          const texture = textures[poly.color];
+          if (state.showTextures && poly.textured && texture && texture.complete && poly.area > 80) textureFace(texture, poly.vertices, poly);
+          if (poly.name !== 'Ground inside boundary - soil' && !poly.seamlessSegments) {
+            ctx.strokeStyle = 'rgba(50,55,53,.22)';
+            ctx.lineWidth = .55;
+            ctx.stroke();
+          }
         }
       }
 

@@ -1,5 +1,7 @@
 # RajSee Villa — floor-plan and photo review
 
+The [14 November existing-condition review](existing-condition-review.md) records the subsequent photo checks and model changes. The notes below preserve the earlier reading of the plan.
+
 Reviewed 8 November 2026; updated 9 November after owner feedback. This is the working reference for checking the layout before correcting the 3D model. It separates the drawing, the photographs and the owner's descriptions; it is not an as-built survey or a construction drawing.
 
 ## Sources and how to read them

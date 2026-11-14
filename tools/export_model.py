@@ -140,8 +140,13 @@ for part in parts:
     node = {'name': part['name'], 'mesh': mesh_index,
             'translation': [part['p'][i]+part['s'][i]/2 for i in range(3)], 'scale': part['s'],
             'extras': {'level': part['level'], 'status': 'Photo-informed estimate; verify on site'}}
-    if 'yaw' in part:
-        node['rotation'] = [0,math.sin(part['yaw']/2),0,math.cos(part['yaw']/2)]
+    if 'yaw' in part or 'tilt' in part:
+        # Tilt around local Z before yawing around world Y, matching the on-screen viewer.
+        yaw_half = part.get('yaw', 0) / 2
+        tilt_half = part.get('tilt', 0) / 2
+        sy, cy = math.sin(yaw_half), math.cos(yaw_half)
+        st, ct = math.sin(tilt_half), math.cos(tilt_half)
+        node['rotation'] = [sy * st, sy * ct, cy * st, cy * ct]
     nodes.append(node)
     nodes[group_index.get(part['level'], group_index['decoration'])]['children'].append(len(nodes)-1)
 
